@@ -4,20 +4,9 @@
 
 You do **not** need the full showcase tree if you only care about one folder (e.g. `royal-pizza`).
 
-**Folder name = repository name.** Every top-level directory here uses the same name as its upstream Git repository (same spelling and capitalization as in the index). Use that exact name in the clone URL.
+**Folder name = repository name.** Each top-level directory matches the upstream repository slug (spelling and capitalization as in the index).
 
-### Option A — Clone the original repo on your host (best default)
-
-Cloning the standalone repo gives a normal single-project checkout and full history on that remote:
-
-```bash
-git clone https://github.com/YOUR_ORG/royal-pizza.git
-cd royal-pizza
-```
-
-Replace `YOUR_ORG` with your Git group or user, and replace `royal-pizza` with any **folder name** from the index below (they are the repo names).
-
-### Option B — This showcase is the only remote (sparse checkout)
+### Option A — This showcase is the only remote (sparse checkout)
 
 If you only have this **monorepo** URL, you can clone once and check out **just one directory**:
 
@@ -30,7 +19,7 @@ git sparse-checkout set royal-pizza
 
 Use the folder name you need instead of `royal-pizza`. You still have one Git repo (the showcase), but your working tree only contains that project.
 
-### Option C — Copy one folder into a new repo
+### Option B — Copy one folder into a new repo
 
 To ship a folder as its **own** repo **without** monorepo history:
 
@@ -44,9 +33,9 @@ git commit -m "Initial import"
 
 ---
 
-These projects are grouped in **one parent Git repository** for browsing; each app still lives in its **own top-level folder** (see index), and **that folder name is the repo name** when cloning upstream.
+These projects are grouped in **one parent Git repository** for browsing; each app still lives in its **own top-level folder** (see index), and **that folder name is the repo name** on the remote.
 
-To refresh this collection from its remote: `git pull` at the **repository root**. To work against the standalone project remote, use **Option A** with the matching repo slug.
+To refresh this collection from its remote: `git pull` at the **repository root**.
 
 ## Project index
 
@@ -89,4 +78,4 @@ Brief descriptions are taken from each repo’s README, metadata, or layout wher
 
 ## Repository layout note
 
-All listed folders live under **one** Git repository at this root. History for each app is whatever is committed here; for independent per-app history and PRs on the original remote, use **Option A** above.
+All listed folders live under **one** Git repository at this root. History for each app is whatever is committed here; for a checkout that only contains one project, use **Option A** (sparse) or **Option B** (copy + `git init`) above.
