@@ -4,16 +4,18 @@
 
 You do **not** need the full showcase tree if you only care about one folder (e.g. `royal-pizza`).
 
-### Option A — Clone the original repo from GitHub (best default)
+**Folder name = repository name.** Every top-level directory here uses the same name as its upstream Git repository (same spelling and capitalization as in the index). Use that exact name in the clone URL.
 
-Each folder matches a repository under [BizzOne-Digital](https://github.com/BizzOne-Digital/). Clone it directly for a normal, single-project repo with full upstream history:
+### Option A — Clone the original repo on your host (best default)
+
+Cloning the standalone repo gives a normal single-project checkout and full history on that remote:
 
 ```bash
-git clone https://github.com/BizzOne-Digital/royal-pizza.git
+git clone https://github.com/YOUR_ORG/royal-pizza.git
 cd royal-pizza
 ```
 
-Replace `royal-pizza` with any repo name from the index below (use the exact folder name, including capitals/hyphens).
+Replace `YOUR_ORG` with your Git group or user, and replace `royal-pizza` with any **folder name** from the index below (they are the repo names).
 
 ### Option B — This showcase is the only remote (sparse checkout)
 
@@ -42,9 +44,9 @@ git commit -m "Initial import"
 
 ---
 
-Local mirror of public repositories from [BizzOne-Digital](https://github.com/BizzOne-Digital/). Projects are grouped in **one parent Git repository**; each app still lives in its **own top-level folder** (see index).
+These projects are grouped in **one parent Git repository** for browsing; each app still lives in its **own top-level folder** (see index), and **that folder name is the repo name** when cloning upstream.
 
-To refresh from this monorepo’s remote: `git pull` at the **repository root** (`projects-showcase`). To follow upstream for a single app, prefer **Option A** and use that project’s GitHub URL.
+To refresh this collection from its remote: `git pull` at the **repository root**. To work against the standalone project remote, use **Option A** with the matching repo slug.
 
 ## Project index
 
@@ -87,4 +89,4 @@ Brief descriptions are taken from each repo’s README, metadata, or layout wher
 
 ## Repository layout note
 
-All listed folders live under **one** Git repository at this root. History for each app is whatever is committed here; for independent per-app history and issues/PRs on GitHub, use **Option A** above.
+All listed folders live under **one** Git repository at this root. History for each app is whatever is committed here; for independent per-app history and PRs on the original remote, use **Option A** above.
