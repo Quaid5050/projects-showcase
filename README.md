@@ -1,8 +1,50 @@
 # Projects showcase
 
-Local mirror of public repositories from [BizzOne-Digital](https://github.com/BizzOne-Digital/), kept together for reference and reuse. Each project lives in its **own directory** and **retains its own Git history** (nested `.git` folders).
+## How to clone or open a single project
 
-Upstream changes: run `git pull` inside each project directory as needed.
+You do **not** need the full showcase tree if you only care about one folder (e.g. `royal-pizza`).
+
+### Option A — Clone the original repo from GitHub (best default)
+
+Each folder matches a repository under [BizzOne-Digital](https://github.com/BizzOne-Digital/). Clone it directly for a normal, single-project repo with full upstream history:
+
+```bash
+git clone https://github.com/BizzOne-Digital/royal-pizza.git
+cd royal-pizza
+```
+
+Replace `royal-pizza` with any repo name from the index below (use the exact folder name, including capitals/hyphens).
+
+### Option B — This showcase is the only remote (sparse checkout)
+
+If you only have this **monorepo** URL, you can clone once and check out **just one directory**:
+
+```bash
+git clone --filter=blob:none --sparse https://YOUR_SHOWCASE_REPO_URL.git
+cd YOUR_SHOWCASE_REPO
+git sparse-checkout init --cone
+git sparse-checkout set royal-pizza
+```
+
+Use the folder name you need instead of `royal-pizza`. You still have one Git repo (the showcase), but your working tree only contains that project.
+
+### Option C — Copy one folder into a new repo
+
+To ship a folder as its **own** repo **without** monorepo history:
+
+```bash
+cp -R royal-pizza /path/to/royal-pizza-standalone
+cd /path/to/royal-pizza-standalone
+git init
+git add .
+git commit -m "Initial import"
+```
+
+---
+
+Local mirror of public repositories from [BizzOne-Digital](https://github.com/BizzOne-Digital/). Projects are grouped in **one parent Git repository**; each app still lives in its **own top-level folder** (see index).
+
+To refresh from this monorepo’s remote: `git pull` at the **repository root** (`projects-showcase`). To follow upstream for a single app, prefer **Option A** and use that project’s GitHub URL.
 
 ## Project index
 
@@ -45,4 +87,4 @@ Brief descriptions are taken from each repo’s README, metadata, or layout wher
 
 ## Repository layout note
 
-Cloning the org into one folder produces **many nested Git repositories**. This outer `README.md` is the map; it is not a monorepo that vendors all source into one commit tree.
+All listed folders live under **one** Git repository at this root. History for each app is whatever is committed here; for independent per-app history and issues/PRs on GitHub, use **Option A** above.
