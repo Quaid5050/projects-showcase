@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth;   overflow-x: hidden;}
+  * { box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif;  overflow-x: hidden; }
+  ::selection { background-color: #E8192C; color: #fff; }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #111; }
+  ::-webkit-scrollbar-thumb { background: #E8192C; border-radius: 3px; }
+  .font-display, [class*="font-display"] { font-family: 'Bebas Neue', cursive !important; }
+}
+
+@layer components {
+  .section-label {
+    @apply inline-flex items-center gap-2 text-forge-red text-sm font-semibold tracking-widest uppercase;
+  }
+  .section-title {
+    @apply text-white leading-none tracking-wide;
+    font-family: 'Bebas Neue', cursive;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-forge-red hover:bg-forge-red-dark text-white font-semibold px-7 py-3.5 transition-all duration-300 hover:scale-105 active:scale-95;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-forge-border hover:border-forge-red text-white font-semibold px-7 py-3.5 transition-all duration-300 hover:bg-forge-red/10;
+  }
+  .card-dark {
+    @apply bg-forge-card border border-forge-border hover:border-forge-red transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  .text-gradient-red {
+    background: linear-gradient(135deg, #E8192C, #FF6B7A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}

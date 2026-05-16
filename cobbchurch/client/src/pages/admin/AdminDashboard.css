@@ -1,0 +1,359 @@
+/* =========================================
+   ADMIN DASHBOARD — MOBILE FIXED
+========================================= */
+
+.admin-dashboard{
+  width:100%;
+  overflow-x:hidden;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.admin-page-header{
+  margin-bottom:24px;
+}
+
+.admin-page-header h1{
+  font-size:2rem;
+  font-weight:800;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+
+.admin-page-header p{
+  color:var(--text-light);
+  line-height:1.7;
+  font-size:0.92rem;
+}
+
+/* =========================================
+   STATS GRID
+========================================= */
+
+.admin-stats-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.admin-stat-card{
+  background:#fff;
+  border-radius:18px;
+  padding:22px;
+
+  display:flex;
+  align-items:center;
+  gap:16px;
+
+  text-decoration:none;
+
+  position:relative;
+
+  box-shadow:0 8px 24px rgba(0,0,0,0.06);
+  transition:0.3s ease;
+
+  border:2px solid transparent;
+}
+
+.admin-stat-card:hover{
+  transform:translateY(-3px);
+  border-color:#d4a853;
+}
+
+.admin-stat-icon{
+  width:56px;
+  height:56px;
+  min-width:56px;
+
+  border-radius:14px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:1.4rem;
+}
+
+.admin-stat-value{
+  font-size:1.8rem;
+  font-weight:800;
+  line-height:1;
+  color:#07172f;
+}
+
+.admin-stat-label{
+  margin-top:5px;
+  color:#666;
+  font-size:0.82rem;
+  line-height:1.5;
+}
+
+.admin-alert-dot{
+  position:absolute;
+  top:12px;
+  right:12px;
+
+  width:10px;
+  height:10px;
+
+  border-radius:50%;
+  background:red;
+}
+
+/* =========================================
+   SECTION
+========================================= */
+
+.admin-section{
+  margin-top:28px;
+  background:#fff;
+  border-radius:20px;
+  padding:24px;
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(0,0,0,0.05);
+}
+
+.admin-section-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.admin-section-header h2{
+  font-size:1.1rem;
+  color:#07172f;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.view-all-link{
+  color:#d4a853;
+  text-decoration:none;
+  font-weight:600;
+  font-size:0.85rem;
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+.admin-table-wrapper{
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+.admin-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.admin-table th{
+  text-align:left;
+  padding:12px 14px;
+
+  font-size:0.74rem;
+  text-transform:uppercase;
+  letter-spacing:1px;
+
+  color:#888;
+
+  border-bottom:2px solid #eee;
+}
+
+.admin-table td{
+  padding:14px;
+  border-bottom:1px solid #eee;
+  font-size:0.88rem;
+}
+
+.table-primary{
+  font-weight:700;
+  color:#07172f;
+}
+
+.table-secondary{
+  color:#777;
+  font-size:0.76rem;
+  margin-top:3px;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width:768px){
+
+  .admin-dashboard{
+    padding-bottom:30px;
+  }
+
+  /* HEADER */
+
+  .admin-page-header h1{
+    font-size:1.5rem;
+  }
+
+  .admin-page-header p{
+    font-size:0.84rem;
+  }
+
+  /* STATS */
+
+  .admin-stats-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .admin-stat-card{
+    padding:16px;
+    border-radius:16px;
+  }
+
+  .admin-stat-icon{
+    width:46px;
+    height:46px;
+    min-width:46px;
+    font-size:1.1rem;
+  }
+
+  .admin-stat-value{
+    font-size:1.45rem;
+  }
+
+  .admin-stat-label{
+    font-size:0.76rem;
+  }
+
+  /* SECTION */
+
+  .admin-section{
+    padding:16px;
+    border-radius:16px;
+  }
+
+  .admin-section-header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .admin-section-header h2{
+    font-size:1rem;
+  }
+
+  /* =========================================
+     CARD STYLE TABLE FOR MOBILE
+  ========================================= */
+
+  .admin-table{
+    min-width:unset;
+  }
+
+  .admin-table thead{
+    display:none;
+  }
+
+  .admin-table tbody{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .admin-table tr{
+    display:flex;
+    flex-direction:column;
+
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:16px;
+
+    padding:14px;
+  }
+
+  .admin-table td{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    gap:12px;
+
+    padding:10px 0;
+    border-bottom:1px solid #f2f2f2;
+
+    font-size:0.82rem;
+  }
+
+  .admin-table td:last-child{
+    border-bottom:none;
+    padding-bottom:0;
+  }
+
+  .admin-table td::before{
+    font-weight:700;
+    color:#07172f;
+    min-width:110px;
+    flex-shrink:0;
+  }
+
+  .admin-table td:nth-child(1)::before{
+    content:"Pastor";
+  }
+
+  .admin-table td:nth-child(2)::before{
+    content:"Email";
+  }
+
+  .admin-table td:nth-child(3)::before{
+    content:"Denomination";
+  }
+
+  .admin-table td:nth-child(4)::before{
+    content:"Applied";
+  }
+
+  .admin-table td:nth-child(5)::before{
+    content:"Action";
+  }
+
+  .btn-sm{
+    width:100%;
+    justify-content:center;
+  }
+
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width:480px){
+
+  .admin-page-header h1{
+    font-size:1.3rem;
+  }
+
+  .admin-stat-card{
+    padding:14px;
+  }
+
+  .admin-stat-value{
+    font-size:1.25rem;
+  }
+
+  .admin-table td{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .admin-table td::before{
+    margin-bottom:4px;
+  }
+
+}

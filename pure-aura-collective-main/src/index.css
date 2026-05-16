@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Luxury Aesthetic Clinic Design System
+   All colors are HSL. Using semantic tokens only. */
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 36 33% 97%;          /* Warm Beige #F8F5F2 */
+    --foreground: 215 25% 16%;         /* Dark text #1F2933 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 16%;
+
+    /* Brand */
+    --primary: 180 45% 35%;            /* Deep Teal #2F7F7F */
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 180 35% 54%;       /* Soft Teal #5FB3B3 */
+    --primary-glow: 180 45% 76%;       /* Glow #A7DCDC */
+
+    --secondary: 180 43% 94%;          /* Light Mint #E8F6F6 */
+    --secondary-foreground: 180 45% 25%;
+
+    --muted: 36 25% 94%;
+    --muted-foreground: 220 9% 46%;    /* Gray #6B7280 */
+
+    --accent: 36 35% 74%;              /* Soft Gold #D6C3A3 */
+    --accent-foreground: 215 25% 16%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 36 20% 88%;
+    --input: 36 20% 90%;
+    --ring: 180 45% 35%;
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-teal: linear-gradient(135deg, hsl(180 35% 54%), hsl(180 45% 76%));
+    --gradient-deep: linear-gradient(135deg, hsl(180 45% 25%), hsl(180 35% 54%));
+    --gradient-soft: linear-gradient(180deg, hsl(36 33% 97%), hsl(180 43% 94%));
+    --gradient-overlay: linear-gradient(135deg, hsl(180 45% 25% / 0.85), hsl(180 35% 35% / 0.55));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(180 45% 25% / 0.08);
+    --shadow-elegant: 0 20px 50px -20px hsl(180 45% 25% / 0.18);
+    --shadow-glow: 0 0 60px hsl(180 35% 54% / 0.35);
+    --shadow-gold: 0 10px 30px -10px hsl(36 35% 60% / 0.4);
+
+    /* Motion */
+    --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { @apply border-border; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/60 backdrop-blur-md border border-white/40;
+    box-shadow: var(--shadow-soft);
+  }
+  .glass-dark {
+    @apply bg-foreground/10 backdrop-blur-xl border border-white/10;
+  }
+  .text-gradient {
+    background: var(--gradient-deep);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-teal-gradient { background: var(--gradient-teal); }
+  .bg-deep-gradient { background: var(--gradient-deep); }
+  .bg-soft-gradient { background: var(--gradient-soft); }
+  .shadow-elegant { box-shadow: var(--shadow-elegant); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+
+  .blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(80px);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .container-luxe {
+    @apply container mx-auto px-6 md:px-10;
+  }
+}

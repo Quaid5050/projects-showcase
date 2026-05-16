@@ -1,0 +1,105 @@
+[
+  {
+    "slug": "seat-cover-installation",
+    "title": "Seat Cover Installation",
+    "shortDescription": "Professional installation of premium seat covers for a perfect, custom fit.",
+    "overview": "Our seat cover installation service ensures your new covers fit like they were made for your vehicle. We handle removal of old covers, proper alignment, and secure fitting so you get a factory-like finish.",
+    "includes": [
+      "Removal of existing seat covers (if any)",
+      "Inspection of seat condition",
+      "Custom fitting and alignment",
+      "Secure attachment (hooks, straps, or custom fit)",
+      "Final adjustment and quality check"
+    ],
+    "benefits": [
+      "Protects original upholstery from wear and stains",
+      "Enhances interior aesthetics",
+      "Increases resale value",
+      "Easy to remove and wash (where applicable)"
+    ],
+    "materials": [
+      "Leather and leatherette",
+      "Neoprene (waterproof)",
+      "Velvet and fabric",
+      "Custom-fit and universal options"
+    ],
+    "process": [
+      "Book appointment and confirm vehicle model",
+      "Select material and color",
+      "We prepare covers for your car",
+      "Installation at your location or our workshop",
+      "Final walkthrough and care tips"
+    ],
+    "pricing": "Starting from $80 for installation. Price depends on vehicle and cover type.",
+    "image": "/images/services/seat-cover.jpeg",
+    "icon": "Armchair"
+  },
+  {
+    "slug": "window-visor-installation",
+    "title": "Window Visors / Rain Guards Installation",
+    "shortDescription": "Expert fitting of window visors and rain guards for style and function.",
+    "overview": "Window visors add a sleek look to your car while allowing you to crack windows open in light rain. We install in-channel or tape-on visors with precision for a clean, OEM-style finish.",
+    "includes": [
+      "Selection of in-channel or tape-on visors",
+      "Surface cleaning and preparation",
+      "Precise alignment and fitting",
+      "Secure attachment",
+      "Adhesive cure time guidance"
+    ],
+    "benefits": [
+      "Reduce rain entering when windows are slightly open",
+      "Reduce sun glare and heat",
+      "Improve airflow",
+      "Sleek, sporty appearance"
+    ],
+    "materials": [
+      "Smoke-tinted acrylic",
+      "OEM-style fit",
+      "UV-resistant materials"
+    ],
+    "process": [
+      "Confirm vehicle make and model",
+      "Choose visor style (in-channel recommended)",
+      "Schedule installation",
+      "We install with proper alignment",
+      "Care instructions provided"
+    ],
+    "pricing": "Starting from $45 for installation. Product cost varies by vehicle.",
+    "image": "/images/services/window-visor.jpeg",
+    "icon": "Shield"
+  },
+  {
+    "slug": "car-mats-installation",
+    "title": "Car Mats Installation",
+    "shortDescription": "Custom car mats and trunk liners installed for maximum protection and fit.",
+    "overview": "We supply and install front mats, rear mats, and trunk liners tailored to your vehicle. Perfect fit means no slipping and full coverage of footwells and cargo area.",
+    "includes": [
+      "Front floor mats (driver and passenger)",
+      "Rear floor mats (where applicable)",
+      "Trunk/cargo liner option",
+      "Secure fit with factory-style retention",
+      "Cleaning and care tips"
+    ],
+    "benefits": [
+      "Protect carpet from dirt, mud, and spills",
+      "Custom fit prevents sliding",
+      "Easy to remove and clean",
+      "Preserves resale value"
+    ],
+    "materials": [
+      "Heavy-duty rubber",
+      "Carpet-style with rubber backing",
+      "All-weather thermoplastic",
+      "Luxury carpet with embroidery option"
+    ],
+    "process": [
+      "Select mat type (rubber, carpet, all-weather)",
+      "We order or prepare for your vehicle",
+      "Installation at appointment",
+      "Retention clips or hooks fitted if needed"
+    ],
+    "pricing": "Starting from $30 for installation. Mat sets from $45.",
+    "image": "/images/services/car-mats.jpeg",
+    "icon": "Layers"
+  }
+]

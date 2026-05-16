@@ -1,0 +1,65 @@
+[
+  {
+    "id": "1",
+    "type": "image",
+    "title": "Before & After - Seat Covers",
+    "src": "/images/gallery/transform-1.jpeg",
+    "category": "before-after"
+  },
+  {
+    "id": "2",
+    "type": "image",
+    "title": "Leather Seat Cover Installed",
+    "src": "/images/gallery/seat-installed-1.jpeg",
+    "category": "seat-covers"
+  },
+  {
+    "id": "3",
+    "type": "image",
+    "title": "Custom Mats - Front",
+    "src": "/images/gallery/mats-1.jpeg",
+    "category": "car-mats"
+  },
+  {
+    "id": "4",
+    "type": "image",
+    "title": "Window Visors Fitted",
+    "src": "/images/gallery/visor-1.jpeg",
+    "category": "window-visors"
+  },
+  {
+    "id": "5",
+    "type": "image",
+    "title": "Interior Transformation",
+    "src": "/images/gallery/transform-2.jpeg",
+    "category": "before-after"
+  },
+  {
+    "id": "6",
+    "type": "image",
+    "title": "Full Interior Upgrade",
+    "src": "/images/gallery/interior-1.jpeg",
+    "category": "customer-cars"
+  },
+  {
+    "id": "7",
+    "type": "image",
+    "title": "Installation Process",
+    "src": "/images/gallery/install-1.jpeg",
+    "category": "installation"
+  },
+  {
+    "id": "8",
+    "type": "image",
+    "title": "Premium Materials",
+    "src": "/images/gallery/materials-1.jpeg",
+    "category": "materials"
+  },
+  {
+    "id": "9",
+    "type": "video",
+    "title": "Seat Cover Installation",
+    "src": "/images/gallery/video-seat.jpeg",
+    "category": "installation"
+  }
+]

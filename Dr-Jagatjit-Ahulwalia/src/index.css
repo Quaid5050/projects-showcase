@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Fraunces', ui-serif, Georgia, serif;
+
+  --color-base-950: #050505;
+  --color-base-900: #080808;
+  --color-base-850: #0b0b0b;
+  --color-base-800: #0f0f0f;
+  --color-base-700: #1a1a1a;
+  --color-primary: #00c853;
+  --color-primary-bright: #00b000;
+  --color-primary-dark: #007a1e;
+  --color-forest: #064e1f;
+  --color-gold: #ffd400;
+  --color-orange: #ffa000;
+  --color-coral: #f07d7d;
+  --color-coral-soft: #ff9a8b;
+  --color-cream: #f8f8f2;
+  --color-muted: #c9c9c9;
+
+  --shadow-glow: 0 0 100px -24px rgb(0 200 83 / 0.4);
+  --shadow-glow-gold: 0 0 120px -30px rgb(255 212 0 / 0.25);
+  --shadow-card: 0 28px 60px -16px rgb(0 0 0 / 0.55);
+  --shadow-glass: 0 8px 32px rgb(0 0 0 / 0.35);
+
+  --animate-float: float 14s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 5s ease-in-out infinite;
+  --animate-gradient: gradient-shift 18s ease infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-12px) rotate(1.5deg);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 0.45;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(1.04);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base-950 text-cream font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-primary/30 text-cream;
+  }
+}

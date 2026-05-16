@@ -1,0 +1,29 @@
+.login-page { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+.login-left {
+  background: linear-gradient(160deg, var(--navy-dark) 0%, var(--navy) 100%);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 60px 50px;
+}
+.login-brand h1 {
+  font-size: 2rem; color: var(--white); margin: 20px 0 8px;
+  font-family: 'Montserrat',sans-serif; letter-spacing: 2px;
+}
+.login-brand h1 span { color: var(--gold); }
+.login-tagline { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+.login-quote { margin-top: auto; }
+.login-quote blockquote {
+  color: rgba(255,255,255,0.75); font-style: italic; font-size: 1.1rem;
+  line-height: 1.7; border-left: 4px solid var(--gold); padding-left: 20px;
+}
+.login-right { display: flex; align-items: center; justify-content: center; background: var(--off-white); padding: 40px 24px; }
+.login-card { background: var(--white); border-radius: var(--radius-lg); padding: 48px 40px; width: 100%; max-width: 440px; box-shadow: var(--shadow-lg); }
+.login-card h2 { color: var(--navy); margin-bottom: 8px; }
+.login-sub { color: var(--text-light); margin-bottom: 32px; font-size: 0.95rem; }
+.login-links { text-align: right; margin-bottom: 16px; }
+.login-links a { color: var(--gold); font-size: 0.85rem; }
+.login-divider { text-align: center; margin: 24px 0; position: relative; }
+.login-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: #e5e7eb; }
+.login-divider span { background: var(--white); padding: 0 16px; position: relative; color: var(--gray); font-size: 0.85rem; }
+.back-home { display: block; text-align: center; margin-top: 20px; color: var(--gray); font-size: 0.85rem; transition: color 0.2s; }
+.back-home:hover { color: var(--gold); }
+@media (max-width: 768px) { .login-page { grid-template-columns: 1fr; } .login-left { display: none; } .login-card { padding: 32px 24px; } }

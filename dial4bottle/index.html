@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dial 4 Bottle – Liquor Delivery Edmonton</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#C9922A;--gold-light:#E8B84B;--gold-dark:#8B6220;
+  --black:#080808;--dark:#0f0f0f;--card:#141414;--border:#2a2a2a;
+  --white:#F5F0E8;--muted:#9a9a9a;
+}
+html, body{
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden }
+a{text-decoration:none;color:inherit}
+
+/* ===== AGE GATE ===== */
+#age-gate{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:rgba(5,5,5,0.96);
+  backdrop-filter:blur(18px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.age-gate-box{
+  background:var(--card);
+  border:1px solid rgba(201,146,42,0.5);
+  border-radius:8px;
+  padding:2.8rem 2.4rem 2.4rem;
+  max-width:420px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 0 60px rgba(201,146,42,0.12), 0 20px 60px rgba(0,0,0,0.8);
+  animation:ageBoxIn .5s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes ageBoxIn{
+  from{opacity:0;transform:translateY(30px) scale(.97)}
+  to{opacity:1;transform:none}
+}
+.age-gate-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;
+  font-weight:900;
+  color:var(--gold-light);
+  letter-spacing:.05em;
+  margin-bottom:1.6rem;
+}
+.age-gate-icon{
+  width:60px;
+  height:60px;
+  background:rgba(201,146,42,0.1);
+  border:1px solid rgba(201,146,42,0.3);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 1.4rem;
+}
+.age-gate-box h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:.8rem;
+  line-height:1.25;
+}
+.age-gate-box h2 span{
+  color:var(--gold-light);
+}
+.age-gate-box p{
+  font-size:.88rem;
+  color:var(--muted);
+  line-height:1.65;
+  margin-bottom:2rem;
+}
+.age-gate-btns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.9rem;
+}
+.btn-age-yes{
+  background:var(--gold);
+  color:var(--black);
+  font-weight:700;
+  font-size:.9rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:.85rem 1rem;
+  border-radius:4px;
+  border:2px solid var(--gold);
+  cursor:pointer;
+  font-family:'Inter',sans-serif;
+  transition:background .2s, transform .15s;
+}
+.btn-age-yes:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-2px)}
+.btn-age-no{
+  background:transparent;
+  color:var(--muted);
+  font-weight:600;
+  font-size:.9rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:.85rem 1rem;
+  border-radius:4px;
+  border:2px solid var(--border);
+  cursor:pointer;
+  font-family:'Inter',sans-serif;
+  transition:border-color .2s, color .2s, transform .15s;
+}
+.btn-age-no:hover{border-color:#555;color:var(--white);transform:translateY(-2px)}
+.age-gate-note{
+  margin-top:1.2rem;
+  font-size:.75rem;
+  color:#555;
+  line-height:1.5;
+}
+/* Declined screen */
+#age-declined{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100000;
+  background:var(--black);
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+  flex-direction:column;
+  gap:1rem;
+}
+#age-declined.show{display:flex}
+#age-declined h2{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--white)}
+#age-declined p{color:var(--muted);font-size:.95rem;max-width:360px}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  box-sizing:border-box;
+  z-index:999;
+  padding:0 54px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:80px;
+  background:rgba(8,8,8,0.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(201,146,42,0.15);
+  transition:all .3s;
+}
+.nav-logo{
+  display:flex;
+  align-items:center;
+ margin-left:20px;
+}
+
+.nav-links{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:2rem;
+  list-style:none;
+}
+
+.logo-img{
+  height:54px;
+  width:auto;
+  object-fit:contain;
+  display:block;
+  transition:all .3s ease;
+  filter:drop-shadow(0 0 12px rgba(201,146,42,0.35));
+}
+
+.hamburger{
+  display:none;
+  justify-content:flex-end;
+}
+.nav-links a{font-size:.85rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--gold-light)}
+.nav-cta{background:var(--gold);color:var(--black)!important;padding:.5rem 1.2rem;border-radius:4px;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;transition:background .2s;display:inline-flex;align-items:center;gap:.4rem}
+.nav-cta:hover{background:var(--gold-light)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:var(--gold-light);border-radius:2px;transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(8,8,8,0.98);padding:2rem 5%;flex-direction:column;gap:1.5rem;z-index:998;border-bottom:1px solid var(--border)}
+.mobile-menu a{font-size:1.1rem;font-weight:500;color:var(--muted);letter-spacing:.05em}
+.mobile-menu a:hover{color:var(--gold-light)}
+.mobile-menu .nav-cta{width:fit-content;font-size:1rem;padding:.7rem 1.5rem}
+.mobile-menu.open{display:flex}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 5% 80px;position:relative;overflow:hidden}
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background:url('img/hero-bg.png') center center/cover no-repeat;
+  z-index:0
+}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,0.92) 0%,rgba(15,12,5,0.85) 40%,rgba(8,8,8,0.92) 100%);z-index:1}
+.hero-circles{position:absolute;inset:0;overflow:hidden;z-index:2}
+.hero-circles::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;border:1px solid rgba(201,146,42,0.1);top:50%;left:50%;transform:translate(-50%,-50%)}
+.hero-circles::after{content:'';position:absolute;width:900px;height:900px;border-radius:50%;border:1px solid rgba(201,146,42,0.05);top:50%;left:50%;transform:translate(-50%,-50%)}
+.hero-content{position:relative;z-index:3;max-width:800px}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,146,42,0.12);border:1px solid rgba(201,146,42,0.35);color:var(--gold-light);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.45rem 1rem;border-radius:2px;margin-bottom:1.8rem;animation:fadeDown .7s ease both}
+.badge-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;display:inline-block;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,6vw,5rem);font-weight:900;line-height:1.08;letter-spacing:-1px;color:var(--white);margin-bottom:1rem;animation:fadeUp .8s .1s ease both}
+h1.hero-title span{color:var(--gold-light)}
+.hero-sub{font-size:1.1rem;font-weight:300;color:var(--muted);margin-bottom:2.5rem;letter-spacing:.02em;animation:fadeUp .8s .2s ease both}
+.phone-display{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:700;color:var(--gold-light);letter-spacing:2px;margin-bottom:2rem;animation:fadeUp .8s .3s ease both;text-shadow:0 0 40px rgba(201,146,42,0.25);display:flex;align-items:center;justify-content:center;gap:.6rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .4s ease both}
+.btn-primary{background:var(--gold);color:var(--black);font-weight:700;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;padding:1rem 2.4rem;border-radius:3px;border:2px solid var(--gold);transition:all .25s;display:inline-flex;align-items:center;gap:.6rem}
+.btn-primary:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--gold-light);font-weight:600;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;padding:1rem 2rem;border-radius:3px;border:2px solid rgba(201,146,42,0.45);transition:all .25s;display:inline-flex;align-items:center;gap:.6rem}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.hero-badge-bottom{margin-top:2.5rem;display:flex;justify-content:center;animation:fadeUp .8s .5s ease both}
+.discount-badge{background:rgba(139,98,32,0.2);border:1px solid rgba(201,146,42,0.5);border-radius:4px;padding:.8rem 1.6rem;display:inline-flex;align-items:center;gap:.8rem}
+.discount-badge .pct{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold-light)}
+.discount-badge .txt{text-align:left;font-size:.78rem;color:var(--muted);line-height:1.4}
+.discount-badge .txt strong{display:block;color:var(--white);font-size:.85rem}
+.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);animation:bounce 2s infinite;z-index:3}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+.scroll-indicator span{display:block;width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);margin:0 auto}
+
+/* SECTION BASE */
+section{padding:90px 5%}
+.section-tag{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:700;line-height:1.2;margin-bottom:1rem}
+.gold-line{width:50px;height:2px;background:var(--gold);margin-bottom:2rem}
+.centered{text-align:center}
+.centered .gold-line{margin-left:auto;margin-right:auto}
+
+/* ABOUT */
+#about{background:var(--dark)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1100px;margin:0 auto}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem}
+.stat-box{background:var(--card);border:1px solid var(--border);border-top:2px solid var(--gold);padding:1.4rem 1.2rem;border-radius:4px}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--gold-light);display:block}
+.stat-label{font-size:.8rem;color:var(--muted);font-weight:500;letter-spacing:.05em;margin-top:.2rem;display:block}
+.about-text p{color:var(--muted);line-height:1.9;font-size:1rem;margin-bottom:1rem}
+
+/* SERVICES */
+#services{background:var(--black)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:3rem}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:2rem 1.5rem;transition:all .3s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,146,42,0.06),transparent);opacity:0;transition:opacity .3s}
+.service-card:hover{border-color:rgba(201,146,42,0.5);transform:translateY(-5px)}
+.service-card:hover::before{opacity:1}
+.service-icon{width:52px;height:52px;background:rgba(201,146,42,0.1);border:1px solid rgba(201,146,42,0.25);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
+.service-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:.6rem;color:var(--white)}
+.service-card p{font-size:.88rem;color:var(--muted);line-height:1.7}
+
+/* GALLERY */
+#gallery{background:var(--dark)}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:3rem}
+.gallery-item{background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:all .3s;cursor:pointer;position:relative;display:flex;flex-direction:column;}
+.gallery-item:hover{border-color:rgba(201,146,42,0.5);transform:translateY(-4px)}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item img{width:100%;height:260px;object-fit:cover;display:block;transition:transform .4s ease;}
+.gallery-item .item-label{position:static;background:transparent;padding:1rem;text-align:center;font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-light);}
+
+/* WHY CHOOSE US */
+#why{background:var(--black)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:3rem}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:1.8rem 1.4rem;text-align:center;transition:border-color .3s}
+.why-card:hover{border-color:rgba(201,146,42,0.4)}
+.why-icon{width:52px;height:52px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center}
+.why-card h3{font-size:1rem;font-weight:600;margin-bottom:.5rem;color:var(--white)}
+.why-card p{font-size:.85rem;color:var(--muted);line-height:1.6}
+
+/* CONTACT */
+#contact{background:var(--dark)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1000px;margin:3rem auto 0}
+.contact-info h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1.5rem;color:var(--white)}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+.contact-ico{width:44px;height:44px;background:rgba(201,146,42,0.1);border:1px solid rgba(201,146,42,0.3);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-item .detail strong{display:block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.contact-item .detail span{color:var(--muted);font-size:.95rem}
+.contact-form{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:2rem}
+.contact-form h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:1.5rem;color:var(--white)}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--black);border:1px solid var(--border);color:var(--white);padding:.75rem 1rem;border-radius:3px;font-family:'Inter',sans-serif;font-size:.95rem;transition:border-color .2s;outline:none}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-gold-full{width:100%;background:var(--gold);color:var(--black);font-weight:700;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;padding:.9rem;border:none;border-radius:3px;cursor:pointer;transition:background .2s;font-family:'Inter',sans-serif}
+.btn-gold-full:hover{background:var(--gold-light)}
+
+/* FOOTER */
+footer{background:#050505;border-top:1px solid var(--border);padding:2.5rem 5%;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1rem}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--gold-light)}
+.footer-phone{font-size:1.3rem;font-weight:700;color:var(--white);letter-spacing:2px}
+.footer-phone a{color:inherit}
+footer p{font-size:.8rem;color:var(--muted)}
+.footer-links{display:flex;gap:1.5rem;list-style:none}
+.footer-links a{font-size:.8rem;color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--gold-light)}
+
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:9999;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform .25s;cursor:pointer}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:28px;height:28px;fill:white}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .about-grid .section-title{font-size:2rem}
+}
+@media(max-width:700px){
+  nav{padding:0 18px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+}
+@media(max-width:480px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .age-gate-btns{grid-template-columns:1fr}
+}
+@media(min-width:701px){
+  .nav-logo{margin-left:20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== AGE VERIFICATION GATE ===== -->
+<div id="age-gate">
+  <div class="age-gate-box">
+    <div class="age-gate-logo">Dial4Bottle</div>
+    <div class="age-gate-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    </div>
+    <h2>Are you over <span>18</span> years old?</h2>
+    <p>You must be of legal drinking age to buy our products. Age will be verified upon delivery through ID.</p>
+    <div class="age-gate-btns">
+      <button class="btn-age-yes" onclick="ageVerified()">YES, I AM</button>
+      <button class="btn-age-no" onclick="ageDenied()">NO, I AM NOT</button>
+    </div>
+    <p class="age-gate-note">By entering this site you agree to our Terms of Service &amp; Privacy Policy. Must be 18+ to order. Please drink responsibly.</p>
+  </div>
+</div>
+
+<!-- Declined message -->
+<div id="age-declined">
+  <div style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold-light);margin-bottom:.5rem">Dial4Bottle</div>
+  <h2>Sorry, come back when you're older.</h2>
+  <p>You must be 18 years or older to access this website. Please drink responsibly.</p>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+ <a href="#hero" class="nav-logo">
+  <img src="img/logo.png" alt="Dial 4 Bottle Logo" class="logo-img">
+</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Products</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact" class="nav-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call Now
+    </a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#gallery" onclick="closeMenu()">Products</a>
+  <a href="#why" onclick="closeMenu()">Why Us</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="tel:7803015050" class="nav-cta">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    780-301-5050 — Call Now
+  </a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-circles"></div>
+  <div class="hero-content">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold-light)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Edmonton's Premium Delivery Service
+    </div>
+    <h1 class="hero-title">Liquor Delivery<br>in <span>Edmonton</span></h1>
+    <p class="hero-sub">Fast. Reliable. Right to your door — any time, any occasion.</p>
+    <a href="tel:7803015050" class="phone-display">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      780-301-5050
+    </a>
+    <div class="hero-btns">
+      <a href="tel:7803015050" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call Now — Order Today
+      </a>
+      <a href="#services" class="btn-outline">
+        Our Services
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+      </a>
+    </div>
+    <div class="hero-badge-bottom">
+      <div class="discount-badge">
+        <div class="pct">10%</div>
+        <div class="txt"><strong>OFF your order</strong>If delivery takes longer than 45 minutes — guaranteed.</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator"><span></span></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <span class="section-tag">Who We Are</span>
+      <h2 class="section-title">Edmonton's Most Trusted Liquor Delivery</h2>
+      <div class="gold-line"></div>
+      <p>Dial 4 Bottle is Edmonton's go-to liquor delivery service — built for people who value quality, speed, and convenience. Whether it's a spontaneous Friday night, a backyard party, or a quiet evening in, we bring your favourite drinks straight to your doorstep.</p>
+      <p>We're local, we're fast, and we know Edmonton. No apps. No complications. Just one call and we handle the rest — premium spirits, cold beer, fine wine, and more, delivered with care.</p>
+      <a href="tel:7803015050" class="btn-primary" style="margin-top:1.5rem;display:inline-flex;gap:.5rem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Order Now
+      </a>
+    </div>
+    <div class="reveal">
+      <div class="about-stats">
+        <div class="stat-box"><span class="stat-num">45<small style="font-size:1rem">min</small></span><span class="stat-label">Delivery Guarantee</span></div>
+        <div class="stat-box"><span class="stat-num">10%</span><span class="stat-label">Off If We're Late</span></div>
+        <div class="stat-box"><span class="stat-num">24/7</span><span class="stat-label">Late Night Service</span></div>
+        <div class="stat-box"><span class="stat-num">YEG</span><span class="stat-label">Edmonton Local</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="centered reveal">
+    <span class="section-tag">What We Offer</span>
+    <h2 class="section-title">Our Services</h2>
+    <div class="gold-line"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8M12 22v-7M5 2l2 7h10l2-7H5zM7 9c0 2.76 2.24 6 5 6s5-3.24 5-6"/></svg>
+      </div>
+      <h3>Liquor Delivery</h3>
+      <p>Full range of spirits, wine, beer, and mixers delivered right to your address — fast and hassle-free.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h3>Fast Bottle Delivery</h3>
+      <p>Speedy delivery with our 45-minute guarantee. If we're late, you get 10% off — no questions asked.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </div>
+      <h3>Late Night Delivery</h3>
+      <p>The party doesn't stop at midnight. We're available late so you never run dry on a great night.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Doorstep Delivery</h3>
+      <p>Sit back and relax. We bring your order right to your front door — no trips, no parking hassles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="centered reveal">
+    <span class="section-tag">What We Deliver</span>
+    <h2 class="section-title">Premium Selection</h2>
+    <div class="gold-line"></div>
+    <p style="color:var(--muted);max-width:500px;margin:0 auto 0">Call us to ask about our full selection — we carry top-shelf brands across every category.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=400&q=80" alt="Whiskey"/>
+      <div class="item-label">Whiskey</div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="img/wodkaa.jpg" alt="Vodka"/>
+      <div class="item-label">Vodka</div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&q=80" alt="Wine"/>
+      <div class="item-label">Wine</div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="img/beer.jpg" alt="Beer"/>
+      <div class="item-label">Beer</div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1562601579-599dec564e06?w=400&q=80" alt="Rum"/>
+      <div class="item-label">Rum</div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1642647237318-3e30ff181a3c?q=80"/>
+      <div class="item-label">Budweiser</div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1651324100969-26f482b9a775?q=80pg" alt="Twisted Tea" onerror="this.src='https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=400&q=80'"/>
+      <div class="item-label">Twisted Tea</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="centered reveal">
+    <span class="section-tag">Our Promise</span>
+    <h2 class="section-title">Why Choose Dial 4 Bottle?</h2>
+    <div class="gold-line"></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h3>Fast Delivery</h3>
+      <p>45-minute delivery target — we move fast so your plans don't have to wait.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <h3>Edmonton Local</h3>
+      <p>Proudly serving Edmonton, AB. We know the city — no delays, no guesswork.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/><circle cx="12" cy="12" r="1" fill="var(--gold-light)"/></svg>
+      </div>
+      <h3>Open Late</h3>
+      <p>Late-night cravings covered. We deliver when other stores are closed.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
+      </div>
+      <h3>Easy Phone Ordering</h3>
+      <p>No apps, no logins. One call to 780-301-5050 and your order is on its way.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <h3>10% Late Discount</h3>
+      <p>If we're over 45 minutes, you automatically get 10% off — we stand by that.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="centered reveal">
+    <span class="section-tag">Get In Touch</span>
+    <h2 class="section-title">Contact Us</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Ready to Order? Let's Talk.</h3>
+      <div class="contact-item">
+        <div class="contact-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div class="detail"><strong>Phone</strong><span><a href="tel:7803015050">780-301-5050</a></span></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="detail"><strong>Email</strong><span><a href="mailto:yegdial4bottle@gmail.com">yegdial4bottle@gmail.com</a></span></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="detail"><strong>Location</strong><span>Edmonton, AB, Canada</span></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="detail"><strong>Hours</strong><span>Open Late — 7 Days a Week</span></div>
+      </div>
+      <a href="tel:7803015050" class="btn-primary" style="margin-top:1rem;display:inline-flex;gap:.5rem">Call 780-301-5050</a>
+    </div>
+
+    <div class="contact-form reveal">
+      <form action="https://formsubmit.co/yegdial4bottle@gmail.com" method="POST" onsubmit="showPopup()">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://dial4bottle.vercel.app/#contact">
+        <h3>Send a Message</h3>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" name="first_name" placeholder="John" required></div>
+          <div class="form-group"><label>Last Name</label><input type="text" name="last_name" placeholder="Doe" required></div>
+        </div>
+        <div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="780-XXX-XXXX" required></div>
+        <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
+        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell us what you need..." required></textarea></div>
+        <button type="submit" class="btn-gold-full">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Dial4Bottle</div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Products</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:7803015050" class="footer-phone">780-301-5050</a>
+  <p>Edmonton, AB, Canada &nbsp;·&nbsp; yegdial4bottle@gmail.com</p>
+  <p>© 2025 Dial 4 Bottle. All rights reserved. Please drink responsibly. Must be 18+ to order.</p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/7803015050" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// ===== AGE GATE =====
+function ageVerified(){
+  const gate = document.getElementById('age-gate');
+  gate.style.transition = 'opacity .4s ease';
+  gate.style.opacity = '0';
+  setTimeout(()=>{ gate.style.display='none'; }, 400);
+  // Remember for session
+  sessionStorage.setItem('ageVerified','true');
+}
+
+function ageDenied(){
+  document.getElementById('age-gate').style.display='none';
+  document.getElementById('age-declined').classList.add('show');
+}
+
+// Skip gate if already verified this session
+window.addEventListener('DOMContentLoaded',()=>{
+  if(sessionStorage.getItem('ageVerified')==='true'){
+    document.getElementById('age-gate').style.display='none';
+  }
+});
+
+// ===== NAV =====
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('navbar');
+  nav.style.boxShadow=window.scrollY>50?'0 2px 30px rgba(0,0,0,0.7)':'none';
+});
+
+// ===== REVEAL =====
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
+  });
+},{threshold:0.12});
+reveals.forEach(r=>obs.observe(r));
+
+// ===== FORM POPUP =====
+function showPopup(){
+  const popup=document.createElement('div');
+  popup.innerHTML=`
+    <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#141414;border:1px solid #C9922A;padding:24px 35px;border-radius:8px;color:#F5F0E8;z-index:99999;text-align:center;box-shadow:0 0 40px rgba(0,0,0,.6);font-family:Inter,sans-serif;">
+      <div style="font-size:22px;margin-bottom:10px;color:#E8B84B;">✓</div>
+      <div style="font-size:18px;font-weight:600;">Message Submitted Successfully</div>
+    </div>`;
+  document.body.appendChild(popup);
+  setTimeout(()=>{popup.remove();},3000);
+}
+
+// ===== CLOSE MOBILE MENU ON OUTSIDE CLICK =====
+document.addEventListener('click',e=>{
+  const menu=document.getElementById('mobileMenu');
+  if(menu.classList.contains('open')&&!menu.contains(e.target)&&!e.target.closest('.hamburger')){
+    closeMenu();
+  }
+});
+</script>
+</body>
+</html>

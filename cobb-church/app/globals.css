@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+section, header, footer, main, div {
+  max-width: 100%;
+}
+
+@layer base {
+  :root {
+    --navy-dark: #0A1628;
+    --navy-medium: #1a2942;
+    --gold: #D4AF37;
+    --gold-light: #E5C158;
+    --gold-dark: #B8941F;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  img, video, svg {
+    max-width: 100%;
+  }
+
+  body {
+    @apply bg-white text-gray-800 font-sans overflow-x-hidden;
+    width: 100%;
+  }
+
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight font-display;
+    color: var(--navy-dark);
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold font-display;
+    color: var(--navy-dark);
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl font-semibold;
+    color: var(--navy-dark);
+  }
+
+  h4 {
+    @apply text-lg sm:text-xl font-semibold;
+    color: var(--navy-dark);
+  }
+
+  p {
+    @apply text-base leading-relaxed;
+    color: #6B7280;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 font-semibold rounded-lg transition-all;
+    background-color: var(--gold);
+    color: var(--navy-dark);
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--gold-light);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 font-semibold rounded-lg transition-all;
+    background-color: var(--navy-dark);
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--navy-medium);
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 font-semibold rounded-lg transition-all;
+    border: 2px solid var(--navy-dark);
+    color: var(--navy-dark);
+  }
+  
+  .btn-outline:hover {
+    background-color: #F8F9FA;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .hero-text {
+    @apply font-display;
+    color: var(--navy-dark);
+  }
+
+  .accent-text {
+    color: var(--gold);
+  }
+
+  .bg-navy-dark {
+    background-color: var(--navy-dark);
+  }
+
+  .bg-navy-medium {
+    background-color: var(--navy-medium);
+  }
+
+  .bg-gold {
+    background-color: var(--gold);
+  }
+
+  .text-navy-dark {
+    color: var(--navy-dark);
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .border-gold {
+    border-color: var(--gold);
+  }
+}
+
+/* Page route entrance — used by components/layout/PageTransition.tsx + app/template.tsx */
+@keyframes page-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem) scale(0.97);
+    filter: brightness(0.88);
+  }
+  55% {
+    filter: brightness(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: brightness(1);
+  }
+}
+
+.page-transition-root {
+  animation: page-enter 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform-origin: top center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition-root {
+    animation: none;
+  }
+}

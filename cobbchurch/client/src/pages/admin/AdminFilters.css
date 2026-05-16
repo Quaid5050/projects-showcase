@@ -1,0 +1,17 @@
+.admin-filters { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.search-box {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--off-white); border: 2px solid #e5e7eb;
+  border-radius: var(--radius); padding: 10px 16px;
+  flex: 1; min-width: 240px; max-width: 380px;
+}
+.search-box input { border: none; background: transparent; outline: none; font-size: 0.9rem; flex: 1; }
+.search-box svg { color: var(--gray); }
+.filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-tab {
+  padding: 8px 16px; border-radius: 20px; border: 2px solid #e5e7eb;
+  font-size: 0.8rem; font-weight: 600; cursor: pointer; background: var(--white);
+  color: var(--gray); transition: all 0.2s;
+}
+.filter-tab.active, .filter-tab:hover { border-color: var(--gold); color: var(--gold); }
+.filter-tab.active { background: rgba(212,168,83,0.1); }

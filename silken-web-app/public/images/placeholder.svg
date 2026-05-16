@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#070705"/>
+  <rect x="1" y="1" width="798" height="598" fill="none" stroke="#855106" stroke-width="1"/>
+  <text x="400" y="300" font-family="system-ui" font-size="18" fill="#f9c833" text-anchor="middle">Silken Trading</text>
+  <text x="400" y="330" font-family="system-ui" font-size="14" fill="#fffbce" text-anchor="middle" opacity="0.8">Premium Automotive Interiors</text>
+</svg>

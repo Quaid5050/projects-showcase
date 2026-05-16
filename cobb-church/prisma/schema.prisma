@@ -1,0 +1,297 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// --- Auth & onboarding ---
+
+model User {
+  id                       String                   @id @default(auto()) @map("_id") @db.ObjectId
+  name                     String?
+  email                    String                   @unique
+  password                 String
+  role                     String                   @default("CHURCH_USER") // ADMIN | CHURCH_USER
+  churchId                 String?                  @db.ObjectId
+  church                   Church?                  @relation("ChurchMembers", fields: [churchId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  status                   String                   @default("ACTIVE") // ACTIVE | INACTIVE
+  image                    String?
+  createdAt                DateTime                 @default(now())
+  updatedAt                DateTime                 @updatedAt
+  ownedChurches            Church[]                 @relation("ChurchOwner")
+  onboardingApplications   OnboardingApplication[]
+  sentMessages             Message[]                @relation("SentMessages")
+  notifications            Notification[]
+  eventRegistrations       EventRegistration[]
+  crisisResponses          CrisisResponse[]
+  resourceResponses        ResourceResponse[]
+}
+
+model Church {
+  id                 String                   @id @default(auto()) @map("_id") @db.ObjectId
+  name               String
+  slug               String                   @unique
+  pastorName         String                   @map("pastor")
+  email              String
+  phone              String
+  website            String?
+  address            String
+  city               String
+  state              String
+  zip                String
+  description        String
+  denomination       String?
+  ministries         String[]
+  image              String?
+  size               String?
+  founded            String?
+  services           String[]
+  ownerUserId        String?                  @db.ObjectId
+  owner              User?                    @relation("ChurchOwner", fields: [ownerUserId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  approvalStatus     String                   @default("PENDING") // PENDING | APPROVED | REJECTED
+  published          Boolean                  @default(false)
+  createdAt          DateTime                 @default(now())
+  updatedAt          DateTime                 @updatedAt
+  members            User[]                   @relation("ChurchMembers")
+  applications       OnboardingApplication[]
+  resources          Resource[]
+  eventRegistrations EventRegistration[]
+  messagesSent       Message[]                @relation("SentMessagesChurch")
+  messagesReceived   Message[]                @relation("InboxMessages")
+  notifications      Notification[]
+  crisisResponses    CrisisResponse[]
+  resourceResponses  ResourceResponse[] @relation("ResourceResponseByChurch")
+}
+
+model OnboardingApplication {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  firstName       String
+  lastName        String
+  email           String
+  phone           String
+  churchName      String
+  churchCity      String
+  churchWebsite   String?
+  roleTitle       String
+  message         String?
+  howToConnect    String[]
+  status          String    @default("PENDING") // PENDING | APPROVED | REJECTED
+  churchId        String?   @db.ObjectId
+  church          Church?   @relation(fields: [churchId], references: [id])
+  userId          String?   @db.ObjectId
+  user            User?     @relation(fields: [userId], references: [id])
+  approvedAt      DateTime?
+  rejectedAt      DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// --- Platform content ---
+
+model Resource {
+  id                 String             @id @default(auto()) @map("_id") @db.ObjectId
+  title              String
+  description        String
+  category           String
+  type               String // OFFER | REQUEST
+  churchId           String             @db.ObjectId
+  church             Church             @relation(fields: [churchId], references: [id])
+  status             String             @default("ACTIVE") // ACTIVE | CLOSED
+  published          Boolean            @default(true)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  messages           Message[]          @relation("ResourceMessages")
+  resourceResponses  ResourceResponse[]
+}
+
+model ResourceResponse {
+  id                  String    @id @default(auto()) @map("_id") @db.ObjectId
+  resourceId          String    @db.ObjectId
+  resource            Resource  @relation(fields: [resourceId], references: [id])
+  responderUserId     String    @db.ObjectId
+  responderUser       User      @relation(fields: [responderUserId], references: [id])
+  responderChurchId   String    @db.ObjectId
+  responderChurch     Church    @relation("ResourceResponseByChurch", fields: [responderChurchId], references: [id])
+  message             String
+  contactName         String
+  contactEmail        String
+  contactPhone        String
+  status              String    @default("SUBMITTED")
+  createdAt           DateTime  @default(now())
+  messages            Message[]
+}
+
+model Event {
+  id                 String              @id @default(auto()) @map("_id") @db.ObjectId
+  title              String
+  slug               String              @unique
+  description        String
+  date               DateTime
+  time               String
+  location           String
+  address            String?
+  organizer          String
+  contactEmail       String?
+  contactPhone       String?
+  image              String?
+  category           String
+  capacity           Int?
+  registered         Int                 @default(0)
+  published          Boolean             @default(true)
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  eventRegistrations EventRegistration[]
+}
+
+model EventRegistration {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  eventId        String   @db.ObjectId
+  event          Event    @relation(fields: [eventId], references: [id])
+  userId         String   @db.ObjectId
+  user           User     @relation(fields: [userId], references: [id])
+  churchId       String   @db.ObjectId
+  church         Church   @relation(fields: [churchId], references: [id])
+  attendeeName   String
+  attendeeEmail  String
+  status         String   @default("REGISTERED")
+  createdAt      DateTime @default(now())
+
+  @@unique([eventId, userId], map: "EventRegistration_event_user_key")
+}
+
+model Message {
+  id                  String    @id @default(auto()) @map("_id") @db.ObjectId
+  senderUserId        String    @db.ObjectId
+  senderUser          User      @relation("SentMessages", fields: [senderUserId], references: [id])
+  senderChurchId      String    @db.ObjectId
+  senderChurch        Church    @relation("SentMessagesChurch", fields: [senderChurchId], references: [id])
+  recipientChurchId   String    @db.ObjectId
+  recipientChurch     Church    @relation("InboxMessages", fields: [recipientChurchId], references: [id])
+  subject               String
+  body                  String
+  read                  Boolean   @default(false)
+  messageKind           String    @default("GENERAL")
+  relatedResourceId           String?            @db.ObjectId
+  relatedResource             Resource?          @relation("ResourceMessages", fields: [relatedResourceId], references: [id])
+  relatedResourceResponseId   String?            @db.ObjectId
+  resourceResponse            ResourceResponse?  @relation(fields: [relatedResourceResponseId], references: [id])
+  createdAt                   DateTime           @default(now())
+}
+
+model Notification {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+  churchId  String?  @db.ObjectId
+  church    Church?  @relation(fields: [churchId], references: [id])
+  type      String
+  title     String
+  body      String
+  read      Boolean  @default(false)
+  actionUrl String?
+  createdAt DateTime @default(now())
+}
+
+model Announcement {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  body          String
+  createdBy     String
+  published     Boolean   @default(false)
+  notifyByEmail Boolean   @default(false)
+  emailSentAt   DateTime?
+  createdAt     DateTime  @default(now())
+}
+
+model CrisisAlert {
+  id              String           @id @default(auto()) @map("_id") @db.ObjectId
+  title           String
+  body            String
+  urgency         String           @default("high")
+  location        String           @default("")
+  instructions    String           @default("")
+  active          Boolean          @default(false)
+  notifyByEmail   Boolean          @default(false)
+  emailSentAt     DateTime?
+  createdBy       String
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  responses       CrisisResponse[]
+}
+
+model CrisisResponse {
+  id             String      @id @default(auto()) @map("_id") @db.ObjectId
+  crisisAlertId  String      @db.ObjectId
+  crisisAlert    CrisisAlert @relation(fields: [crisisAlertId], references: [id])
+  userId         String      @db.ObjectId
+  user           User        @relation(fields: [userId], references: [id])
+  churchId       String      @db.ObjectId
+  church         Church      @relation(fields: [churchId], references: [id])
+  message        String
+  contactName    String
+  contactEmail   String
+  contactPhone   String
+  createdAt      DateTime    @default(now())
+}
+
+model Donation {
+  id                    String    @id @default(auto()) @map("_id") @db.ObjectId
+  stripeSessionId       String?   @unique
+  stripePaymentIntentId String?
+  amountTotal           Int
+  currency              String    @default("usd")
+  donorEmail            String?
+  donorName             String?
+  frequency             String    @default("ONE_TIME")
+  provider              String    @default("stripe")
+  status                String    @default("PENDING")
+  createdAt             DateTime  @default(now())
+  completedAt           DateTime?
+}
+
+model EmailLog {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  to                String
+  subject           String
+  template          String
+  status            String // SENT | LOGGED | FAILED
+  error             String?
+  relatedEntityType String?
+  relatedEntityId   String?
+  createdAt         DateTime @default(now())
+}
+
+model CrisisNeed {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  urgency     String
+  category    String
+  location    String
+  contactName String
+  contactEmail String?
+  contactPhone String
+  needBy      DateTime?
+  status      String    @default("active")
+  resolved    Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model PastorStory {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  pastorName  String
+  churchName  String
+  title       String
+  slug        String   @unique
+  story       String
+  image       String?
+  videoUrl    String?
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

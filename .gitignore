@@ -1,5 +1,56 @@
-# This repo only tracks the catalog (README + this file). Each subfolder is its
-# own Git clone with its own .git directory — do not add them to this parent repo.
-/*
-!.gitignore
-!README.md
+# Dependencies
+node_modules/
+
+# JavaScript / TypeScript build output
+.next/
+out/
+dist/
+build/
+.turbo/
+.vercel/
+.nuxt/
+.output/
+.parcel-cache/
+.cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+.env/
+*.egg-info/
+.eggs/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+
+# Environment and secrets (never commit)
+.env
+.env.*
+!.env.example
+
+# Test / coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Logs and OS junk
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Misc
+*.tsbuildinfo
+*.swp
+*.swo
+*~

@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URI")
+}
+
+model Admin {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  password  String
+  name      String   @default("Admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Handyman {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  email           String   @unique
+  password        String
+  phone           String
+  city            String
+  postalCode      String
+  skills          String[]
+  bio             String?
+  yearsExperience String?
+  availability    String   @default("full-time")
+  status          String   @default("pending")
+  feePercent      Int      @default(15)
+  jobs            Job[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Job {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  description   String
+  location      String
+  city          String
+  postalCode    String?
+  serviceType   String
+  clientName    String?
+  clientPhone   String?
+  scheduledDate DateTime?
+  status        String    @default("open")
+  jobValue      Float?
+  feePercent    Int       @default(15)
+  handyman      Handyman? @relation(fields: [handymanId], references: [id])
+  handymanId    String?   @db.ObjectId
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}

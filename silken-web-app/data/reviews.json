@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "name": "James Mitchell",
+    "carModel": "Toyota Camry 2022",
+    "review": "Had my seat covers and floor mats installed by Silken Trading. The fit is perfect and the interior looks like a new car. Highly recommend!",
+    "rating": 5
+  },
+  {
+    "id": "2",
+    "name": "Sarah Chen",
+    "carModel": "Honda CR-V 2021",
+    "review": "Professional from start to finish. They came to my place and installed everything in under two hours. The quality is outstanding.",
+    "rating": 5
+  },
+  {
+    "id": "3",
+    "name": "Michael Roberts",
+    "carModel": "Ford F-150 2023",
+    "review": "Best investment for my truck interior. Seat covers look premium and the mats are tough. Will use them again for my wife's car.",
+    "rating": 5
+  },
+  {
+    "id": "4",
+    "name": "Emily Davis",
+    "carModel": "BMW 3 Series 2020",
+    "review": "I wanted my BMW to feel special inside. Silken Trading delivered—luxury materials and expert installation. Very happy.",
+    "rating": 5
+  },
+  {
+    "id": "5",
+    "name": "David Park",
+    "carModel": "Hyundai Tucson 2022",
+    "review": "Window visors and mats installed. Clean job, no scratches, and the car looks more premium. Great service.",
+    "rating": 5
+  }
+]

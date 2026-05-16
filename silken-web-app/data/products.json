@@ -1,0 +1,88 @@
+[
+  {
+    "id": "seat-cover-1",
+    "name": "Premium Leather Seat Cover",
+    "category": "Seat Covers",
+    "price": "Starting from $120",
+    "description": "Handcrafted premium leather seat covers for a luxurious feel. Custom fitted for your vehicle.",
+    "image": "/images/products/seat-cover-1.jpeg",
+    "features": ["Premium leather or leatherette", "Custom fit for your make & model", "Easy to install & remove", "Protects original upholstery", "Available in multiple colors"]
+  },
+  {
+    "id": "seat-cover-2",
+    "name": "Neoprene Waterproof Seat Cover",
+    "category": "Seat Covers",
+    "price": "Starting from $95",
+    "description": "Durable neoprene material, waterproof and easy to clean. Perfect for daily use.",
+    "image": "/images/products/seat-cover-2.jpeg",
+    "features": ["100% waterproof neoprene", "Machine washable", "Breathable & comfortable", "Ideal for families & pets", "UV resistant"]
+  },
+  {
+    "id": "seat-cover-3",
+    "name": "Velvet Premium Seat Cover",
+    "category": "Seat Covers",
+    "price": "Starting from $85",
+    "description": "Soft velvet finish with breathable fabric. Available in multiple colors.",
+    "image": "/images/products/seat-cover-3.jpeg",
+    "features": ["Luxurious velvet finish", "Breathable fabric", "Multiple color options", "Universal & custom fit", "Easy maintenance"]
+  },
+  {
+    "id": "mat-front-1",
+    "name": "Premium Front Floor Mats",
+    "category": "Car Mats",
+    "subcategory": "front mats",
+    "price": "Starting from $45",
+    "description": "Heavy-duty rubber front mats with deep grooves for maximum protection.",
+    "image": "/images/products/mat-front.jpeg"
+  },
+  {
+    "id": "mat-rear-1",
+    "name": "Rear Floor Mats Set",
+    "category": "Car Mats",
+    "subcategory": "rear mats",
+    "price": "Starting from $35",
+    "description": "Complete rear mat set. Custom fit for your vehicle model.",
+    "image": "/images/products/mat-rear.jpeg"
+  },
+  {
+    "id": "trunk-liner-1",
+    "name": "Trunk Liner",
+    "category": "Car Mats",
+    "subcategory": "trunk liners",
+    "price": "Starting from $55",
+    "description": "Full trunk liner with raised edges. Protects cargo area from spills and scratches.",
+    "image": "/images/products/trunk-liner.jpeg"
+  },
+  {
+    "id": "visor-1",
+    "name": "Window Visors / Rain Guards",
+    "category": "Window Visors",
+    "price": "Starting from $65",
+    "description": "Smoke-tinted window visors. Reduce rain and allow fresh air while driving.",
+    "image": "/images/products/visor-1.jpeg"
+  },
+  {
+    "id": "steering-1",
+    "name": "Leather Steering Wheel Cover",
+    "category": "Steering Covers",
+    "price": "Starting from $25",
+    "description": "Hand-stitched leather steering cover. Improves grip and protects the wheel.",
+    "image": "/images/products/steering-1.jpeg"
+  },
+  {
+    "id": "accessory-1",
+    "name": "Console Organizer",
+    "category": "Interior Accessories",
+    "price": "Starting from $20",
+    "description": "Center console organizer for phones, keys, and small items.",
+    "image": "/images/products/accessory-1.jpeg"
+  },
+  {
+    "id": "accessory-2",
+    "name": "Seat Gap Filler",
+    "category": "Interior Accessories",
+    "price": "Starting from $15",
+    "description": "Prevents items from falling between seats. Easy installation.",
+    "image": "/images/products/accessory-2.jpeg"
+  }
+]
