@@ -1,0 +1,5 @@
+# This repo only tracks the catalog (README + this file). Each subfolder is its
+# own Git clone with its own .git directory — do not add them to this parent repo.
+/*
+!.gitignore
+!README.md
