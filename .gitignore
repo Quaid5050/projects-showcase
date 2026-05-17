@@ -54,3 +54,7 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Local org-sync tooling (not tracked)
+/scripts/
+/Makefile

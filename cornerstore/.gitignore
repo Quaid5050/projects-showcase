@@ -1,0 +1,56 @@
+# dependencies
+node_modules/
+*/node_modules/
+
+# production build
+build/
+dist/
+.next/
+out/
+
+# environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# runtime
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# cache
+.cache/
+.parcel-cache/
+
+# coverage
+coverage/
+
+# uploads
+uploads/
+temp/
+
+# vercel
+.vercel/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# misc
+*.tgz
+*.swp

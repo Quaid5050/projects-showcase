@@ -51,6 +51,7 @@ Brief descriptions are taken from each repo’s README, metadata, or layout wher
 | **Black-Trucks-Co** | Next.js site for **Black Trucks Co.** — Stripe Checkout, Prisma/MongoDB, booking-oriented setup. |
 | **cobb-church** | Next.js + Prisma + MongoDB for **Cobb Church Network** — churches directory, events, messaging, Stripe donations. |
 | **cobbchurch** | MERN stack **Cobb Church Network** — collaboration platform for pastors/churches (React + Express + MongoDB). |
+| **cornerstore** | Vite + React — **Corner Store at Linwood** (Kitchener, ON): neighbourhood convenience retail site (LCBO, grocery, lottery, etc.). |
 | **dial4bottle** | Static HTML landing — **Dial 4 Bottle** liquor delivery (Edmonton), age gate, premium dark/gold UI. |
 | **Donzaygroup** | Next.js site for **Donzay Group** — commercial cleaning and facility services (Toronto / GTA). |
 | **Dr-Jagatjit-Ahulwalia** | Vite + React brochure — **GTB Holistic Wellness** / Dr. Jagatjit Ahluwalia (natural medicine, osteopathy, massage, Alberta). |
