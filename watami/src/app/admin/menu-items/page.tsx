@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 import { toast } from 'sonner'
-import { Plus, Pencil, Trash2, Search, Loader2, Star, Eye, EyeOff } from 'lucide-react'
+import { Plus, Pencil, Trash2, Search, Loader2, Star, Eye, EyeOff, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -13,12 +13,14 @@ interface Category { _id: string; name: string }
 interface MenuItem {
   _id: string; name: string; price: number; description?: string
   categoryId: string | { _id: string; name: string }
+  imageUrl?: string
   tags: string[]; isAvailable: boolean; isPopular: boolean
   popularOverride: string; orderCount: number; sortOrder: number
 }
 
 const emptyForm = {
   name: '', description: '', price: 0, categoryId: '',
+  imageUrl: '',
   tags: [] as string[], isAvailable: true, isPopular: false,
   popularOverride: 'auto', sortOrder: 0,
 }
@@ -39,6 +41,7 @@ export default function AdminMenuItemsPage() {
   const [form, setForm] = useState(emptyForm)
   const [saving, setSaving] = useState(false)
   const [deleteId, setDeleteId] = useState<string | null>(null)
+  const [imagePreview, setImagePreview] = useState<string | null>(null)
 
   const fetchCategories = useCallback(async () => {
     const res = await fetch('/api/admin/categories')
@@ -69,6 +72,7 @@ export default function AdminMenuItemsPage() {
   const openCreate = () => {
     setEditingId(null)
     setForm({ ...emptyForm, categoryId: catFilter !== 'all' ? catFilter : '' })
+    setImagePreview(null)
     setDialogOpen(true)
   }
 
@@ -79,13 +83,25 @@ export default function AdminMenuItemsPage() {
       description: item.description ?? '',
       price: item.price,
       categoryId: typeof item.categoryId === 'object' ? item.categoryId._id : item.categoryId,
+      imageUrl: item.imageUrl ?? '',
       tags: item.tags,
       isAvailable: item.isAvailable,
       isPopular: item.isPopular,
       popularOverride: item.popularOverride,
       sortOrder: item.sortOrder,
     })
+    setImagePreview(item.imageUrl || null)
     setDialogOpen(true)
+  }
+
+  const handleUrlChange = (url: string) => {
+    setForm(prev => ({ ...prev, imageUrl: url }))
+    setImagePreview(url.trim() || null)
+  }
+
+  const handleRemoveImage = () => {
+    setForm(prev => ({ ...prev, imageUrl: '' }))
+    setImagePreview(null)
   }
 
   const handleSave = async () => {
@@ -196,14 +212,26 @@ export default function AdminMenuItemsPage() {
                 {filteredItems.map((item) => (
                   <tr key={item._id} className="hover:bg-gray-50">
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-charcoal">{item.name}</span>
-                        {item.isPopular && <Star className="w-3.5 h-3.5 text-orange fill-orange" />}
-                      </div>
-                      <div className="flex gap-1 mt-0.5">
-                        {item.tags.map(t => (
-                          <span key={t} className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">{t}</span>
-                        ))}
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-md overflow-hidden bg-gray-100 flex-shrink-0 border border-gray-200">
+                          {item.imageUrl ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={encodeURI(item.imageUrl)} alt={item.name} className="w-full h-full object-cover" />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-lg">🍱</div>
+                          )}
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-medium text-charcoal">{item.name}</span>
+                            {item.isPopular && <Star className="w-3.5 h-3.5 text-orange fill-orange" />}
+                          </div>
+                          <div className="flex gap-1 mt-0.5">
+                            {item.tags.map(t => (
+                              <span key={t} className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">{t}</span>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </td>
                     <td className="px-4 py-3 text-gray-500 hidden md:table-cell">{getCategoryName(item.categoryId)}</td>
@@ -246,16 +274,65 @@ export default function AdminMenuItemsPage() {
       {/* Create/Edit Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="max-w-lg">
-          <DialogHeader><DialogTitle>{editingId ? 'Edit Item' : 'New Menu Item'}</DialogTitle></DialogHeader>
-          <div className="space-y-3 py-2 max-h-[60vh] overflow-y-auto pr-1">
+          <DialogHeader>
+            <DialogTitle>{editingId ? 'Edit Item' : 'New Menu Item'}</DialogTitle>
+          </DialogHeader>
+
+          <div className="space-y-4 py-2 max-h-[75vh] overflow-y-auto pr-1">
+
+            {/* ── Image URL ── */}
+            <div>
+              <Label>Image URL</Label>
+              <div className="flex gap-2 mt-1">
+                <Input
+                  placeholder="https://... or /menu-images/filename.png"
+                  value={form.imageUrl}
+                  onChange={(e) => handleUrlChange(e.target.value)}
+                  className="text-sm"
+                />
+                {form.imageUrl && (
+                  <button
+                    type="button"
+                    onClick={handleRemoveImage}
+                    className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-md transition-colors flex-shrink-0"
+                    title="Clear image"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+              {/* Live preview */}
+              {imagePreview && (
+                <div className="mt-2 w-full h-40 rounded-lg overflow-hidden border border-gray-200 bg-gray-50">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={imagePreview}
+                    alt="Preview"
+                    className="w-full h-full object-cover"
+                    onError={() => setImagePreview(null)}
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* ── Name ── */}
             <div>
               <Label>Name *</Label>
               <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="mt-1" />
             </div>
+
+            {/* ── Description ── */}
             <div>
               <Label>Description</Label>
-              <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows={2} className="w-full mt-1 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-burgundy resize-none" />
+              <textarea
+                value={form.description}
+                onChange={(e) => setForm({ ...form, description: e.target.value })}
+                rows={2}
+                className="w-full mt-1 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-burgundy resize-none"
+              />
             </div>
+
+            {/* ── Price + Sort ── */}
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <Label>Price (AUD) *</Label>
@@ -266,6 +343,8 @@ export default function AdminMenuItemsPage() {
                 <Input type="number" value={form.sortOrder} onChange={(e) => setForm({ ...form, sortOrder: parseInt(e.target.value) || 0 })} className="mt-1" />
               </div>
             </div>
+
+            {/* ── Category ── */}
             <div>
               <Label>Category *</Label>
               <Select value={form.categoryId} onValueChange={(v) => setForm({ ...form, categoryId: v })}>
@@ -275,6 +354,8 @@ export default function AdminMenuItemsPage() {
                 </SelectContent>
               </Select>
             </div>
+
+            {/* ── Tags ── */}
             <div>
               <Label>Tags</Label>
               <div className="flex gap-3 mt-1">
@@ -291,6 +372,8 @@ export default function AdminMenuItemsPage() {
                 ))}
               </div>
             </div>
+
+            {/* ── Popular Override ── */}
             <div>
               <Label>Popular Override</Label>
               <Select value={form.popularOverride} onValueChange={(v) => setForm({ ...form, popularOverride: v })}>
@@ -302,13 +385,17 @@ export default function AdminMenuItemsPage() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="flex gap-4">
+
+            {/* ── Available ── */}
+            <div>
               <label className="flex items-center gap-2 text-sm cursor-pointer">
                 <input type="checkbox" checked={form.isAvailable} onChange={(e) => setForm({ ...form, isAvailable: e.target.checked })} className="rounded" />
                 Available
               </label>
             </div>
+
           </div>
+
           <DialogFooter>
             <Button variant="outline" onClick={() => setDialogOpen(false)}>Cancel</Button>
             <Button onClick={handleSave} disabled={saving} className="bg-burgundy hover:bg-burgundy-dark text-white">

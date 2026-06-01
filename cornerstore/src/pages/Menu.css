@@ -1,0 +1,200 @@
+.menu-page { padding-top: 100px; }
+
+/* PAGE HEADER - reuses existing .page-header from other pages */
+.page-header {
+  position: relative;
+  padding: 80px 0 60px;
+  overflow: hidden;
+}
+
+.page-header-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(45,106,46,0.15) 0%, transparent 60%),
+              linear-gradient(180deg, rgba(13,27,42,0.8) 0%, transparent 100%);
+}
+
+.page-header-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.page-header-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.page-header-title span { color: var(--green-glow); }
+
+.page-header-sub {
+  font-size: 1.05rem;
+  color: var(--gray-300);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* MENU CONTENT */
+.menu-content {
+  padding: 60px 0 80px;
+}
+
+/* SECTION */
+.menu-section {
+  margin-bottom: 70px;
+  background: var(--sec-bg, rgba(255,255,255,0.03));
+  border: 1px solid var(--sec-border, rgba(255,255,255,0.08));
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.menu-section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--sec-border, rgba(255,255,255,0.08));
+}
+
+.menu-section-icon {
+  font-size: 2.5rem;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sec-bg);
+  border: 2px solid var(--sec-border);
+  border-radius: 16px;
+  flex-shrink: 0;
+}
+
+.menu-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: var(--white);
+  margin: 0;
+}
+
+/* SUBSECTION */
+.menu-subsection {
+  margin-bottom: 36px;
+}
+
+.menu-sub-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  color: var(--sec-color, var(--green-glow));
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--sec-border);
+}
+
+/* ITEMS GRID */
+.menu-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.menu-item-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-item-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sec-border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.menu-item-img {
+  height: 120px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+}
+
+.menu-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+  filter: brightness(0.9);
+}
+
+.menu-item-card:hover .menu-item-img img {
+  transform: scale(1.07);
+  filter: brightness(1);
+}
+
+.menu-item-name {
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.4;
+}
+
+/* ALLERGY NOTE */
+.menu-allergy-note {
+  margin-top: 24px;
+  padding: 14px 18px;
+  background: rgba(245,166,35,0.08);
+  border: 1px solid rgba(245,166,35,0.25);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
+}
+
+/* CTA */
+.menu-cta {
+  padding: 60px 0;
+  background: rgba(255,255,255,0.015);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.menu-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.menu-cta-inner h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.menu-cta-inner p {
+  color: var(--gray-300);
+  font-size: 0.95rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .menu-section { padding: 24px 16px; }
+  .menu-items-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+  .menu-item-img { height: 100px; }
+  .menu-cta-inner { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .menu-items-grid { grid-template-columns: repeat(2, 1fr); }
+}

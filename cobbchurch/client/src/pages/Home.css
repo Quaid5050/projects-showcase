@@ -29,7 +29,6 @@
   isolation: isolate;
 }
 
-/* FIXED OVERLAY — subtle gradient, not solid black */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -42,7 +41,6 @@
   z-index: 1;
 }
 
-/* HERO CONTENT */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -58,11 +56,11 @@
   align-items: center;
 }
 
-/* Logo icon above title */
 .hero-logo-icon {
   margin-bottom: 16px;
   opacity: 0.9;
 }
+
 
 .hero-eyebrow {
   color: rgba(255, 255, 255, 0.85);
@@ -99,10 +97,14 @@
 .hero-subtitle {
   color: rgba(255, 255, 255, 0.95);
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.1rem;
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
   font-weight: 500;
-  margin-bottom: 14px;
   font-style: italic;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto 14px;
+  white-space: nowrap;
+  display: block;
 }
 
 .hero-divider {
@@ -118,7 +120,18 @@
   font-size: 1rem;
   line-height: 1.8;
   max-width: 620px;
-  margin: 0 auto 36px;
+  margin: 0 auto 20px;
+}
+
+/* PDF: "We're Better Together." tagline inside hero */
+.hero-tagline {
+  color: #d6a34a;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 28px;
+  text-transform: uppercase;
 }
 
 .hero-actions {
@@ -367,8 +380,8 @@
 }
 
 /* =========================================
-   PASTOR STORIES / TESTIMONIALS
-   (Matching screenshot — dark cards with video thumbnails)
+   PASTOR STORIES
+   PDF: Video replaced with image (men+women) until video ready
 ========================================= */
 
 .pastor-stories-section {
@@ -392,7 +405,7 @@
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 48px;
-  align-items: start;
+  align-items: center;
 }
 
 .pastor-intro-text {
@@ -406,147 +419,73 @@
   margin-bottom: 24px;
 }
 
-/* ───────── PASTOR STORIES FIX ───────── */
-
-.pastor-videos-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-  width:100%;
+/* PDF: Replacement image (men+women) in place of video */
+.pastor-video-replacement {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  max-height: 420px;
 }
 
-.pastor-video-card{
-  background:#fff;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  display:flex;
-  flex-direction:column;
-  height:100%;
+.pastor-replacement-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
 }
 
-.pastor-video-thumb{
-  width:100%;
-  height:240px;
-  object-fit:cover;
-  display:block;
+/* Keep old grid styles in case testimonial cards are re-enabled later */
+.pastor-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
 }
 
-.pastor-video-info{
-  position:static !important;
-  padding:22px;
-  background:#fff;
-  flex:1;
+.pastor-video-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.pastor-video-info p{
-  color:#666;
-  font-size:0.95rem;
-  line-height:1.8;
-  margin-bottom:18px;
-  font-style:italic;
+.pastor-video-thumb {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
 }
 
-.pastor-video-info strong{
-  display:block;
-  color:#07172f;
-  margin-bottom:4px;
-  font-size:1rem;
+.pastor-video-info {
+  position: static !important;
+  padding: 22px;
+  background: #fff;
+  flex: 1;
 }
 
-.pastor-video-info span{
-  color:#c89b3c;
-  font-size:0.9rem;
-  font-weight:600;
-}
-
-/* Tablet */
-
-@media (max-width: 992px){
-
-  .pastor-videos-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-}
-
-/* Mobile */
-
-@media (max-width: 768px){
-
-  .pastor-stories-header{
-    display:flex;
-    flex-direction:column;
-    gap:32px;
-  }
-
-  .pastor-videos-grid{
-    grid-template-columns:1fr;
-  }
-
-  .pastor-video-thumb{
-    height:220px;
-  }
-
-  .pastor-video-info{
-    padding:18px;
-  }
-
+.pastor-video-info p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-style: italic;
 }
 
 .pastor-video-info strong {
   display: block;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 2px;
+  color: #07172f;
+  margin-bottom: 4px;
+  font-size: 1rem;
 }
 
 .pastor-video-info span {
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-/* Fallback testimonial cards (if no video) */
-.testimonial {
-  background: #0e2040;
-  border: 1px solid rgba(214, 163, 74, 0.18);
-  border-radius: 8px;
-  padding: 32px 28px;
-  text-align: left;
-  position: relative;
-}
-
-.testimonial::before {
-  content: '"';
-  position: absolute;
-  top: 16px;
-  left: 20px;
-  font-size: 4rem;
-  color: rgba(214, 163, 74, 0.25);
-  font-family: Georgia, serif;
-  line-height: 1;
-}
-
-.testimonial q {
-  display: block;
-  font-size: 0.92rem;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.75;
-  font-style: italic;
-  quotes: none;
-  padding-top: 20px;
-  margin-bottom: 18px;
-}
-
-.testimonial cite {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #d6a34a;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  color: #c89b3c;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 /* =========================================
@@ -586,6 +525,12 @@
   font-size: 1rem;
   line-height: 1.9;
   margin-bottom: 18px;
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  word-spacing: 2px;
+  hyphens: auto;
 }
 
 .vision-actions {
@@ -597,32 +542,50 @@
 }
 
 /* =========================================
-   STATS BAR
+   STATS / IMPACT BAR
+   PDF: Font color changed to white/off-white
+   PDF: Left side image of people serving added
+   PDF: Gold strip connected to blue sections (no gap)
 ========================================= */
 
 .stats-bar {
   background: #d6a34a;
-  padding: 56px 0;
+  padding: 0;
   position: relative;
+  margin: 0;
 }
 
-/* Optional: left image panel matching screenshot */
+.stats-bar > .container {
+  padding: 0;
+  max-width: 100%;
+}
+
 .stats-with-image {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: 40% 60%;
   gap: 0;
-  min-height: 220px;
+  overflow: hidden;
+  align-items: stretch;
 }
 
 .stats-image-panel {
   position: relative;
   overflow: hidden;
+  margin: 0;
+  padding: 0 0 0 24px; /* small left margin */
+  align-self: stretch;
+  min-height: 420px;
 }
 
 .stats-image-panel img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 20% center;
+  display: block;
+  position: absolute;
+  inset: 0 0 0 24px; /* match left padding */
+  width: calc(100% - 24px);
 }
 
 .stats-content-panel {
@@ -630,7 +593,80 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 48px 48px 48px 56px;
+  padding: 48px 48px 48px 48px;
+}
+
+.impact-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.impact-subtext {
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 600px;
+  line-height: 1.7;
+  font-size: 0.92rem;
+  margin-bottom: 40px;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+  .stats-with-image {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-image-panel {
+    min-height: 260px;
+    position: relative;
+  }
+
+  .stats-image-panel img {
+    position: absolute;
+    object-position: center 30%;
+  }
+
+  .stats-content-panel {
+    padding: 40px 24px;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+.stats-content-panel {
+  background: #d6a34a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 48px 56px 56px;
+}
+
+/* PDF: Font color white/off-white for impact heading */
+.impact-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: 0.5px;
+  color: #ffffff;           /* PDF: Changed to white */
+  margin-bottom: 14px;
+}
+
+/* PDF: Subtext also white/off-white */
+.impact-subtext {
+  color: rgba(255, 255, 255, 0.88);   /* PDF: Off-white */
+  max-width: 700px;
+  margin-inline: auto;
+  line-height: 1.7;
+  font-size: 0.97rem;
 }
 
 .grid-4 {
@@ -661,16 +697,39 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: rgba(7, 23, 47, 0.75);
+  color: rgba(7, 23, 47, 0.85);
 }
 
 /* =========================================
-   CTA SECTION
+   CONNECT BOTTOM THREE SECTIONS — no white gap
+   gold strip → CTA → footer all flush together
 ========================================= */
 
+.stats-bar {
+  background: #d6a34a;
+  padding: 0;
+  position: relative;
+  margin: 0;
+  display: block;
+}
+
+.stats-bar > .container {
+  padding: 0;
+  max-width: 100%;
+}
+
 .cta-section {
-  background: #f0ece4;
+  background: #07172f;
   padding: 72px 0;
+  margin: 0;
+  display: block;
+}
+
+.footer {
+  background: var(--navy-dark, #07172f);
+  color: rgba(255,255,255,0.75);
+  margin: 0;
+  display: block;
 }
 
 .cta-box {
@@ -678,11 +737,12 @@
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: center;
-  background: #07172f;
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   padding: 56px 60px;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(214, 163, 74, 0.2);
 }
 
 .cta-box::before {
@@ -730,16 +790,6 @@
 }
 
 /* =========================================
-   GRIDS
-========================================= */
-
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-/* =========================================
    BUTTONS (shared)
 ========================================= */
 
@@ -763,6 +813,40 @@
   white-space: nowrap;
 }
 
+.vision-card {
+  background: rgba(7, 23, 47, 0.15);
+  border: 2px solid rgba(7, 23, 47, 0.4);
+  border-radius: 10px;
+  padding: 28px 16px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.vision-card:hover {
+  transform: translateY(-4px);
+  background: rgba(7, 23, 47, 0.25);
+}
+
+.vision-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #07172f;
+  display: block;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.vision-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #07172f;
+  line-height: 1.5;
+  display: block;
+}
 .btn-lg {
   height: 52px;
   padding: 0 32px;
@@ -825,6 +909,21 @@
   background: #0e2448;
 }
 
+/* PDF: "Support the Mission" button — visible border/box */
+.btn-support-mission {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #d6a34a;
+  box-shadow: 0 0 0 1px #d6a34a;
+}
+
+.btn-support-mission:hover {
+  background: #d6a34a;
+  color: #07172f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(214, 163, 74, 0.4);
+}
+
 /* =========================================
    CONTAINER
 ========================================= */
@@ -875,16 +974,12 @@
     text-align: center;
   }
 
-  .pastor-videos-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .stats-with-image {
     grid-template-columns: 1fr;
   }
 
   .stats-image-panel {
-    height: 200px;
+    height: 220px;
   }
 
   .stats-content-panel {
@@ -901,23 +996,35 @@
     padding: 56px 0;
   }
 
-  .home-hero {
+  /* PDF: Mobile hero — show more of image, group visible */
+   .home-hero {
     padding-top: 80px;
     padding-bottom: 48px;
-    min-height: 90vh;
-    background-position: center center !important;
+    min-height: 100vh;
+    background-position: 30% center !important; /* center top se change kiya */
+    background-size: cover !important;
   }
 
   .hero-title {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
+  }
+  
+  
+
+  
+  .hero-subtitle {
+    white-space: normal; /* mobile pe break allow */
+    padding: 0 16px;
+    line-height: 1.6;
   }
 
-  .hero-subtitle {
-    font-size: 0.95rem;
-  }
 
   .hero-description {
     font-size: 0.9rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
   }
 
   .hero-actions {
@@ -928,7 +1035,7 @@
 
   .hero-actions .btn {
     width: 100%;
-    max-width: 300px;
+    max-width: 320px;
   }
 
   .features-bar {
@@ -959,8 +1066,34 @@
     gap: 20px;
   }
 
+  .pastor-stories-header {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
   .pastor-videos-grid {
     grid-template-columns: 1fr;
+  }
+
+  .pastor-replacement-img {
+    height: 260px;
+  }
+
+  .stats-with-image {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-image-panel {
+    height: 200px;
+  }
+
+  .stats-content-panel {
+    padding: 40px 24px;
+  }
+
+  .impact-heading {
+    font-size: 1.4rem;
   }
 
   .cta-box {
@@ -985,44 +1118,11 @@
     max-width: 300px;
   }
 
-  .stats-bar {
-    padding: 40px 0;
-  }
-
   .cta-btns {
     flex-direction: column;
   }
-}
 
-/* =========================================
-   RESPONSIVE — SMALL MOBILE (max 480px)
-========================================= */
-
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem;
-    letter-spacing: -0.3px;
-  }
-
-  .grid-4 {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-  }
-
-  .cta-box {
-    padding: 28px 20px;
-  }
-
-  .cta-left h2 {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-
+  /* Mobile who-we-are reorder */
   .who-grid {
     display: flex;
     flex-direction: column;
@@ -1068,15 +1168,31 @@
     margin: 24px;
     width: fit-content;
   }
-
-}
-.pastor-video-card{
-  overflow: hidden;
-  border-radius: 18px;
-  background: #fff;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-.pastor-video-info{
-  position: static !important;
+/* =========================================
+   RESPONSIVE — SMALL MOBILE (max 480px)
+========================================= */
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.9rem;
+    letter-spacing: -0.3px;
+  }
+
+  .grid-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .cta-box {
+    padding: 28px 20px;
+  }
+
+  .cta-left h2 {
+    font-size: 1.5rem;
+  }
 }

@@ -77,3 +77,15 @@ body {
   display: inline-flex;
   align-items: center;
 }
+
+@media (max-width: 768px) {
+  .worksafe-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 640px) {
+  .worksafe-section p {
+    font-size: 0.95rem !important;
+    line-height: 1.65 !important;
+  }
+}

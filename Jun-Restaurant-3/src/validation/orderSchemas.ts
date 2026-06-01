@@ -39,6 +39,8 @@ export const placeOrderSchema = z
       .array(orderItemSchema)
       .min(1, 'Order must contain at least one item'),
     orderType: z.enum(['pickup', 'delivery']),
+    pickupType: z.enum(['ASAP', 'SCHEDULED']).nullable().optional(),
+    pickupTime: z.string().nullable().optional(),
     deliveryAddress: deliveryAddressSchema.nullable().optional(),
     tipPercentage: z.number().refine((v) => tipValues.includes(v), {
       message: 'Tip must be 0, 15, 20, or 25',
@@ -46,7 +48,6 @@ export const placeOrderSchema = z
   })
   .refine(
     (data) => {
-      // Delivery orders must have a delivery address
       if (data.orderType === 'delivery') {
         return data.deliveryAddress != null
       }
@@ -55,6 +56,18 @@ export const placeOrderSchema = z
     {
       message: 'Delivery address is required for delivery orders',
       path: ['deliveryAddress'],
+    }
+  )
+  .refine(
+    (data) => {
+      if (data.orderType === 'pickup' && data.pickupType === 'SCHEDULED') {
+        return !!data.pickupTime
+      }
+      return true
+    },
+    {
+      message: 'Pickup time is required for scheduled pickup orders',
+      path: ['pickupTime'],
     }
   )
 

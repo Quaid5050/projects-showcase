@@ -218,13 +218,11 @@ export default function ContactPage() {
                   label: "Office Location",
                   value: (
                     <>
-                      Metro Vancouver & Lower Mainland,
-                      BC
+                      10114 King George Blvd, Unit 206A
                       <br />
-                      Upstairs in Room 206
+                      Surrey, BC, Canada
                       <br />
-                      Entrance to staircase is in the
-                      underpass beside the church.
+                      <i>Located on the second floor. Enter through the building underpass, proceed upstairs, and follow the hallway to Unit 206A. Please note the doors may be closed at certain times during the day—call for assistance with access if needed.</i>
                     </>
                   ),
                   href: null,
@@ -239,7 +237,7 @@ export default function ContactPage() {
                   ),
                   label: "Availability",
                   value:
-                    "24/7 — Events, Weekends & Holidays",
+                    "24/7 – all night, weekends, weekday, holidays, and long weekends.",
                   href: null,
                 },
               ].map((item) => (

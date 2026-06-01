@@ -86,6 +86,7 @@ export default function Footer() {
           }}
         >
          {/* Brand */}
+{/* Brand */}
 <div>
   <Link
     href="/"
@@ -93,49 +94,22 @@ export default function Footer() {
     style={{
       display: "flex",
       alignItems: "center",
-      gap: 14,
       textDecoration: "none",
-      marginBottom: 18,
+      marginBottom: 22,
       width: "fit-content",
     }}
   >
     <Image
       src="/images/logo-icon.jpg"
       alt="FAIRSAFE"
-      width={70}
-      height={70}
+      width={130}
+      height={50}
       style={{
+        width: "130px",
+        height: "auto",
         objectFit: "contain",
-        borderRadius: 10,
-        flexShrink: 0,
       }}
     />
-
-    {/* Logo Text */}
-    <div style={{ lineHeight: 1 }}>
-      <div
-        style={{
-          color: "#FFFFFF",
-          fontSize: "1.15rem",
-          fontWeight: 800,
-          letterSpacing: "0.05em",
-          whiteSpace: "nowrap",
-        }}
-      >
-        FAIRSAFE
-      </div>
-
-      <div
-        style={{
-          color: "rgba(255,255,255,0.55)",
-          fontSize: "0.74rem",
-          marginTop: 6,
-          whiteSpace: "nowrap",
-        }}
-      >
-        First Aid & Safety
-      </div>
-    </div>
   </Link>
 
   <p
@@ -207,9 +181,8 @@ export default function Footer() {
       />
 
       <div>
-        Metro Vancouver, BC <br />
-        Room 206 <br />
-        Entrance to staircase is in the underpass
+        10114 King George Blvd, Unit 206A <br />
+       Surrey, BC, Canada
       </div>
     </div>
   </div>

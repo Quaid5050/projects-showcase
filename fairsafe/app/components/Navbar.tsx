@@ -71,61 +71,32 @@ export default function Navbar() {
         }}
       >
        {/* Logo */}
+{/* Logo */}
 <Link
   href="/"
   onClick={() => handleNavClick("/")}
   style={{
     display: "flex",
     alignItems: "center",
-    gap: 10,
+    justifyContent: "center",
     textDecoration: "none",
     position: "relative",
     zIndex: 1001,
+    minWidth: 120,
   }}
 >
   <Image
     src="/images/logo-icon.jpg"
     alt="FAIRSAFE"
-    width={48}
-    height={48}
+    width={110}
+    height={42}
     priority
     style={{
-      borderRadius: 10,
-      objectFit: "cover",
-      flexShrink: 0,
+      width: "110px",
+      height: "auto",
+      objectFit: "contain",
     }}
   />
-
-  {/* Logo Text */}
-  <div
-    className="block"
-    style={{
-      lineHeight: 1,
-    }}
-  >
-    <div
-      style={{
-        color: "#1A0A2E",
-        fontSize: "1.1rem",
-        fontWeight: 800,
-        letterSpacing: "0.05em",
-        whiteSpace: "nowrap",
-      }}
-    >
-      FAIRSAFE
-    </div>
-
-    <div
-      style={{
-        color: "rgba(26,10,46,0.55)",
-        fontSize: "0.72rem",
-        marginTop: 4,
-        whiteSpace: "nowrap",
-      }}
-    >
-      First Aid & Safety
-    </div>
-  </div>
 </Link>
 
         {/* Desktop Navigation */}

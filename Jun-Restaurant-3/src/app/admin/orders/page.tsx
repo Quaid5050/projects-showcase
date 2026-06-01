@@ -30,6 +30,8 @@ interface AdminOrder {
   userId: string
   items: OrderItem[]
   orderType: 'pickup' | 'delivery'
+  pickupType?: 'ASAP' | 'SCHEDULED' | null
+  pickupTime?: string | null
   deliveryAddress: DeliveryAddress | null
   customerName?: string
   customerEmail?: string
@@ -154,7 +156,26 @@ function OrderDrawer({
             </p>
             <div className="bg-[#161616] rounded-lg p-3">
               {isPickup ? (
-                <p className="text-sm text-[#aaa]">In-store pickup</p>
+                <div className="space-y-1">
+                  {order.pickupType === 'SCHEDULED' && order.pickupTime ? (
+                    <>
+                      <p className="text-sm text-[#aaa]">🕐 Scheduled Pickup</p>
+                      <p className="text-sm font-semibold text-white">
+                        {new Date(order.pickupTime).toLocaleString('en-AU', {
+                          timeZone: 'Australia/Sydney',
+                          weekday: 'short',
+                          day: 'numeric',
+                          month: 'short',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                          hour12: true,
+                        })}
+                      </p>
+                    </>
+                  ) : (
+                    <p className="text-sm text-[#aaa]">⚡ ASAP (~20–30 min)</p>
+                  )}
+                </div>
               ) : order.deliveryAddress ? (
                 <address className="not-italic text-sm text-[#aaa] space-y-0.5">
                   <p>{order.deliveryAddress.fullName}</p>
@@ -398,7 +419,11 @@ export default function AdminOrdersPage() {
                       <p className="text-xs text-[#555] truncate">{customerEmail}</p>
                     )}
                   </div>
-                  <span className="text-xs text-[#888] capitalize">{order.orderType}</span>
+                  <span className="text-xs text-[#888] capitalize">
+                    {order.orderType === 'pickup'
+                      ? order.pickupType === 'SCHEDULED' ? '🕐 Scheduled' : '⚡ ASAP'
+                      : '🛵 Delivery'}
+                  </span>
                   <span className="text-sm font-semibold text-white">{formatPrice(order.total)}</span>
                   <span className={`text-xs px-2 py-0.5 rounded-full w-fit ${PAYMENT_STYLES[order.paymentStatus] ?? ''}`}>
                     {order.paymentStatus === 'pay_at_store' ? 'Pay at store' : order.paymentStatus}

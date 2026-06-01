@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --red: #e8001d;
+  --red-glow: #ff0025;
+  --dark: #080808;
+  --dark-2: #0d0d0d;
+  --dark-3: #111111;
+  --dark-4: #1a1a1a;
+  --silver: #c0c0c0;
+  --white: #f0f0f0;
+  --glass: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:#080808;color:#f0f0f0;font-family:'Rajdhani',sans-serif;overflow-x:hidden;cursor:none}
+
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#080808}
+::-webkit-scrollbar-thumb{background:#e8001d;border-radius:2px}
+
+@keyframes tireSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes tireFloat{0%,100%{transform:translateY(0px)}50%{transform:translateY(-16px)}}
+@keyframes glowPulse{0%,100%{opacity:0.45;transform:scale(1)}50%{opacity:0.95;transform:scale(1.07)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes smokeRise{0%{transform:translateX(-50%) scaleX(0.6) translateY(0);opacity:0}40%{opacity:0.5}100%{transform:translateX(-50%) scaleX(2) translateY(-55px);opacity:0}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.92)}to{opacity:1;transform:scale(1)}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-36px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideLeft{from{opacity:0;transform:translateX(36px)}to{opacity:1;transform:translateX(0)}}
+@keyframes borderGrow{from{width:0}to{width:100%}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+.cursor-dot{position:fixed;width:10px;height:10px;background:#e8001d;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .25s,height .25s}
+.cursor-ring{position:fixed;width:34px;height:34px;border:1.5px solid rgba(232,0,29,.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
+.cursor-dot.hover{width:18px;height:18px}
+.cursor-ring.hover{width:50px;height:50px;border-color:rgba(232,0,29,.9)}
+
+.clip-btn{clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%)}
+.glass-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+
+.section-tag{display:inline-flex;align-items:center;gap:10px;font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:6px;color:#e8001d;text-transform:uppercase;margin-bottom:14px}
+.section-tag::before{content:'';display:block;width:28px;height:1px;background:#e8001d}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,72px);line-height:0.95;color:#f0f0f0;letter-spacing:1px}
+
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-36px);transition:opacity .75s ease,transform .75s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(36px);transition:opacity .75s ease,transform .75s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+.img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.85) 0%,rgba(8,8,8,0.3) 50%,transparent 100%)}
+.img-zoom{transition:transform .65s ease;object-fit:cover}
+.img-zoom:hover{transform:scale(1.06)}
+
+@media(hover:none){.cursor-dot,.cursor-ring{display:none}body{cursor:auto}}

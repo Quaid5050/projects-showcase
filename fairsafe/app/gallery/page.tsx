@@ -5,17 +5,17 @@ export const metadata = { title: "Gallery – FAIRSAFE First Aid & Safety Soluti
 
 const images = [
   { src: "/images/gallery1.jpg", label: "Event Coverage", span: "row" },
-  { src: "/images/gallery2.jpg", label: "Field Operations" },
+  { src: "/images/IMG_0148.jpg", label: "Field Operations" },
   { src: "/images/gallery3.jpg", label: "Safety Personnel" },
-  { src: "/images/gallery4.jpg", label: "Worksite Safety", span: "col" },
-  { src: "/images/gallery5.jpg", label: "Youth Events" },
-  { src: "/images/gallery6.jpg", label: "Community Events" },
+  { src: "/images/gallery6.jpg", label: "Worksite Safety", span: "col" },
+  { src: "/images/IMG_0118.jpg", label: "Youth Events" },
+  { src: "/images/IMG_0145.jpg", label: "Community Events" },
   { src: "/images/gallery7.jpg", label: "Medical Support" },
   { src: "/images/gallery8.jpg", label: "Lower Mainland" },
-  { src: "/images/service-event.jpg", label: "Event First Aid" },
+  { src: "/images/IMG_0121.jpg", label: "Event First Aid" },
   { src: "/images/service-worksite.jpg", label: "Construction Safety" },
   { src: "/images/service-staffing.jpg", label: "Safety Staffing" },
-  { src: "/images/contact-bg.jpg", label: "Team Ready" },
+  { src: "/images/IMG_7393.jpg", label: "Team Ready" },
 ];
 
 export default function GalleryPage() {

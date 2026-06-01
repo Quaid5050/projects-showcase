@@ -8,32 +8,83 @@ export default function AboutPage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section style={{ position: "relative", minHeight: 500, display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 84 }}>
-        <Image src="/images/gallery2.jpg" alt="FAIRSAFE Team" fill style={{ objectFit: "cover", filter: "brightness(0.3) saturate(0.6)" }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right,rgba(255,255,255,0.97) 45%,rgba(26,10,46,0.5))" }} />
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 1280, margin: "0 auto", padding: "80px 5%", width: "100%" }}>
-          <div className="section-label">Our Story</div>
-          <h1 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "clamp(3rem,7vw,6rem)", lineHeight: 0.95, letterSpacing: "0.02em", marginBottom: 20 }}>
-            ABOUT<br /><span style={{ color: "#7C3AED" }}>FAIRSAFE</span>
-          </h1>
-          <p style={{ color: "rgba(26,10,46,0.7)", maxWidth: 520, fontSize: "1.05rem", lineHeight: 1.75, marginBottom: 36 }}>
-            Built on one principle — professional safety should be accessible to everyone, at a fair price.
-          </p>
-          {/* Quick nav anchors */}
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            {[["Our Story", "#story"], ["Services", "#services"], ["Partnership", "#partnership"], ["Values", "#values"], ["Team", "#team"]].map(([label, href]) => (
-              <a key={href} href={href} style={{
-                background: "rgba(26,10,46,0.08)", border: "1px solid rgba(255,255,255,0.15)",
-                color: "rgba(26,10,46,0.7)", padding: "8px 18px", borderRadius: 999,
-                fontSize: "0.78rem", fontWeight: 600, letterSpacing: "0.08em",
-                textDecoration: "none", textTransform: "uppercase", transition: "all 0.2s",
-              }}>{label}</a>
-            ))}
-          </div>
-        </div>
-      </section>
+<section
+  style={{
+    position: "relative",
+    minHeight: 500,
+    display: "flex",
+    alignItems: "center",
+    overflow: "hidden",
+    paddingTop: 84,
+  }}
+>
+  {/* Background Image */}
+  <Image
+    src="/img/bgabout1.jpeg"
+    alt="FAIRSAFE Team"
+    fill
+    style={{
+      objectFit: "cover",
+      filter: "brightness(0.45)", // image dark
+    }}
+  />
 
-      <section style={{ background: "#FFFFFF", padding: "100px 5%" }}>
+  {/* Dark Overlay */}
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
+      background: "rgba(0,0,0,0.35)",
+    }}
+  />
+
+  {/* Content */}
+  <div
+    style={{
+      position: "relative",
+      zIndex: 2,
+      maxWidth: 1280,
+      margin: "0 auto",
+      padding: "80px 5%",
+      width: "100%",
+      color: "#fff",
+    }}
+  >
+    <div className="section-label" style={{ color: "#fff" }}>
+      Our Story
+    </div>
+
+    <h1
+      style={{
+        fontFamily: "'Bebas Neue',sans-serif",
+        fontSize: "clamp(3rem,7vw,6rem)",
+        lineHeight: 0.95,
+        letterSpacing: "0.02em",
+        marginBottom: 20,
+        color: "#fff",
+      }}
+    >
+      ABOUT
+      <br />
+      <span style={{ color: "#A855F7" }}>FAIRSAFE</span>
+    </h1>
+
+    <p
+      style={{
+        color: "rgba(255,255,255,0.85)",
+        maxWidth: 520,
+        fontSize: "1.05rem",
+        lineHeight: 1.75,
+        marginBottom: 36,
+      }}
+    >
+      Built on one principle — professional safety should be accessible to
+      everyone, at a fair price.
+    </p>
+  </div>
+</section>
+
+     <section style={{ background: "#FFFFFF", padding: "100px 5%" }}>
   <div
     style={{
       maxWidth: 1280,
@@ -105,7 +156,7 @@ export default function AboutPage() {
             lineHeight: 1,
           }}
         >
-          BC
+          24/7
         </div>
 
         <div
@@ -117,9 +168,9 @@ export default function AboutPage() {
             marginTop: 2,
           }}
         >
-          Certified
+          Emergency
           <br />
-          Attendants
+          Coverage
         </div>
       </div>
     </div>
@@ -134,7 +185,7 @@ export default function AboutPage() {
         height: "100%",
       }}
     >
-      <div className="section-label">Who We Are</div>
+      <div className="section-label">About FAIRSAFE</div>
 
       <h2
         style={{
@@ -146,27 +197,28 @@ export default function AboutPage() {
           textAlign: "left",
         }}
       >
-        SAFETY SERVICES AT A{" "}
-        <span style={{ color: "#7C3AED" }}>FAIR PRICE</span>
+        PROFESSIONAL FIRST AID
+        <br />
+        WITH A <span style={{ color: "#7C3AED" }}>MODERN APPROACH</span>
       </h2>
 
       <p
         style={{
           color: "rgba(26,10,46,0.7)",
           lineHeight: 1.85,
-          marginBottom: 20,
+          marginBottom: 28,
           fontSize: "0.97rem",
           textAlign: "left",
+          maxWidth: 580,
         }}
       >
-        FAIRSAFE is named exactly what it stands for —
-        <strong style={{ color: "#1A0A2E" }}> fair prices</strong> for
-        professional safety coverage. We believe no event organizer,
-        construction company, or community group should have to cut corners on
-        first aid just because other providers charge too much.
+        FAIRSAFE provides dependable on-site first aid and medical
+        coverage for events, sports, construction sites, and
+        community organizations across Metro Vancouver and the
+        Lower Mainland — delivering professional service with fast
+        response times and reliable support.
       </p>
 
-     
       <ul
         style={{
           listStyle: "none",
@@ -179,12 +231,10 @@ export default function AboutPage() {
         }}
       >
         {[
-          "WorkSafe BC compliant first aid attendants",
-          "Rapid deployment across Metro Vancouver & Lower Mainland",
-          "Transparent pricing — no hidden fees, no surprises",
-          "Available for single events to long-term contracts",
-          "Trusted by First Nations and community organizations",
-          "Free AED provided with every coverage contract",
+          "Professional on-site medical standby coverage",
+          "Serving events, sports, worksites & communities",
+          "Fast response and dependable support",
+          "Available weekdays, weekends & holidays",
         ].map((item) => (
           <li
             key={item}
@@ -217,7 +267,7 @@ export default function AboutPage() {
         }}
       >
         <Link href="/contact" className="btn-primary">
-          Work With Us
+          Contact Us
         </Link>
 
         <a
@@ -235,161 +285,230 @@ export default function AboutPage() {
             justifyContent: "center",
           }}
         >
-          See Our Services
+          Explore Services
         </a>
       </div>
     </div>
   </div>
 </section>
 
-      {/* ── SERVICES (with anchor links to /services#id) ── */}
-      <section id="services" style={{ background: "#F8F5FF", padding: "100px 5%" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
-            <div className="section-label">What We Offer</div>
-            <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "clamp(2.2rem,4vw,3.4rem)", letterSpacing: "0.02em", marginBottom: 16 }}>
-              OUR <span style={{ color: "#7C3AED" }}>SERVICES</span>
-            </h2>
-            <p style={{ color: "rgba(26,10,46,0.55)", maxWidth: 520, margin: "0 auto", lineHeight: 1.75, fontSize: "0.95rem" }}>
-              Every service is staffed by certified professionals and priced fairly — click any service to learn more.
-            </p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24 }}>
-            {[
-              {
-                id: "event-first-aid",
-                icon: <Calendar size={26} />,
-                img: "/images/service-event.jpg",
-                title: "Event First Aid Coverage",
-                sub: "Festivals · Sports · Corporate · Community",
-                desc: "Certified first aid attendants for public and private events of all sizes — from youth soccer tournaments to large-scale festivals across Metro Vancouver.",
-                features: ["Full event duration coverage", "AED on-site", "Incident documentation", "Scalable team size"],
-              },
-              {
-                id: "worksite-construction",
-                icon: <HardHat size={26} />,
-                img: "/images/service-worksite.jpg",
-                title: "Worksite & Construction Safety",
-                sub: "WorkSafe BC Required",
-                desc: "WorkSafe BC mandates certified first aid attendants on all construction and industrial sites. We supply fully compliant, trained personnel stationed on-site for your project duration.",
-                features: ["OFA Level 1, 2 & 3 certified", "Daily safety monitoring", "Short & long-term contracts", "Fast deployment"],
-              },
-              {
-                id: "safety-staffing",
-                icon: <Users size={26} />,
-                img: "/images/service-staffing.jpg",
-                title: "Safety Staffing",
-                sub: "On-demand · Contract · Multi-day",
-                desc: "Need qualified safety personnel deployed quickly? We provide on-demand staff for any duration — single day to multi-month contracts — anywhere in the Lower Mainland.",
-                features: ["Multi-day discount rates", "Last-minute deployments", "Diverse industry experience", "Transparent per-day pricing"],
-              },
-              {
-                id: "industrial-sites",
-                icon: <HeartPulse size={26} />,
-                img: "/images/gallery7.jpg",
-                title: "Industrial Site Coverage",
-                sub: "Manufacturing · Warehouses · Facilities",
-                desc: "Industrial facilities require compliant on-site first aid at all times. FAIRSAFE provides continuous coverage to keep your workforce protected and your operation legally sound.",
-                features: ["Shift-based coverage available", "Hazard-aware attendants", "WorkSafe compliant documentation", "Emergency coordination"],
-              },
-            ].map(s => (
-              <Link key={s.id} href={`/services#${s.id}`} style={{ textDecoration: "none" }}>
-                <div className="card" style={{ overflow: "hidden", height: "100%", cursor: "pointer" }}>
-                  <div style={{ position: "relative", height: 180 }}>
-                    <Image src={s.img} alt={s.title} fill style={{ objectFit: "cover", filter: "brightness(0.8)" }} />
-                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(26,10,46,0.7),transparent)" }} />
-                    <div style={{ position: "absolute", bottom: 14, left: 14, background: "rgba(124,58,237,0.9)", borderRadius: 8, padding: "8px 10px", color: "#1A0A2E" }}>{s.icon}</div>
-                  </div>
-                  <div style={{ padding: 26 }}>
-                    <div style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", color: "#6B6080", textTransform: "uppercase", marginBottom: 8 }}>{s.sub}</div>
-                    <h3 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.45rem", letterSpacing: "0.04em", marginBottom: 10, color: "#1A0A2E" }}>{s.title}</h3>
-                    <p style={{ color: "rgba(26,10,46,0.6)", fontSize: "0.87rem", lineHeight: 1.7, marginBottom: 16 }}>{s.desc}</p>
-                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 7 }}>
-                      {s.features.map(f => (
-                        <li key={f} style={{ display: "flex", alignItems: "center", gap: 9, fontSize: "0.82rem", color: "rgba(26,10,46,0.6)" }}>
-                          <CheckCircle size={13} color="#7C3AED" style={{ flexShrink: 0 }} /> {f}
-                        </li>
-                      ))}
-                    </ul>
-                    <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 20, color: "#7C3AED", fontWeight: 700, fontSize: "0.82rem", letterSpacing: "0.08em" }}>
-                      LEARN MORE <ArrowRight size={14} />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <div style={{ textAlign: "center", marginTop: 48 }}>
-            <Link href="/services" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#7C3AED", fontWeight: 700, textDecoration: "none", fontSize: "0.95rem", letterSpacing: "0.06em" }}>
-              VIEW FULL SERVICES PAGE <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
+    
 
       {/* ── MUSQUEAM PARTNERSHIP ── */}
-      <section id="partnership" style={{ background: "#FFFFFF", padding: "100px 5%" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 64, alignItems: "center" }}>
-            <div>
-              <div className="section-label">Community Partnership</div>
-              <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "clamp(2rem,4vw,3rem)", letterSpacing: "0.02em", marginBottom: 20, lineHeight: 1.05 }}>
-                PROUD PARTNER OF<br /><span style={{ color: "#5B21B6" }}>MUSQUEAM INDIAN BAND</span>
-              </h2>
-              <p style={{ color: "rgba(26,10,46,0.7)", lineHeight: 1.85, marginBottom: 20, fontSize: "0.95rem" }}>
-                FAIRSAFE has been contracted to provide on-site first aid and medical support services for events with <strong style={{ color: "#1A0A2E" }}>Musqueam Indian Band</strong>, a First Nation government based in Vancouver, British Columbia.
-              </p>
-              <p style={{ color: "rgba(26,10,46,0.6)", lineHeight: 1.85, marginBottom: 20, fontSize: "0.93rem" }}>
-                Services provided include first aid coverage for <strong style={{ color: "#1A0A2E" }}>youth soccer events</strong>, with additional event support ongoing across the Lower Mainland. We are honoured to serve and protect their community.
-              </p>
-              <p style={{ color: "rgba(26,10,46,0.55)", lineHeight: 1.85, marginBottom: 36, fontSize: "0.91rem" }}>
-                This partnership reflects our core mission — bringing professional, affordable first aid coverage to the communities that need it most, including First Nations organizations throughout BC.
-              </p>
-              {/* Partnership highlight box */}
-              <div style={{ background: "rgba(27,79,216,0.08)", border: "1px solid rgba(27,79,216,0.25)", borderLeft: "3px solid #1B4FD8", borderRadius: 8, padding: "18px 22px" }}>
-                <p style={{ fontSize: "0.88rem", color: "rgba(26,10,46,0.6)", lineHeight: 1.75 }}>
-                  <strong style={{ color: "#5B21B6" }}>Active Contract:</strong> On-site first aid & medical support for Musqueam Indian Band events, including youth soccer tournaments and community gatherings across Metro Vancouver.
-                </p>
-              </div>
-            </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              <div style={{ position: "relative", height: 300, borderRadius: 12, overflow: "hidden" }}>
-                <Image src="/images/gallery5.jpg" alt="FAIRSAFE event coverage" fill style={{ objectFit: "cover" }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg,rgba(27,79,216,0.15),transparent)" }} />
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                <div style={{ position: "relative", height: 160, borderRadius: 10, overflow: "hidden" }}>
-                  <Image src="/images/gallery6.jpg" alt="Youth event coverage" fill style={{ objectFit: "cover" }} />
-                </div>
-                <div style={{ position: "relative", height: 160, borderRadius: 10, overflow: "hidden" }}>
-                  <Image src="/images/gallery8.jpg" alt="Community safety" fill style={{ objectFit: "cover" }} />
-                </div>
-              </div>
-            </div>
+<section
+  id="partnership"
+  style={{
+    background: "#FFFFFF",
+    padding: "100px 5%",
+  }}
+>
+  <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+
+    {/* Trust India Logo */}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        marginBottom: 60,
+      }}
+    >
+      <div
+        style={{
+          position: "relative",
+          width: 240,
+          height: 120,
+        }}
+      >
+        <Image
+          src="/img/IMG_0398.jpg"
+          alt="Trust India"
+          fill
+          style={{
+            objectFit: "contain",
+          }}
+        />
+      </div>
+    </div>
+
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
+        gap: 64,
+        alignItems: "center",
+      }}
+    >
+      {/* Left */}
+      <div>
+        <div className="section-label">
+          Community Support
+        </div>
+
+        <h2
+          style={{
+            fontFamily: "'Bebas Neue',sans-serif",
+            fontSize: "clamp(2rem,4vw,3rem)",
+            letterSpacing: "0.02em",
+            marginBottom: 20,
+            lineHeight: 1.05,
+          }}
+        >
+          TRUSTED FIRST AID PROVIDER FOR THE
+          <br />
+          <span style={{ color: "#5B21B6" }}>
+            MUSQUEAM INDIAN BAND
+          </span>
+        </h2>
+
+        <p
+          style={{
+            color: "rgba(26,10,46,0.7)",
+            lineHeight: 1.85,
+            marginBottom: 20,
+          }}
+        >
+          FAIRSAFE proudly provides on-site first
+          aid and event medical support services
+          for events associated with
+          <strong style={{ color: "#1A0A2E" }}>
+            {" "}the Musqueam Indian Band
+          </strong>
+          {" "}in Vancouver, British Columbia.
+        </p>
+
+        <p
+          style={{
+            color: "rgba(26,10,46,0.6)",
+            lineHeight: 1.85,
+            marginBottom: 20,
+          }}
+        >
+          Our team supports community and youth
+          sporting events by delivering
+          professional first aid coverage and
+          reliable medical standby services.
+        </p>
+
+        <p
+          style={{
+            color: "rgba(26,10,46,0.55)",
+            lineHeight: 1.85,
+            marginBottom: 36,
+          }}
+        >
+          We remain committed to providing
+          dependable and professional first aid
+          services across BC.
+        </p>
+
+        <div
+          style={{
+            background: "rgba(27,79,216,0.08)",
+            border: "1px solid rgba(27,79,216,0.25)",
+            borderLeft: "4px solid #1B4FD8",
+            borderRadius: 8,
+            padding: "18px 22px",
+          }}
+        >
+          <strong
+            style={{
+              color: "#5B21B6",
+            }}
+          >
+            Event Support:
+          </strong>
+
+          <p
+            style={{
+              marginTop: 10,
+              color: "rgba(26,10,46,0.65)",
+              lineHeight: 1.7,
+            }}
+          >
+            Professional on-site first aid
+            coverage for community gatherings,
+            sporting events, and public events.
+          </p>
+        </div>
+      </div>
+
+      {/* Right Images */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+        }}
+      >
+        <div
+          style={{
+            position: "relative",
+            height: 300,
+            borderRadius: 12,
+            overflow: "hidden",
+          }}
+        >
+          <Image
+            src="/images/gallery5.jpg"
+            alt=""
+            fill
+            style={{
+              objectFit: "cover",
+            }}
+          />
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 16,
+          }}
+        >
+          <div
+            style={{
+              position: "relative",
+              height: 160,
+              borderRadius: 10,
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              src="/images/gallery6.jpg"
+              alt=""
+              fill
+              style={{
+                objectFit: "cover",
+              }}
+            />
+          </div>
+
+          <div
+            style={{
+              position: "relative",
+              height: 160,
+              borderRadius: 10,
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              src="/images/gallery8.jpg"
+              alt=""
+              fill
+              style={{
+                objectFit: "cover",
+              }}
+            />
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ── STATS BAR ── */}
-      <section style={{ background: "#7C3AED", padding: "56px 5%" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 32, textAlign: "center" }}>
-          {[
-            { num: "24/7", label: "Availability" },
-            { num: "100%", label: "WorkSafe BC Compliant" },
-            { num: "FREE", label: "AED with Contract" },
-            { num: "BC", label: "Certified Staff" },
-            { num: "LML", label: "Lower Mainland Coverage" },
-          ].map(stat => (
-            <div key={stat.label}>
-              <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "2.8rem", lineHeight: 1, color: "#1A0A2E" }}>{stat.num}</div>
-              <div style={{ fontSize: "0.75rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(26,10,46,0.7)", marginTop: 6 }}>{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+  
 
       {/* ── VALUES ── */}
       <section id="values" style={{ background: "#F8F5FF", padding: "100px 5%" }}>
@@ -417,45 +536,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── TEAM / FOUNDER ── */}
-      <section id="team" style={{ background: "#FFFFFF", padding: "100px 5%" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
-            <div className="section-label">The People</div>
-            <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "clamp(2rem,4vw,3.2rem)", letterSpacing: "0.02em" }}>
-              MEET THE <span style={{ color: "#7C3AED" }}>TEAM</span>
-            </h2>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 56, alignItems: "center", maxWidth: 900, margin: "0 auto" }}>
-            <div style={{ position: "relative" }}>
-              <div style={{ position: "relative", height: 400, borderRadius: 12, overflow: "hidden" }}>
-                <Image src="/images/gallery1.jpg" alt="Nassif Rahmathullah - Founder" fill style={{ objectFit: "cover" }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(255,255,255,0.85) 0%,transparent 50%)" }} />
-                <div style={{ position: "absolute", bottom: 24, left: 24 }}>
-                  <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.5rem", letterSpacing: "0.04em" }}>NASSIF RAHMATHULLAH</div>
-                  <div style={{ fontSize: "0.78rem", color: "rgba(26,10,46,0.6)", letterSpacing: "0.1em", textTransform: "uppercase" }}>Founder & Director</div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="section-label">Founder & Director</div>
-              <h3 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "2rem", letterSpacing: "0.04em", marginBottom: 20 }}>NASSIF RAHMATHULLAH</h3>
-              <p style={{ color: "rgba(26,10,46,0.7)", lineHeight: 1.85, marginBottom: 18, fontSize: "0.95rem" }}>
-                Nassif founded FAIRSAFE after identifying a clear gap in Metro Vancouver's safety services market — first aid coverage was either overpriced, understaffed, or unreliable.
-              </p>
-              <p style={{ color: "rgba(26,10,46,0.6)", lineHeight: 1.85, marginBottom: 18, fontSize: "0.93rem" }}>
-                With a commitment to keeping prices fair and service quality high, Nassif built FAIRSAFE around the belief that <strong style={{ color: "#1A0A2E" }}>every event and every worksite deserves professional protection</strong> — regardless of budget.
-              </p>
-              
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                <a href="tel:6043788311" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "rgba(26,10,46,0.7)", textDecoration: "none", fontSize: "0.9rem" }}>
-                  <Phone size={15} color="#7C3AED" /> (604) 378-8311
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    
 
       {/* ── CTA ── */}
       <section style={{ background: "linear-gradient(135deg,#7C3AED,#4C1D95)", padding: "80px 5%", textAlign: "center" }}>

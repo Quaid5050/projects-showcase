@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { useCartStore } from '@/store/cartStore'
 import { PopularBadge } from './PopularBadge'
 import { formatPrice } from '@/lib/utils'
-import { DEFAULT_FOOD_IMAGE } from '@/lib/constants'
 import type { IMenuItem } from '@/types'
 
 // ============================================================
@@ -107,18 +106,20 @@ export function MenuItemModal({ item, allItems, onClose }: MenuItemModalProps) {
         <div ref={scrollRef} className="flex-1 overflow-y-auto overscroll-contain">
 
           {/* Hero image */}
-          <div className="relative w-full aspect-[4/3] bg-gray-100 flex-shrink-0">
-            <Image
-              src={item.imageUrl || DEFAULT_FOOD_IMAGE}
-              alt={item.name}
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 100vw, 512px"
-              priority
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = DEFAULT_FOOD_IMAGE
-              }}
-            />
+          <div className="relative w-full aspect-[4/3] bg-white flex-shrink-0">
+            {item.imageUrl && !item.imageUrl.includes('placeholder') ? (
+              <Image
+                src={item.imageUrl}
+                alt=""
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 512px"
+                priority
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none'
+                }}
+              />
+            ) : null}
             {/* Close button */}
             <button
               onClick={onClose}
@@ -265,17 +266,19 @@ export function MenuItemModal({ item, allItems, onClose }: MenuItemModalProps) {
                         </div>
 
                         {/* Image + add button */}
-                        <div className="relative flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-gray-100">
-                          <Image
-                            src={related.imageUrl || DEFAULT_FOOD_IMAGE}
-                            alt={related.name}
-                            fill
-                            className="object-cover"
-                            sizes="80px"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = DEFAULT_FOOD_IMAGE
-                            }}
-                          />
+                        <div className="relative flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-white">
+                          {related.imageUrl && !related.imageUrl.includes('placeholder') ? (
+                            <Image
+                              src={related.imageUrl}
+                              alt=""
+                              fill
+                              className="object-cover"
+                              sizes="80px"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).style.display = 'none'
+                              }}
+                            />
+                          ) : null}
                           {/* Cart qty chip */}
                           {relatedCartQty > 0 && (
                             <div className="absolute top-1 right-1 z-10 bg-brand-red text-white text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">

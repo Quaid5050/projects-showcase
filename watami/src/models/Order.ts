@@ -1,11 +1,19 @@
 import mongoose, { Schema, Document, Model, Types } from 'mongoose'
 
+export type PickupType = 'asap' | 'scheduled'
+
 export interface IOrderItem {
   menuItemId: Types.ObjectId
   name: string
   price: number
   quantity: number
   specialInstructions?: string
+}
+
+export interface IStatusEmailLogEntry {
+  status: string
+  sentAt: Date
+  recipient: string
 }
 
 export interface IOrder extends Document {
@@ -16,9 +24,16 @@ export interface IOrder extends Document {
   items: IOrderItem[]
   subtotal: number
   discountAmount: number
+  tipPercentage: number
+  tipAmount: number
   total: number
   couponCode?: string
   pickupOnly: boolean
+  // Pickup scheduling
+  pickupType: PickupType
+  requestedPickupTime: Date | null
+  estimatedPickupTime: Date | null
+  pickupWindowLabel: string
   status:
     | 'pending_payment'
     | 'pending'
@@ -28,7 +43,16 @@ export interface IOrder extends Document {
     | 'completed'
     | 'cancelled'
   paymentIntentId?: string
+  stripeCheckoutSessionId?: string
   paymentStatus?: 'unpaid' | 'paid' | 'failed'
+  // Email idempotency flags
+  merchantNotificationEmailSent: boolean
+  merchantNotificationEmailSentAt?: Date
+  confirmationEmailSent: boolean
+  confirmationEmailSentAt?: Date
+  confirmationEmailStatus: 'sent' | 'failed' | 'skipped'
+  confirmationEmailError?: string
+  statusEmailLog: IStatusEmailLogEntry[]
   createdAt: Date
   updatedAt: Date
 }
@@ -59,9 +83,22 @@ const OrderSchema = new Schema<IOrder>(
     items: [OrderItemSchema],
     subtotal: { type: Number, required: true },
     discountAmount: { type: Number, default: 0 },
+    tipPercentage: { type: Number, default: 0 },
+    tipAmount: { type: Number, default: 0 },
     total: { type: Number, required: true },
     couponCode: { type: String },
     pickupOnly: { type: Boolean, default: true },
+    // Pickup scheduling
+    pickupType: {
+      type: String,
+      enum: ['asap', 'scheduled'],
+      required: true,
+      default: 'asap',
+      index: true,
+    },
+    requestedPickupTime: { type: Date, default: null },
+    estimatedPickupTime: { type: Date, default: null },
+    pickupWindowLabel: { type: String, default: 'ASAP' },
     status: {
       type: String,
       enum: [
@@ -77,10 +114,35 @@ const OrderSchema = new Schema<IOrder>(
       index: true,
     },
     paymentIntentId: { type: String, index: true },
+    stripeCheckoutSessionId: { type: String, index: true },
     paymentStatus: {
       type: String,
       enum: ['unpaid', 'paid', 'failed'],
       default: 'unpaid',
+    },
+    // Email idempotency flags
+    merchantNotificationEmailSent: { type: Boolean, default: false },
+    merchantNotificationEmailSentAt: { type: Date },
+    confirmationEmailSent: { type: Boolean, default: false },
+    confirmationEmailSentAt: { type: Date },
+    confirmationEmailStatus: {
+      type: String,
+      enum: ['sent', 'failed', 'skipped'],
+      default: 'skipped',
+    },
+    confirmationEmailError: { type: String },
+    statusEmailLog: {
+      type: [
+        new Schema<IStatusEmailLogEntry>(
+          {
+            status: { type: String, required: true },
+            sentAt: { type: Date, required: true },
+            recipient: { type: String, required: true },
+          },
+          { _id: false }
+        ),
+      ],
+      default: [],
     },
   },
   { timestamps: true }
@@ -88,6 +150,8 @@ const OrderSchema = new Schema<IOrder>(
 
 OrderSchema.index({ createdAt: -1 })
 OrderSchema.index({ status: 1, createdAt: -1 })
+OrderSchema.index({ pickupType: 1, createdAt: -1 })
+OrderSchema.index({ requestedPickupTime: 1 })
 
 const Order: Model<IOrder> =
   mongoose.models.Order || mongoose.model<IOrder>('Order', OrderSchema)

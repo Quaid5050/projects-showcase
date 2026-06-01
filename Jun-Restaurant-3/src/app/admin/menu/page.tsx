@@ -24,12 +24,16 @@ export default function AdminMenuPage() {
   const [qaPrice, setQaPrice] = useState('12.99')
   const [qaCat, setQaCat] = useState('')
   const [qaDesc, setQaDesc] = useState('')
+  const [qaImageUrl, setQaImageUrl] = useState('')
   const [qaAdding, setQaAdding] = useState(false)
   const [qaError, setQaError] = useState('')
 
   // Edit modal state
   const [editForm, setEditForm] = useState<Partial<AdminItem & { tagsStr: string }>>({})
   const [editSaving, setEditSaving] = useState(false)
+  const [editImageUploading, setEditImageUploading] = useState(false)
+  const [editImageError, setEditImageError] = useState('')
+  const [qaImageUploading, setQaImageUploading] = useState(false)
 
   const fetchData = useCallback(async () => {
     setIsLoading(true)
@@ -47,6 +51,15 @@ export default function AdminMenuPage() {
 
   const getCatName = (id: string) => categories.find((c) => c._id === id)?.name ?? '—'
 
+  const uploadImage = async (file: File): Promise<string | null> => {
+    const fd = new FormData()
+    fd.append('file', file)
+    const res = await fetch('/api/admin/menu/upload-image', { method: 'POST', body: fd })
+    const data = await res.json()
+    if (!res.ok || !data.success) return null
+    return data.data.url
+  }
+
   const handleQuickAdd = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!qaName.trim() || !qaCat) { setQaError('Name and category required'); return }
@@ -55,10 +68,10 @@ export default function AdminMenuPage() {
       const res = await fetch('/api/admin/menu/items', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: qaName.trim(), price: parseFloat(qaPrice), categoryId: qaCat, description: qaDesc }),
+        body: JSON.stringify({ name: qaName.trim(), price: parseFloat(qaPrice), categoryId: qaCat, description: qaDesc, imageUrl: qaImageUrl.trim() || undefined }),
       })
       if (!res.ok) { setQaError('Failed to add item'); return }
-      setQaName(''); setQaDesc(''); setQaPrice('12.99')
+      setQaName(''); setQaDesc(''); setQaPrice('12.99'); setQaImageUrl('')
       await fetchData()
     } finally { setQaAdding(false) }
   }
@@ -108,36 +121,63 @@ export default function AdminMenuPage() {
       {/* Quick add */}
       <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-lg p-5 mb-6">
         <p className="text-xs text-[#888] mb-3 uppercase tracking-widest">Quick add</p>
-        <form onSubmit={handleQuickAdd} className="flex gap-3 flex-wrap">
-          <input
-            value={qaName} onChange={(e) => setQaName(e.target.value)}
-            placeholder="Name" required
-            className="flex-1 min-w-48 bg-[#2a2a2a] border border-[#333] text-white text-sm rounded px-3 py-2 focus:outline-none focus:border-[#e8604c] placeholder:text-[#555]"
-          />
-          <input
-            value={qaPrice} onChange={(e) => setQaPrice(e.target.value)}
-            type="number" step="0.01" min="0" placeholder="Price"
-            className="w-28 bg-[#2a2a2a] border border-[#333] text-white text-sm rounded px-3 py-2 focus:outline-none focus:border-[#e8604c]"
-          />
-          <select
-            value={qaCat} onChange={(e) => setQaCat(e.target.value)}
-            className="flex-1 min-w-40 bg-[#2a2a2a] border border-[#333] text-[#aaa] text-sm rounded px-3 py-2 focus:outline-none focus:border-[#e8604c]"
-          >
-            <option value="">Select category</option>
-            {categories.map((c) => <option key={c._id} value={c._id}>{c.name}</option>)}
-          </select>
-          <input
-            value={qaDesc} onChange={(e) => setQaDesc(e.target.value)}
-            placeholder="Description (optional)"
-            className="flex-1 min-w-48 bg-[#2a2a2a] border border-[#333] text-white text-sm rounded px-3 py-2 focus:outline-none focus:border-[#e8604c] placeholder:text-[#555]"
-          />
-          <button
-            type="submit" disabled={qaAdding}
-            className="px-6 py-2 rounded text-sm font-semibold text-white disabled:opacity-50"
-            style={{ background: 'linear-gradient(90deg, #e8604c, #f0a500)' }}
-          >
-            {qaAdding ? 'Adding…' : 'Add item'}
-          </button>
+        <form onSubmit={handleQuickAdd} className="space-y-3">
+          {/* Row 1: Name, Price, Category */}
+          <div className="flex gap-3 flex-wrap">
+            <input
+              value={qaName} onChange={(e) => setQaName(e.target.value)}
+              placeholder="Name" required
+              className="flex-1 min-w-48 bg-[#2a2a2a] border border-[#333] text-white text-sm rounded px-3 py-2 focus:outline-none focus:border-[#e8604c] placeholder:text-[#555]"
+            />
+            <input
+              value={qaPrice} onChange={(e) => setQaPrice(e.target.value)}
+              type="number" step="0.01" min="0" placeholder="Price"
+              className="w-28 bg-[#2a2a2a] border border-[#333] text-white text-sm rounded px-3 py-2 focus:outline-none focus:border-[#e8604c]"
+            />
+            <select
+              value={qaCat} onChange={(e) => setQaCat(e.target.value)}
+              className="flex-1 min-w-40 bg-[#2a2a2a] border border-[#333] text-[#aaa] text-sm rounded px-3 py-2 focus:outline-none focus:border-[#e8604c]"
+            >
+              <option value="">Select category</option>
+              {categories.map((c) => <option key={c._id} value={c._id}>{c.name}</option>)}
+            </select>
+          </div>
+
+          {/* Row 2: Description, Image URL, Upload, Add button */}
+          <div className="flex gap-3 flex-wrap items-center">
+            <input
+              value={qaDesc} onChange={(e) => setQaDesc(e.target.value)}
+              placeholder="Description (optional)"
+              className="flex-1 min-w-48 bg-[#2a2a2a] border border-[#333] text-white text-sm rounded px-3 py-2 focus:outline-none focus:border-[#e8604c] placeholder:text-[#555]"
+            />
+            <input
+              value={qaImageUrl} onChange={(e) => setQaImageUrl(e.target.value)}
+              placeholder="Image URL (optional)"
+              className="flex-1 min-w-48 bg-[#2a2a2a] border border-[#333] text-white text-sm rounded px-3 py-2 focus:outline-none focus:border-[#e8604c] placeholder:text-[#555]"
+            />
+            <label className={`px-3 py-2 rounded text-xs font-medium text-[#aaa] border border-[#333] bg-[#2a2a2a] hover:text-white cursor-pointer whitespace-nowrap ${qaImageUploading ? 'opacity-50 pointer-events-none' : ''}`}>
+              {qaImageUploading ? 'Uploading…' : '📁 Upload'}
+              <input
+                type="file" accept="image/*" className="hidden"
+                onChange={async (e) => {
+                  const file = e.target.files?.[0]
+                  if (!file) return
+                  setQaImageUploading(true)
+                  const url = await uploadImage(file)
+                  if (url) setQaImageUrl(url)
+                  setQaImageUploading(false)
+                  e.target.value = ''
+                }}
+              />
+            </label>
+            <button
+              type="submit" disabled={qaAdding}
+              className="px-6 py-2 rounded text-sm font-semibold text-white disabled:opacity-50 whitespace-nowrap"
+              style={{ background: 'linear-gradient(90deg, #e8604c, #f0a500)' }}
+            >
+              {qaAdding ? 'Adding…' : '+ Add Item'}
+            </button>
+          </div>
         </form>
         {qaError && <p className="text-xs text-red-400 mt-2">{qaError}</p>}
       </div>
@@ -218,6 +258,50 @@ export default function AdminMenuPage() {
                   className="w-full bg-[#2a2a2a] border border-[#333] text-white text-sm rounded px-3 py-2 focus:outline-none focus:border-[#e8604c] resize-none"
                 />
               </div>
+
+              {/* Image */}
+              <div>
+                <label className="text-xs text-[#888] block mb-1">Image</label>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={editForm.imageUrl ?? ''}
+                    onChange={(e) => setEditForm((p) => ({ ...p, imageUrl: e.target.value }))}
+                    placeholder="Paste image URL or upload a file →"
+                    className="flex-1 bg-[#2a2a2a] border border-[#333] text-white text-sm rounded px-3 py-2 focus:outline-none focus:border-[#e8604c] placeholder:text-[#555]"
+                  />
+                  <label className={`px-3 py-2 rounded text-xs font-medium text-[#aaa] border border-[#333] bg-[#2a2a2a] hover:text-white cursor-pointer whitespace-nowrap ${editImageUploading ? 'opacity-50 pointer-events-none' : ''}`}>
+                    {editImageUploading ? 'Uploading…' : '📁 Upload'}
+                    <input
+                      type="file" accept="image/*" className="hidden"
+                      onChange={async (e) => {
+                        const file = e.target.files?.[0]
+                        if (!file) return
+                        setEditImageUploading(true)
+                        setEditImageError('')
+                        const url = await uploadImage(file)
+                        if (url) {
+                          setEditForm((p) => ({ ...p, imageUrl: url }))
+                        } else {
+                          setEditImageError('Upload failed. Max 5 MB, JPEG/PNG/WebP only.')
+                        }
+                        setEditImageUploading(false)
+                        e.target.value = ''
+                      }}
+                    />
+                  </label>
+                </div>
+                {editImageError && <p className="text-xs text-red-400 mt-1">{editImageError}</p>}
+                {editForm.imageUrl && (
+                  <img
+                    src={editForm.imageUrl}
+                    alt="Preview"
+                    className="mt-2 h-24 w-24 object-cover rounded-lg border border-[#333]"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                  />
+                )}
+              </div>
+
               <div>
                 <label className="text-xs text-[#888] block mb-1">Category</label>
                 <select

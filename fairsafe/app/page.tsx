@@ -4,7 +4,8 @@ import Ticker from "./components/Ticker";
 import {
   ShieldCheck, Zap, DollarSign, Users, HeartPulse,
   HardHat, Calendar, Award, Phone, ArrowRight,
-  MapPin, Star, CheckCircle, Building2, Trophy, Clock
+  MapPin, Star, CheckCircle, Building2, Trophy, Clock,
+  FileText, Shield
 } from "lucide-react";
 
 export default function Home() {
@@ -32,7 +33,6 @@ export default function Home() {
               objectPosition: "right center",
             }}
           />
-          {/* Dark overlay — mobile pe .hero-overlay class se opacity 0.45 ho jati hai */}
           <div className="hero-overlay" style={{ position: "absolute", inset: 0, background: "rgba(8, 97, 250, 0.169)" }} />
         </div>
 
@@ -83,13 +83,13 @@ export default function Home() {
             and industrial worksites. Fair prices. Professional response. Zero compromise on safety.
           </p>
 
-         <Link href="/services" className="btn-outline" style={{
-  borderColor: "rgba(3, 0, 0, 0.4)", color: "#7C3AED",
-  padding: "13px 32px", borderRadius: 5, fontWeight: 700,
-  textDecoration: "none", fontSize: "1rem", display: "inline-flex", alignItems: "center"
-}}>Our Services</Link>
+          <Link href="/services" className="btn-outline" style={{
+            borderColor: "rgba(3, 0, 0, 0.4)", color: "#7C3AED",
+            padding: "13px 32px", borderRadius: 5, fontWeight: 700,
+            textDecoration: "none", fontSize: "1rem", display: "inline-flex", alignItems: "center"
+          }}>Our Services</Link>
 
-          {/* Stats strip — mobile pe .hero-stats class se hide ho jata hai */}
+          {/* Stats strip */}
           <div className="hero-stats" style={{
             display: "flex",
             gap: 48,
@@ -105,7 +105,6 @@ export default function Home() {
                 }}>
                   {num}
                 </div>
-
                 <div style={{
                   fontSize: "0.78rem",
                   color: "rgba(26,10,46,0.7)",
@@ -140,7 +139,7 @@ export default function Home() {
         }}>
           {[
             [<ShieldCheck key="s" size={18} color="#7C3AED" />, "WorkSafe BC Compliant"],
-            [<Users key="u" size={18} color="#7C3AED" />, "Musqueam Indian Band Partner"],
+            [<Users key="u" size={18} color="#7C3AED" />, "Trusted First Aid Provider for the Musqueam Indian Band"],
             [<Zap key="z" size={18} color="#7C3AED" />, "Rapid Response"],
             [<DollarSign key="d" size={18} color="#7C3AED" />, "Transparent Pricing"],
             [<HeartPulse key="h" size={18} color="#7C3AED" />, "Metro Vancouver & Lower Mainland"],
@@ -169,6 +168,146 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ── WORKSAFE BC COMPLIANCE SECTION ── */}
+      <section style={{ background: "#F8F5FF", padding: "80px 5%", borderBottom: "1px solid rgba(124,58,237,0.1)" }}>
+        <div style={{
+          maxWidth: 1280, margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gap: 48, alignItems: "center"
+        }}>
+
+          {/* Left: Text Content */}
+          <div>
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 20,
+              background: "rgba(124,58,237,0.08)", border: "1px solid rgba(124,58,237,0.2)",
+              borderRadius: 999, padding: "6px 16px",
+            }}>
+              <ShieldCheck size={14} color="#7C3AED" />
+              <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#7C3AED" }}>
+                WorkSafe BC Certified
+              </span>
+            </div>
+
+            <h2 style={{
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: "clamp(2rem,4vw,3rem)",
+              letterSpacing: "0.02em",
+              marginBottom: 20,
+              color: "#1A0A2E",
+            }}>
+              FULLY INSURED &<br />
+              <span style={{ color: "#7C3AED" }}>WORKSAFE BC COMPLIANT</span>
+            </h2>
+
+            <p style={{ fontSize: "1rem", color: "rgba(26,10,46,0.7)", lineHeight: 1.85, marginBottom: 32 }}>
+              At FAIRSAFE First Aid and Safety Solutions, we maintain active clearance with WorkSafeBC,
+              ensuring our workers are covered in the event of a workplace injury, with access to medical
+              care and wage-loss benefits. Workplace incidents involving covered workers are managed through
+              WorkSafeBC&apos;s no-fault system, while our liability and professional insurance provide additional
+              protection when assisting members of the public. This ensures comprehensive coverage and peace
+              of mind for both our team and our clients.
+            </p>
+
+            {/* WorkSafe BC Logo */}
+            <div style={{
+              display: "inline-block",
+              background: "white",
+              borderRadius: 10,
+              padding: "16px 24px",
+              border: "1px solid rgba(124,58,237,0.12)",
+              boxShadow: "0 4px 20px rgba(124,58,237,0.08)",
+              marginBottom: 28,
+            }}>
+              <Image
+                src="/images/worksafebc-logo.PNG"
+                alt="WorkSafe BC"
+                width={180}
+                height={60}
+                style={{ objectFit: "contain", display: "block" }}
+              />
+            </div>
+
+            {/* Document Buttons */}
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 14 }}>
+              <a
+                
+                 
+                 href="/docs/clearance-letter.PNG"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 8,
+                  background: "#7C3AED", color: "white",
+                  padding: "11px 22px", borderRadius: 8,
+                  fontSize: "0.82rem", fontWeight: 700,
+                  textDecoration: "none", letterSpacing: "0.04em",
+                  boxShadow: "0 4px 14px rgba(124,58,237,0.3)",
+                }}
+              >
+                <FileText size={15} /> View Clearance Letter
+              </a>
+
+              <a
+                href="/docs/certificate-of-insurance.PNG"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 8,
+                  background: "white", color: "#7C3AED",
+                  border: "2px solid #7C3AED",
+                  padding: "9px 22px", borderRadius: 8,
+                  fontSize: "0.82rem", fontWeight: 700,
+                  textDecoration: "none", letterSpacing: "0.04em",
+                }}
+              >
+                <Shield size={15} /> View Insurance Certificate
+              </a>
+            </div>
+
+         {/* Contact note */}
+            <p style={{ fontSize: "0.78rem", color: "rgba(26,10,46,0.45)", marginTop: 4 }}>
+              To view full documents, please{" "}
+              <Link href="/contact" style={{ color: "#7C3AED", fontWeight: 600, textDecoration: "none" }}>
+                contact us
+              </Link>{" "}
+              or email directly.
+            </p>
+
+            {/* Disclaimer */}
+            <p style={{ fontSize: "0.72rem", color: "rgba(26,10,46,0.38)", marginTop: 6, fontStyle: "italic" }}>
+              * Documents shown are partial previews only. Full certificates available upon request.
+            </p>
+          </div>
+
+          {/* Right: Certifications Image */}
+          <div style={{ position: "relative", borderRadius: 16, overflow: "hidden", height: 420, boxShadow: "0 20px 60px rgba(124,58,237,0.15)" }}>
+            <Image
+              src="/images/certifications-wall.jpg"
+              alt="FAIRSAFE Certifications"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(to top, rgba(124,58,237,0.3) 0%, transparent 60%)"
+            }} />
+            <div style={{
+              position: "absolute", bottom: 24, left: 24, right: 24,
+              background: "rgba(255,255,255,0.95)", borderRadius: 10, padding: "14px 18px",
+              display: "flex", alignItems: "center", gap: 12,
+            }}>
+              <CheckCircle size={20} color="#7C3AED" />
+              <span style={{ fontSize: "0.88rem", fontWeight: 700, color: "#1A0A2E" }}>
+                Account #201811946 — Active & In Good Standing
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* ── SERVICES PREVIEW ── */}
       <section style={{ background: "#F8F5FF", padding: "100px 5%" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -186,7 +325,7 @@ export default function Home() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 24 }}>
             {[
               {
-                img: "/images/service-event.jpg", icon: <Calendar size={22} />,
+                img: "/img/IMG_0151.png", icon: <Calendar size={22} />,
                 title: "EVENT FIRST AID", tag: "Festivals · Sports · Corporate",
                 desc: "Full coverage for public and private events — youth sports, festivals, community gatherings — anywhere in Metro Vancouver.",
               },
@@ -304,18 +443,16 @@ export default function Home() {
 
           <div className="gallery-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gridTemplateRows: "280px 280px", gap: 12 }}>
             <div className="gallery-item gallery-large" style={{ gridRow: "1 / 3", borderRadius: 10, overflow: "hidden", position: "relative" }}>
-              <Image src="/images/gallery2.jpg" alt="FAIRSAFE" fill sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" style={{ objectFit: "cover" }} />
+              <Image src="/images/work1.jpeg" alt="FAIRSAFE" fill sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" style={{ objectFit: "cover" }} />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(26,10,46,0.5),transparent 60%)" }} />
             </div>
             <div className="gallery-item" style={{ borderRadius: 10, overflow: "hidden", position: "relative" }}>
               <Image src="/images/gallery3.jpg" alt="FAIRSAFE" fill sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" style={{ objectFit: "cover" }} />
             </div>
             <div className="gallery-item" style={{ borderRadius: 10, overflow: "hidden", position: "relative" }}>
-              <Image src="/images/gallery4.jpg" alt="FAIRSAFE" fill sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" style={{ objectFit: "cover" }} />
+              <Image src="/images/service-staffing.jpg" alt="FAIRSAFE" fill sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" style={{ objectFit: "cover" }} />
             </div>
-            <div className="gallery-item" style={{ borderRadius: 10, overflow: "hidden", position: "relative" }}>
-              <Image src="/images/gallery5.jpg" alt="FAIRSAFE" fill sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" style={{ objectFit: "cover" }} />
-            </div>
+            
             <div className="gallery-item" style={{ borderRadius: 10, overflow: "hidden", position: "relative" }}>
               <Image src="/images/gallery7.jpg" alt="FAIRSAFE" fill sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" style={{ objectFit: "cover" }} />
             </div>
@@ -362,7 +499,7 @@ export default function Home() {
               HOW IT <span style={{ color: "#7C3AED" }}>WORKS</span>
             </h2>
             <p style={{ color: "rgba(26,10,46,0.5)", maxWidth: 460, margin: "12px auto 0", lineHeight: 1.75 }}>
-              Getting professional first aid coverage is simple. Three steps and you're covered.
+              Getting professional first aid coverage is simple. Three steps and you&apos;re covered.
             </p>
           </div>
 
@@ -393,26 +530,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PARTNERSHIP / MUSQUEAM FEATURE ── */}
+      {/* ── COMMUNITY SUPPORT / MUSQUEAM FEATURE ── */}
       <section style={{ background: "#F8F5FF", padding: "0", overflow: "hidden" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))" }}>
           <div style={{ position: "relative", minHeight: 440 }}>
-            <Image src="/images/gallery8.jpg" alt="Musqueam Partnership" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover", filter: "brightness(0.6)" }} />
+            <Image
+              src="/img/IMG_7393.png"
+              alt="Community event support"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ objectFit: "cover", filter: "brightness(0.6)" }}
+            />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right,transparent 60%,#F8F5FF)" }} />
           </div>
+
           <div style={{ padding: "72px 6%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <div className="section-label">Community Trust</div>
-            <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "clamp(2rem,3.5vw,3rem)", letterSpacing: "0.02em", lineHeight: 1.05, marginBottom: 20 }}>
-              PROUD PARTNER OF<br /><span style={{ color: "#5B21B6" }}>MUSQUEAM INDIAN BAND</span>
+            <div className="section-label">Community Support</div>
+            <h2 style={{
+              fontFamily: "'Bebas Neue',sans-serif",
+              fontSize: "clamp(2rem,3.5vw,3rem)",
+              letterSpacing: "0.02em",
+              lineHeight: 1.05,
+              marginBottom: 20,
+            }}>
+              TRUSTED FIRST AID PROVIDER FOR THE<br />
+              <span style={{ color: "#5B21B6" }}>MUSQUEAM INDIAN BAND</span>
             </h2>
             <p style={{ color: "rgba(26,10,46,0.6)", lineHeight: 1.8, fontSize: "0.95rem", marginBottom: 20 }}>
-              FAIRSAFE has been contracted to provide on-site first aid and medical support for events with <strong style={{ color: "#1A0A2E" }}>Musqueam Indian Band</strong>, a First Nation government based in Vancouver, BC.
+              FAIRSAFE provides on-site first aid and event medical support services for community and sporting events associated with the{" "}
+              <strong style={{ color: "#1A0A2E" }}>Musqueam Indian Band</strong>{" "}in Vancouver, British Columbia.
             </p>
             <p style={{ color: "rgba(26,10,46,0.5)", lineHeight: 1.8, fontSize: "0.9rem", marginBottom: 32 }}>
-              Services include first aid coverage for youth soccer events and ongoing event support across the Lower Mainland — an honour we take seriously.
+              Our focus is delivering dependable event coverage, professional support, and safer experiences for communities across the Lower Mainland.
             </p>
             <Link href="/about" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#5B21B6", fontWeight: 700, textDecoration: "none", fontSize: "0.9rem", letterSpacing: "0.06em" }}>
-              LEARN MORE ABOUT US <ArrowRight size={15} />
+              ABOUT FAIRSAFE <ArrowRight size={15} />
             </Link>
           </div>
         </div>
@@ -453,7 +605,7 @@ export default function Home() {
                 METRO VANCOUVER &<br /><span style={{ color: "#7C3AED" }}>LOWER MAINLAND</span>
               </h2>
               <p style={{ color: "rgba(26,10,46,0.6)", lineHeight: 1.8, fontSize: "0.95rem", marginBottom: 32 }}>
-                We deploy certified safety personnel across the entire Metro Vancouver region — from Whistler to Abbotsford. Wherever your event or worksite is, we'll be there.
+                We deploy certified safety personnel across the entire Metro Vancouver region — from Whistler to Abbotsford. Wherever your event or worksite is, we&apos;ll be there.
               </p>
               <Link href="/contact" className="btn-primary">Book Coverage Now</Link>
             </div>
@@ -479,7 +631,8 @@ export default function Home() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24 }}>
             {[
-              { quote: "FAIRSAFE had their attendant on-site before we even opened gates. Professional, prepared, and genuinely affordable. Exactly what we needed for our community event.", name: "Musqueam Indian Band", role: "Youth Soccer Events", initials: "MIB" },
+              { quote: "FAIRSAFE had their attendant on-site before we even opened gates. Professional, prepared, and genuinely affordable. Exactly what we needed for our community event.", 
+  name: "Community Event Organizer", role: "North Vancouver", initials: "CE" },
               { quote: "We needed last-minute first aid coverage for our construction site — FAIRSAFE came through same day. Certified, on time, and cheaper than any other quote we got.", name: "Site Supervisor", role: "Construction Project, Burnaby", initials: "SS" },
               { quote: "Booked them for a 3-day festival. The multi-day discount was a great deal and the team was outstanding throughout. Will use FAIRSAFE for all future events.", name: "Event Coordinator", role: "Lower Mainland Festival", initials: "EC" },
             ].map((t, i) => (
@@ -487,9 +640,9 @@ export default function Home() {
                 <div style={{ display: "flex", gap: 4, marginBottom: 20 }}>
                   {[...Array(5)].map((_, j) => <Star key={j} size={14} fill="#7C3AED" color="#7C3AED" />)}
                 </div>
-                <p style={{ color: "rgba(26,10,46,0.7)", lineHeight: 1.75, fontSize: "0.92rem", marginBottom: 28, fontStyle: "italic" }}>"{t.quote}"</p>
+                <p style={{ color: "rgba(26,10,46,0.7)", lineHeight: 1.75, fontSize: "0.92rem", marginBottom: 28, fontStyle: "italic" }}>&quot;{t.quote}&quot;</p>
                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  <div style={{ width: 42, height: 42, borderRadius: "50%", background: "#7C3AED", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: "0.8rem", flexShrink: 0 }}>{t.initials}</div>
+                  <div style={{ width: 42, height: 42, borderRadius: "50%", background: "#7C3AED", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: "0.8rem", flexShrink: 0, color: "white" }}>{t.initials}</div>
                   <div>
                     <div style={{ fontWeight: 600, fontSize: "0.9rem" }}>{t.name}</div>
                     <div style={{ fontSize: "0.78rem", color: "#6B6080" }}>{t.role}</div>
@@ -523,7 +676,6 @@ export default function Home() {
                 background: "rgba(26,10,46,0.04)",
                 border: "1px solid rgba(26,10,46,0.08)",
                 borderRadius: 12, padding: "28px 20px", textAlign: "center",
-                transition: "border-color 0.2s, background 0.2s",
               }}>
                 <div style={{ color: "#7C3AED", display: "flex", justifyContent: "center", marginBottom: 14 }}>{ind.icon}</div>
                 <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.1rem", letterSpacing: "0.06em", color: "black" }}>{ind.label}</div>
@@ -543,7 +695,7 @@ export default function Home() {
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/contact" style={{ background: "white", color: "#7C3AED", padding: "15px 36px", borderRadius: 5, fontWeight: 700, textDecoration: "none", fontSize: "1rem" }}>Get a Free Quote</Link>
-            <a href="tel:6043788311" style={{ border: "2px solid rgba(26,10,46,0.5)", color: "#1A0A2E", padding: "13px 34px", borderRadius: 5, fontWeight: 500, textDecoration: "none", fontSize: "1rem", display: "inline-flex", alignItems: "center", gap: 8 }}>
+            <a href="tel:6043788311" style={{ border: "2px solid rgba(255,255,255,0.5)", color: "white", padding: "13px 34px", borderRadius: 5, fontWeight: 500, textDecoration: "none", fontSize: "1rem", display: "inline-flex", alignItems: "center", gap: 8 }}>
               <Phone size={16} /> (604) 378-8311
             </a>
           </div>

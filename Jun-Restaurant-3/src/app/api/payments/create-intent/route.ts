@@ -24,6 +24,8 @@ interface CartItemInput {
 
 interface OrderMeta {
   orderType: string
+  pickupType?: string | null
+  pickupTime?: string | null
   tipPercentage: number
   deliveryAddress?: Record<string, string> | null
   customerName?: string
@@ -132,6 +134,8 @@ export async function POST(request: NextRequest) {
         // Encode order data so we can reconstruct it on success
         orderDataJson: JSON.stringify({
           orderType: orderMeta.orderType,
+          pickupType: orderMeta.pickupType ?? null,
+          pickupTime: orderMeta.pickupTime ?? null,
           tipPercentage: tipPct,
           deliveryAddress: orderMeta.deliveryAddress ?? null,
           customerName: orderMeta.customerName ?? null,

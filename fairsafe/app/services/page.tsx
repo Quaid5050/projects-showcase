@@ -8,7 +8,7 @@ export default function ServicesPage() {
   const services = [
     {
       id: "event-first-aid",
-      img: "/images/service-event.jpg",
+      img: "/img/IMG_0113.png",
       icon: <Calendar size={28} />,
       title: "EVENT FIRST AID COVERAGE",
       subtitle: "Festivals · Sports · Corporate · Community",
@@ -25,7 +25,7 @@ export default function ServicesPage() {
     },
     {
       id: "worksite-construction",
-      img: "/images/service-worksite.jpg",
+      img: "/images/service-staffing.jpg",
       icon: <HardHat size={28} />,
       title: "WORKSITE & CONSTRUCTION",
       subtitle: "Construction · Industrial · Manufacturing",
@@ -41,7 +41,7 @@ export default function ServicesPage() {
     },
     {
       id: "safety-staffing",
-      img: "/images/service-staffing.jpg",
+      img: "/images/IMG_0135.jpg",
       icon: <Users size={28} />,
       title: "SAFETY STAFFING",
       subtitle: "On-demand · Contract · Multi-day",
@@ -56,7 +56,7 @@ export default function ServicesPage() {
     },
     {
       id: "industrial-sites",
-      img: "/images/gallery7.jpg",
+      img: "/images/gallery6.jpg",
       icon: <Building2 size={28} />,
       title: "INDUSTRIAL SITE COVERAGE",
       subtitle: "Manufacturing · Warehouses · Facilities",
@@ -169,69 +169,10 @@ export default function ServicesPage() {
       ))}
 
       {/* ── OFFERS ── */}
-<section id="offers" style={{ background: "linear-gradient(135deg,#0d0d14,#150820,#0d0d14)", padding: "100px 5%", position: "relative", overflow: "hidden", scrollMarginTop: 84 }}>
-  <div style={{ position: "absolute", top: "-40%", left: "-15%", width: 500, height: 500, background: "radial-gradient(circle,rgba(107,33,168,0.2) 0%,transparent 70%)", pointerEvents: "none" }} />
-  <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative" }}>
-    <div style={{ textAlign: "center", marginBottom: 56 }}>
-      <div className="section-label">Exclusive Deals</div>
-      <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "clamp(2rem,4vw,3.2rem)", letterSpacing: "0.02em", marginBottom: 14, color: "#FFFFFF" }}>SPECIAL OFFERS</h2>
-      <p style={{ color: "rgba(255,255,255,0.5)", maxWidth: 440, margin: "0 auto", lineHeight: 1.75, fontSize: "0.93rem" }}>Fair pricing is our foundation — these offers make it even better.</p>
-    </div>
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 28 }}>
-      {/* Card 1 */}
-      <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(124,58,237,0.35)", borderRadius: 16, padding: 44, position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", top: 20, right: -30, background: "#7C3AED", color: "#FFFFFF", padding: "6px 48px", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", transform: "rotate(35deg)" }}>FREE BONUS</div>
-        <HeartPulse size={36} color="#A78BFA" style={{ marginBottom: 20 }} />
-        <h3 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.8rem", letterSpacing: "0.04em", marginBottom: 14, color: "#FFFFFF" }}>FREE AED WITH CONTRACT</h3>
-        <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.8, fontSize: "0.93rem", marginBottom: 20 }}>
-          Sign a coverage contract and receive a <span style={{ color: "#A78BFA", fontWeight: 700 }}>complimentary Automated External Defibrillator (AED)</span> — a $1,500+ value at no extra cost. Be prepared beyond the event.
-        </p>
-        <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
-          {["AED unit included at no cost", "Value over $1,500", "Yours to keep after the contract", "Setup guidance included"].map(f => (
-            <li key={f} style={{ display: "flex", alignItems: "center", gap: 9, fontSize: "0.83rem", color: "rgba(255,255,255,0.55)" }}>
-              <CheckCircle size={13} color="#A78BFA" /> {f}
-            </li>
-          ))}
-        </ul>
-      </div>
-      {/* Card 2 */}
-      <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(124,58,237,0.2)", borderRadius: 16, padding: 44 }}>
-        <Zap size={36} color="#A78BFA" style={{ marginBottom: 20 }} />
-        <h3 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.8rem", letterSpacing: "0.04em", marginBottom: 14, color: "#FFFFFF" }}>MULTI-DAY DISCOUNT</h3>
-        <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.8, fontSize: "0.93rem", marginBottom: 20 }}>
-          Booking coverage for <span style={{ color: "#A78BFA", fontWeight: 700 }}>multiple consecutive days?</span> We reward commitment with discounted daily rates. Perfect for festivals, construction projects, or recurring weekly events.
-        </p>
-        <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
-          {["Discounted daily rates", "Applies to 2+ consecutive days", "Works for all service types", "Ask for custom package pricing"].map(f => (
-            <li key={f} style={{ display: "flex", alignItems: "center", gap: 9, fontSize: "0.83rem", color: "rgba(255,255,255,0.55)" }}>
-              <CheckCircle size={13} color="#A78BFA" /> {f}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+
 
       {/* ── PRICING NOTE ── */}
-      <section style={{ background: "#FFFFFF", padding: "60px 5%" }}>
-        <div style={{ maxWidth: 860, margin: "0 auto" }}>
-          <div style={{ background: "rgba(26,10,46,0.04)", border: "1px solid rgba(26,10,46,0.1)", borderRadius: 12, padding: "36px 40px", display: "grid", gridTemplateColumns: "auto 1fr", gap: 28, alignItems: "center" }}>
-            <Clock size={40} color="#7C3AED" style={{ flexShrink: 0 }} />
-            <div>
-              <h3 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.5rem", letterSpacing: "0.04em", marginBottom: 10 }}>PRICING IS SUBJECT TO QUOTE</h3>
-              <p style={{ color: "rgba(26,10,46,0.6)", lineHeight: 1.8, fontSize: "0.9rem" }}>
-                All pricing is customized based on your event size, duration, site type, number of attendants required, and location. We pride ourselves on being the most competitive provider in Metro Vancouver — fairly priced, transparent, and responsive. Get your free quote within 24 hours.
-              </p>
-              <div style={{ marginTop: 20 }}>
-                <Link href="/contact" className="btn-primary" style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: "0.9rem" }}>
-                  Request a Free Quote <ArrowRight size={15} />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  
     </>
   );
 }

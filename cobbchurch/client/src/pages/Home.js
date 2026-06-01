@@ -88,76 +88,84 @@ const Home = () => {
   ];
 
   const stats = [
-    { number: '100+', label: 'Churches Connected' },
-    { number: '50+', label: 'Community Initiatives' },
-    { number: '10K+', label: 'Lives Impacted' },
-    { number: '1', label: 'Mission — Transforming Our Community' },
+    { number: '1', label: 'Vision — Uniting churches across Cobb County' },
+    { number: '1', label: 'Network — Connecting pastors and ministry leaders' },
+    { number: '1', label: 'Community — Serving together to meet real needs' },
+    { number: '1', label: 'Mission — Strengthening churches and transforming lives' },
   ];
 
   return (
     <div className="home">
 
       {/* ───────── HERO ───────── */}
-      <section
-        className="hero home-hero"
-        style={{ backgroundImage: "url('/images/hero.jpg')" }}
-      >
+      {/* PDF: Updated all hero text, buttons renamed, added "We're Better Together" */}
+     <section
+  className="hero home-hero"
+  style={{ 
+    backgroundImage: window.innerWidth <= 768 
+      ? "url('/images/uphero-mobile.jpeg')" 
+      : "url('/images/uphero.jpeg')" 
+  }}
+>
         <div className="hero-overlay" />
 
         <div className="container hero-content">
           <div className="hero-inner">
 
-            <div className="logo-icon">
-              <img
-                src="/images/logo.png"
-                alt="Cobb Church Network Logo"
-                className="logo-img"
-              />
+            <div className="logo-icon" className="logo-img">
+              
             </div>
 
+            {/* PDF: "An Initiative of Cobb Pastors Alliance • Powered by The Shepherds Table" */}
             <p className="hero-eyebrow">
-              Powered by the Pastors Alliance •{' '}
-              <span>Initiative of the Shepherd's Table</span>
+              An Initiative of Cobb Pastors Alliance •{' '}
+              <span>Powered by The Shepherds Table</span>
             </p>
 
+            {/* PDF: CONNECTING CHURCHES. STRENGTHENING COMMUNITY. */}
             <h1 className="hero-title">
-              Stronger Churches.
-              <span className="text-gold"> Stronger Community.</span>
+              CONNECTING CHURCHES.
+              <span className="text-gold"> STRENGTHENING COMMUNITY.</span>
             </h1>
 
             <div className="hero-divider" />
 
+            {/* PDF: "What could God do in our community if we truly moved together?" */}
             <p className="hero-subtitle">
-              A private network helping pastors and churches across Cobb County
-              connect, collaborate, share resources, and respond together.
+              What could God do in our community if we truly moved together?
             </p>
 
+            {/* PDF: Updated description */}
             <p className="hero-description">
-              Cobb Church Network exists to help churches move from isolation to
-              collaboration — building stronger relationships, stronger outreach,
-              and stronger impact throughout our community.
+              Cobb Church Network is a private platform where pastors and churches across Cobb
+              County connect, share resources, collaborate in ministry, and serve together to
+              strengthen our community.
             </p>
 
+            {/* PDF: "We're Better Together." added in hero */}
+            <p className="hero-tagline">We're Better Together.</p>
+
+            {/* PDF: Buttons renamed — Join the Network, Explore Resources, Hear From Pastors */}
             <div className="hero-actions">
               <Link
                 to="/request-access"
                 className="btn btn-primary btn-lg"
               >
-                <FiUsers /> Request Access
+                <FiUsers /> Join the Network
               </Link>
 
               <Link
                 to="/resources"
                 className="btn btn-secondary btn-lg"
               >
-                <FiPackage /> Watch Our Story
+                <FiPackage /> Explore Resources
               </Link>
 
               <Link
                 to="/pastor-stories"
                 className="btn btn-outline-light btn-lg"
               >
-                <FiPlay /> Explore the Vision
+                <FiPlay /> Hear From Pastors
               </Link>
             </div>
 
@@ -172,7 +180,6 @@ const Home = () => {
             {features.map((f, i) => (
               <div key={i} className="feature-item">
                 <div className="feature-icon">{f.icon}</div>
-
                 <div>
                   <h3>{f.title}</h3>
                   <p>{f.desc}</p>
@@ -189,7 +196,7 @@ const Home = () => {
 
           <div className="who-image">
             <img
-              src="/images/why.png"
+              src="/images/group.jpeg"
               alt="Cobb Church Network"
               className="who-img"
             />
@@ -217,15 +224,10 @@ const Home = () => {
               serve the community with greater unity.
             </p>
 
-          
-
             <Link
               to="/about"
               className="btn btn-navy"
-              style={{
-                marginTop: '28px',
-                alignSelf: 'flex-start',
-              }}
+              style={{ marginTop: '28px', alignSelf: 'flex-start' }}
             >
               Learn More About Us <FiArrowRight />
             </Link>
@@ -238,44 +240,24 @@ const Home = () => {
       <section className="section bg-off-white">
         <div className="container text-center">
 
-          <span className="section-label">
-            What We Do
-          </span>
+          <span className="section-label">What We Do</span>
 
-          <h2 className="section-title">
-            How We Serve the Network
-          </h2>
+          <h2 className="section-title">How We Serve the Network</h2>
 
           <div className="divider divider-center" />
 
-          <p
-            style={{
-              maxWidth: '760px',
-              margin: '0 auto',
-              color: 'var(--text-light)',
-              lineHeight: 1.8,
-            }}
-          >
+          <p style={{ maxWidth: '760px', margin: '0 auto', color: 'var(--text-light)', lineHeight: 1.8 }}>
             We help churches build meaningful partnerships, strengthen
             communication, share resources, and collaborate on outreach efforts
             that create lasting community impact.
           </p>
 
-          <div
-            className="grid-3 what-we-do-grid"
-            style={{ marginTop: '48px' }}
-          >
+          <div className="grid-3 what-we-do-grid" style={{ marginTop: '48px' }}>
             {whatWeDo.map((item, i) => (
               <div key={i} className="what-card">
-
-                <div className="icon-box">
-                  {item.icon}
-                </div>
-
+                <div className="icon-box">{item.icon}</div>
                 <h3>{item.title}</h3>
-
                 <p>{item.desc}</p>
-
               </div>
             ))}
           </div>
@@ -283,139 +265,59 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ───────── PASTOR STORIES ───────── */}
+       {/* ── PASTOR STORIES ───────────────────────────── */}
       <section className="section pastor-stories-section">
         <div className="container">
-
           <div className="pastor-stories-header">
-
             <div className="pastor-intro-text">
-
-              <span className="section-label">
-                Hear from Pastors
-              </span>
-
-              <h2
-                className="section-title"
-                style={{ fontSize: '1.9rem' }}
-              >
-                Real Stories.
-                <br />
-                Real Impact.
+              <span className="section-label">Hear from Pastors</span>
+              <h2 className="section-title" style={{ fontSize: '1.9rem' }}>
+                Real Stories.<br />Real Impact.
               </h2>
-
               <div className="divider" />
-
               <p>
-                Real stories from pastors who are experiencing the
-                power of unity and collaboration.
+                Real stories from pastors who are experiencing the power of
+                unity and collaboration.
               </p>
-
-              <Link
-                to="/pastor-stories"
-                className="btn btn-primary"
-                style={{ marginTop: '8px' }}
-              >
+              <Link to="/pastor-stories" className="btn btn-primary" style={{ marginTop: '8px' }}>
                 Watch More Stories
               </Link>
-
             </div>
 
             <div className="pastor-videos-grid">
-
-  {testimonials.map((t, i) => (
-    <div key={i} className="pastor-video-card">
-
-      <img
-        src={`/images/pastor-${i + 1}.png`}
-        alt={t.author}
-        className="pastor-video-thumb"
-        style={{
-          width: '100%',
-          height: '240px',
-          objectFit: 'cover',
-          display: 'block',
-          borderTopLeftRadius: '18px',
-          borderTopRightRadius: '18px',
-        }}
-      />
-
-      <div
-        className="pastor-video-info"
-        style={{
-          padding: '22px',
-          background: '#fff',
-          borderBottomLeftRadius: '18px',
-          borderBottomRightRadius: '18px',
-        }}
-      >
-
-        <p
-          style={{
-            color: '#666',
-            fontSize: '0.95rem',
-            lineHeight: '1.8',
-            marginBottom: '18px',
-            fontStyle: 'italic',
-          }}
-        >
-          "{t.quote}"
-        </p>
-
-        <strong
-          style={{
-            display: 'block',
-            color: '#07172f',
-            marginBottom: '4px',
-            fontSize: '1rem',
-          }}
-        >
-          {t.author}
-        </strong>
-
-        <span
-          style={{
-            color: '#c89b3c',
-            fontSize: '0.9rem',
-            fontWeight: 600,
-          }}
-        >
-          {t.subtitle}
-        </span>
-
-      </div>
-
-    </div>
-  ))}
-
-</div>
-
+              {testimonials.map((t, i) => (
+                <div key={i} className="pastor-video-card">
+                  {/* Replace src with real thumbnail if available */}
+                  <img
+  src={`/images/pastor-${i + 1}.png`}
+  alt={t.author}
+  className="pastor-video-thumb"
+/>
+                 
+                  <div className="pastor-video-info">
+                    <strong>{t.author}</strong>
+                    <span>{t.subtitle}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-
         </div>
       </section>
+
 
       {/* ───────── VISION ───────── */}
       <section className="section vision-section">
         <div className="container">
-
           <div className="vision-content text-center">
 
-            <span className="section-label">
-              The Vision
-            </span>
+            <span className="section-label">The Vision</span>
 
-            <h2
-              className="section-title text-white"
-              style={{ color: '#fff' }}
-            >
+            <h2 className="section-title text-white" style={{ color: '#fff' }}>
               We're Better Together.
             </h2>
 
-            <div
-              className="divider divider-center"
-              style={{ background: '#d6a34a' }}
-            />
+            <div className="divider divider-center" style={{ background: '#d6a34a' }} />
 
             <p className="vision-text">
               What could happen if churches across Cobb County truly moved together?
@@ -432,79 +334,57 @@ const Home = () => {
             </p>
 
             <div className="vision-actions">
-
-              <Link
-                to="/request-access"
-                className="btn btn-primary btn-lg"
-              >
+              <Link to="/request-access" className="btn btn-primary btn-lg">
                 Request Access
               </Link>
-
-              <Link
-                to="/contact"
-                className="btn btn-outline-light btn-lg"
-              >
+              <Link to="/contact" className="btn btn-outline-light btn-lg">
                 Contact Us
               </Link>
-
             </div>
 
           </div>
-
         </div>
       </section>
 
-      {/* ───────── STATS ───────── */}
+      {/* ───────── IMPACT / STATS ───────── */}
+      {/* PDF: Changed heading, font color white/off-white, updated stats to 1 Vision / 1 Network etc. */}
       <section className="stats-bar">
         <div className="container">
 
-          <div
-            className="text-center"
-            style={{ marginBottom: '32px' }}
-          >
-            <h2
-              style={{
-                color: '#07172f',
-                fontFamily: 'Montserrat, sans-serif',
-                fontWeight: 900,
-                textTransform: 'uppercase',
-                fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-                letterSpacing: '0.5px',
-              }}
-            >
-              Together, We Make an Impact
-            </h2>
+          {/* PDF: Gold strip — image on left side (add when image is received) */}
+          <div className="stats-with-image">
 
-            <p
-              style={{
-                marginTop: '14px',
-                color: '#666',
-                maxWidth: '700px',
-                marginInline: 'auto',
-                lineHeight: 1.7,
-              }}
-            >
-              Every connection, partnership, and outreach effort creates
-              stronger churches and a stronger community.
-            </p>
-          </div>
+            {/* PDF: Left side image of people serving one another */}
+            <div className="stats-image-panel full-image">
+              <img
+                src="/images/serving.jpeg"
+                alt="People serving one another"
+              />
+            </div>
 
-          <div className="grid-4">
+            <div className="stats-content-panel">
 
-            {stats.map((s, i) => (
-              <div key={i} className="stat-item">
-
-                <span className="stat-number">
-                  {s.number}
-                </span>
-
-                <span className="stat-label">
-                  {s.label}
-                </span>
-
+              {/* PDF: Font color changed to white/off-white */}
+              <div className="text-center" style={{ marginBottom: '32px' }}>
+                <h2 className="impact-heading">
+                  TOGETHER, WE CAN MAKE AN IMPACT
+                </h2>
+                <p className="impact-subtext">
+                  Every relationship we build creates new opportunities for churches
+                  to serve, collaborate, and strengthen our community.
+                </p>
               </div>
-            ))}
 
+              <div className="grid-4">
+  {stats.map((s, i) => (
+    <div key={i} className="vision-card">
+      <span className="vision-number">{s.number}</span>
+      <span className="vision-label">{s.label}</span>
+    </div>
+  ))}
+</div>
+
+            </div>
           </div>
 
         </div>
@@ -513,50 +393,33 @@ const Home = () => {
       {/* ───────── CTA ───────── */}
       <section className="section cta-section">
         <div className="container">
-
           <div className="cta-box">
 
             <div className="cta-left">
-
               <h2>
                 Ready to Be Part of
                 <br />
-                <span className="text-gold">
-                  Something Bigger?
-                </span>
+                <span className="text-gold">Something Bigger?</span>
               </h2>
-
             </div>
 
             <div className="cta-right">
-
               <p>
                 Join a growing network of pastors and churches committed
                 to moving together for Kingdom impact.
               </p>
-
               <div className="cta-btns">
-
-                <Link
-                  to="/request-access"
-                  className="btn btn-primary"
-                >
+                <Link to="/request-access" className="btn btn-primary">
                   Join the Network
                 </Link>
-
-                <Link
-                  to="/donate"
-                  className="btn btn-outline-light"
-                >
+                {/* PDF: Visible border/box added on "Support the Mission" button */}
+                <Link to="/donate" className="btn btn-support-mission">
                   Support the Mission
                 </Link>
-
               </div>
-
             </div>
 
           </div>
-
         </div>
       </section>
 

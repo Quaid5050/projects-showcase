@@ -68,7 +68,7 @@ export default function Footer() {
           <div className="footer-col">
             <h4 className="footer-heading">Quick Links</h4>
             <ul className="footer-nav">
-              {[['/', 'Home'], ['/products', 'Products'], ['/services', 'Services'], ['/gallery', 'Gallery'], ['/about', 'About Us'], ['/contact', 'Contact']].map(([path, label]) => (
+              {[['/', 'Home'], ['/products', 'Products'], ['/menu', 'Menu'], ['/services', 'Services'], ['/gallery', 'Gallery'], ['/about', 'About Us'], ['/contact', 'Contact']].map(([path, label]) => (
                 <li key={path}><Link to={path}>{label}</Link></li>
               ))}
             </ul>
@@ -77,9 +77,8 @@ export default function Footer() {
           <div className="footer-col">
             <h4 className="footer-heading">Store Hours</h4>
             <ul className="hours-list">
-              <li><span><ClockIcon /><strong>Mon – Fri</strong></span><span>7:00 AM – 10:00 PM</span></li>
-              <li><span><ClockIcon /><strong>Saturday</strong></span><span>8:00 AM – 10:00 PM</span></li>
-              <li><span><ClockIcon /><strong>Sunday</strong></span><span>9:00 AM – 9:00 PM</span></li>
+              <li><span><ClockIcon /><strong>Mon – Sat</strong></span><span>8:00 AM – 9:00 PM</span></li>
+              <li><span><ClockIcon /><strong>Sun & Holidays</strong></span><span>10:00 AM – 6:00 PM</span></li>
             </ul>
             <div className="open-badge">
               <span className="open-dot"></span> Open Now

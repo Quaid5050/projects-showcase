@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --red: #D01C2A;
+  --red-dark: #A8141F;
+  --red-light: #E83040;
+  --navy: #1E2533;
+  --navy-mid: #252D3D;
+  --navy-light: #2F3A52;
+  --steel: #4A5568;
+  --steel-light: #6B7A94;
+  --white: #FFFFFF;
+  --off-white: #F4F6F9;
+  --text-light: #CBD5E0;
+  --text-muted: #718096;
+  --border: rgba(255,255,255,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--red); }
+::selection { background: var(--red); color: #fff; }
+
+a { text-decoration: none; color: inherit; }
+
+.section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  padding: 14px 36px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 2px solid var(--red);
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none;
+}
+.btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: #fff;
+  padding: 14px 36px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 2px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none;
+}
+.btn-outline:hover { border-color: #fff; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideRight { from { width: 0; } to { width: 60px; } }

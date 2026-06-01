@@ -70,6 +70,8 @@ export async function POST(request: NextRequest) {
 
     const orderMeta = JSON.parse(orderDataJson) as {
       orderType: 'pickup' | 'delivery'
+      pickupType?: 'ASAP' | 'SCHEDULED' | null
+      pickupTime?: string | null
       tipPercentage: number
       deliveryAddress: Record<string, string> | null
       customerName: string | null
@@ -106,6 +108,8 @@ export async function POST(request: NextRequest) {
       {
         items: resolvedItems,
         orderType: orderMeta.orderType,
+        pickupType: orderMeta.pickupType ?? (orderMeta.orderType === 'pickup' ? 'ASAP' : undefined),
+        pickupTime: orderMeta.pickupTime ?? null,
         deliveryAddress: orderMeta.deliveryAddress as Parameters<typeof placeOrder>[1]['deliveryAddress'],
         tipPercentage: orderMeta.tipPercentage as 0 | 15 | 20 | 25,
       },

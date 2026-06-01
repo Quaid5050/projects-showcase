@@ -34,13 +34,31 @@ export default function Contact() {
 
   const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     setLoading(true)
-    setTimeout(() => {
+    try {
+      const res = await fetch('https://formspree.io/f/xpqnplzn', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      })
+      if (res.ok) {
+        setSubmitted(true)
+      } else {
+        alert('Something went wrong. Please try again or call us directly at (519) 698-2600.')
+      }
+    } catch {
+      alert('Network error. Please try again or call us directly at (519) 698-2600.')
+    } finally {
       setLoading(false)
-      setSubmitted(true)
-    }, 1500)
+    }
   }
 
   return (
@@ -91,9 +109,8 @@ export default function Contact() {
             </div>
             <div className="contact-card-label">Store Hours</div>
             <div className="hours-compact">
-              <div><span>Mon – Fri</span><span>7AM – 10PM</span></div>
-              <div><span>Saturday</span><span>8AM – 10PM</span></div>
-              <div><span>Sunday</span><span>9AM – 9PM</span></div>
+              <div><span>Mon – Sat</span><span>8AM – 9PM</span></div>
+              <div><span>Sun & Holidays</span><span>10AM – 6PM</span></div>
             </div>
           </div>
         </div>

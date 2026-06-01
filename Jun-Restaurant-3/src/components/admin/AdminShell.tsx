@@ -49,7 +49,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
         <div className="text-center">
           <p className="text-4xl mb-4">🔒</p>
           <p className="text-white mb-4">Login required</p>
-          <Link href="/auth/login" className="text-[#e8a87c] underline">Login</Link>
+          <Link href="/admin-login" className="text-[#e8a87c] underline">Login</Link>
         </div>
       </div>
     )

@@ -19,6 +19,8 @@ type LeanOrder = Omit<IOrderDocument, keyof Document> & {
   items: (IOrderItemEmbed & { menuItemId: Types.ObjectId })[]
   userId: Types.ObjectId
   deliveryAddress: IDeliveryAddress | null
+  pickupType?: 'ASAP' | 'SCHEDULED' | null
+  pickupTime?: Date | null
   tipPercentage: number
   customerName?: string
   customerEmail?: string
@@ -64,7 +66,7 @@ export async function placeOrder(
 
   const order = await Order.create({
     orderNumber,
-    userId,
+    userId: userId ?? undefined,
     items: input.items.map((item) => ({
       menuItemId: item.menuItemId,
       nameSnapshot: item.nameSnapshot,
@@ -73,6 +75,10 @@ export async function placeOrder(
       imageSnapshot: item.imageSnapshot,
     })),
     orderType: input.orderType,
+    pickupType: input.orderType === 'pickup' ? (input.pickupType ?? 'ASAP') : undefined,
+    pickupTime: input.orderType === 'pickup' && input.pickupType === 'SCHEDULED' && input.pickupTime
+      ? new Date(input.pickupTime)
+      : undefined,
     deliveryAddress: input.deliveryAddress ?? null,
     subtotal,
     tipPercentage: input.tipPercentage,
@@ -147,6 +153,8 @@ function serializeOrder(order: LeanOrder): IOrder {
       imageSnapshot: item.imageSnapshot,
     })),
     orderType: order.orderType,
+    pickupType: order.pickupType ?? null,
+    pickupTime: order.pickupTime ? order.pickupTime.toISOString() : null,
     deliveryAddress: order.deliveryAddress ?? null,
     customerName: order.customerName,
     customerEmail: order.customerEmail,

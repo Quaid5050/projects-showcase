@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-barlow: 'Barlow', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  font-family: 'Barlow', 'Helvetica Neue', sans-serif;
+  background: #fff;
+  color: #0d1b35;
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+}
+
+/* Prevent ANY element from causing horizontal scroll */
+#__next,
+main {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

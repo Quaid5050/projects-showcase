@@ -28,10 +28,12 @@ export interface IOrderDocument extends Document {
   userId?: Types.ObjectId
   items: IOrderItemEmbed[]
   orderType: 'pickup' | 'delivery'
+  pickupType?: 'ASAP' | 'SCHEDULED'
+  pickupTime?: Date | null
   deliveryAddress: IDeliveryAddress | null
-  customerName?: string      // Customer name (always present for pickup; delivery uses deliveryAddress.fullName)
-  customerEmail?: string     // Customer email for confirmation emails
-  customerPhone?: string     // Customer phone (pickup orders)
+  customerName?: string
+  customerEmail?: string
+  customerPhone?: string
   subtotal: number
   tipPercentage: number
   tipAmount: number
@@ -39,7 +41,7 @@ export interface IOrderDocument extends Document {
   currency: 'AUD'
   status: string
   paymentStatus: string
-  paymentIntentId?: string   // Stripe PaymentIntent ID (set when paid online)
+  paymentIntentId?: string
   customerConfirmationEmailSentAt?: Date
   merchantOrderEmailSentAt?: Date
   emailError?: string
@@ -100,6 +102,15 @@ const OrderSchema = new Schema<IOrderDocument>(
       type: String,
       enum: Object.values(ORDER_TYPE),
       required: true,
+    },
+    pickupType: {
+      type: String,
+      enum: ['ASAP', 'SCHEDULED'],
+      default: null,
+    },
+    pickupTime: {
+      type: Date,
+      default: null,
     },
     deliveryAddress: {
       type: DeliveryAddressSchema,

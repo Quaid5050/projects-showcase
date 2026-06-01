@@ -3,9 +3,8 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useCartStore } from '@/store/cartStore'
-import { useAuthStore } from '@/store/authStore'
 import { CartItemRow } from '@/components/cart/CartItem'
-import { OrderTypeSelector } from '@/components/checkout/OrderTypeSelector'
+import { OrderTypeSelector, type PickupType } from '@/components/checkout/OrderTypeSelector'
 import { TipSelector } from '@/components/checkout/TipSelector'
 import { OrderTotals } from '@/components/checkout/OrderTotals'
 import { Button } from '@/components/ui/Button'
@@ -19,13 +18,17 @@ interface PickupContactErrors {
   fullName?: string
   email?: string
   phone?: string
+  pickupTime?: string
 }
 
 export default function CheckoutPage() {
-  const { user, isLoading: authLoading } = useAuthStore()
   const { items } = useCartStore()
 
   const [tip, setTip] = useState<TipPercentage>(15)
+
+  // Pickup timing
+  const [pickupType, setPickupType] = useState<PickupType>('ASAP')
+  const [pickupTime, setPickupTime] = useState('')
 
   // Pickup contact fields
   const [pickupFullName, setPickupFullName] = useState('')
@@ -35,19 +38,6 @@ export default function CheckoutPage() {
 
   const [isRedirecting, setIsRedirecting] = useState(false)
   const [serverError, setServerError] = useState('')
-
-  if (!authLoading && !user) {
-    return (
-      <div className="min-h-screen bg-restaurant-bg flex items-center justify-center px-4">
-        <div className="text-center max-w-md">
-          <p className="text-4xl mb-4" aria-hidden="true">🔒</p>
-          <h1 className="font-serif text-2xl font-bold text-restaurant-text mb-2">Login Required</h1>
-          <p className="text-restaurant-muted mb-6">You need to be logged in to place an order.</p>
-          <Link href="/auth/login"><Button size="lg">Login to Continue</Button></Link>
-        </div>
-      </div>
-    )
-  }
 
   if (items.length === 0) {
     return (
@@ -65,7 +55,7 @@ export default function CheckoutPage() {
   const tipAmount = Math.round(subtotal * (tip / 100) * 100) / 100
   const total = subtotal + tipAmount
 
-  const validatePickupContact = (): boolean => {
+  const validate = (): boolean => {
     const errors: PickupContactErrors = {}
     if (!pickupFullName.trim()) errors.fullName = 'Full name is required'
     if (!pickupEmail.trim()) {
@@ -74,12 +64,15 @@ export default function CheckoutPage() {
       errors.email = 'Please enter a valid email address'
     }
     if (!pickupPhone.trim()) errors.phone = 'Phone number is required'
+    if (pickupType === 'SCHEDULED' && !pickupTime) {
+      errors.pickupTime = 'Please select a pickup time'
+    }
     setPickupErrors(errors)
     return Object.keys(errors).length === 0
   }
 
   const handlePaySecurely = async () => {
-    if (!validatePickupContact()) return
+    if (!validate()) return
     setServerError('')
     setIsRedirecting(true)
 
@@ -96,6 +89,11 @@ export default function CheckoutPage() {
           })),
           orderMeta: {
             orderType: 'pickup',
+            pickupType,
+            // datetime-local gives "YYYY-MM-DDTHH:MM" — convert to full ISO string
+            pickupTime: pickupType === 'SCHEDULED' && pickupTime
+              ? new Date(pickupTime).toISOString()
+              : null,
             tipPercentage: tip,
             deliveryAddress: null,
             customerName: pickupFullName.trim(),
@@ -113,7 +111,6 @@ export default function CheckoutPage() {
         return
       }
 
-      // Redirect to Stripe hosted checkout
       window.location.href = data.data.url
     } catch {
       setServerError('An unexpected error occurred. Please try again.')
@@ -129,102 +126,104 @@ export default function CheckoutPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* ── Left column ── */}
           <div className="md:col-span-2 space-y-6">
-            {/* Order type */}
+
+            {/* Pickup timing */}
             <div className="bg-white rounded-card border border-restaurant-border p-6">
-              <OrderTypeSelector />
+              <OrderTypeSelector
+                pickupType={pickupType}
+                onPickupTypeChange={(t) => {
+                  setPickupType(t)
+                  setPickupTime('')
+                  setPickupErrors((p) => ({ ...p, pickupTime: undefined }))
+                }}
+                pickupTime={pickupTime}
+                onPickupTimeChange={(t) => {
+                  setPickupTime(t)
+                  setPickupErrors((p) => ({ ...p, pickupTime: undefined }))
+                }}
+                pickupTimeError={pickupErrors.pickupTime}
+              />
             </div>
 
-            {/* Pickup contact info */}
-            {orderType === 'pickup' && (
-              <div className="bg-white rounded-card border border-restaurant-border p-6">
-                <h2 className="font-semibold text-restaurant-text mb-4">Your Details</h2>
-                <div className="space-y-4">
-                  {/* Full Name */}
+            {/* Contact details */}
+            <div className="bg-white rounded-card border border-restaurant-border p-6">
+              <h2 className="font-semibold text-restaurant-text mb-4">Your Details</h2>
+              <div className="space-y-4">
+                <div>
+                  <label
+                    htmlFor="pickup-fullname"
+                    className="block text-xs font-semibold text-restaurant-text uppercase tracking-wide mb-1"
+                  >
+                    Full Name
+                  </label>
+                  <input
+                    id="pickup-fullname"
+                    type="text"
+                    autoComplete="name"
+                    value={pickupFullName}
+                    onChange={(e) => {
+                      setPickupFullName(e.target.value)
+                      if (pickupErrors.fullName) setPickupErrors((p) => ({ ...p, fullName: undefined }))
+                    }}
+                    placeholder="Your full name"
+                    className={`w-full px-4 py-3 rounded-xl border bg-restaurant-input text-restaurant-text placeholder-restaurant-muted focus:outline-none focus:ring-2 focus:ring-brand-red transition ${
+                      pickupErrors.fullName ? 'border-red-400' : 'border-restaurant-border'
+                    }`}
+                  />
+                  {pickupErrors.fullName && <p className="mt-1 text-xs text-red-500">{pickupErrors.fullName}</p>}
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label
-                      htmlFor="pickup-fullname"
+                      htmlFor="pickup-email"
                       className="block text-xs font-semibold text-restaurant-text uppercase tracking-wide mb-1"
                     >
-                      Full Name
+                      Email
                     </label>
                     <input
-                      id="pickup-fullname"
-                      type="text"
-                      autoComplete="name"
-                      value={pickupFullName}
+                      id="pickup-email"
+                      type="email"
+                      autoComplete="email"
+                      value={pickupEmail}
                       onChange={(e) => {
-                        setPickupFullName(e.target.value)
-                        if (pickupErrors.fullName) setPickupErrors((prev) => ({ ...prev, fullName: undefined }))
+                        setPickupEmail(e.target.value)
+                        if (pickupErrors.email) setPickupErrors((p) => ({ ...p, email: undefined }))
                       }}
-                      placeholder="Your full name"
+                      placeholder="you@example.com"
                       className={`w-full px-4 py-3 rounded-xl border bg-restaurant-input text-restaurant-text placeholder-restaurant-muted focus:outline-none focus:ring-2 focus:ring-brand-red transition ${
-                        pickupErrors.fullName ? 'border-red-400' : 'border-restaurant-border'
+                        pickupErrors.email ? 'border-red-400' : 'border-restaurant-border'
                       }`}
                     />
-                    {pickupErrors.fullName && (
-                      <p className="mt-1 text-xs text-red-500">{pickupErrors.fullName}</p>
-                    )}
+                    {pickupErrors.email && <p className="mt-1 text-xs text-red-500">{pickupErrors.email}</p>}
                   </div>
 
-                  {/* Email + Phone row */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label
-                        htmlFor="pickup-email"
-                        className="block text-xs font-semibold text-restaurant-text uppercase tracking-wide mb-1"
-                      >
-                        Email
-                      </label>
-                      <input
-                        id="pickup-email"
-                        type="email"
-                        autoComplete="email"
-                        value={pickupEmail}
-                        onChange={(e) => {
-                          setPickupEmail(e.target.value)
-                          if (pickupErrors.email) setPickupErrors((prev) => ({ ...prev, email: undefined }))
-                        }}
-                        placeholder="you@example.com"
-                        className={`w-full px-4 py-3 rounded-xl border bg-restaurant-input text-restaurant-text placeholder-restaurant-muted focus:outline-none focus:ring-2 focus:ring-brand-red transition ${
-                          pickupErrors.email ? 'border-red-400' : 'border-restaurant-border'
-                        }`}
-                      />
-                      {pickupErrors.email && (
-                        <p className="mt-1 text-xs text-red-500">{pickupErrors.email}</p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="pickup-phone"
-                        className="block text-xs font-semibold text-restaurant-text uppercase tracking-wide mb-1"
-                      >
-                        Phone
-                      </label>
-                      <input
-                        id="pickup-phone"
-                        type="tel"
-                        autoComplete="tel"
-                        value={pickupPhone}
-                        onChange={(e) => {
-                          setPickupPhone(e.target.value)
-                          if (pickupErrors.phone) setPickupErrors((prev) => ({ ...prev, phone: undefined }))
-                        }}
-                        placeholder="04xx xxx xxx"
-                        className={`w-full px-4 py-3 rounded-xl border bg-restaurant-input text-restaurant-text placeholder-restaurant-muted focus:outline-none focus:ring-2 focus:ring-brand-red transition ${
-                          pickupErrors.phone ? 'border-red-400' : 'border-restaurant-border'
-                        }`}
-                      />
-                      {pickupErrors.phone && (
-                        <p className="mt-1 text-xs text-red-500">{pickupErrors.phone}</p>
-                      )}
-                    </div>
+                  <div>
+                    <label
+                      htmlFor="pickup-phone"
+                      className="block text-xs font-semibold text-restaurant-text uppercase tracking-wide mb-1"
+                    >
+                      Phone
+                    </label>
+                    <input
+                      id="pickup-phone"
+                      type="tel"
+                      autoComplete="tel"
+                      value={pickupPhone}
+                      onChange={(e) => {
+                        setPickupPhone(e.target.value)
+                        if (pickupErrors.phone) setPickupErrors((p) => ({ ...p, phone: undefined }))
+                      }}
+                      placeholder="04xx xxx xxx"
+                      className={`w-full px-4 py-3 rounded-xl border bg-restaurant-input text-restaurant-text placeholder-restaurant-muted focus:outline-none focus:ring-2 focus:ring-brand-red transition ${
+                        pickupErrors.phone ? 'border-red-400' : 'border-restaurant-border'
+                      }`}
+                    />
+                    {pickupErrors.phone && <p className="mt-1 text-xs text-red-500">{pickupErrors.phone}</p>}
                   </div>
                 </div>
               </div>
-            )}
-
-
+            </div>
 
             {/* Tip selector */}
             <div className="bg-white rounded-card border border-restaurant-border p-6">
@@ -236,6 +235,18 @@ export default function CheckoutPage() {
           <div className="md:col-span-1">
             <div className="bg-white rounded-card border border-restaurant-border p-6 sticky top-24">
               <h2 className="font-serif text-xl font-bold text-restaurant-text mb-4">Order Summary</h2>
+
+              {/* Pickup timing badge */}
+              <div className="mb-3 flex items-center gap-2 text-xs text-restaurant-muted">
+                <span>{pickupType === 'ASAP' ? '⚡' : '🕐'}</span>
+                <span>
+                  {pickupType === 'ASAP'
+                    ? 'Pickup ASAP (~20–30 min)'
+                    : pickupTime
+                      ? `Pickup at ${new Date(pickupTime).toLocaleString('en-AU', { hour: '2-digit', minute: '2-digit', hour12: true, weekday: 'short', day: 'numeric', month: 'short' })}`
+                      : 'Scheduled pickup — select a time'}
+                </span>
+              </div>
 
               {/* Cart items */}
               <div className="mb-4 max-h-64 overflow-y-auto">
@@ -253,10 +264,7 @@ export default function CheckoutPage() {
               />
 
               {serverError && (
-                <div
-                  role="alert"
-                  className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700"
-                >
+                <div role="alert" className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
                   {serverError}
                 </div>
               )}

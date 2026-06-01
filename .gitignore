@@ -58,3 +58,5 @@ Thumbs.db
 # Local org-sync tooling (not tracked)
 /scripts/
 /Makefile
+
+.extension/

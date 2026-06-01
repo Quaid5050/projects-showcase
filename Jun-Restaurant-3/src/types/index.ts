@@ -73,6 +73,8 @@ export interface IOrder {
   userId?: string
   items: IOrderItem[]
   orderType: OrderType
+  pickupType?: 'ASAP' | 'SCHEDULED' | null
+  pickupTime?: string | null
   deliveryAddress: IAddress | null
   customerName?: string
   customerEmail?: string

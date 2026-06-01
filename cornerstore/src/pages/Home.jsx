@@ -26,12 +26,48 @@ const StoreIcon = () => (
 )
 
 const categories = [
-  { icon: '🍺', label: 'LCBO & Beer', color: '#2d6a2e', bg: 'rgba(45,106,46,0.15)' },
-  { icon: '🛒', label: 'Grocery', color: '#0e7490', bg: 'rgba(14,116,144,0.15)' },
-  { icon: '☕', label: 'Coffee & Drinks', color: '#92400e', bg: 'rgba(146,64,14,0.15)' },
-  { icon: '🍟', label: 'Fast Food', color: '#c0392b', bg: 'rgba(192,57,43,0.15)' },
-  { icon: '🎰', label: 'OLG Lottery', color: '#7c3aed', bg: 'rgba(124,58,237,0.15)' },
-  { icon: '🚚', label: 'Purolator', color: '#f5a623', bg: 'rgba(245,166,35,0.15)' },
+  {
+    icon: '🍺',
+    label: 'LCBO & Beer',
+    color: '#2d6a2e',
+    bg: 'rgba(45,106,46,0.15)',
+    image: 'https://images.unsplash.com/photo-1566633806327-68e152aaf26d?q=80',
+  },
+  {
+    icon: '🛒',
+    label: 'Grocery',
+    color: '#0e7490',
+    bg: 'rgba(14,116,144,0.15)',
+    image: 'https://images.unsplash.com/photo-1640348784724-93f7b14d8047?q=80',
+  },
+  {
+    icon: '☕',
+    label: 'Coffee & Drinks',
+    color: '#92400e',
+    bg: 'rgba(146,64,14,0.15)',
+    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=260&fit=crop&auto=format',
+  },
+  {
+    icon: '🍟',
+    label: 'Fast Food',
+    color: '#c0392b',
+    bg: 'rgba(192,57,43,0.15)',
+    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=260&fit=crop&auto=format',
+  },
+  {
+    icon: '🎰',
+    label: 'OLG Lottery',
+    color: '#7c3aed',
+    bg: 'rgba(124,58,237,0.15)',
+    image: 'https://images.unsplash.com/photo-1593453917923-c3f751aab514?q=80',
+  },
+  {
+    icon: '🚚',
+    label: 'Purolator',
+    color: '#f5a623',
+    bg: 'rgba(245,166,35,0.15)',
+    image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&h=260&fit=crop&auto=format',
+  },
 ]
 
 const statsData = [
@@ -99,7 +135,8 @@ export default function Home() {
               Store
             </h1>
             <p className="hero-subtitle animate-fadeInUp" style={{ animationDelay: '0.35s' }}>
-              From fresh groceries to LCBO, snacks, daily essentials, OLG Lottery, and more. <strong>Everything you need, right around the corner.</strong>
+              From fresh groceries to LCBO, snacks, daily essentials, OLG Lottery, and more.{' '}
+              <strong>Everything you need, right around the corner.</strong>
             </p>
             <div className="hero-cta animate-fadeInUp" style={{ animationDelay: '0.5s' }}>
               <a href="tel:5196982600" className="btn btn-primary">
@@ -131,7 +168,7 @@ export default function Home() {
               <div className="store-card-info">
                 <div className="info-row">
                   <span className="info-open"><span className="open-pulse"></span> Open Now</span>
-                  <span className="info-hours">7 AM – 10 PM</span>
+                  <span className="info-hours">8 AM – 9 PM</span>
                 </div>
                 <div className="info-row">
                   <span className="info-phone">(519) 698-2600</span>
@@ -175,10 +212,23 @@ export default function Home() {
 
           <div className="cats-grid">
             {categories.map((cat, i) => (
-              <Link to="/products" key={i} className="cat-card" style={{ '--cat-color': cat.color, '--cat-bg': cat.bg }}>
-                <div className="cat-icon">{cat.icon}</div>
-                <div className="cat-label">{cat.label}</div>
-                <ArrowIcon />
+              <Link
+                to="/products"
+                key={i}
+                className="cat-card"
+                style={{ '--cat-color': cat.color }}
+              >
+                {/* Full image fills the box */}
+                <div className="cat-img-box">
+                  <img src={cat.image} alt={cat.label} loading="lazy" />
+                </div>
+
+                {/* Name strip below */}
+                <div className="cat-name-strip" style={{ borderTopColor: cat.color }}>
+                  <span className="cat-name-icon">{cat.icon}</span>
+                  <span className="cat-name-text">{cat.label}</span>
+                  <span className="cat-name-arrow"><ArrowIcon /></span>
+                </div>
               </Link>
             ))}
           </div>
@@ -194,7 +244,7 @@ export default function Home() {
         <div className="container why-inner">
           <div className="why-image">
             <div className="why-img-box">
-                <img src="/images/store-05.jpg" alt="Inside Corner Store at Linwood" style={{ width: '100%', height: '420px', objectFit: 'cover', display: 'block' }} />
+              <img src="/images/store-05.jpg" alt="Inside Corner Store at Linwood" style={{ width: '100%', height: '420px', objectFit: 'cover', display: 'block' }} />
             </div>
             <div className="why-accent-badge">
               <div className="accent-number">15+</div>
@@ -247,37 +297,9 @@ export default function Home() {
               <span key={i} className="service-pill">{s}</span>
             ))}
           </div>
-          <div className="services-cta">
+          <div className="services-cta" style={{display:"flex",gap:"14px",justifyContent:"center",flexWrap:"wrap"}}>
             <Link to="/services" className="btn btn-outline">View All Services <ArrowIcon /></Link>
-          </div>
-        </div>
-      </section>
-
-      {/* GALLERY PREVIEW */}
-      <section className="gallery-preview section-pad">
-        <div className="container">
-          <div className="section-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '40px' }}>
-            <div>
-              <span className="section-tag">Photo Gallery</span>
-              <h2 className="section-title">See Our <span>Store</span></h2>
-            </div>
-            <Link to="/gallery" className="btn btn-outline" style={{ flexShrink: 0 }}>View All Photos <ArrowIcon /></Link>
-          </div>
-          <div className="gallery-preview-grid">
-            {[
-              { src: '/images/store-17.jpg', big: true },
-              { src: '/images/store-06.jpg' },
-              { src: '/images/store-10.jpg' },
-              { src: '/images/store-14.jpg' },
-              { src: '/images/store-21.jpg' },
-            ].map((item, i) => (
-              <Link to="/gallery" key={i} className={`gp-item ${item.big ? 'big' : ''}`}>
-                <img src={item.src} alt={`Store photo ${i+1}`} />
-                <div className="gp-overlay">
-                  <ArrowIcon />
-                </div>
-              </Link>
-            ))}
+            <Link to="/menu" className="btn btn-primary">View Food Menu <ArrowIcon /></Link>
           </div>
         </div>
       </section>

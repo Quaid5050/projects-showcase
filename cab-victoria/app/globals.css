@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #F5A623;
+  --gold2: #FFD080;
+  --black: #0A0A0A;
+  --dark: #111111;
+  --dark2: #1A1A1A;
+  --white: #FAFAFA;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+.font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--gold); color: #000;
+  font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 13px;
+  letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none;
+  padding: 13px 28px; border: none; border-radius: 2px; cursor: pointer;
+  transition: background 0.2s, transform 0.15s; white-space: nowrap;
+}
+.btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: transparent; color: #fff;
+  font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 13px;
+  letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none;
+  padding: 12px 28px; border: 1px solid rgba(255,255,255,0.22); border-radius: 2px;
+  cursor: pointer; transition: border-color 0.2s, color 0.2s; white-space: nowrap;
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── Gold accent ── */
+.gold-bar { width: 40px; height: 2px; background: var(--gold); margin-bottom: 12px; }
+
+/* ── Section container ── */
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+@media (max-width: 640px) { .wrap { padding: 0 16px; } }
+
+/* ── Below fixed nav ── */
+.page-hero { padding-top: 130px; }
+@media (max-width: 768px) { .page-hero { padding-top: 80px; } }
+
+/* ── Animations ── */
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+@keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-33.33%)} }
+
+/* ════════════════════════════════════
+   GLOBAL MOBILE HELPERS
+   All pages reference these classes
+   ════════════════════════════════════ */
+
+/* Two-column → one-column */
+.mob-stack   { display: grid; grid-template-columns: 1fr 1fr; }
+.mob-single  { display: grid; grid-template-columns: 1fr; }
+.mob-flex    { display: flex; flex-wrap: wrap; }
+@media (max-width: 768px) {
+  .mob-stack  { grid-template-columns: 1fr !important; }
+  .mob-reset-order > *  { order: unset !important; }
+}
+
+/* Hide on mobile */
+@media (max-width: 640px) {
+  .hide-sm { display: none !important; }
+}
+
+/* Full-width buttons on small screens */
+@media (max-width: 420px) {
+  .btn-fullmob { width: 100%; justify-content: center; }
+}

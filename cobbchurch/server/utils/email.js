@@ -25,6 +25,7 @@ const sendEmail = async ({ to, subject, html }) => {
 
 // Email templates
 exports.sendApplicationReceived = async (user) => {
+  // 1. Pastor ko confirmation email
   await sendEmail({
     to: user.email,
     subject: 'Request Received — Cobb Church Network',
@@ -41,6 +42,65 @@ exports.sendApplicationReceived = async (user) => {
           <p>Our team will review your application for <strong>${user.churchName}</strong> and follow up soon.</p>
           <p>We appreciate your desire to help strengthen churches and community throughout Cobb County.</p>
           <p style="color: #888; margin-top: 30px;">Together, we make an impact.</p>
+        </div>
+        <div style="background: #1a2744; padding: 20px; text-align: center;">
+          <p style="color: #888; margin: 0; font-size: 12px;">© 2026 Cobb Church Network. All Rights Reserved.</p>
+        </div>
+      </div>
+    `
+  });
+
+  // 2. Admin ko notification email — YEH MISSING THA
+  await sendEmail({
+    to: process.env.ADMIN_EMAIL || process.env.FROM_EMAIL || 'admin@cobbchurchnetwork.org',
+    subject: `New Application: ${user.churchName} — Cobb Church Network`,
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <div style="background: #1a2744; padding: 30px; text-align: center;">
+          <h1 style="color: #d4a853; margin: 0;">Cobb Church Network</h1>
+          <p style="color: #fff; margin: 5px 0;">New Church Application Received</p>
+        </div>
+        <div style="padding: 30px; background: #fff;">
+          <h2 style="color: #1a2744;">New Application Submitted</h2>
+          <table style="width:100%; border-collapse: collapse;">
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px 0; font-weight: bold; width: 40%;">Pastor Name</td>
+              <td style="padding: 10px 0;">${user.pastorName}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px 0; font-weight: bold;">Church Name</td>
+              <td style="padding: 10px 0;">${user.churchName}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px 0; font-weight: bold;">Email</td>
+              <td style="padding: 10px 0;">${user.email}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px 0; font-weight: bold;">Phone</td>
+              <td style="padding: 10px 0;">${user.phone || 'N/A'}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px 0; font-weight: bold;">Location</td>
+              <td style="padding: 10px 0;">${user.city || ''}, ${user.state || ''} ${user.zip || ''}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px 0; font-weight: bold;">Denomination</td>
+              <td style="padding: 10px 0;">${user.denomination || 'N/A'}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px 0; font-weight: bold;">Congregation Size</td>
+              <td style="padding: 10px 0;">${user.congregationSize || 'N/A'}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 10px 0; font-weight: bold;">Website</td>
+              <td style="padding: 10px 0;">${user.website || 'N/A'}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; font-weight: bold;">Message</td>
+              <td style="padding: 10px 0;">${user.applicationMessage || 'N/A'}</td>
+            </tr>
+          </table>
+          <a href="${process.env.CLIENT_URL}/admin/applications" style="display: inline-block; background: #d4a853; color: #fff; padding: 12px 30px; text-decoration: none; border-radius: 4px; margin-top: 24px;">Review in Admin Panel</a>
         </div>
         <div style="background: #1a2744; padding: 20px; text-align: center;">
           <p style="color: #888; margin: 0; font-size: 12px;">© 2026 Cobb Church Network. All Rights Reserved.</p>
@@ -152,7 +212,7 @@ exports.sendEventConfirmation = async (user, event) => {
 
 exports.sendContactEmail = async (data) => {
   await sendEmail({
-    to: process.env.FROM_EMAIL || 'admin@cobbchurchnetwork.org',
+    to: process.env.ADMIN_EMAIL || process.env.FROM_EMAIL || 'admin@cobbchurchnetwork.org',
     subject: `Contact Form: ${data.subject}`,
     html: `
       <h2>New Contact Form Submission</h2>

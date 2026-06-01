@@ -5,7 +5,6 @@
  * Supported providers (EMAIL_PROVIDER):
  *   mailgun  — uses MAILGUN_API_KEY + MAILGUN_DOMAIN
  *   resend   — uses RESEND_API_KEY
- *   smtp     — uses SMTP_HOST / SMTP_PORT / SMTP_USER / SMTP_PASS
  *
  * Routing env vars:
  *   RESTAURANT_ID              — identifier used in log prefixes
@@ -151,56 +150,6 @@ async function sendViaResend(params: {
   }
 }
 
-// ── Provider: send via SMTP ────────────────────────────────────────────────────
-
-async function sendViaSmtp(params: {
-  from: string
-  to: string[]
-  cc?: string
-  subject: string
-  html: string
-  text: string
-}): Promise<void> {
-  const host = process.env.SMTP_HOST
-  const port = process.env.SMTP_PORT
-  const user = process.env.SMTP_USER
-  const pass = process.env.SMTP_PASS
-
-  if (!host || !port || !user || !pass) {
-    console.warn('[email] SMTP_HOST/PORT/USER/PASS not fully set — skipping')
-    return
-  }
-
-  // nodemailer is not installed by default — install it if you want SMTP support:
-  //   npm install nodemailer @types/nodemailer
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let nodemailer: any
-  try {
-    nodemailer = await import('nodemailer' as string)
-  } catch {
-    console.error('[email] nodemailer is not installed. Run: npm install nodemailer')
-    return
-  }
-
-  traceLog('sendViaSmtp →', { to: params.to, cc: params.cc, subject: params.subject })
-
-  const transporter = nodemailer.createTransport({
-    host,
-    port: Number(port),
-    secure: Number(port) === 465,
-    auth: { user, pass },
-  })
-
-  await transporter.sendMail({
-    from: params.from,
-    to: params.to.join(', '),
-    cc: params.cc,
-    subject: params.subject,
-    html: params.html,
-    text: params.text,
-  })
-}
-
 // ── Unified send dispatcher ────────────────────────────────────────────────────
 
 async function sendEmail(params: {
@@ -218,8 +167,6 @@ async function sendEmail(params: {
   switch (provider) {
     case 'resend':
       return sendViaResend(params)
-    case 'smtp':
-      return sendViaSmtp(params)
     case 'mailgun':
     default:
       return sendViaMailgun(params)
@@ -236,7 +183,12 @@ function buildMerchantEmailContent(order: IOrder): { html: string; text: string 
   const orderTypeLabel = isPickup ? 'Pickup' : 'Delivery'
 
   const deliveryInfo = isPickup
-    ? `<strong>Pickup</strong> — ${RESTAURANT_INFO.address}`
+    ? (() => {
+        const pickupTiming = order.pickupType === 'SCHEDULED' && order.pickupTime
+          ? `Scheduled: <strong>${new Date(order.pickupTime).toLocaleString('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', hour12: true })}</strong>`
+          : '<strong>⚡ ASAP</strong> (~20–30 min)'
+        return `${pickupTiming}<br />${RESTAURANT_INFO.address}`
+      })()
     : order.deliveryAddress
       ? [
           order.deliveryAddress.fullName,
@@ -323,7 +275,12 @@ function buildMerchantEmailContent(order: IOrder): { html: string; text: string 
 </html>`
 
   const deliveryTextBlock = isPickup
-    ? `Pickup at: ${RESTAURANT_INFO.address}`
+    ? (() => {
+        const timing = order.pickupType === 'SCHEDULED' && order.pickupTime
+          ? `Scheduled: ${new Date(order.pickupTime).toLocaleString('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', hour12: true })}`
+          : 'ASAP (~20–30 min)'
+        return `Pickup at: ${RESTAURANT_INFO.address}\nPickup Time: ${timing}`
+      })()
     : order.deliveryAddress
       ? [
           order.deliveryAddress.fullName,
@@ -375,7 +332,13 @@ function buildCustomerEmailContent(order: IOrder): { html: string; text: string 
   const orderTypeLabel = isPickup ? 'Pickup' : 'Delivery'
 
   const pickupDeliveryHtml = isPickup
-    ? `<p style="margin:0;"><strong>Pickup Location:</strong><br />${RESTAURANT_INFO.address}</p>`
+    ? (() => {
+        const timing = order.pickupType === 'SCHEDULED' && order.pickupTime
+          ? `Scheduled: <strong>${new Date(order.pickupTime).toLocaleString('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', hour12: true })}</strong>`
+          : '<strong>⚡ ASAP</strong> (~20–30 min)'
+        return `<p style="margin:0;"><strong>Pickup Location:</strong><br />${RESTAURANT_INFO.address}</p>
+<p style="margin:8px 0 0;">Pickup Time: ${timing}</p>`
+      })()
     : order.deliveryAddress
       ? `<p style="margin:0;"><strong>Delivery Address:</strong><br />
           ${order.deliveryAddress.streetAddress}<br />
@@ -459,7 +422,12 @@ function buildCustomerEmailContent(order: IOrder): { html: string; text: string 
 </html>`
 
   const pickupDeliveryText = isPickup
-    ? `PICKUP LOCATION\n---------------\n${RESTAURANT_INFO.address}`
+    ? (() => {
+        const timing = order.pickupType === 'SCHEDULED' && order.pickupTime
+          ? `Scheduled: ${new Date(order.pickupTime).toLocaleString('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', hour12: true })}`
+          : 'ASAP (~20–30 min)'
+        return `PICKUP LOCATION\n---------------\n${RESTAURANT_INFO.address}\nPickup Time: ${timing}`
+      })()
     : order.deliveryAddress
       ? `DELIVERY ADDRESS\n----------------\n${order.deliveryAddress.streetAddress}\n${order.deliveryAddress.suburb} ${order.deliveryAddress.state} ${order.deliveryAddress.postcode}`
       : ''

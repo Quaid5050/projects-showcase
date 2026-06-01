@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useCartStore } from '@/store/cartStore'
-import { useAuthStore } from '@/store/authStore'
 import { MobileMenu } from './MobileMenu'
 
 export function Header() {
@@ -14,7 +13,6 @@ export function Header() {
 
   const items = useCartStore((s) => s.items)
   const itemCount = items.reduce((sum, i) => sum + i.quantity, 0)
-  const { user, isLoading, logout } = useAuthStore()
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20)
@@ -122,54 +120,6 @@ export function Header() {
                 )}
               </Link>
 
-              {/* Auth — desktop */}
-              <div className="hidden md:flex items-center gap-2">
-                {isLoading ? null : user ? (
-                  <>
-                    {/* Admins: show name only — no link to account or admin panel from public site */}
-                    {user.role === 'admin' ? (
-                      <span className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-restaurant-muted cursor-default select-none">
-                        <span className="w-7 h-7 rounded-full bg-gradient-to-br from-brand-red to-spice-700 flex items-center justify-center text-white text-xs font-bold">
-                          {user.name.charAt(0).toUpperCase()}
-                        </span>
-                        <span>{user.name.split(' ')[0]}</span>
-                      </span>
-                    ) : (
-                      <Link
-                        href="/account"
-                        className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-restaurant-text hover:text-brand-red hover:bg-spice-50 transition-all focus:outline-none focus:ring-2 focus:ring-brand-red"
-                      >
-                        <span className="w-7 h-7 rounded-full bg-gradient-to-br from-brand-red to-spice-700 flex items-center justify-center text-white text-xs font-bold">
-                          {user.name.charAt(0).toUpperCase()}
-                        </span>
-                        <span>{user.name.split(' ')[0]}</span>
-                      </Link>
-                    )}
-                    <button
-                      onClick={logout}
-                      className="px-3 py-2 rounded-xl text-sm font-medium text-restaurant-muted hover:text-brand-red hover:bg-spice-50 transition-all focus:outline-none focus:ring-2 focus:ring-brand-red"
-                    >
-                      Logout
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <Link
-                      href="/auth/login"
-                      className="px-4 py-2 rounded-xl text-sm font-medium text-restaurant-text hover:text-brand-red hover:bg-spice-50 transition-all focus:outline-none focus:ring-2 focus:ring-brand-red"
-                    >
-                      Login
-                    </Link>
-                    <Link
-                      href="/auth/signup"
-                      className="px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-brand-red to-spice-500 text-white shadow-red hover:shadow-lg hover:from-spice-700 hover:to-brand-red transition-all focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2"
-                    >
-                      Sign Up
-                    </Link>
-                  </>
-                )}
-              </div>
-
               {/* Hamburger — mobile */}
               <button
                 onClick={() => setMobileOpen(true)}
@@ -186,7 +136,7 @@ export function Header() {
         </div>
       </header>
 
-      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} user={user} onLogout={logout} />
+      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
 
       {/* Header spacer */}
       <div className="h-[68px]" aria-hidden="true" />

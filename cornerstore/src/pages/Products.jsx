@@ -7,91 +7,91 @@ const products = [
     icon: '🍷', color: '#7c3aed',
     desc: 'Wide selection of wines, spirits, and imported beverages from the LCBO.',
     tags: ['Wine', 'Spirits', 'Imported', 'Ontario Select'],
-    emoji: '🍷'
+    image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=500&h=220&fit=crop&auto=format'
   },
   {
     id: 2, category: 'alcohol', label: 'Beer Store',
     icon: '🍺', color: '#f5a623',
     desc: 'Full selection of domestic and imported beers, lagers, ales, and craft options.',
     tags: ['Domestic', 'Imported', 'Craft', 'Cans & Bottles'],
-    emoji: '🍺'
+    image: 'https://images.unsplash.com/photo-1566633806327-68e152aaf26d?q=80'
   },
   {
     id: 3, category: 'food', label: 'Grocery',
     icon: '🛒', color: '#2d6a2e',
     desc: 'Everyday grocery staples, canned goods, condiments, and pantry essentials.',
     tags: ['Pantry', 'Canned Goods', 'Condiments', 'Baking'],
-    emoji: '🛒'
+    image: 'https://images.unsplash.com/photo-1640348784724-93f7b14d8047?q=80'
   },
   {
     id: 4, category: 'food', label: 'Snacks',
     icon: '🍿', color: '#0e7490',
     desc: 'Chips, chocolates, candy, nuts, granola bars, and all your favourite snacks.',
     tags: ['Chips', 'Chocolate', 'Candy', 'Nuts & Bars'],
-    emoji: '🍿'
+    image: 'https://images.unsplash.com/photo-1771626717980-0049820ed4e1?q=80'
   },
   {
     id: 5, category: 'drinks', label: 'Soft Drinks',
     icon: '🥤', color: '#c0392b',
     desc: 'Coke, Pepsi, energy drinks, juices, sparkling water, iced teas, and more.',
     tags: ['Soda', 'Energy Drinks', 'Juice', 'Sparkling Water'],
-    emoji: '🥤'
+    image: 'https://images.unsplash.com/photo-1527960471264-932f39eb5846?w=500&h=220&fit=crop&auto=format'
   },
   {
     id: 6, category: 'drinks', label: 'Coffee & Hot Drinks',
     icon: '☕', color: '#92400e',
     desc: 'Fresh brewed coffee, hot chocolate, teas, and premium instant options.',
     tags: ['Fresh Coffee', 'Tea', 'Hot Chocolate', 'Instant'],
-    emoji: '☕'
+    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=220&fit=crop&auto=format'
   },
   {
     id: 7, category: 'food', label: 'Dairy Products',
     icon: '🥛', color: '#0369a1',
     desc: 'Milk, cheese, butter, yogurt, eggs, and fresh dairy essentials.',
     tags: ['Milk', 'Cheese', 'Eggs', 'Yogurt'],
-    emoji: '🥛'
+    image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&h=220&fit=crop&auto=format'
   },
   {
     id: 8, category: 'tobacco', label: 'Cigars & Cigarettes',
     icon: '🚬', color: '#374151',
     desc: 'Premium cigarettes and cigars from leading brands. Valid ID required.',
     tags: ['Cigarettes', 'Cigars', 'All Brands'],
-    emoji: '🚬'
+    image: 'https://images.unsplash.com/photo-1547424450-a69b33b2cdc2?q=80'
   },
   {
     id: 9, category: 'tobacco', label: 'Vape Store',
     icon: '💨', color: '#6366f1',
     desc: 'Disposable vapes, pods, e-liquids, and accessories. 19+ only.',
     tags: ['Disposables', 'Pods', 'E-Liquid', 'Accessories'],
-    emoji: '💨'
+    image: 'https://images.unsplash.com/photo-1654276793568-68dc455c3b4d?q=80'
   },
   {
     id: 10, category: 'essentials', label: 'Toiletries',
     icon: '🧴', color: '#0891b2',
     desc: 'Shampoo, soap, toothpaste, razors, deodorant, and personal care items.',
     tags: ['Personal Care', 'Hygiene', 'Hair Care', 'Skin Care'],
-    emoji: '🧴'
+    image: 'https://images.unsplash.com/photo-1603990103103-baf3ada7af1c?q=80'
   },
   {
     id: 11, category: 'essentials', label: 'Ice',
     icon: '🧊', color: '#164e63',
     desc: 'Bagged party ice, cube ice, and large ice bags perfect for events and BBQs.',
     tags: ['Party Ice', 'Cube Ice', 'Bag Ice'],
-    emoji: '🧊'
+    image: 'https://images.unsplash.com/photo-1590430752967-d0e116909be1?q=80'
   },
   {
     id: 12, category: 'essentials', label: 'BBQ Tank',
     icon: '🔥', color: '#b91c1c',
     desc: 'Propane BBQ tank exchanges and refills. Keep your summer grilling going!',
     tags: ['Propane', 'Tank Exchange', 'BBQ', 'Refill'],
-    emoji: '🔥'
+    image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&h=220&fit=crop&auto=format'
   },
   {
     id: 13, category: 'food', label: 'Fast Food & Daily Food',
     icon: '🍔', color: '#ea580c',
     desc: 'Ready-to-eat meals, sandwiches, hot dogs, and freshly prepared daily food.',
     tags: ['Ready-to-Eat', 'Sandwiches', 'Hot Food', 'Daily Specials'],
-    emoji: '🍔'
+    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=500&h=220&fit=crop&auto=format'
   },
 ]
 
@@ -143,10 +143,19 @@ export default function Products() {
           <div className="products-grid">
             {filtered.map(product => (
               <div key={product.id} className="product-card" style={{ '--prod-color': product.color }}>
-                <div className="product-card-header" style={{ background: `${product.color}22` }}>
-                  <div className="product-emoji">{product.emoji}</div>
-                  <div className="product-color-bar" style={{ background: product.color }}></div>
+
+                {/* Full image replaces emoji area */}
+                <div className="product-card-header">
+                  <img
+                    src={product.image}
+                    alt={product.label}
+                    loading="lazy"
+                  />
+                  <div className="product-img-overlay"></div>
+                  {/* Small emoji badge on top of image */}
+                  <span className="product-badge-emoji">{product.icon}</span>
                 </div>
+
                 <div className="product-card-body">
                   <h3 className="product-title">{product.label}</h3>
                   <p className="product-desc">{product.desc}</p>

@@ -37,7 +37,7 @@ export async function GET(
         order: {
           ...order,
           _id: order._id.toString(),
-          userId: order.userId.toString(),
+          userId: order.userId?.toString() ?? '',
           items: order.items.map((item) => ({
             ...item,
             menuItemId: item.menuItemId.toString(),
@@ -94,7 +94,7 @@ export async function PATCH(
         order: {
           ...order,
           _id: order._id.toString(),
-          userId: order.userId.toString(),
+          userId: order.userId?.toString() ?? '',
           items: order.items.map((item) => ({
             ...item,
             menuItemId: item.menuItemId.toString(),

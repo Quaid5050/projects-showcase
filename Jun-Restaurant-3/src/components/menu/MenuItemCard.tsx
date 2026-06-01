@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { useCartStore } from '@/store/cartStore'
 import { PopularBadge } from './PopularBadge'
 import { formatPrice } from '@/lib/utils'
-import { DEFAULT_FOOD_IMAGE } from '@/lib/constants'
 import type { IMenuItem } from '@/types'
 
 // ============================================================
@@ -119,18 +118,20 @@ export function MenuItemCard({ item, onOpenModal }: MenuItemCardProps) {
       </div>
 
       {/* Right: image */}
-      <div className="relative w-28 sm:w-32 flex-shrink-0 bg-spice-50 overflow-hidden">
-        <Image
-          src={item.imageUrl || DEFAULT_FOOD_IMAGE}
-          alt={item.name}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
-          sizes="(max-width: 640px) 112px, 128px"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement
-            target.src = DEFAULT_FOOD_IMAGE
-          }}
-        />
+      <div className="relative w-28 sm:w-32 flex-shrink-0 bg-white overflow-hidden">
+        {item.imageUrl && !item.imageUrl.includes('placeholder') ? (
+          <Image
+            src={item.imageUrl}
+            alt=""
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            sizes="(max-width: 640px) 112px, 128px"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement
+              target.style.display = 'none'
+            }}
+          />
+        ) : null}
 
         {/* Unavailable overlay */}
         {!item.isAvailable && (

@@ -48,15 +48,8 @@ const Navbar = () => {
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="navbar-inner">
           <Link to="/" className="navbar-logo" onClick={() => setIsOpen(false)}>
-            <div className="logo-icon">
-  <img src="/images/logo.png" alt="Cobb Church Network Logo" className="logo-img" />
-</div>
-            <div className="logo-text">
-              <span className="logo-name">COBB CHURCH</span>
-              <span className="logo-name gold">NETWORK</span>
-              <span className="logo-tagline">WE'RE BETTER TOGETHER.</span>
-            </div>
-          </Link>
+  <img src="/images/logo2.png" alt="Cobb Church Network Logo" className="logo-img" />
+</Link>
 
           <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
             {navLinks.map(link => (

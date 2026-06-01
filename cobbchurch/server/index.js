@@ -9,17 +9,35 @@ require('dotenv').config();
 
 const app = express();
 
+// Vercel ke liye trust proxy
+app.set('trust proxy', 1);
+
 // Security middleware
 app.use(helmet());
 
+// CORS — www aur non-www dono allow
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://cobbchurchnetwork.org',
+  'https://www.cobbchurchnetwork.org',
+  'https://cobbchurch.vercel.app',
+  process.env.CLIENT_URL,
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
 // Rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 15 * 60 * 1000,
   max: 100
 });
 
@@ -39,10 +57,7 @@ app.get('/', (req, res) => {
 
 // Health Check
 app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'OK',
-    timestamp: new Date().toISOString()
-  });
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
 // API Routes
@@ -57,34 +72,37 @@ app.use('/api/donate', require('./routes/donate'));
 app.use('/api/admin', require('./routes/admin'));
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => {
-  console.log('✅ MongoDB connected');
+let isConnected = false;
 
-  // Seed admin user on first run
-  require('./utils/seedAdmin');
-})
-.catch((err) => {
-  console.error('MongoDB connection error:', err);
+const connectDB = async () => {
+  if (isConnected && mongoose.connection.readyState === 1) return;
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 30000,
+      socketTimeoutMS: 45000,
+      maxPoolSize: 10,
+      minPoolSize: 2,
+    });
+    isConnected = true;
+    console.log('✅ MongoDB connected');
+    require('./utils/seedAdmin');
+  } catch (err) {
+    isConnected = false;
+    console.error('MongoDB connection error:', err);
+  }
+};
+
+connectDB();
+
+mongoose.connection.on('connected', () => { isConnected = true; });
+mongoose.connection.on('disconnected', () => {
+  isConnected = false;
+  console.log('MongoDB Disconnected — reconnecting...');
+  setTimeout(connectDB, 3000);
 });
-
-// Mongo Events
-mongoose.connection.on('connected', () => {
-  console.log('MongoDB Connected');
-});
-
 mongoose.connection.on('error', (err) => {
+  isConnected = false;
   console.log('MongoDB Error:', err);
-});
-
-// Server
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
 });
 
 module.exports = app;

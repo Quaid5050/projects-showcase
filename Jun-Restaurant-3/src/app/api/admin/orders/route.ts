@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
         orders: orders.map((o) => ({
           ...o,
           _id: o._id.toString(),
-          userId: o.userId.toString(),
+          userId: o.userId?.toString() ?? '',
           items: o.items.map((item) => ({
             ...item,
             menuItemId: item.menuItemId.toString(),

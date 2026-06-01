@@ -100,9 +100,6 @@ export function Footer() {
                   { href: '/', label: 'Home' },
                   { href: '/menu', label: 'Menu' },
                   { href: '/cart', label: 'Cart' },
-                  { href: '/account', label: 'My Account' },
-                  { href: '/auth/login', label: 'Login' },
-                  { href: '/auth/signup', label: 'Sign Up' },
                 ].map((link) => (
                   <li key={link.href}>
                     <Link

@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 
 // 👇 logo image import karo
-import logoImg from '../assets/logo.png'
+import logoImg from '../assets/logo1.png'
 
 const MenuIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -26,6 +26,7 @@ const PhoneIcon = () => (
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/products', label: 'Products' },
+  { to: '/menu', label: 'Menu' },
   { to: '/services', label: 'Services' },
   { to: '/gallery', label: 'Gallery' },
   { to: '/about', label: 'About' },

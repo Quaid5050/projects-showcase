@@ -12,6 +12,11 @@ import type Stripe from "stripe";
 import { Types } from "mongoose";
 import { assertPublicSiteUrl, publicSiteUrlWithPath } from "@/lib/site-url";
 import { hasMinPhoneDigits } from "@/lib/email-validation";
+import {
+  ONO_POKE_STRIPE_CONNECTED_ACCOUNT_ID,
+  PAYMENT_MODE,
+  calculatePlatformFee,
+} from "@/lib/payment-config";
 
 export { StripeSetupError } from "@/lib/stripe-env";
 
@@ -39,6 +44,9 @@ export const CheckoutBodySchema = z.object({
   notes: z.string().max(1000).optional(),
   /** Optional gratuity in dollars. Capped at $999 to defeat fat-finger / abuse. */
   tip: z.coerce.number().min(0).max(999).optional(),
+  /** Pickup timing: ASAP (default) or SCHEDULED with a required pickupTime. */
+  pickupType: z.enum(["ASAP", "SCHEDULED"]).default("ASAP"),
+  pickupTime: z.string().datetime({ offset: true }).optional().nullable(),
 })
   .superRefine((data, ctx) => {
     if (data.deliveryAddress) {
@@ -48,24 +56,18 @@ export const CheckoutBodySchema = z.object({
         path: ["deliveryAddress"],
       });
     }
+    if (data.pickupType === "SCHEDULED" && !data.pickupTime) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "A pickup time is required when scheduling a later pickup.",
+        path: ["pickupTime"],
+      });
+    }
   });
 
 export type CheckoutBody = z.infer<typeof CheckoutBodySchema>;
 
 const TAX_RATE = 0.13;
-
-/**
- * Phase 2 Stripe Connect: when STRIPE_CONNECTED_ACCOUNT_ID=acct_..., 11% platform fee via application_fee_amount.
- * TODO: Alternatively read per-restaurant acct_ from database when multi-tenant.
- */
-function readConnectedAccountId(): string | undefined {
-  const raw = process.env.STRIPE_CONNECTED_ACCOUNT_ID?.trim();
-  if (!raw) return undefined;
-  if (!raw.startsWith("acct_")) {
-    throw new Error(`STRIPE_CONNECTED_ACCOUNT_ID must start with acct_. Got: "${raw.slice(0, 12)}…"`);
-  }
-  return raw;
-}
 
 export async function createStripeCheckoutSession(
   data: CheckoutBody,
@@ -115,7 +117,9 @@ export async function createStripeCheckoutSession(
   }
 
   const restaurantName = settings?.restaurantName?.trim() || "Restaurant";
-  const connectedAccountId = readConnectedAccountId();
+
+  // Stripe Connect destination charge — hardcoded server-side, never from DB or admin UI.
+  const connectedAccountId = ONO_POKE_STRIPE_CONNECTED_ACCOUNT_ID;
 
   const orderItems = validated.lines.map((l) => ({
     menuItemId:
@@ -150,6 +154,8 @@ export async function createStripeCheckoutSession(
     paymentStatus: "unpaid",
     orderStatus: "pending",
     notes: data.notes ?? "",
+    pickupType: data.pickupType ?? "ASAP",
+    pickupTime: data.pickupType === "SCHEDULED" && data.pickupTime ? new Date(data.pickupTime) : null,
     restaurantOrderEmailSent: false,
     merchantNotificationEmailSent: false,
     confirmationEmailSent: false,
@@ -248,27 +254,27 @@ export async function createStripeCheckoutSession(
     customerPhone: data.customerPhone,
     orderType,
     servingMode: "in_store_pickup",
-    ...(connectedAccountId ? { connectedAccountId } : {}),
+    paymentMode: PAYMENT_MODE,
+    connectedAccountId,
   } satisfies Record<string, string>;
 
-  const platformFeeAmount = connectedAccountId ? Math.round(totalCents * 0.11) : undefined;
+  const platformFeeAmount = calculatePlatformFee(totalCents);
 
   /**
-   * Phase 1 (no acct_): normal Checkout on platform — full amount to platform Stripe account.
-   * Phase 2: destination charge — application_fee_amount keeps ~11%; remainder transfers to connected account.
+   * Destination charge: platform creates the charge, application_fee_amount (12%) stays on
+   * the platform account, and the remainder (88%) is immediately transferred to the
+   * connected restaurant account via transfer_data.destination.
+   * Commission rate and account ID are hardcoded in lib/payment-config.ts — not editable
+   * from the admin portal.
    */
-  const paymentIntentData: Stripe.Checkout.SessionCreateParams.PaymentIntentData = connectedAccountId
-    ? {
-        application_fee_amount: platformFeeAmount,
-        transfer_data: { destination: connectedAccountId },
-        metadata: {
-          ...metadata,
-          connectedAccountId,
-        },
-      }
-    : {
-        metadata,
-      };
+  const paymentIntentData: Stripe.Checkout.SessionCreateParams.PaymentIntentData = {
+    application_fee_amount: platformFeeAmount,
+    transfer_data: { destination: connectedAccountId },
+    metadata: {
+      ...metadata,
+      connectedAccountId,
+    },
+  };
 
   const sessionStripe = await stripe.checkout.sessions.create({
     mode: "payment",

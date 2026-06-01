@@ -4,7 +4,6 @@ import React from 'react'
 import Image from 'next/image'
 import { useCartStore } from '@/store/cartStore'
 import { formatPrice } from '@/lib/utils'
-import { DEFAULT_FOOD_IMAGE } from '@/lib/constants'
 import type { CartItem as CartItemType } from '@/types'
 
 interface CartItemProps {
@@ -34,16 +33,21 @@ export function CartItemRow({ item, compact = false }: CartItemProps) {
     <div className="flex items-start gap-4 py-4 border-b border-restaurant-border last:border-0 group">
       {/* Image */}
       <div
-        className="relative flex-shrink-0 rounded-xl overflow-hidden bg-spice-50 shadow-sm"
+        className="relative flex-shrink-0 rounded-xl overflow-hidden bg-white shadow-sm"
         style={{ width: '72px', height: '72px' }}
       >
-        <Image
-          src={item.imageUrl || DEFAULT_FOOD_IMAGE}
-          alt={item.name}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
-          sizes="72px"
-        />
+        {item.imageUrl && !item.imageUrl.includes('placeholder') ? (
+          <Image
+            src={item.imageUrl}
+            alt=""
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            sizes="72px"
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = 'none'
+            }}
+          />
+        ) : null}
       </div>
 
       {/* Details */}

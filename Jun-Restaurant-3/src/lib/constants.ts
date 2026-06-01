@@ -75,9 +75,9 @@ export type UserRole = (typeof USER_ROLE)[keyof typeof USER_ROLE]
 // Admin can override per-item via isPopularOverride
 export const POPULAR_ORDER_THRESHOLD = 10
 
-// Default placeholder image path — easy to replace with real images
-// Replace these SVGs with actual restaurant-provided photos before launch
-export const DEFAULT_FOOD_IMAGE = '/images/menu/placeholder-default.svg'
+// Default placeholder image path — set to empty string so items without
+// a real image show a blank space rather than a generic placeholder.
+export const DEFAULT_FOOD_IMAGE = ''
 
 // Category placeholder images — map category slug to image
 export const CATEGORY_IMAGES: Record<string, string> = {

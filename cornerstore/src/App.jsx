@@ -8,6 +8,7 @@ import Services from './pages/Services'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Gallery from './pages/Gallery'
+import Menu from './pages/Menu'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/menu" element={<Menu />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>

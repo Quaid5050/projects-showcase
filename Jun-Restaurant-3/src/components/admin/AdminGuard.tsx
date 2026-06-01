@@ -28,7 +28,7 @@ export function AdminGuard({ children }: AdminGuardProps) {
           <p className="text-4xl mb-4" aria-hidden="true">🔒</p>
           <h1 className="font-serif text-2xl font-bold text-restaurant-text mb-2">Login Required</h1>
           <p className="text-restaurant-muted mb-6">Please log in to access the admin panel.</p>
-          <Link href="/auth/login"><Button size="lg">Login</Button></Link>
+          <Link href="/admin-login"><Button size="lg">Login</Button></Link>
         </div>
       </div>
     )

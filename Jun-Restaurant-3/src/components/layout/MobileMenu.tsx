@@ -2,16 +2,13 @@
 
 import React, { useEffect } from 'react'
 import Link from 'next/link'
-import type { SessionUser } from '@/types'
 
 interface MobileMenuProps {
   isOpen: boolean
   onClose: () => void
-  user: SessionUser | null
-  onLogout: () => void
 }
 
-export function MobileMenu({ isOpen, onClose, user, onLogout }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     if (isOpen) {
@@ -30,8 +27,6 @@ export function MobileMenu({ isOpen, onClose, user, onLogout }: MobileMenuProps)
     { href: '/', label: 'Home', icon: '🏠' },
     { href: '/menu', label: 'Menu', icon: '🍜' },
     { href: '/cart', label: 'Cart', icon: '🛒' },
-    // Account link only for non-admin users; admins manage everything via /admin
-    ...(user?.role !== 'admin' ? [{ href: '/account', label: 'Account', icon: '👤' }] : []),
   ]
 
   return (
@@ -90,47 +85,6 @@ export function MobileMenu({ isOpen, onClose, user, onLogout }: MobileMenuProps)
             </Link>
           ))}
         </nav>
-
-        {/* Auth */}
-        <div className="px-4 py-5 border-t border-restaurant-border space-y-2 bg-spice-50/50">
-          {user ? (
-            <>
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white border border-restaurant-border mb-2">
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-brand-red to-spice-700 flex items-center justify-center text-white text-sm font-bold">
-                  {user.name.charAt(0).toUpperCase()}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-restaurant-text">{user.name}</p>
-                  <p className="text-xs text-restaurant-muted">{user.email}</p>
-                </div>
-              </div>
-              <button
-                onClick={() => { onLogout(); onClose() }}
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-brand-red font-medium hover:bg-red-50 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red"
-              >
-                <span aria-hidden="true">🚪</span> Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link
-                href="/auth/login"
-                onClick={onClose}
-                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-restaurant-text font-medium border border-restaurant-border bg-white hover:border-brand-red hover:text-brand-red transition-all focus:outline-none focus:ring-2 focus:ring-brand-red"
-              >
-                Login
-              </Link>
-              <Link
-                href="/auth/signup"
-                onClick={onClose}
-                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold text-white transition-all focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2 shadow-red"
-                style={{ background: 'linear-gradient(135deg, #C0392B 0%, #E74C3C 100%)' }}
-              >
-                Sign Up — It&apos;s Free
-              </Link>
-            </>
-          )}
-        </div>
       </div>
     </>
   )
