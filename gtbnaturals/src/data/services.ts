@@ -21,13 +21,13 @@ export const services: ServiceItem[] = [
   {
     title: 'Doctorate of Natural Medicine',
     description:
-      'The assessment and treatment of emotional, mental and physical disorders using non-invasive modalities to promote and restore health and wellness. Acupressure, hydrotherapy, herbalism and botanical medicine, clinical nutrition, health coaching, and energy work are some of the modalities used.',
+      'The assessment and treatment of emotional, mental and physical disorders using non-invasive modalities to promote and restore health and .. Acupressure, hydrotherapy, herbalism and botanical medicine, clinical nutrition, health coaching, and energy work are some of the modalities used.',
     icon: Leaf,
   },
   {
     title: 'Professional Herbalist',
     description:
-      'A healthcare professional who uses plants and plant substances to support health, prevent illness, and help manage medical conditions—combining traditional knowledge with modern understanding of human biology, nutrition, and wellness for individualized care.',
+      'A healthcare professional who uses plants and plant substances to support health, prevent illness, and help manage medical conditions—combining traditional knowledge with modern understanding of human biology, nutrition, and . for individualized care.',
     icon: Flower2,
   },
   {

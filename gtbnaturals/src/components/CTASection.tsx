@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Button } from './ui/Button'
 
 export function CTASection({
-  title = 'Start Your Wellness Journey',
+  title = 'Start Your . Journey',
   subtitle = 'Book a consultation to explore holistic support that honors your pace, goals, and whole-person wellbeing.',
 }: {
   title?: string

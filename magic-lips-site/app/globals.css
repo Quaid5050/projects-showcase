@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@theme {
+  --font-playfair: "Playfair Display", serif;
+  --font-inter:    "Inter", sans-serif;
+  --font-dancing:  "Dancing Script", cursive;
+
+  /* ── Brand palette (deep lilac) ── */
+  --color-purple-brand:      #6147A1;   /* main deep lilac   */
+  --color-purple-mid:        #7E6BAD;   /* medium            */
+  --color-purple-light:      #A892D0;   /* lighter           */
+  --color-purple-soft:       #EBE6F7;   /* very light bg     */
+  --color-sky-brand:         #0284C7;   /* sky blue          */
+  --color-sky-light:         #BAE6FD;   /* light sky         */
+}
+
+/* ── Base ──────────────────────────────────────────────────────────────── */
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body {
+    background: #faf8ff;
+    color: #1e1a2e;
+    font-family: var(--font-inter), sans-serif;
+    overflow-x: clip;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  ::selection {
+    background: rgba(126, 107, 173, 0.25);
+    color: #4a3880;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #f2eefb; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #A892D0, #0284C7);
+    border-radius: 4px;
+  }
+}
+
+/* ── Components ─────────────────────────────────────────────────────────── */
+@layer components {
+
+  /* Frosted glass — white surfaces */
+  .glass {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(126, 107, 173, 0.15);
+  }
+
+  /* Frosted glass — on dark bg */
+  .glass-dark {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* ── Gradient text ── */
+  .text-gradient {
+    background-image: linear-gradient(135deg, #6147A1 0%, #0284C7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-gold {
+    background-image: linear-gradient(135deg, #B45309 0%, #D97706 50%, #F59E0B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Hero slider script heading — CSS vars set per slide */
+  .hero-script-text {
+    display: inline-block;
+    background-image: linear-gradient(135deg, var(--hero-accent, #7E6BAD) 0%, #A892D0 100%);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* ── Primary button — deep lilac ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: white;
+    background: linear-gradient(135deg, #6147A1, #7E6BAD);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(97, 71, 161, 0.3);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #523a91, #6f5ca0);
+    box-shadow: 0 4px 12px rgba(97, 71, 161, 0.4);
+  }
+
+  /* ── Secondary button — white with deep lilac border ── */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #6147A1;
+    background: white;
+    border: 1.5px solid rgba(97, 71, 161, 0.4);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 4px rgba(97, 71, 161, 0.1);
+  }
+  .btn-secondary:hover {
+    border-color: #7E6BAD;
+    background: #f9f7ff;
+  }
+
+  /* ── Gold button ── */
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: white;
+    background: linear-gradient(135deg, #B45309, #D97706);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(180, 83, 9, 0.25);
+  }
+  .btn-gold:hover {
+    box-shadow: 0 4px 12px rgba(180, 83, 9, 0.35);
+  }
+
+  /* ── Product / feature card ── */
+  .card {
+    background: white;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(97, 71, 161, 0.12);
+    box-shadow: 0 2px 16px rgba(97, 71, 161, 0.08);
+    transition: all 0.2s ease;
+    overflow: hidden;
+  }
+  .card:hover {
+    border-color: rgba(97, 71, 161, 0.25);
+    box-shadow: 0 4px 12px rgba(97, 71, 161, 0.15);
+  }
+}
+
+/* ── Utilities ──────────────────────────────────────────────────────────── */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

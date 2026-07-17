@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: "Nunito Sans", Arial, sans-serif;
+    color: #14283d;
+    background-color: #fffdf9;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Fredoka", "Trebuchet MS", sans-serif;
+  }
+
+  *:focus-visible {
+    outline: 3px solid #9fcaf4;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-navy text-white font-body font-700 px-7 py-3.5 rounded-full
+    transition-all duration-300 hover:-translate-y-0.5 hover:shadow-hover active:translate-y-0
+    focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-transparent border-2 border-navy text-navy font-body font-700 px-7 py-3 rounded-full
+    transition-all duration-300 hover:bg-navy hover:text-white hover:-translate-y-0.5
+    focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2;
+  }
+
+  .section-heading {
+    @apply font-display text-navy leading-tight;
+  }
+
+  .section-subtext {
+    @apply font-body text-text-muted leading-relaxed;
+  }
+
+  .card-base {
+    @apply bg-white rounded-3xl shadow-soft transition-all duration-300 hover:shadow-hover hover:-translate-y-1;
+  }
+}
+
+@layer utilities {
+  .font-700 {
+    font-weight: 700;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .clip-hero {
+    clip-path: ellipse(120% 100% at 50% 0%);
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Marquee pause on hover */
+.trust-strip:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

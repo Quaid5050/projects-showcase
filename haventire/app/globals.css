@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --red: #e01e25;
+  --red-dark: #b8191f;
+  --dark: #1a1a1a;
+  --gray-bg: #f5f5f5;
+  --text-body: #666666;
+  --border: #e8e8e8;
+}
+
+@theme {
+  --color-primary: #e01e25;
+  --color-primary-dark: #b8191f;
+  --color-dark: #1a1a1a;
+  --color-gray-bg: #f5f5f5;
+  --color-text-body: #666666;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-poppins);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  background: #ffffff;
+  color: #1a1a1a;
+  font-family: var(--font-poppins), 'Poppins', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ---- section label ---- */
+.sec-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #e01e25;
+  margin-bottom: 0.6rem;
+}
+
+/* ---- buttons ---- */
+.btn-red {
+  display: inline-block;
+  background: #e01e25;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border: 2px solid #e01e25;
+  transition: background 0.25s, border-color 0.25s;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-red:hover { background: #b8191f; border-color: #b8191f; }
+
+.btn-outline-red {
+  display: inline-block;
+  background: transparent;
+  color: #e01e25;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border: 2px solid #e01e25;
+  transition: background 0.25s, color 0.25s;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-outline-red:hover { background: #e01e25; color: #fff; }
+
+.btn-dark {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border: 2px solid #1a1a1a;
+  transition: background 0.25s, border-color 0.25s;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-dark:hover { background: #e01e25; border-color: #e01e25; }
+
+.btn-white {
+  display: inline-block;
+  background: #fff;
+  color: #e01e25;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border: 2px solid #fff;
+  transition: background 0.25s, color 0.25s;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-white:hover { background: #e01e25; color: #fff; border-color: #e01e25; }
+
+/* ---- service card ---- */
+.svc-card {
+  background: #fff;
+  border: 1px solid #ebebeb;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.svc-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.13); transform: translateY(-5px); }
+
+/* ---- portfolio hover ---- */
+.port-item { position: relative; overflow: hidden; }
+.port-item .port-overlay {
+  position: absolute; inset: 0;
+  background: rgba(224,30,37,0.85);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.port-item:hover .port-overlay { opacity: 1; }
+
+/* ---- blog card ---- */
+.blog-card { background: #fff; border: 1px solid #ebebeb; overflow: hidden; transition: box-shadow 0.3s; }
+.blog-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+.blog-card .blog-img img { transition: transform 0.4s; }
+.blog-card:hover .blog-img img { transform: scale(1.05); }
+
+/* ---- skill bar ---- */
+.skill-bar { height: 6px; background: #ebebeb; }
+.skill-bar-fill { height: 6px; background: #e01e25; }
+
+/* ---- divider ---- */
+.red-divider { width: 60px; height: 3px; background: #e01e25; }
+
+/* ---- marquee / ticker ---- */
+@keyframes marquee-ltr {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-rtl {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.ticker-ltr { animation: marquee-ltr 28s linear infinite; display: flex; white-space: nowrap; }
+.ticker-rtl { animation: marquee-rtl 28s linear infinite; display: flex; white-space: nowrap; }
+
+/* ---- circular progress ---- */
+.ring-track { fill: none; stroke: rgba(255,255,255,0.12); }
+.ring-fill  { fill: none; stroke: #e01e25; stroke-linecap: round; transition: stroke-dashoffset 1.2s ease; }
+
+/* ---- review card ---- */
+.review-card { background: #242424; border: 1px solid rgba(255,255,255,0.07); }
+
+/* ---- split cta button ---- */
+.btn-split { display: inline-flex; align-items: stretch; text-decoration: none; }
+.btn-split-main { background: #e01e25; color: #fff; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.13em; text-transform: uppercase; padding: 0.9rem 1.8rem; transition: background 0.25s; white-space: nowrap; }
+.btn-split-main:hover { background: #b8191f; }
+.btn-split-plus { background: #1a1a1a; color: #fff; font-size: 1.2rem; font-weight: 900; padding: 0 1rem; display: flex; align-items: center; justify-content: center; transition: background 0.25s; }
+.btn-split-plus:hover { background: #e01e25; }
+
+/* ---- service card v2 (text top / image bottom) ---- */
+.svc-card-v2 { background: #fff; overflow: hidden; transition: box-shadow 0.3s, transform 0.3s; position: relative; }
+.svc-card-v2:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.14); transform: translateY(-6px); }
+
+/* ---- hero dark ---- */
+.hero-dark { background: #0f0f0f; }
+
+/* ---- wheel spin ---- */
+@keyframes wheel-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.wheel-spin { animation: wheel-spin 10s linear infinite; }
+
+/* ---- float up/down ---- */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+.float-anim { animation: float-y 3s ease-in-out infinite; }

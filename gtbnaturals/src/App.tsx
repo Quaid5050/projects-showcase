@@ -4,7 +4,6 @@ import About from './pages/About'
 import Booking from './pages/Booking'
 import Conditions from './pages/Conditions'
 import Credentials from './pages/Credentials'
-import FAQ from './pages/FAQ'
 import Home from './pages/Home'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import ServiceDetailPage from './pages/ServiceDetailPage'
@@ -21,13 +20,12 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/conditions" element={<Conditions />} />
           <Route path="/natural-medicine" element={<ServiceDetailPage />} />
-          <Route path="/herbal-wellness" element={<ServiceDetailPage />} />
+          <Route path="/herbal-." element={<ServiceDetailPage />} />
           <Route path="/manual-osteopathy" element={<ServiceDetailPage />} />
           <Route path="/hypnotherapy" element={<ServiceDetailPage />} />
           <Route path="/massage-therapy" element={<ServiceDetailPage />} />
           <Route path="/credentials" element={<Credentials />} />
           <Route path="/booking" element={<Booking />} />
-          <Route path="/faq" element={<FAQ />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsDisclaimer />} />
         </Route>

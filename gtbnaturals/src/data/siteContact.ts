@@ -1,10 +1,10 @@
-/** Placeholder studio details — update for production */
+/** Placeholder clinic details — update for production */
 export const siteContact = {
   phone: '(403) 555-0123',
   phoneTel: '4035550123',
   email: 'care@drjahluwalia.example',
   emailBook: 'bookings@drjahluwalia.example',
-  address: 'Calgary, AB — Wellness studio',
+  address: 'Calgary, AB — Clinic',
   hours: [
     { label: 'Mon – Fri', value: '9:00 a.m. – 5:00 p.m.' },
     { label: 'Saturday', value: 'By appointment' },

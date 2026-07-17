@@ -7,8 +7,6 @@ import teethBefore   from "@/assets/results/teeth-before.jpg";
 import teethAfter    from "@/assets/results/teeth-after.jpg";
 import contourBefore from "@/assets/results/contour-before.jpg";
 import contourAfter  from "@/assets/results/contour-after.jpg";
-import waxBefore     from "@/assets/results/wax-before.jpg";
-import waxAfter      from "@/assets/results/wax-after.jpg";
 import cryoBefore    from "@/assets/results/cryo-before.jpg";
 import cryoAfter     from "@/assets/results/cryo-after.jpg";
 
@@ -27,11 +25,6 @@ const resultMap: Record<string, { before: string; after: string; desc: string }>
     before: contourBefore,
     after:  contourAfter,
     desc:   "Visible body definition and reduced fat deposits after MC1 PLUS sessions.",
-  },
-  "brazilian-laser": {
-    before: waxBefore,
-    after:  waxAfter,
-    desc:   "Clean, smooth skin after professional Brazilian laser — no irritation.",
   },
   "localized-cryotherapy": {
     before: cryoBefore,

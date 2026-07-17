@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Mulish:wght@300;400;500;600;700&display=swap');
+
+@import 'tailwindcss';
+
+:root {
+  --forest: #1C3162;
+  --forest-m: #2A4373;
+  --forest-l: #5DA6DD;
+  --sage: #D4E7F7;
+  --sage-pale: #EBF4FC;
+  --gold: #54AABA;
+  --red: #E0262E;
+  --red-h: #C01E25;
+  --ivory: #F5F8FC;
+  --cream: #EBF0F8;
+  --text: #1A1A2E;
+  --text-m: #2A3A5C;
+  --text-mu: #5C6B80;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Mulish', sans-serif;
+  background: var(--ivory);
+  color: var(--text);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+.font-serif { font-family: 'Crimson Pro', serif; }
+
+@layer utilities {
+  .text-forest { color: var(--forest); }
+  .text-forest-m { color: var(--forest-m); }
+  .text-forest-l { color: var(--forest-l); }
+  .text-gold { color: var(--gold); }
+  .text-red-brand { color: var(--red); }
+  .text-muted { color: var(--text-mu); }
+  
+  .bg-forest { background-color: var(--forest); }
+  .bg-forest-m { background-color: var(--forest-m); }
+  .bg-forest-l { background-color: var(--forest-l); }
+  .bg-sage { background-color: var(--sage); }
+  .bg-sage-pale { background-color: var(--sage-pale); }
+  .bg-gold { background-color: var(--gold); }
+  .bg-red-brand { background-color: var(--red); }
+  .bg-ivory { background-color: var(--ivory); }
+  .bg-cream { background-color: var(--cream); }
+
+  .border-forest { border-color: var(--forest); }
+  .border-forest-l { border-color: var(--forest-l); }
+  .border-sage { border-color: var(--sage); }
+}
+
+/* Live dot animation */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.live-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #89C477;
+  animation: pulse-dot 2s infinite;
+  flex-shrink: 0;
+}
+
+/* Float button pulse */
+@keyframes float-pulse {
+  0%, 100% { box-shadow: 0 6px 30px rgba(224,38,46,.52); }
+  50% { box-shadow: 0 6px 42px rgba(224,38,46,.74); }
+}
+.float-btn { animation: float-pulse 3s ease-in-out infinite; }
+
+/* FAQ accordion */
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.faq-open .faq-answer { max-height: 400px; }
+
+/* Service card hover bar */
+.sc-bar { transform: scaleY(0); transform-origin: top; transition: transform 0.3s; }
+.service-card:hover .sc-bar { transform: scaleY(1); }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }

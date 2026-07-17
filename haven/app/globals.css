@@ -15,7 +15,7 @@
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:#080808;color:#f0f0f0;font-family:'Rajdhani',sans-serif;overflow-x:hidden;cursor:none}
+body{background:#080808;color:#f0f0f0;font-family:'Rajdhani',sans-serif;overflow-x:hidden}
 
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:#080808}
@@ -33,10 +33,7 @@ body{background:#080808;color:#f0f0f0;font-family:'Rajdhani',sans-serif;overflow
 @keyframes borderGrow{from{width:0}to{width:100%}}
 @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
 
-.cursor-dot{position:fixed;width:10px;height:10px;background:#e8001d;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .25s,height .25s}
-.cursor-ring{position:fixed;width:34px;height:34px;border:1.5px solid rgba(232,0,29,.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
-.cursor-dot.hover{width:18px;height:18px}
-.cursor-ring.hover{width:50px;height:50px;border-color:rgba(232,0,29,.9)}
+
 
 .clip-btn{clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%)}
 .glass-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
@@ -56,4 +53,4 @@ body{background:#080808;color:#f0f0f0;font-family:'Rajdhani',sans-serif;overflow
 .img-zoom{transition:transform .65s ease;object-fit:cover}
 .img-zoom:hover{transform:scale(1.06)}
 
-@media(hover:none){.cursor-dot,.cursor-ring{display:none}body{cursor:auto}}
+

@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: agency-ops-mongodb
+    restart: unless-stopped
+    ports: ['27017:27017']
+    volumes: [mongo_data:/data/db]
+    environment: { MONGO_INITDB_DATABASE: agency-ops-panel }
+    networks: [agency-network]
+
+  app:
+    build: { context: ., dockerfile: Dockerfile }
+    container_name: agency-ops-app
+    restart: unless-stopped
+    ports: ['3000:3000']
+    depends_on: [mongodb]
+    env_file: [.env.local]
+    environment: { MONGODB_URI: 'mongodb://mongodb:27017/agency-ops-panel', NODE_ENV: production }
+    volumes: ['./uploads:/app/uploads']
+    networks: [agency-network]
+
+volumes:
+  mongo_data: { driver: local }
+networks:
+  agency-network: { driver: bridge }

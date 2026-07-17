@@ -17,11 +17,11 @@ export const serviceDetailMap: Record<string, ServiceDetailContent> = {
     path: '/natural-medicine',
     title: 'Doctorate of Natural Medicine',
     subtitle:
-      'Assessment and complementary support for emotional, mental, and physical wellness themes through non-invasive modalities.',
+      'Assessment and complementary support for emotional, mental, and physical . themes through non-invasive modalities.',
     whatItIs:
-      'The assessment and treatment of emotional, mental and physical disorders using non-invasive modalities to promote and restore health and wellness.\n\nAcupressure, hydrotherapy, herbalism and botanical medicine, clinical nutrition, health coaching, and energy work are some of the modalities used.',
+      'The assessment and treatment of emotional, mental and physical disorders using non-invasive modalities to promote and restore health and ..\n\nAcupressure, hydrotherapy, herbalism and botanical medicine, clinical nutrition, health coaching, and energy work are some of the modalities used.',
     whoMaySupport: [
-      'Clients seeking whole-person education and non-invasive wellness strategies alongside their medical team',
+      'Clients seeking whole-person education and non-invasive . strategies alongside their medical team',
       'Those exploring stress resilience, sleep, digestion, energy, or mood balance in a holistic framework',
       'Anyone wanting coordinated care that may layer with massage, herbal, or manual therapy visits when appropriate',
     ],
@@ -45,7 +45,7 @@ export const serviceDetailMap: Record<string, ServiceDetailContent> = {
       {
         question: 'Will this replace my doctor?',
         answer:
-          'No. Natural medicine here is complementary wellness support. Continue prescribed care and reach out to your physician for medical questions or emergencies.',
+          'No. Natural medicine here is complementary . support. Continue prescribed care and reach out to your physician for medical questions or emergencies.',
       },
       {
         question: 'Is herbalism part of every visit?',
@@ -54,13 +54,13 @@ export const serviceDetailMap: Record<string, ServiceDetailContent> = {
       },
     ],
   },
-  '/herbal-wellness': {
-    path: '/herbal-wellness',
+  '/herbal-.': {
+    path: '/herbal-.',
     title: 'Professional Herbalist',
     subtitle:
-      'Plant-informed wellness support—from assessment and formulations to education, safety, and sustainable sourcing.',
+      'Plant-informed . support—from assessment and formulations to education, safety, and sustainable sourcing.',
     whatItIs:
-      'A professional herbalist is a healthcare professional who uses plants and plant substances to support health, prevent illness, and help manage medical conditions. Herbalists combine traditional knowledge with modern understanding of human biology, nutrition, and wellness to create individualized plans.',
+      'A professional herbalist is a healthcare professional who uses plants and plant substances to support health, prevent illness, and help manage medical conditions. Herbalists combine traditional knowledge with modern understanding of human biology, nutrition, and . to create individualized plans.',
     roleInPractice: [
       "Assess clients’ health concerns, lifestyle, and medical history",
       'Identify appropriate herbs and natural remedies for specific conditions',
@@ -81,7 +81,7 @@ export const serviceDetailMap: Record<string, ServiceDetailContent> = {
       'Encouragement to coordinate with your prescribing clinician when appropriate',
     ],
     benefits: [
-      'Personalized herbal preparation suggestions within a wellness scope',
+      'Personalized herbal preparation suggestions within a . scope',
       'Progress monitoring and adjustments based on your feedback',
       'Empowerment through education—not dependency',
     ],
@@ -100,7 +100,7 @@ export const serviceDetailMap: Record<string, ServiceDetailContent> = {
       {
         question: 'Do you diagnose nutritional or disease states?',
         answer:
-          'We do not diagnose disease. Conversations stay within wellness education and supportive botanical planning.',
+          'We do not diagnose disease. Conversations stay within . education and supportive botanical planning.',
       },
     ],
   },
@@ -127,7 +127,7 @@ export const serviceDetailMap: Record<string, ServiceDetailContent> = {
     whoMaySupport: [
       'Clients with posture strain, recurring stiffness, or movement limitations (with appropriate medical clearance when needed)',
       'Active people seeking recovery-friendly supportive bodywork',
-      'Those exploring gentle structural care alongside other wellness services',
+      'Those exploring gentle structural care alongside other . services',
     ],
     whatToExpect: [
       'Assessment that considers structure, breath, and daily movement habits',
@@ -216,7 +216,7 @@ export const serviceDetailMap: Record<string, ServiceDetailContent> = {
     title: 'Massage Therapist',
     subtitle: 'Hands-on soft-tissue care for relaxation, comfort, circulation, stress reduction, and movement ease.',
     whatItIs:
-      'A massage therapist is a trained healthcare or wellness professional who uses hands-on techniques to manipulate soft tissues of the body to promote relaxation, relieve pain, reduce stress, improve circulation, and support overall physical and mental well-being.',
+      'A massage therapist is a trained healthcare or . professional who uses hands-on techniques to manipulate soft tissues of the body to promote relaxation, relieve pain, reduce stress, improve circulation, and support overall physical and mental well-being.',
     roleInPractice: [
       'Conduct client consultations to assess health history, concerns, and treatment goals',
       'Evaluate posture, muscle tension, range of motion, and physical limitations',
@@ -234,7 +234,7 @@ export const serviceDetailMap: Record<string, ServiceDetailContent> = {
     whoMaySupport: [
       'Clients managing stress-related muscle tension or postural strain',
       'Those seeking supportive soft-tissue care alongside injury recovery (with medical clearance when needed)',
-      'Anyone wanting restorative bodywork as part of a broader wellness routine',
+      'Anyone wanting restorative bodywork as part of a broader . routine',
     ],
     whatToExpect: [
       'Intake covering health history, allergies, and areas to emphasize or avoid',

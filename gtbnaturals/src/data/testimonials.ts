@@ -32,7 +32,7 @@ export const testimonials = [
     quote:
       'My daughter felt less anxious and more confident after the sessions. We\'re very grateful for the support.',
     name: 'Inderjeet Singh Sidhu for his daughter',
-    context: 'Child & teen wellness',
+    context: 'Child & teen .',
   },
   {
     id: '6',
@@ -60,6 +60,6 @@ export const testimonials = [
     quote:
       'Professional, caring, and consistent. I always leave sessions feeling lighter and more aligned.',
     name: 'Sandeep Ghuman',
-    context: 'Wellness & stress support',
+    context: '. & stress support',
   },
 ] as const

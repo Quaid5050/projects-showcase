@@ -60,7 +60,7 @@ export default function AboutPage() {
             <p style={{fontSize:'clamp(13px,1.8vw,14px)',color:'rgba(255,255,255,0.45)',lineHeight:1.9,marginBottom:14}}>Whether you need a quick airport run, a stretch limousine for your wedding, a wheelchair-accessible vehicle, or a guided city tour — I handle it all with the same professionalism and care.</p>
             <p style={{fontSize:'clamp(13px,1.8vw,14px)',color:'rgba(255,255,255,0.45)',lineHeight:1.9,marginBottom:26}}>Victoria is a city I know deeply, and I love sharing it with visitors. The tours I run aren't just rides — they're experiences tailored to what you want to see.</p>
             <div style={{display:'flex',gap:10,flexWrap:'wrap'}}>
-              <a href="https://wa.me/12509868284" className="btn-primary">Book with Jay</a>
+              <a href="/contact#booking-form" className="btn-primary">Book with Jay</a>
               <a href="https://www.google.com/maps/search/1cab+victoria" target="_blank" rel="noreferrer" className="btn-secondary">Leave a Review</a>
             </div>
           </div>

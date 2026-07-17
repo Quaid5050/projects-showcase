@@ -7,7 +7,7 @@ import { Button } from './ui/Button'
 const placeholders = {
   phone: '(403) 555-0123',
   email: 'care@drjahluwalia.example',
-  address: 'Calgary, AB — Wellness studio',
+  address: 'Calgary, AB — . studio',
   hours: 'Monday–Friday · 9:00 a.m. – 5:00 p.m.',
 }
 

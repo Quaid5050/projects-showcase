@@ -1,0 +1,80 @@
+/* ============================================
+   GLOBALS.CSS — Junk Pro Service
+============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  background: var(--bg-body);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.intro-active { overflow: hidden; }
+
+img   { max-width: 100%; height: auto; display: block; }
+a     { color: inherit; text-decoration: none; }
+ul,ol { list-style: none; }
+button{ cursor: pointer; border: none; background: none; font-family: inherit; }
+input,textarea,select { font-family: inherit; font-size: inherit; }
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font-heading);
+  line-height: 1.1;
+  font-weight: var(--fw-bold);
+}
+
+p { line-height: 1.7; }
+section { position: relative; }
+
+/* ── Utilities ── */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section-pad   { padding: var(--space-24) 0; }
+.section-pad-lg{ padding: var(--space-32) 0; }
+
+/* Text accents */
+.txt-yellow      { color: var(--yellow); }
+.txt-yellow-dark { color: #b8860b; }
+.txt-white       { color: var(--white); }
+
+/* Accessible skip link */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* Noise texture overlay (subtle grain for premium feel) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: overlay;
+}

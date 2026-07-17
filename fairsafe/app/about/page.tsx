@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ShieldCheck, Users, MapPin, DollarSign, Award, HeartPulse, HardHat, Calendar, ArrowRight, CheckCircle, Clock, Phone } from "lucide-react";
 
-export const metadata = { title: "About – FAIRSAFE First Aid & Safety Solutions" };
+export const metadata = { title: "About – FAIRSAFE First aid & Safety Solutionss" };
 
 export default function AboutPage() {
   return (
@@ -30,13 +30,14 @@ export default function AboutPage() {
   />
 
   {/* Dark Overlay */}
-  <div
-    style={{
-      position: "absolute",
-      inset: 0,
-      background: "rgba(0,0,0,0.35)",
-    }}
-  />
+<div
+  style={{
+    position: "absolute",
+    inset: 0,
+    background:
+      "linear-gradient(to right, rgba(0,0,0,0.92) 15%, rgba(0,0,0,0.5) 28%, rgba(0,0,0,0.18) 48%, transparent 75%)",
+  }}
+/>
 
   {/* Content */}
   <div
@@ -536,7 +537,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-    
+  
+
+
 
       {/* ── CTA ── */}
       <section style={{ background: "linear-gradient(135deg,#7C3AED,#4C1D95)", padding: "80px 5%", textAlign: "center" }}>

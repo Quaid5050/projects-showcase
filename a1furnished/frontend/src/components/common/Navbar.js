@@ -175,7 +175,7 @@ const Navbar = () => {
 <button
   type="button"
   className="desktop-nav"
-  onClick={() => window.location.href = 'tel:+16477234567'}
+  onClick={() => window.location.href = 'tel:+14165661102'}
   style={{
     background: '#1b2a4a',
     color: 'white',
@@ -267,7 +267,7 @@ const Navbar = () => {
 
             <button
   type="button"
-  onClick={() => window.location.href = 'tel:+16477234567'}
+  onClick={() => window.location.href = 'tel:+14165661102'}
   style={{
     width: '100%',
     marginTop: '10px',

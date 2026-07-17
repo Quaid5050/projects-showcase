@@ -10,105 +10,137 @@ export const HowItWorksTimeline = () => {
     target: containerRef,
     offset: ["start center", "end center"]
   })
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
 
   const steps = [
     {
       title: "Get Set Up Fast",
-      description: "Share your menu, store details, delivery zones, and branding. Merchant Orders helps you prepare your ordering experience quickly.",
-      number: "01"
+      description: "Share your menu, store details, delivery zones, and branding. We configure everything so you can focus on making great food.",
+      number: "01",
+      color: "emerald",
+      accent: "rgba(0,255,136,0.6)"
     },
     {
       title: "Start Taking Direct Orders",
-      description: "Accept pickup, delivery, curbside, catering, and dine-in QR orders through your branded ordering flow.",
-      number: "02"
+      description: "Accept pickup, delivery, curbside, catering, and dine-in QR orders through your branded ordering flow — commission-free.",
+      number: "02",
+      color: "cyan",
+      accent: "rgba(0,200,255,0.6)"
     },
     {
       title: "Grow, Retain, and Optimize",
-      description: "Use analytics, loyalty, customer data, and promotions to increase repeat business.",
-      number: "03"
+      description: "Use analytics, loyalty, customer data, and promotions to dramatically increase repeat business and own your growth.",
+      number: "03",
+      color: "amber",
+      accent: "rgba(245,166,35,0.6)"
     }
   ]
 
-  // Height of the progress line
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
-
   return (
-    <section className="py-24 bg-white relative" id="how-it-works">
-      <div className="container mx-auto px-4 md:px-6">
-        <AnimatedSection className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">
-            How Merchant Orders Works
+    <section className="py-24 md:py-36 bg-[#020509] relative overflow-hidden cinema-grid" id="how-it-works">
+      <div className="divider-glow absolute top-0 left-0 right-0" />
+
+      {/* Ambient */}
+      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] rounded-full bg-emerald-500/5 blur-[120px] pointer-events-none -translate-y-1/2" />
+      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full bg-cyan-500/4 blur-[120px] pointer-events-none -translate-y-1/2" />
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <AnimatedSection animation="dramatic" className="text-center max-w-3xl mx-auto mb-20">
+          <span className="inline-block text-xs font-bold tracking-[0.3em] uppercase text-emerald-500/70 mb-4">
+            The Process
+          </span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
+            From Sign-Up to{" "}
+            <span className="gradient-text">First Order</span>
           </h2>
-          <p className="text-lg text-slate-600">
-            A simple, streamlined process to get your restaurant running with powerful digital tools.
+          <p className="text-lg text-slate-400">
+            A streamlined path to get you live and profitable in record time.
           </p>
         </AnimatedSection>
 
         <div className="relative max-w-4xl mx-auto" ref={containerRef}>
-          {/* Vertical Line Background */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-slate-100 transform md:-translate-x-1/2 rounded-full z-0" />
-          
-          {/* Animated Vertical Progress Line */}
-          <motion.div 
-            className="absolute left-4 md:left-1/2 top-0 w-1 bg-gradient-to-b from-emerald-400 to-emerald-600 transform md:-translate-x-1/2 rounded-full z-10 origin-top"
+          {/* Timeline line bg */}
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-white/5 transform md:-translate-x-1/2 z-0" />
+          {/* Animated line */}
+          <motion.div
+            className="absolute left-6 md:left-1/2 top-0 w-px bg-gradient-to-b from-emerald-400 via-cyan-400 to-amber-400 transform md:-translate-x-1/2 z-10 origin-top shadow-[0_0_8px_rgba(0,255,136,0.5)]"
             style={{ height: lineHeight }}
           />
 
-          <div className="space-y-16 md:space-y-24 relative z-20">
-            {steps.map((step, index) => (
-              <div 
-                key={index} 
-                className={`flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-16 ${
-                  index % 2 === 1 ? "md:flex-row-reverse" : ""
-                }`}
-              >
-                {/* Content Side */}
-                <div className={`w-full md:w-1/2 ${index % 2 === 1 ? "md:text-left" : "md:text-right"} pl-14 md:pl-0`}>
-                  <AnimatedSection 
-                    animation="fade-up"
-                    delay={0.2}
+          <div className="space-y-20 md:space-y-28 relative z-20">
+            {steps.map((step, index) => {
+              const isOdd = index % 2 === 1
+              const colorMap: Record<string, string> = {
+                emerald: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30 shadow-emerald-500/20",
+                cyan: "text-cyan-400 bg-cyan-500/10 border-cyan-500/30 shadow-cyan-500/20",
+                amber: "text-amber-400 bg-amber-500/10 border-amber-500/30 shadow-amber-500/20",
+              }
+              const glowMap: Record<string, string> = {
+                emerald: "bg-emerald-500",
+                cyan: "bg-cyan-400",
+                amber: "bg-amber-400",
+              }
+              const badgeMap: Record<string, string> = {
+                emerald: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+                cyan: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
+                amber: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+              }
+
+              return (
+                <div
+                  key={index}
+                  className={`flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-16 ${isOdd ? "md:flex-row-reverse" : ""}`}
+                >
+                  {/* Content */}
+                  <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${isOdd ? "md:text-left" : "md:text-right"}`}>
+                    <AnimatedSection animation={isOdd ? "slide-left" : "slide-right"} delay={0.1}>
+                      <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-sm font-bold mb-4 ${badgeMap[step.color]}`}>
+                        Step {step.number}
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-black text-white mb-4 leading-tight">{step.title}</h3>
+                      <p className="text-slate-400 text-base md:text-lg leading-relaxed">{step.description}</p>
+                    </AnimatedSection>
+                  </div>
+
+                  {/* Center dot */}
+                  <div className={`absolute left-6 md:left-1/2 w-10 h-10 rounded-full border-2 border-[#020509] ${glowMap[step.color]} transform -translate-x-[18px] md:-translate-x-1/2 z-20 shadow-[0_0_20px_var(--dot-shadow)] flex items-center justify-center`}
+                    style={{ "--dot-shadow": step.accent } as React.CSSProperties}
                   >
-                    <div className="inline-block px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-600 font-bold text-sm mb-4">
-                      Step {step.number}
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4">{step.title}</h3>
-                    <p className="text-slate-600 text-base md:text-lg">{step.description}</p>
-                  </AnimatedSection>
-                </div>
+                    <span className="text-xs font-black text-black">{step.number}</span>
+                  </div>
 
-                {/* Center Dot — desktop */}
-                <div className="absolute left-4 md:left-1/2 w-8 h-8 rounded-full border-4 border-white bg-emerald-500 transform -translate-x-[14px] md:-translate-x-1/2 shadow-md shadow-emerald-200 z-20 hidden md:block" />
-                
-                {/* Mobile Dot */}
-                <div className="absolute left-4 w-8 h-8 rounded-full border-4 border-white bg-emerald-500 transform -translate-x-[14px] shadow-md shadow-emerald-200 z-20 md:hidden" />
-
-                {/* Visual Side — desktop only */}
-                <div className="w-full md:w-1/2 hidden md:block">
-                  <AnimatedSection delay={0.4}>
-                    <div className="w-full bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden relative group">
-                      <img 
-                        src={`/images/step-${step.number}.webp`}
-                        alt={`Step ${step.number}`}
-                        className="w-full h-auto block"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                          e.currentTarget.parentElement?.querySelector('.fallback')?.classList.remove('hidden');
-                        }}
-                      />
-                      <div className="fallback hidden w-full h-full flex items-center justify-center">
-                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="text-[120px] font-black text-slate-100 opacity-50 group-hover:scale-110 group-hover:text-emerald-50 transition-all duration-500">
-                          {step.number}
+                  {/* Visual side */}
+                  <div className="w-full md:w-1/2 hidden md:block">
+                    <AnimatedSection delay={0.3} animation="scale-up">
+                      <div className={`rounded-2xl border overflow-hidden ${colorMap[step.color]} shadow-lg relative group`}>
+                        <img
+                          src={`/images/step-${step.number}.webp`}
+                          alt={`Step ${step.number}`}
+                          className="w-full h-auto block transition-transform duration-500 group-hover:scale-105"
+                          onError={(e) => {
+                            e.currentTarget.style.display = "none"
+                            const fb = e.currentTarget.parentElement?.querySelector(".fb") as HTMLElement | null
+                            if (fb) fb.style.display = "flex"
+                          }}
+                        />
+                        <div
+                          className="fb hidden absolute inset-0 items-center justify-center min-h-[200px] bg-[#0a0f1a]"
+                        >
+                          <div className={`text-[100px] font-black opacity-10 ${colorMap[step.color].split(" ")[0]}`}>
+                            {step.number}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </AnimatedSection>
+                    </AnimatedSection>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </div>
+
+      <div className="divider-glow absolute bottom-0 left-0 right-0" />
     </section>
   )
 }

@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import { AnimatedReveal } from '../components/AnimatedReveal'
 import { CTASection } from '../components/CTASection'
 import { PageHero } from '../components/PageHero'
@@ -31,14 +29,13 @@ export default function Services() {
       <PageHero
         eyebrow="Services"
         title="Modalities that meet you where you are"
-        subtitle="From natural medicine education to therapeutic touch—each service is framed as wellness support with individualized planning."
+        subtitle="From natural medicine education to therapeutic touch—each service is framed as . support with individualized planning."
         breadcrumb={[
           { label: 'Home', to: '/' },
           { label: 'Services' },
         ]}
-      >
-        <Button to="/booking">Book consultation</Button>
-      </PageHero>
+      />
+
 
       <section className="py-14 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -105,22 +102,6 @@ export default function Services() {
                     </Button>
                   </div>
                 </AnimatedReveal>
-                <motion.aside
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
-                  className="surface-card p-6"
-                >
-                  <h3 className="font-serif text-lg font-semibold text-cream">Wellness scope reminder</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">
-                    Descriptions highlight supportive intentions—not cures or guaranteed timelines. Medical questions,
-                    prescriptions, and emergencies belong with your physician or local emergency services.
-                  </p>
-                  <Link to="/terms" className="mt-4 inline-block text-sm font-semibold text-primary hover:underline">
-                    Read full disclaimer
-                  </Link>
-                </motion.aside>
               </div>
             </div>
           </section>

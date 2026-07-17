@@ -1,10 +1,10 @@
 import { Hero } from "@/components/sections/Hero";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { CTASection } from "@/components/sections/CTASection";
+import { CryotherapySection } from "@/components/sections/CryotherapySection";
+import { AestheticCryoSection } from "@/components/sections/AestheticCryoSection";
 import { ServicesPreview } from "@/components/sections/ServicesPreview";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { BeforeAfter } from "@/components/sections/BeforeAfter";
 import { NextStep } from "@/components/sections/NextStep";
 import { Stats } from "@/components/sections/Stats";
 import { FAQPreview } from "@/components/sections/FAQPreview";
@@ -20,23 +20,23 @@ const Index = () => {
       {/* 1. Hero */}
       <Hero />
 
-      {/* 2. About Us */}
+      {/* 2. Cryotherapy */}
+      <CryotherapySection />
+
+      {/* 3. Aesthetic Cryotherapy sub-types */}
+      <AestheticCryoSection />
+
+      {/* 3. About Us */}
       <AboutSection />
 
-      {/* 3. Special Offer */}
+      {/* 4. Special Offer */}
       <CTASection />
 
-      {/* 4. Services */}
+      {/* 5. Services */}
       <ServicesPreview />
 
       {/* 5. Why Choose Us */}
       <WhyChooseUs />
-
-      {/* 6. Before & After Results */}
-      <BeforeAfter />
-
-      {/* 7. Testimonials */}
-      <Testimonials />
 
       {/* 7. Next Step CTA */}
       <NextStep />

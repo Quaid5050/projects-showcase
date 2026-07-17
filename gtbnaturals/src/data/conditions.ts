@@ -53,7 +53,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: 'neurodevelopmental',
     title: 'Neurodevelopmental & Personality Disorders',
     description:
-      'Wellness-aligned education and supportive pacing—not a substitute for psychiatric diagnosis or emergency care.',
+      '.-aligned education and supportive pacing—not a substitute for psychiatric diagnosis or emergency care.',
     icon: Users,
     items: [
       'Autism Spectrum Disorder — social and behavioral differences',
@@ -152,13 +152,13 @@ export const conditionCategories: ConditionCategory[] = [
       'Allergies',
       'Food allergies',
       'Asthma',
-      'Autoimmune diseases — wellness support alongside medical care',
+      'Autoimmune diseases — . support alongside medical care',
       'Sinusitis',
     ],
   },
   {
     id: 'general',
-    title: 'General Wellness & Unexplained Symptoms',
+    title: 'General . & Unexplained Symptoms',
     icon: Sparkles,
     items: [
       'Chronic Fatigue Syndrome',
@@ -175,14 +175,14 @@ export const conditionCategories: ConditionCategory[] = [
       'Benign Prostatic Hyperplasia',
       'Prostatitis',
       'Prostate enlargement or related issues',
-      'Height increase — growth-related wellness questions (non-surgical context)',
+      'Height increase — growth-related . questions (non-surgical context)',
     ],
   },
   {
     id: 'cardiovascular',
     title: 'Cardiovascular',
     description:
-      'Education and wellness support only. Seek emergency care for chest pain, suspected stroke, or severe symptoms.',
+      'Education and . support only. Seek emergency care for chest pain, suspected stroke, or severe symptoms.',
     icon: HeartPulse,
     items: [
       'Arteriosclerosis or atherosclerosis',
@@ -199,7 +199,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: 'respiratory',
     title: 'Respiratory',
     description:
-      'Supportive wellness context. Call emergency services for severe shortness of breath, blue lips, or coughing blood.',
+      'Supportive . context. Call emergency services for severe shortness of breath, blue lips, or coughing blood.',
     icon: Wind,
     items: [
       'Chronic cough',
@@ -255,7 +255,7 @@ export const conditionCategories: ConditionCategory[] = [
   },
   {
     id: 'mens',
-    title: "Men's Wellness",
+    title: "Men's .",
     icon: User,
     items: [
       'Erectile dysfunction',
@@ -274,7 +274,7 @@ export const conditionCategories: ConditionCategory[] = [
   },
   {
     id: 'womens',
-    title: "Women's Wellness",
+    title: "Women's .",
     icon: Heart,
     items: [
       'Excessive menstrual flow',
@@ -299,7 +299,7 @@ export const conditionCategories: ConditionCategory[] = [
     title: 'Manual Osteopathic Services',
     icon: Bone,
     description:
-      'Hands-on and education-focused wellness support for structure and comfort—not emergency fracture or trauma care.',
+      'Hands-on and education-focused . support for structure and comfort—not emergency fracture or trauma care.',
     items: [
       'Osteoarthritis, Rheumatoid Arthritis, Fibromyalgia',
       'Lower Back Pain, Sciatica, Neck Pain',
@@ -394,21 +394,21 @@ export const homeConditionHighlights: {
   {
     id: 'mental-emotional',
     title: 'Mental & Emotional Health',
-    blurb: 'Holistic support that may help with stress patterns, sleep, and mood-related wellness goals.',
+    blurb: 'Holistic support that may help with stress patterns, sleep, and mood-related . goals.',
   },
   {
     id: 'digestive',
     title: 'Digestive & Gut Health',
-    blurb: 'Wellness-focused education and lifestyle guidance alongside complementary care approaches.',
+    blurb: '.-focused education and lifestyle guidance alongside complementary care approaches.',
   },
   {
     id: 'hormonal',
-    title: 'Hormonal Wellness',
+    title: 'Hormonal .',
     blurb: 'Individualized support conversations around energy, cycles, and endocrine balance themes.',
   },
   {
     id: 'metabolic',
-    title: 'Metabolic & Lifestyle Wellness',
+    title: 'Metabolic & Lifestyle .',
     blurb: 'Collaborative planning around movement, nutrition insight, and sustainable habit shifts.',
   },
   {
@@ -433,12 +433,12 @@ export const homeConditionHighlights: {
   },
   {
     id: 'mens',
-    title: "Men's Wellness",
-    blurb: 'Respectful, confidential wellness support for vitality, stress, and men’s health themes.',
+    title: "Men's .",
+    blurb: 'Respectful, confidential . support for vitality, stress, and men’s health themes.',
   },
   {
     id: 'womens',
-    title: "Women's Wellness",
+    title: "Women's .",
     blurb: 'Supportive bodywork and holistic planning across fertility, pregnancy, postpartum, and menopause.',
   },
 ]

@@ -1,0 +1,20 @@
+/* ServiceCard overrides */
+.service-card__price {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-primary-light);
+  background: rgba(94, 43, 151, 0.3);
+  border: 1px solid rgba(142, 91, 211, 0.4);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-sm);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--transition-slow);
+}
+
+.service-card:hover .service-card__price {
+  opacity: 1;
+  transform: translateY(0);
+}

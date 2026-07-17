@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --orange: #F26522;
+  --orange-hover: #FF7A1A;
+  --orange-dark: #D94F16;
+  --bg-main: #0B0B0B;
+  --bg-section: #121212;
+  --bg-card: #1A1A1A;
+  --bg-footer: #080808;
+  --text-white: #FFFFFF;
+  --text-body: #D7D7D7;
+  --text-secondary: #A3A3A3;
+  --text-muted: #7C7C7C;
+  --border-card: #2C2C2C;
+  --border-input: #3A3A3A;
+  --border-divider: #262626;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-body);
+  font-family: 'Inter', 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--text-white);
+  letter-spacing: 0.03em;
+}
+
+/* Utility classes */
+.font-bebas { font-family: 'Bebas Neue', sans-serif; }
+.font-inter { font-family: 'Inter', sans-serif; }
+
+.text-orange { color: var(--orange); }
+.bg-orange { background-color: var(--orange); }
+.border-orange { border-color: var(--orange); }
+
+.bg-main { background-color: var(--bg-main); }
+.bg-section { background-color: var(--bg-section); }
+.bg-card { background-color: var(--bg-card); }
+.bg-footer { background-color: var(--bg-footer); }
+
+.text-body { color: var(--text-body); }
+.text-secondary-color { color: var(--text-secondary); }
+.text-muted-color { color: var(--text-muted); }
+
+.border-card { border-color: var(--border-card); }
+.border-input { border-color: var(--border-input); }
+
+/* Button Primary */
+.btn-primary {
+  background-color: var(--orange);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.75rem;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background-color: var(--orange-hover);
+}
+
+/* Button Secondary */
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.75rem;
+  border-radius: 4px;
+  border: 1px solid #505050;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background-color: #1A1A1A;
+}
+
+/* Section padding */
+.section-py { padding-top: 5rem; padding-bottom: 5rem; }
+
+/* Orange CTA gradient bar */
+.cta-gradient {
+  background: linear-gradient(180deg, #FF7A1A 0%, #F26522 100%);
+}
+
+/* Hero overlay gradient */
+.hero-overlay {
+  background: linear-gradient(90deg, rgba(8,8,8,.96) 0%, rgba(8,8,8,.85) 45%, rgba(8,8,8,.30) 100%);
+}
+
+/* Card hover */
+.card-hover {
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.card-hover:hover {
+  border-color: var(--orange);
+  transform: translateY(-2px);
+}
+
+/* Orange accent line */
+.orange-line {
+  display: inline-block;
+  width: 40px;
+  height: 3px;
+  background-color: var(--orange);
+  margin-bottom: 1rem;
+}
+
+/* Divider */
+.divider {
+  border-color: var(--border-divider);
+}
+
+/* Input */
+.form-input {
+  background-color: #111111;
+  border: 1px solid var(--border-input);
+  color: var(--text-white);
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-input:focus {
+  border-color: var(--orange);
+}
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Nav active */
+.nav-active {
+  color: var(--orange);
+  border-bottom: 2px solid var(--orange);
+}
+
+@media (max-width: 768px) {
+  .section-py { padding-top: 3rem; padding-bottom: 3rem; }
+}
+
+/* ── Responsive grid utilities ──
+   Inline styles set the desktop column count; these media queries
+   override grid-template-columns on smaller screens (!important beats
+   inline style). Desktop (>=1024px) keeps whatever the inline value is. */
+@media (max-width: 1023px) {
+  .nb-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .nb-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+  .nb-grid-5 { grid-template-columns: repeat(3, 1fr) !important; }
+  .nb-features { grid-template-columns: repeat(2, 1fr) !important; }
+  .nb-gallery { grid-template-columns: repeat(3, 1fr) !important; }
+  .nb-grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .nb-grid-4,
+  .nb-grid-3,
+  .nb-grid-5,
+  .nb-features { grid-template-columns: 1fr !important; }
+  .nb-gallery { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* 5-item feature bar (commercial / agricultural) */
+@media (max-width: 1023px) {
+  .nb-features5 { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 640px) {
+  .nb-features5 { grid-template-columns: 1fr !important; }
+}
+
+/* Two-up rows (form fields etc.) that should stack on small phones only */
+@media (max-width: 640px) {
+  .nb-stack-sm { grid-template-columns: 1fr !important; }
+}
+
+/* Drop the vertical dividers when feature-bar items wrap onto new rows */
+@media (max-width: 1023px) {
+  .nb-features > *,
+  .nb-features5 > * { border-right: none !important; border-bottom: 1px solid #1A1A1A; }
+}

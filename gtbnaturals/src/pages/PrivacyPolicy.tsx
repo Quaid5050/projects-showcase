@@ -40,7 +40,7 @@ export default function PrivacyPolicy() {
           <AnimatedReveal className="rounded-2xl border border-stone-200 bg-base-900 p-6 backdrop-blur-md">
             <h2 className="font-serif text-lg font-semibold text-cream">Confidentiality</h2>
             <p className="mt-3">
-              Wellness consultations deserve privacy. Describe how records are stored, who may access them, and client
+              . consultations deserve privacy. Describe how records are stored, who may access them, and client
               rights to request corrections or deletion where applicable.
             </p>
           </AnimatedReveal>

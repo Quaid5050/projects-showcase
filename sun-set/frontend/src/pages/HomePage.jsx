@@ -40,7 +40,7 @@ export default function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    api.get('/api/rooms').then(r => setRooms(r.data)).catch(() => {});
+    api.get('/api/rooms').then(r => setRooms(r.data || [])).catch(() => {});
     api.get('/api/reviews').then(r => setReviews(r.data)).catch(() => {});
   }, []);
 
@@ -115,9 +115,7 @@ export default function HomePage() {
               <div key={room._id} style={{background:'#fff',border:'1px solid #EDE8E0',borderRadius:8,overflow:'hidden',boxShadow:'0 4px 20px rgba(0,0,0,0.07)',display:'flex',flexDirection:'column'}}>
                 <div style={{height:220,overflow:'hidden',position:'relative'}}>
                   <img src={room.images?.[0]||'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80'} alt={room.name} style={{width:'100%',height:'100%',objectFit:'cover',transition:'transform 0.5s'}} onMouseEnter={e=>e.target.style.transform='scale(1.05)'} onMouseLeave={e=>e.target.style.transform='scale(1)'}/>
-                  <div style={{position:'absolute',top:14,right:14,background:'#C9933A',color:'#fff',padding:'5px 12px',borderRadius:4,fontFamily:"'Playfair Display',serif",fontSize:15,fontWeight:700}}>
-                    ${room.pricePerNight}<span style={{fontSize:10,fontWeight:400,fontFamily:"'Poppins',sans-serif"}}>/night</span>
-                  </div>
+
                 </div>
                 <div style={{padding:'18px',flex:1,display:'flex',flexDirection:'column'}}>
                   <h3 style={{fontFamily:"'Playfair Display',serif",fontSize:19,color:'#1A2540',fontWeight:700,marginBottom:6}}>{room.name}</h3>
@@ -138,10 +136,21 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
-            {rooms.length === 0 && <p style={{textAlign:'center',color:'#aaa',padding:40,gridColumn:'1/-1'}}>Loading...</p>}
+            {rooms.length === 0 && <div style={{textAlign:'center',padding:40,gridColumn:'1/-1'}}>
+              <div style={{width:36,height:36,border:'3px solid #EDE8E0',borderTopColor:'#C9933A',borderRadius:'50%',animation:'spin 0.8s linear infinite',margin:'0 auto 12px'}}/>
+              <p style={{color:'#aaa',fontSize:13}}>Loading accommodations...</p>
+              <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+            </div>}
           </div>
-          <div style={{textAlign:'center',marginTop:24}}>
-            <a href="https://www.airbnb.com/rooms/51519181" target="_blank" rel="noreferrer" className="btn-navy">VIEW ALL ON AIRBNB</a>
+          <div style={{display:'flex',gap:10,justifyContent:'center',flexWrap:'wrap',marginTop:24}}>
+            {[
+              {label:'2 Bed Coastal Escape',url:'https://www.airbnb.com/rooms/1217449871263544293'},
+              {label:'1 Bed Coastal Retreat',url:'https://www.airbnb.com/rooms/1496774073337494827'},
+              {label:'1 Bed Hideaway',url:'https://www.airbnb.com/rooms/1694447305874309310'},
+              {label:'1 Bed Tropical Escape',url:'https://www.airbnb.com/rooms/51519181'},
+            ].map(l=>(
+              <a key={l.label} href={l.url} target="_blank" rel="noreferrer" style={{background:'#1A2540',color:'#fff',padding:'10px 16px',fontSize:11,fontWeight:600,textDecoration:'none',borderRadius:4,transition:'background 0.2s'}} onMouseEnter={e=>e.target.style.background='#C9933A'} onMouseLeave={e=>e.target.style.background='#1A2540'}>{l.label} ↗</a>
+            ))}
           </div>
         </div>
       </section>
@@ -226,7 +235,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* REVIEWS + INSTAGRAM + QR */}
+      {/* REVIEWS + INSTAGRAM + BOOK ON AIRBNB */}
       <section className="section-pad" style={{background:'#FDF8F0'}}>
         <div className="container">
           <div className="bottom-grid" style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:40}}>
@@ -245,30 +254,38 @@ export default function HomePage() {
             {/* Instagram */}
             <div>
               <h2 className="section-title" style={{marginBottom:20}}>Follow Us On Instagram</h2>
-              <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:6,marginBottom:14}}>
-                {['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=220&q=70','https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=220&q=70','https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=220&q=70','https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=220&q=70'].map((s,i)=>(
+              <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:6,marginBottom:14}}>
+                {[
+                  '/property-gate.jpg',
+                  '/property-veranda.jpg',
+                  '/property-entrance.jpg',
+                  '/property-exterior-day.jpg',
+                  '/property-sitting.jpg',
+                  '/property-night.jpg',
+                ].map((s,i)=>(
                   <div key={i} style={{paddingBottom:'100%',position:'relative',overflow:'hidden',borderRadius:4}}><img src={s} alt="" loading="lazy" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/></div>
                 ))}
               </div>
               <a href="https://instagram.com/sunsetretreatja" target="_blank" rel="noreferrer" className="btn-gold" style={{fontSize:12}}>Follow @sunsetretreatja</a>
             </div>
-            {/* QR */}
+            {/* Book On Airbnb */}
             <div>
-              <h2 className="section-title" style={{marginBottom:10}}>Scan To Book</h2>
-              <p style={{fontSize:13,color:'#777',marginBottom:16,lineHeight:1.6}}>Scan to check availability and book instantly!</p>
-              <div style={{width:140,height:140,background:'#fff',border:'2px solid #C9933A',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:14,borderRadius:4}}>
-                <svg viewBox="0 0 100 100" width="120" height="120">
-                  <rect width="100" height="100" fill="white"/>
-                  <rect x="10" y="10" width="30" height="30" fill="none" stroke="#1A2540" strokeWidth="4"/>
-                  <rect x="18" y="18" width="14" height="14" fill="#1A2540"/>
-                  <rect x="60" y="10" width="30" height="30" fill="none" stroke="#1A2540" strokeWidth="4"/>
-                  <rect x="68" y="18" width="14" height="14" fill="#1A2540"/>
-                  <rect x="10" y="60" width="30" height="30" fill="none" stroke="#1A2540" strokeWidth="4"/>
-                  <rect x="18" y="68" width="14" height="14" fill="#1A2540"/>
-                  {[44,52,60,68,76].map((x,i)=>[44,52,60,68,76].map((y,j)=>(i+j)%2===0?<rect key={`${i}${j}`} x={x} y={y} width="4" height="4" fill="#1A2540"/>:null))}
-                </svg>
+              <h2 className="section-title" style={{marginBottom:10}}>Book On Airbnb</h2>
+              <p style={{fontSize:13,color:'#777',marginBottom:16,lineHeight:1.6}}>Choose from our 4 available units:</p>
+              <div style={{display:'flex',flexDirection:'column',gap:8,marginBottom:14}}>
+                {[
+                  {label:'2 Bedroom Coastal Escape Near Ocho Rios & Beaches',url:'https://www.airbnb.com/rooms/1217449871263544293'},
+                  {label:'1 Bedroom Coastal Retreat Near Ocho Rios',url:'https://www.airbnb.com/rooms/1496774073337494827'},
+                  {label:'1 Bedroom Hideaway Near Beaches & Ocho Rios',url:'https://www.airbnb.com/rooms/1694447305874309310'},
+                  {label:'1 Bedroom / 1 Bath Tropical Escape Near Ocho Rios',url:'https://www.airbnb.com/rooms/51519181'},
+                ].map(l=>(
+                  <a key={l.label} href={l.url} target="_blank" rel="noreferrer" style={{display:'flex',alignItems:'center',gap:8,padding:'10px 14px',background:'#fff',border:'1px solid #EDE8E0',borderRadius:6,textDecoration:'none',transition:'all 0.2s',fontSize:12,color:'#1A2540',fontWeight:600,lineHeight:1.4}} onMouseEnter={e=>{e.currentTarget.style.borderColor='#C9933A';e.currentTarget.style.background='#FDF8F0'}} onMouseLeave={e=>{e.currentTarget.style.borderColor='#EDE8E0';e.currentTarget.style.background='#fff'}}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF5A3B" style={{flexShrink:0}}><path d="M12 2C8.5 2 4 5.5 4 10.5c0 3 2.5 6.5 8 11.5 5.5-5 8-8.5 8-11.5C20 5.5 15.5 2 12 2zm0 12a3 3 0 110-6 3 3 0 010 6z"/></svg>
+                    <span style={{flex:1}}>{l.label}</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C9933A" strokeWidth="2" style={{flexShrink:0}}><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                  </a>
+                ))}
               </div>
-              <a href="https://www.airbnb.com/rooms/51519181" target="_blank" rel="noreferrer" className="btn-gold" style={{fontSize:12}}>BOOK ON AIRBNB</a>
             </div>
           </div>
         </div>
@@ -282,19 +299,21 @@ export default function HomePage() {
             <h2 className="section-title">Local Food & Culture</h2>
             <p style={{fontSize:14,color:'#777',marginTop:12,maxWidth:520,margin:'12px auto 0'}}>Experience the rich flavours and vibrant culture of Jamaica's north coast — from jerk chicken to Blue Mountain coffee.</p>
           </div>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(5,1fr)',gap:14}} className="food-grid">
+          <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:14}} className="food-grid">
             {[
-              {img:'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?q=80',title:'Ackee & Saltfish'},
-              {img:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80',title:'Jerk Chicken'},
-              {img:'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80',title:'Fresh Tropical Fruit'},
-              {img:'https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80',title:'Blue Mountain Coffee'},
-              {img:'https://images.unsplash.com/photo-1559847844-5315695dadae?q=80',title:'Escovitch Fish'},
+              {img:'/img1.png',title:'Ackee & Saltfish',desc:"Jamaica's national dish"},
+              {img:'/img2.png',title:'Jerk Chicken',desc:'Authentic smoky spice'},
+              {img:'/img3.png',title:'Escovitch Fish',desc:'Tangy island flavour'},
+              {img:'/img4.png',title:'Blue Mountain Coffee',desc:"World-famous Jamaican coffee"},
+              {img:'/img5.png',title:'Fresh Tropical Fruit',desc:'Straight from the island'},
+              {img:'/img6.png',title:'Jamaican Rum Cream',desc:'Smooth Caribbean spirit'},
             ].map(item=>(
               <div key={item.title}>
                 <div style={{paddingBottom:'100%',position:'relative',overflow:'hidden',borderRadius:6}}>
                   <img src={item.img} alt={item.title} loading="lazy" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',transition:'transform 0.5s'}} onMouseEnter={e=>e.target.style.transform='scale(1.07)'} onMouseLeave={e=>e.target.style.transform='scale(1)'}/>
                 </div>
                 <p style={{fontFamily:"'Playfair Display',serif",fontSize:12,fontWeight:700,color:'#1A2540',marginTop:8,textAlign:'center'}}>{item.title}</p>
+                <p style={{fontSize:11,color:'#888',textAlign:'center',marginTop:2}}>{item.desc}</p>
               </div>
             ))}
           </div>

@@ -11,6 +11,7 @@ const links = [
   { href: '/services', label: 'Services' },
   { href: '/projects', label: 'Projects' },
   { href: '/warranty', label: 'Warranty' },
+  { href: '/permitting', label: 'Permitting' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -29,10 +30,62 @@ export default function Navbar() {
 
   return (
     <>
-      <nav
+      {/* ── TOP CONTACT STRIP ── */}
+      <div
         style={{
           position: 'fixed',
           top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1001,
+          background: '#D01C2A',
+          height: '36px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'flex-end',
+          padding: '0 48px',
+        }}
+      >
+        <a
+          href="mailto:info@simbahomes.ca"
+          style={{
+            display: 'flex', alignItems: 'center', gap: '6px',
+            color: '#fff', textDecoration: 'none',
+            fontFamily: 'Barlow Condensed, sans-serif',
+            fontSize: '12px', fontWeight: 600, letterSpacing: '0.06em',
+            padding: '0 16px', height: '36px',
+            borderRight: '1px solid rgba(255,255,255,0.25)',
+          }}
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          info@simbahomes.ca
+        </a>
+
+        <a
+          href="tel:+17787077325"
+          style={{
+            display: 'flex', alignItems: 'center', gap: '6px',
+            color: '#fff', textDecoration: 'none',
+            fontFamily: 'Barlow Condensed, sans-serif',
+            fontSize: '12px', fontWeight: 600, letterSpacing: '0.06em',
+            padding: '0 16px', height: '36px',
+          }}
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.09 1.18 2 2 0 012.08 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          778 707 7325
+        </a>
+      </div>
+
+      {/* ── ORIGINAL NAVBAR (unchanged) ── */}
+      <nav
+        style={{
+          position: 'fixed',
+          top: '36px',
           left: 0,
           right: 0,
           zIndex: 1000,
@@ -49,52 +102,55 @@ export default function Navbar() {
           transition: 'all 0.3s ease',
         }}
       >
-        {/* Logo */}
-        <Link
-          href="/"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            textDecoration: 'none',
-          }}
-        >
-          <Image
-            src="/logo1.png"
-            alt="Simba Homes Ltd"
-            width={52}
-            height={52}
-            style={{ objectFit: 'contain' }}
-          />
+       {/* Logo */}
+<Link
+  href="/"
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: "14px",
+    textDecoration: "none",
+  }}
+>
+  <Image
+    src="/logo1.png"
+    alt="Simba Homes Ltd"
+    width={96}
+    height={96}
+    style={{ objectFit: "contain" }}
+  />
 
-          <div style={{ lineHeight: 1.1 }}>
-            <div
-              style={{
-                fontFamily: 'Barlow Condensed, sans-serif',
-                fontWeight: 800,
-                fontSize: '20px',
-                letterSpacing: '0.05em',
-                textTransform: 'uppercase',
-                color: '#1E2533',
-              }}
-            >
-              SIMBA HOMES
-            </div>
+  <div style={{ lineHeight: 1.1 }}>
+    <div
+      style={{
+        fontFamily: "Barlow Condensed, sans-serif",
+        fontWeight: 800,
+        fontSize: "32px",
+        letterSpacing: "0.05em",
+        textTransform: "uppercase",
+        color: "#1E2533",
+      }}
+    >
+      SIMBA HOMES
+    </div>
 
-            <div
-              style={{
-                fontFamily: 'Barlow Condensed, sans-serif',
-                fontSize: '11px',
-                letterSpacing: '0.25em',
-                color: '#D01C2A',
-                textTransform: 'uppercase',
-                fontWeight: 600,
-              }}
-            >
-              LTD · BC CANADA
-            </div>
-          </div>
-        </Link>
+    <div
+      style={{
+        fontFamily: "Barlow Condensed, sans-serif",
+        fontSize: "14px",
+        letterSpacing: "0.25em",
+        color: "#D01C2A",
+        textTransform: "uppercase",
+        fontWeight: 600,
+        textAlign: "center",
+        width: "100%",
+        display: "block",
+      }}
+    >
+      LTD
+    </div>
+  </div>
+</Link>
 
         {/* Desktop Navigation */}
         <div
@@ -206,7 +262,7 @@ export default function Navbar() {
           style={{
             position: 'fixed',
             inset: 0,
-            top: '70px',
+            top: '106px',
             background: '#ffffff',
             zIndex: 999,
             display: 'flex',

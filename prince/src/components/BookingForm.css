@@ -1,0 +1,117 @@
+/* ===========================
+   BOOKING FORM
+   =========================== */
+.booking-form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 var(--space-xl);
+}
+
+.booking-form__full {
+  grid-column: 1 / -1;
+}
+
+.booking-form__submit {
+  text-align: center;
+  padding-top: var(--space-md);
+}
+
+.booking-form__btn {
+  min-width: 260px;
+  position: relative;
+}
+
+.booking-form__btn.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.booking-form__spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--color-white);
+  border-radius: var(--radius-circle);
+  animation: rotateSlow 0.8s linear infinite;
+  display: inline-block;
+}
+
+.booking-form__note {
+  margin-top: var(--space-lg);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* Success */
+.booking-success {
+  text-align: center;
+  padding: var(--space-3xl) var(--space-2xl);
+  animation: scaleIn 0.5s var(--transition-spring);
+}
+
+.booking-success__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--space-lg);
+}
+
+.booking-success__text {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2xl);
+  line-height: var(--leading-relaxed);
+}
+
+.booking-success__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 400px;
+  margin: 0 auto var(--space-2xl);
+  background: var(--color-off-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  border: 1px solid rgba(94, 43, 151, 0.1);
+}
+
+.booking-success__detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.booking-success__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.booking-success__value {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.booking-success__contact {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+}
+
+.booking-success__phone {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.booking-success__phone:hover { text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .booking-form__grid { grid-template-columns: 1fr; }
+  .booking-form__full { grid-column: auto; }
+  .booking-form__btn { width: 100%; min-width: unset; }
+}

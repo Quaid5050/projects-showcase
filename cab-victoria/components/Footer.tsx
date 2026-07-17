@@ -14,13 +14,13 @@ export default function Footer() {
       <div className="wrap">
         <div className="footer-g">
           <div>
-            <div className="font-display" style={{fontSize:'1.8rem',color:'var(--gold)',marginBottom:8}}>1CAB VICTORIA</div>
+            <div className="font-display" style={{fontSize:'1.8rem',color:'var(--gold)',marginBottom:8}}>BOOKACAB</div>
             <p style={{fontSize:12,color:'#3a3a3a',lineHeight:1.8}}>Assured service at all times.<br />Victoria, BC, Canada</p>
             <p style={{fontSize:11,color:'#2a2a2a',marginTop:8,lineHeight:1.7}}>Text 2–3 hrs ahead with pickup location, date/time & destination</p>
           </div>
           <div>
             <p style={{fontSize:10,fontWeight:700,letterSpacing:'0.1em',textTransform:'uppercase',color:'var(--gold)',marginBottom:12}}>Services</p>
-            {['Airport & Ferry Transfer','City Tours','Outstation Trips','Designated Driver','U-Haul Drivers','Limousine'].map(s=>(
+            {['Airport & Ferry Transfer','City Tours','Outstation Trips','Designated Driver','Cowichan Valley Wine Tour','Malahat Skywalk & Castle Tour','Limousine'].map(s=>(
               <Link key={s} href="/services" style={{display:'block',fontSize:12,color:'#3a3a3a',textDecoration:'none',marginBottom:6,transition:'color 0.2s'}}
                 onMouseEnter={e=>(e.currentTarget.style.color='var(--gold)')}
                 onMouseLeave={e=>(e.currentTarget.style.color='#3a3a3a')}>{s}</Link>
@@ -41,11 +41,12 @@ export default function Footer() {
               +1 (250) 986-8284
             </a>
             <a href="tel:+12509868284" style={{display:'block',fontSize:12,color:'#3a3a3a',textDecoration:'none',marginBottom:6}}>📞 +1 (250) 986-8284</a>
+            <a href="sms:+12509868284" style={{display:'block',fontSize:12,color:'#3a3a3a',textDecoration:'none',marginBottom:6}}>💬 Text +1 (250) 986-8284</a>
             <a href="mailto:1cab.victoria@gmail.com" style={{display:'block',fontSize:12,color:'#3a3a3a',textDecoration:'none',wordBreak:'break-all'}}>✉ 1cab.victoria@gmail.com</a>
           </div>
         </div>
         <div className="footer-bot" style={{borderTop:'1px solid #111',paddingTop:18}}>
-          <span style={{fontSize:11,color:'#252525'}}>© 2025 1Cab Victoria · Jaydeep Mohan</span>
+          <span style={{fontSize:11,color:'#252525'}}>© 2025 BookaCab Victoria · Jaydeep Mohan</span>
           <span style={{fontSize:11,color:'#252525'}}>Serving Victoria, BC & beyond</span>
         </div>
       </div>

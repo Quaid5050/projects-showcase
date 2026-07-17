@@ -7,11 +7,17 @@ import api from '../api';
 
 export default function AccommodationsPage() {
   const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [booking, setBooking] = useState(null);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  useEffect(() => { api.get('/api/rooms').then(r => setRooms(r.data)).catch(() => {}); }, []);
+  useEffect(() => {
+    api.get('/api/rooms')
+      .then(r => { setRooms(r.data || []); setLoading(false); })
+      .catch(() => { setError(true); setLoading(false); });
+  }, []);
 
   return (
     <>
@@ -54,7 +60,19 @@ export default function AccommodationsPage() {
                 </div>
               </div>
             ))}
-            {rooms.length===0&&<div style={{gridColumn:'1/-1',textAlign:'center',padding:60,color:'#aaa'}}>Loading...</div>}
+            {loading&&<div style={{gridColumn:'1/-1',textAlign:'center',padding:60}}>
+              <div style={{width:40,height:40,border:'3px solid #EDE8E0',borderTopColor:'#C9933A',borderRadius:'50%',animation:'spin 0.8s linear infinite',margin:'0 auto 16px'}}/>
+              <p style={{color:'#888',fontSize:14}}>Loading accommodations...</p>
+              <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+            </div>}
+            {!loading&&error&&<div style={{gridColumn:'1/-1',textAlign:'center',padding:60}}>
+              <p style={{color:'#888',fontSize:15,marginBottom:16}}>Unable to load accommodations right now.</p>
+              <a href="https://www.airbnb.com/rooms/51519181" target="_blank" rel="noreferrer" className="btn-gold">View Directly on Airbnb</a>
+            </div>}
+            {!loading&&!error&&rooms.length===0&&<div style={{gridColumn:'1/-1',textAlign:'center',padding:60}}>
+              <p style={{color:'#888',fontSize:15,marginBottom:16}}>No accommodations available at the moment.</p>
+              <a href="https://www.airbnb.com/rooms/51519181" target="_blank" rel="noreferrer" className="btn-gold">View on Airbnb</a>
+            </div>}
           </div>
         </div>
       </section>

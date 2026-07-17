@@ -1,0 +1,14 @@
+node_modules
+dist
+.env
+.env.local
+*.log
+.DS_Store
+
+# Logo/design source files — kept locally, not deployed to web
+frontend/public/*.ai
+frontend/public/*.eps
+frontend/public/*.zip
+frontend/public/Icon.jpg
+frontend/public/1-01.jpg
+frontend/public/04 (1).jpg

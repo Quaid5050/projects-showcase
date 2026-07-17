@@ -1,0 +1,416 @@
+/* ============================================
+   BEFORE / AFTER IMAGE COMPARISON SLIDER
+   ============================================ */
+
+.before-after-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Main Container */
+.before-after-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 0 100px rgba(0, 0, 0, 0.3);
+  cursor: col-resize;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.before-after-container.dragging {
+  cursor: grabbing;
+}
+
+/* Image Wrappers */
+.before-image-wrapper,
+.after-image-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.before-image-wrapper {
+  z-index: 1;
+}
+
+.after-image-wrapper {
+  z-index: 2;
+  transition: clip-path 0.1s ease-out;
+}
+
+.before-after-container.dragging .after-image-wrapper {
+  transition: none;
+}
+
+/* Images */
+.before-after-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+/* Image Labels */
+.image-label {
+  position: absolute;
+  top: 20px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+  pointer-events: none;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.before-label {
+  left: 20px;
+  border-color: rgba(255, 100, 100, 0.3);
+  background: rgba(150, 50, 50, 0.4);
+}
+
+.after-label {
+  right: 20px;
+  border-color: rgba(100, 255, 100, 0.3);
+  background: rgba(50, 150, 50, 0.4);
+}
+
+/* Slider Handle */
+.slider-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Vertical Line */
+.slider-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(128, 128, 128, 0.8) 20%,
+    rgba(128, 128, 128, 0.8) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 20px rgba(128, 128, 128, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* Slider Knob */
+.slider-knob {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+  border: 2px solid rgba(128, 128, 128, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 4px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(128, 128, 128, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.slider-knob svg {
+  width: 14px;
+  height: 14px;
+  color: #808080;
+  opacity: 0.8;
+}
+
+/* Slider Glow */
+.slider-glow {
+  position: absolute;
+  inset: -10px;
+  background: radial-gradient(circle, rgba(128, 128, 128, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Hover States */
+.before-after-container:hover .slider-knob {
+  transform: scale(1.1);
+  border-color: rgba(128, 128, 128, 0.9);
+  box-shadow: 
+    0 15px 50px rgba(0, 0, 0, 0.6),
+    0 0 0 4px rgba(0, 0, 0, 0.3),
+    0 0 50px rgba(128, 128, 128, 0.4);
+}
+
+.before-after-container:hover .slider-glow {
+  opacity: 1;
+}
+
+.before-after-container:hover .slider-line {
+  width: 4px;
+  box-shadow: 0 0 30px rgba(128, 128, 128, 0.7);
+}
+
+/* Dragging States */
+.before-after-container.dragging .slider-knob {
+  transform: scale(0.95);
+  cursor: grabbing;
+  border-color: #808080;
+  box-shadow: 
+    0 5px 30px rgba(0, 0, 0, 0.4),
+    0 0 0 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(128, 128, 128, 0.6);
+}
+
+.before-after-container.dragging .slider-glow {
+  opacity: 1;
+}
+
+/* Instructions */
+.slider-instructions {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.before-after-container.dragging .slider-instructions,
+.before-after-container:hover .slider-instructions {
+  opacity: 0;
+}
+
+.slider-instructions span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.slider-instructions span::before,
+.slider-instructions span::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.5));
+}
+
+.slider-instructions span::after {
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.5), transparent);
+}
+
+/* Section Styling for Home Page */
+.before-after-section {
+  position: relative;
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #080808 0%, #0d0d0d 50%, #080808 100%);
+  overflow: hidden;
+}
+
+.before-after-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(128, 128, 128, 0.2), transparent);
+}
+
+.before-after-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.before-after-badge {
+  display: inline-block;
+  background: rgba(128, 128, 128, 0.1);
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  color: #808080;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.before-after-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  background: linear-gradient(135deg, #fff 0%, #888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.before-after-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+/* Background Effects */
+.before-after-bg-effects {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.before-after-orb {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.1;
+  animation: orbFloatBeforeAfter 25s ease-in-out infinite;
+}
+
+.before-after-orb-1 {
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+  top: -100px;
+  left: -100px;
+}
+
+.before-after-orb-2 {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  bottom: -100px;
+  right: -100px;
+  animation-delay: -12s;
+}
+
+@keyframes orbFloatBeforeAfter {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.15); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .before-after-section {
+    padding: 60px 15px;
+  }
+  
+  .before-after-header {
+    margin-bottom: 40px;
+  }
+  
+  .before-after-container {
+    border-radius: 16px;
+    aspect-ratio: 4 / 3;
+  }
+  
+  .slider-knob {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .slider-knob svg {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .image-label {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+    top: 12px;
+  }
+  
+  .before-label {
+    left: 12px;
+  }
+  
+  .after-label {
+    right: 12px;
+  }
+  
+  .slider-instructions {
+    font-size: 0.75rem;
+    padding: 8px 16px;
+    bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .before-after-container {
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+  }
+  
+  .slider-knob {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .slider-line {
+    width: 2px;
+  }
+  
+  .image-label {
+    font-size: 0.65rem;
+    padding: 5px 10px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .after-image-wrapper {
+    transition: none;
+  }
+  
+  .slider-knob,
+  .slider-line,
+  .slider-glow,
+  .image-label {
+    transition: none;
+  }
+  
+  .before-after-orb {
+    animation: none;
+  }
+}

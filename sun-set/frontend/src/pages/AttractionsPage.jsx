@@ -50,6 +50,9 @@ export default function AttractionsPage() {
           </div>
         </div>
       </section>
+
+      
+
       <Footer />
     </>
   );

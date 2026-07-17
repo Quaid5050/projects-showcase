@@ -72,7 +72,7 @@ export default function ProjectsPage() {
       {/* Stats bar */}
       <section style={{ background: '#D01C2A', padding: '32px 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '24px' }}>
-          {[['100+', 'Homes Built'], ['5+', 'Years Active'], ['BC Wide', 'Service Area'], ['2-5-10', 'Warranty on All New Homes']].map(([n, l]) => (
+          {[ ['5+', 'Years Active'], ['BC Wide', 'Service Area'], ['2-5-10', 'Warranty on All New Homes']].map(([n, l]) => (
             <div key={l} style={{ textAlign: 'center' }}>
               <div style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '32px', fontWeight: 800, color: '#fff', lineHeight: 1 }}>{n}</div>
               <div style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.75)', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: '4px' }}>{l}</div>

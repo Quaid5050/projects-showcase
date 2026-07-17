@@ -1,0 +1,47 @@
+{
+  "name": "yuvaan-international",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "playwright test",
+    "verify:routes": "node scripts/verify-routes.mjs",
+    "screenshots": "node scripts/capture-screenshots.mjs",
+    "seed": "node scripts/seed.js && npx tsx scripts/seed-entities.ts",
+    "seed:entities": "npx tsx scripts/seed-entities.ts"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
+    "@types/bcryptjs": "^2.4.6",
+    "bcryptjs": "^3.0.3",
+    "framer-motion": "^12.42.2",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.24.0",
+    "mongoose": "^9.7.4",
+    "next": "16.2.10",
+    "next-auth": "^4.24.14",
+    "nodemailer": "^7.0.7",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-hook-form": "^7.81.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.5.2",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "postcss": "^8.5.16",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.23.0",
+    "typescript": "^5"
+  }
+}

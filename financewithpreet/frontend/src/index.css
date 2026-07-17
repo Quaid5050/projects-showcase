@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply font-sans bg-navy-900 text-gray-200;
+    background-color: #060d1f;
+  }
+  ::selection {
+    background: rgba(245, 158, 11, 0.3);
+    color: #fbbf24;
+  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #03060f; }
+  ::-webkit-scrollbar-thumb { background: #2a3f6f; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+}
+
+@layer components {
+  /* ─── Buttons ─── */
+  .btn-primary {
+    @apply bg-gold-500 hover:bg-gold-400 text-navy-900 font-bold px-7 py-3 rounded-lg
+           transition-all duration-300 shadow-gold hover:shadow-gold-lg
+           hover:-translate-y-0.5 active:translate-y-0 cursor-pointer;
+  }
+  .btn-outline {
+    @apply border-2 border-gold-500/60 text-gold-400 hover:border-gold-400
+           hover:bg-gold-500/10 font-semibold px-7 py-3 rounded-lg
+           transition-all duration-300 backdrop-blur-sm;
+  }
+  .btn-ghost {
+    @apply text-gray-300 hover:text-gold-400 font-medium
+           transition-colors duration-200;
+  }
+
+  /* ─── Typography ─── */
+  .section-title {
+    @apply font-serif text-3xl md:text-4xl font-bold text-white mb-4;
+  }
+  .section-subtitle {
+    @apply text-gray-400 text-lg mb-12 max-w-2xl mx-auto leading-relaxed;
+  }
+  .gold-label {
+    @apply text-gold-400 font-semibold text-sm uppercase tracking-widest mb-3 inline-block;
+  }
+
+  /* ─── Cards ─── */
+  .card {
+    @apply bg-navy-800 border border-navy-600/50 rounded-2xl p-8
+           hover:border-gold-500/40 transition-all duration-300
+           hover:shadow-gold shadow-navy;
+  }
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6
+           hover:bg-white/8 hover:border-gold-500/30 transition-all duration-300;
+  }
+  .card-dark {
+    @apply bg-navy-850 border border-navy-700/60 rounded-2xl p-6
+           hover:border-gold-500/30 transition-all duration-300;
+  }
+
+  /* ─── Section backgrounds ─── */
+  .section-dark {
+    @apply bg-navy-900 text-white;
+  }
+  .section-darker {
+    @apply bg-navy-950 text-white;
+  }
+  .section-mid {
+    @apply bg-navy-800 text-white;
+  }
+
+  /* ─── Gold divider ─── */
+  .gold-divider {
+    @apply w-16 h-0.5 bg-gold-500 mb-6;
+  }
+
+  /* ─── Input fields ─── */
+  .input-dark {
+    @apply w-full bg-navy-750/80 border border-navy-600/60 rounded-xl px-4 py-3
+           text-gray-200 placeholder-gray-500
+           focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500/60
+           transition-all duration-200;
+  }
+
+  /* ─── Gold shimmer text ─── */
+  .text-shimmer {
+    background: linear-gradient(90deg, #f59e0b, #fde68a, #f59e0b);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* ─── Noise texture overlay ─── */
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+@layer utilities {
+  .bg-navy-850 { background-color: #080f22; }
+  .bg-navy-750 { background-color: #0d1530; }
+  .border-navy-750 { border-color: #0d1530; }
+}

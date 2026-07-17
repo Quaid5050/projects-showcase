@@ -85,7 +85,7 @@ export function ConditionAccordion({ categories, anchorId }: Props) {
                     ) : null}
                     <ul
                       className="grid list-none gap-x-6 gap-y-2.5 sm:grid-cols-2"
-                      aria-label={`${cat.title} wellness themes`}
+                      aria-label={`${cat.title} . themes`}
                     >
                       {visibleItems.map((item) => (
                         <li

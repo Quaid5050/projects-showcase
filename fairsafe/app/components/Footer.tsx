@@ -100,7 +100,7 @@ export default function Footer() {
     }}
   >
     <Image
-      src="/images/logo-icon.jpg"
+      src="/newlogo.png"
       alt="FAIRSAFE"
       width={130}
       height={50}
@@ -121,7 +121,7 @@ export default function Footer() {
       marginBottom: 24,
     }}
   >
-    Professional first aid & safety services across Metro
+    Professional First aid & Safety Solutions across Metro
     Vancouver and the Lower Mainland. Fair prices,
     certified staff, rapid deployment.
   </p>

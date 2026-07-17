@@ -1,0 +1,58 @@
+const reviews = [
+  {
+    id: 1,
+    name: 'Ahmed Hassan',
+    avatar: '/profile.jpg',
+    rating: 5,
+    review: 'Absolutely phenomenal service! My BMW looks brand new after the ceramic coating. The attention to detail is unmatched. Highly recommend to all luxury car owners.',
+    car: 'BMW X5',
+    date: '2 weeks ago',
+  },
+  {
+    id: 2,
+    name: 'Sarah Mitchell',
+    avatar: '/profile.jpg',
+    rating: 5,
+    review: 'Best detailing service in town! The team went above and beyond to restore my Mercedes paint. The interior smells amazing and looks showroom fresh.',
+    car: 'Mercedes C-Class',
+    date: '1 month ago',
+  },
+  {
+    id: 3,
+    name: 'Muhammad Ali',
+    avatar: '/profile.jpg',
+    rating: 4.5,
+    review: 'Professional staff and excellent PPF installation. No bubbles, perfect alignment. My Tesla Model 3 is now protected and looks stunning.',
+    car: 'Tesla Model 3',
+    date: '3 weeks ago',
+  },
+  {
+    id: 4,
+    name: 'Emily Chen',
+    avatar: '/profile.jpg',
+    rating: 5,
+    review: 'The starlight headliner installation exceeded my expectations! It feels like driving under the stars every night. Truly a luxury experience.',
+    car: 'Range Rover Sport',
+    date: '2 months ago',
+  },
+  {
+    id: 5,
+    name: 'Omar Farooq',
+    avatar: '/profile.jpg',
+    rating: 5,
+    review: 'Outstanding vinyl wrap job on my Audi. The finish is flawless and the color is exactly what I wanted. Fast turnaround too!',
+    car: 'Audi A6',
+    date: '1 week ago',
+  },
+  {
+    id: 6,
+    name: 'Jessica Williams',
+    avatar: '/profile.jpg',
+    rating: 4.5,
+    review: 'Great ambient lighting installation for my car interior. The team was courteous and completed the work within the promised time. Will definitely return!',
+    car: 'Lexus RX',
+    date: '3 days ago',
+  },
+]
+
+export default reviews

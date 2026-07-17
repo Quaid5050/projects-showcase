@@ -19,63 +19,57 @@ const PROJECTS: Project[] = [
     category: "Business Platform",
     description:
       "A sleek, conversion-focused business platform with a bold, modern interface and a fully responsive experience.",
-    url: "https://m2mpro.vercel.app/",
+    url: "https://www.m2mprocleaners.ca",
   },
   {
     name: "Cobb Church",
     category: "Community Website",
     description:
       "A warm, welcoming community website with events, media and an effortless, easy-to-navigate layout.",
-    url: "https://cobbchurch.vercel.app/",
+    url: "https://www.cobbchurchnetwork.org",
   },
   {
     name: "A1 Furnished",
     category: "Real Estate · Rentals",
     description:
       "A premium furnished-rentals website with rich listings and a clean, booking-ready presentation.",
-    url: "https://a1furnished.vercel.app/",
+    url: "https://www.a1furnished.ca",
   },
   {
     name: "Global Paradon",
     category: "Corporate · Business",
     description:
       "A professional corporate website with a confident, trustworthy design built to win clients.",
-    url: "https://globalparadon.vercel.app/",
+    url: "https://www.globalpardonwaivers.com",
   },
   {
     name: "AEM Quality ISO",
     category: "ISO Certification",
     description:
       "A clean, credible site for ISO certification and quality consulting that builds instant trust.",
-    url: "https://aem-quality-iso.vercel.app/",
+    url: "https://www.aemqualityiso.com",
   },
   {
     name: "Bariis Pizza",
     category: "Restaurant",
     description:
       "An appetizing restaurant website with a vibrant menu showcase and a smooth ordering experience.",
-    url: "https://bariis-pizza.vercel.app/",
+    url: "https://www.bariishalalpizza.com",
   },
   {
     name: "Corner Store",
     category: "Retail · E-commerce",
     description:
       "A neon-styled retail storefront with a striking, high-energy design and slick product browsing.",
-    url: "https://cornerstore-neon.vercel.app/",
+    url: "https://www.cornerstoreatlinwood.com",
   },
-  {
-    name: "Sunset",
-    category: "Brand Experience",
-    description:
-      "A cinematic brand landing experience with bold visuals and smooth, immersive motion.",
-    url: "https://sun-set-two.vercel.app/",
-  },
+  
   {
     name: "Toronto",
     category: "Local Business",
     description:
       "A modern local-business website with a polished, location-focused layout that converts.",
-    url: "https://toronto-nu.vercel.app/",
+    url: "https://www.torontonotaryoffice.ca",
   },
 ];
 

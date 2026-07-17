@@ -1,0 +1,2 @@
+/* Reset only — panel styles come from panel.css loaded in layout */
+* { box-sizing: border-box; margin: 0; padding: 0; }

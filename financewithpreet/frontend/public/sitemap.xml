@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://financewithpreet.ca/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://financewithpreet.ca/about</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://financewithpreet.ca/services</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://financewithpreet.ca/blog</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://financewithpreet.ca/faq</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://financewithpreet.ca/booking</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://financewithpreet.ca/contact</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+</urlset>

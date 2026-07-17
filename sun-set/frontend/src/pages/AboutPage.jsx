@@ -56,9 +56,9 @@ export default function AboutPage() {
             {/* Photo grid */}
             <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
               {[
-                '/property-exterior2.jpg',
-                '/property-gate.jpg',
-                '/property-night.jpg',
+                '/property-exterior-day.jpg',
+                '/property-entrance.jpg',
+                '/property-veranda.jpg',
                 '/property-building.jpg',
               ].map((src, i) => (
                 <div key={i} style={{ paddingBottom:'100%', position:'relative', overflow:'hidden', borderRadius:6 }}>

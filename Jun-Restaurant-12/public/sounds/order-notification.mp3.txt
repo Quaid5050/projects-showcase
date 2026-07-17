@@ -1,0 +1,2 @@
+PLACE YOUR order-notification.mp3 FILE HERE
+Delete this .txt file and place your notification sound as: order-notification.mp3

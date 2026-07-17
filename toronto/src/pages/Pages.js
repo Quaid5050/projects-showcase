@@ -78,6 +78,30 @@ export function Services() {
         </div>
       </div>
 
+      {/* ── DARK NAVY: Pricing Transparency ── */}
+      <section style={{ background: 'var(--navy)', padding: '80px 5%', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(26,75,140,0.10) 1px,transparent 1px),linear-gradient(90deg,rgba(26,75,140,0.10) 1px,transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }}/>
+        <div style={{ maxWidth: 1000, margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <span style={{ fontSize: 11, color: 'var(--gold)', letterSpacing: 3, textTransform: 'uppercase', fontWeight: 600, display: 'block', marginBottom: 12 }}>Transparent Pricing</span>
+          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: '#fff', marginBottom: 16 }}>Simple, <span style={{ color: 'var(--gold)' }}>Flat-Rate</span> Pricing</h2>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', maxWidth: 520, margin: '0 auto 48px', lineHeight: 1.8 }}>No hidden fees. No surprise charges. You know exactly what you'll pay before you arrive.</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }} className="pricing-grid">
+            {[
+              { label: 'Standard Notarization', price: '$35', note: 'Most affidavits & declarations' },
+              { label: 'Power of Attorney', price: '$50', note: 'Continuing or limited POA' },
+              { label: 'Real Estate Package', price: 'Custom', note: 'Based on document complexity' },
+            ].map(p => (
+              <div key={p.label} style={{ border: '1px solid rgba(184,150,90,0.2)', padding: '36px 28px', borderRadius: 4, background: 'rgba(184,150,90,0.04)' }}>
+                <div style={{ fontFamily: "'Playfair Display',serif", fontSize: 36, fontWeight: 700, color: 'var(--gold)', marginBottom: 8 }}>{p.price}</div>
+                <div style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 8 }}>{p.label}</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>{p.note}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <style>{`@media(max-width:768px){.pricing-grid{grid-template-columns:1fr!important;}}`}</style>
+      </section>
+
       <div style={{ background: 'var(--cream)', padding: '80px 5%', textAlign: 'center' }}>
         <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 34, color: 'var(--navy)', marginBottom: 14 }}>Not sure what you need?</h2>
         <p style={{ color: 'var(--text)', marginBottom: 32, fontSize: 16 }}>Contact us and we'll guide you to the right service for your situation.</p>
@@ -133,6 +157,28 @@ export function About() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* ── DARK NAVY: Our Commitment ── */}
+      <section style={{ background: 'var(--navy)', padding: '80px 5%', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(26,75,140,0.10) 1px,transparent 1px),linear-gradient(90deg,rgba(26,75,140,0.10) 1px,transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }}/>
+        <div style={{ position: 'absolute', top: '-15%', right: '-10%', width: 500, height: 500, background: 'radial-gradient(circle,rgba(184,150,90,0.1) 0%,transparent 70%)', pointerEvents: 'none' }}/>
+        <div style={{ maxWidth: 1000, margin: '0 auto', position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }} className="commit-grid">
+          <div>
+            <span style={{ fontSize: 11, color: 'var(--gold)', letterSpacing: 3, textTransform: 'uppercase', fontWeight: 600, display: 'block', marginBottom: 12 }}>Our Promise</span>
+            <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(26px,3.5vw,40px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 18 }}>A Notary Practice Built Around <span style={{ color: 'var(--gold)' }}>You</span></h2>
+            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.55)', lineHeight: 1.8 }}>We believe notary services should be accessible to everyone. That's why we offer same-day appointments, virtual commissioning, flat-rate pricing, and a convenient subway-accessible location.</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            {[['10,000+', 'Documents Notarized'], ['5 min', 'Average Wait Time'], ['Same Day', 'Availability'], ['4.9★', 'Client Rating']].map(([val, label]) => (
+              <div key={label} style={{ background: 'rgba(184,150,90,0.06)', border: '1px solid rgba(184,150,90,0.15)', padding: '24px 20px', borderRadius: 4, textAlign: 'center' }}>
+                <div style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, fontWeight: 700, color: 'var(--gold)', marginBottom: 6 }}>{val}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: 1 }}>{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <style>{`@media(max-width:768px){.commit-grid{grid-template-columns:1fr!important;}}`}</style>
       </section>
 
       <section style={{ background: 'var(--cream)', padding: '80px 5%' }}>
@@ -258,6 +304,29 @@ export function Contact() {
           </button>
         </div>
       </div>
+
+      {/* ── DARK NAVY: FAQ / Quick Info ── */}
+      <section style={{ background: 'var(--navy)', padding: '80px 5%', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(26,75,140,0.10) 1px,transparent 1px),linear-gradient(90deg,rgba(26,75,140,0.10) 1px,transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }}/>
+        <div style={{ maxWidth: 900, margin: '0 auto', position: 'relative', zIndex: 1, textAlign: 'center' }}>
+          <span style={{ fontSize: 11, color: 'var(--gold)', letterSpacing: 3, textTransform: 'uppercase', fontWeight: 600, display: 'block', marginBottom: 12 }}>Quick Answers</span>
+          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(28px,4vw,42px)', fontWeight: 700, color: '#fff', marginBottom: 48 }}>Frequently <span style={{ color: 'var(--gold)' }}>Asked</span></h2>
+          <div style={{ textAlign: 'left' }}>
+            {[
+              { q: 'Do I need an appointment?', a: 'Yes. We operate by appointment only to ensure minimal wait times. Same-day appointments are usually available.' },
+              { q: 'What should I bring?', a: 'Bring valid government-issued photo ID (passport or driver\'s license) and your unsigned documents.' },
+              { q: 'Do you offer virtual services?', a: 'Yes! Virtual commissioning is available for clients across Ontario who cannot visit in person.' },
+              { q: 'How much does it cost?', a: 'Most services start at $35. Pricing is flat-rate with no hidden fees. Contact us for complex documents.' },
+            ].map((faq, i) => (
+              <div key={i} style={{ borderBottom: '1px solid rgba(184,150,90,0.15)', padding: '24px 0' }}>
+                <h4 style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 10 }}>{faq.q}</h4>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7 }}>{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <style>{`@media(max-width:768px){.contact-grid{grid-template-columns:1fr!important;}}`}</style>
     </div>
   );

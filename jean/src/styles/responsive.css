@@ -1,0 +1,153 @@
+/* ============================================
+   RESPONSIVE.CSS — Junk Pro Service
+============================================ */
+
+/* ── TABLET 1024px ── */
+@media (max-width: 1024px) {
+  .grid-4               { grid-template-columns: repeat(2,1fr); }
+  .footer-grid           { grid-template-columns: 1fr 1fr; gap: var(--space-10); }
+  .stats-grid            { grid-template-columns: repeat(2,1fr); }
+  .process-grid          { grid-template-columns: repeat(2,1fr); }
+  .process-grid::before  { display: none; }
+  .service-detail-grid   { gap: var(--space-8); }
+  .pg-two-col            { gap: var(--space-8) !important; }
+}
+
+/* ── MOBILE 768px ── */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 64px;
+    --container-pad: 1.1rem;
+  }
+
+  /* Header */
+  .nav-links, .header-phone, .header-actions .btn { display: none !important; }
+  .hamburger { display: flex !important; }
+
+  /* Hero */
+  .hero-container {
+    grid-template-columns: 1fr !important;
+    padding-top: calc(var(--header-height) + 1.5rem) !important;
+    padding-bottom: 3.5rem !important;
+  }
+  .hero-container > * { grid-column: 1 !important; }
+  .hero-headline { font-size: clamp(1.9rem,7vw,2.6rem) !important; letter-spacing:-1px !important; }
+  .hero-sub      { font-size: 0.95rem !important; }
+  .hero-ctas     { flex-direction: column !important; align-items: stretch !important; }
+  .hero-ctas .btn { width: 100% !important; }
+  .hero-trust-strip { gap: var(--space-3) !important; }
+  .hero-home::before {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0.90) 100%) !important;
+  }
+  .hero-home::after, .page-hero::after { display: none !important; }
+
+  /* Page hero */
+  .page-hero { height: 240px !important; }
+  .page-hero::before {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.68) 50%, rgba(0,0,0,0.88) 100%) !important;
+  }
+  .page-hero-content h1 { font-size: clamp(1.4rem,5.5vw,2rem) !important; }
+  .page-hero-content p  { font-size: 0.875rem !important; max-width: 100% !important; }
+
+  /* ALL 2-col grids → single column */
+  .pg-two-col {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-8) !important;
+  }
+  /* ALL 3-col grids → single column */
+  .pg-three-col {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-5) !important;
+  }
+  /* Before/after images */
+  .pg-ba-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-1) !important;
+    min-height: auto !important;
+    border-radius: var(--radius-xl) !important;
+  }
+  .pg-ba-grid > div { height: 220px !important; }
+
+  /* CSS grids */
+  .grid-2, .grid-3, .grid-4, .grid-auto { grid-template-columns: 1fr !important; }
+  .stats-grid   { grid-template-columns: repeat(2,1fr) !important; }
+  .process-grid { grid-template-columns: 1fr 1fr !important; }
+  .process-grid::before { display: none !important; }
+  .split-layout { grid-template-columns: 1fr !important; min-height: auto !important; }
+  .split-layout .split-image  { height: 240px !important; }
+  .split-layout .split-content { padding: var(--space-8) var(--container-pad) !important; }
+  .service-detail-grid,
+  .service-detail-grid.reverse { grid-template-columns: 1fr !important; direction: ltr !important; }
+  .service-detail-image { height: 240px !important; }
+  .footer-grid  { grid-template-columns: 1fr !important; gap: var(--space-6) !important; }
+  .footer-bottom { flex-direction: column !important; text-align: center !important; gap: var(--space-3) !important; }
+
+  /* Sections */
+  .section-pad { padding: 3rem 0 !important; }
+  .section-header { margin-bottom: 2.5rem !important; }
+  .section-header h2 { font-size: 1.7rem !important; }
+  .section-header p  { font-size: 0.9rem !important; }
+
+  /* Stats */
+  .stat-item h3 { font-size: 1.8rem !important; }
+  .stat-item + .stat-item::before { display: none !important; }
+
+  /* Forms */
+  .form-grid-2 { grid-template-columns: 1fr !important; }
+  .lead-form   { padding: var(--space-6) var(--space-4) !important; }
+  .form-group input, .form-group select, .form-group textarea { font-size: 16px !important; }
+
+  /* CTA */
+  .cta-section h2 { font-size: 1.7rem !important; }
+  .cta-btn-group  { flex-direction: column !important; align-items: center !important; }
+  .cta-btn-group .btn { width: 100% !important; max-width: 320px !important; }
+
+  /* Buttons */
+  .svc-btn-row { flex-direction: column !important; }
+  .svc-btn-row .btn { width: 100% !important; }
+  .btn-xl { padding: 0.9rem 1.8rem !important; font-size: 0.85rem !important; }
+
+  /* Cards */
+  .service-card { border-radius: var(--radius-xl) !important; }
+  .service-card-image { height: 200px !important; }
+  .why-card, .audience-card { padding: var(--space-6) !important; }
+  .contact-card { padding: var(--space-4) !important; }
+  .contact-card-value { font-size: 0.82rem !important; word-break: break-all !important; }
+
+  /* Modal — centered on mobile too */
+  .modal-overlay { padding: var(--space-3) !important; align-items: flex-start !important; padding-top: var(--space-8) !important; }
+  .modal-box     { max-height: calc(100vh - 4rem) !important; border-radius: var(--radius-xl) !important; width: 100% !important; }
+  .modal-header  { padding: var(--space-5) var(--space-5) 0 !important; }
+  .modal-body    { padding: 0 var(--space-5) var(--space-6) !important; }
+
+  /* Marquee */
+  .marquee-item { font-size: 0.75rem !important; padding: 0 var(--space-4) !important; }
+
+  /* Decorations */
+  .deco-blob, .deco-ring, .scroll-cue { display: none !important; }
+}
+
+/* ── SMALL MOBILE 480px ── */
+@media (max-width: 480px) {
+  :root { --container-pad: 0.9rem; }
+
+  .hero-headline { font-size: clamp(1.6rem,6.5vw,2.1rem) !important; }
+  .hero-trust-strip { display: none !important; }
+  .page-hero { height: 210px !important; }
+  .process-grid { grid-template-columns: 1fr !important; }
+  .service-card-image { height: 185px !important; }
+  .header-logo img { height: 38px !important; }
+  .header-logo-text { font-size: 0.9rem !important; }
+  .section-pad { padding: 2.5rem 0 !important; }
+  .stats-bar   { padding: 1.5rem 0 !important; }
+  .stat-item h3 { font-size: 1.6rem !important; }
+  .footer-brand p { font-size: 0.8rem !important; }
+  .why-card-icon { width: 44px !important; height: 44px !important; }
+}
+
+/* ── VERY SMALL 360px ── */
+@media (max-width: 360px) {
+  .header-logo-text { display: none !important; }
+  .hero-headline { font-size: 1.5rem !important; }
+  .btn-xl, .btn-lg { font-size: 0.78rem !important; padding: 0.75rem 1.2rem !important; }
+}

@@ -1,0 +1,159 @@
+/* ===========================
+   BOOKING PAGE
+   =========================== */
+.booking-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* Sidebar */
+.booking-sidebar__inner {
+  padding: var(--space-2xl);
+  position: sticky;
+  top: 120px;
+}
+
+.booking-sidebar__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid rgba(94, 43, 151, 0.1);
+}
+
+.booking-sidebar__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.booking-sidebar__benefit {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: rgba(94, 43, 151, 0.05);
+  border: 1px solid rgba(94, 43, 151, 0.08);
+  transition: all var(--transition-base);
+}
+
+.booking-sidebar__benefit:hover {
+  background: rgba(94, 43, 151, 0.1);
+  border-color: rgba(94, 43, 151, 0.2);
+}
+
+.booking-sidebar__benefit-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.booking-sidebar__benefit-text {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+/* Contact */
+.booking-sidebar__contact {
+  padding-top: var(--space-xl);
+  border-top: 1px solid rgba(94, 43, 151, 0.1);
+  margin-bottom: var(--space-xl);
+}
+
+.booking-sidebar__contact-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-md);
+}
+
+.booking-sidebar__phone,
+.booking-sidebar__email {
+  display: block;
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: var(--space-sm) 0;
+  transition: color var(--transition-base);
+}
+
+.booking-sidebar__phone:hover,
+.booking-sidebar__email:hover {
+  color: var(--color-primary-soft);
+}
+
+/* Areas */
+.booking-sidebar__areas-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-md);
+  padding-top: var(--space-xl);
+  border-top: 1px solid rgba(94, 43, 151, 0.1);
+}
+
+.booking-sidebar__areas-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.booking-sidebar__area-tag {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+/* Form Wrapper */
+.booking-form-wrapper__inner {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(94, 43, 151, 0.06);
+}
+
+.booking-form-wrapper__header {
+  margin-bottom: var(--space-2xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid rgba(94, 43, 151, 0.08);
+}
+
+.booking-form-wrapper__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-md);
+}
+
+.booking-form-wrapper__sub {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .booking-layout { grid-template-columns: 320px 1fr; gap: var(--space-2xl); }
+}
+
+@media (max-width: 900px) {
+  .booking-layout { grid-template-columns: 1fr; }
+  .booking-sidebar__inner { position: static; }
+  .booking-form-wrapper__inner { padding: var(--space-xl); }
+}
+
+@media (max-width: 480px) {
+  .booking-form-wrapper__inner { padding: var(--space-lg); border-radius: var(--radius-lg); }
+}

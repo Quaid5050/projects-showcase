@@ -1,150 +1,255 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Image from 'next/image'
 
-const stops = [
-  {name:'Butchart Gardens',area:'40 min · Brentwood Bay',dur:'60–90 min',type:'Nature',dayImg:'https://images.unsplash.com/photo-1558449709-9215b1ec91de?q=80',nightImg:'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=700&q=80',dayDesc:'A breathtaking 55-acre garden paradise in full bloom. Sunlight dances through roses and Japanese maples in the famous Sunken Garden.',nightDesc:'700+ lights transform the gardens into a glowing fairytale. Saturday evenings bring live music and fireworks.',highlight:'UNESCO World Heritage site'},
-  {name:'Inner Harbour',area:'City centre',dur:'30–45 min',type:'Landmark',dayImg:'https://images.unsplash.com/photo-1688713866885-4cb1310b4939?q=80',nightImg:'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=700&q=80',dayDesc:"Victoria's most famous viewpoint — float planes, the iconic Empress Hotel, and the buzz of the waterfront.",nightDesc:'Parliament glows with 3,300 lights reflected in still water. The most romantic spot in BC after dark.',highlight:'Heart of Victoria'},
-  {name:"Fisherman's Wharf",area:'10 min from harbour',dur:'30 min',type:'Waterfront',dayImg:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80',nightImg:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=700&q=80',dayDesc:'Colourful floating homes, harbour seals, fresh seafood, and the best ice cream in Victoria.',nightDesc:'Soft dock lights on calm water. Multicoloured homes glow quietly — a peaceful romantic stop.',highlight:"Canada's most colourful floating homes"},
-  {name:'Craigdarroch Castle',area:'Rockland',dur:'45 min',type:'Heritage',dayImg:'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=700&q=80',nightImg:'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=700&q=80',dayDesc:'Romanesque-revival mansion built in the 1890s, perched on a hill with panoramic views of Victoria and the Olympics.',nightDesc:'Floodlit against the dark sky — straight out of a gothic novel.',highlight:'National Historic Site · 1890'},
-  {name:'BC Legislature',area:'Inner Harbour',dur:'20 min',type:'Government',dayImg:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&q=80',nightImg:'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=700&q=80',dayDesc:'Grand Edwardian legislature completed 1897. Free interior tours. Imposing copper dome and intricate stonework.',nightDesc:'3,300 lights outline every dome, tower, and column — one of the most photographed night views in Western Canada.',highlight:'Completed 1897'},
-  {name:'Beacon Hill Park',area:'South Victoria',dur:'30 min',type:'Park',dayImg:'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=700&q=80',nightImg:'https://images.unsplash.com/photo-1446329813274-7c9036bd9a1f?w=700&q=80',dayDesc:'Peacocks roam freely through 200 acres of gardens and clifftop ocean lookouts. Views of the Strait of Juan de Fuca.',nightDesc:'Lamplit paths, sea breeze, waves below. A uniquely peaceful Victoria evening.',highlight:'Free-roaming peacocks · Ocean views'},
-  {name:'Fan Tan Alley',area:'Chinatown',dur:'20 min',type:'Cultural',dayImg:'https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=700&q=80',nightImg:'https://images.unsplash.com/photo-1444084316824-dc26d6657664?w=700&q=80',dayDesc:"Canada's narrowest commercial street — barely 90cm wide. Artist studios, antique shops, and hidden courtyards.",nightDesc:'Red lanterns glow overhead. Warm light and shadows make it feel like another era.',highlight:"Canada's narrowest street"},
-  {name:'Dallas Road Waterfront',area:'Scenic coastal drive',dur:'30 min',type:'Scenic',dayImg:'https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=700&q=80',nightImg:'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=700&q=80',dayDesc:'Wind-blown clifftops above crashing Pacific waves. Views of the Olympic Mountains. Bald eagles overhead.',nightDesc:'City lights behind, stars above, waves below. Jay pulls over so you can take it all in.',highlight:'Olympics · Eagles · Orcas'},
+/* ── STOP DATA (images) ── */
+const allStops: Record<string,{day:string;night:string}> = {
+  'Dallas Waterfront':       {day:'/tours/dallas-road-day.jpeg',       night:'/tours/dallas-road-night.jpg'},
+  'Mile 0':                  {day:'/tours/mile0-day.jpeg',             night:'/tours/mile0-night.jpeg'},
+  'Terry Fox Statue':        {day:'/tours/terry-fox-day.jpg',         night:'/tours/terry-fox-day.jpg'},
+  'Beacon Hill Park':        {day:'/tours/beacon-hill-day.webp',      night:'/tours/beacon-hill-night.jpg'},
+  "Totem Pole — World's Tallest": {day:'/tours/totem-pole-day.jpg',   night:'/tours/totem-pole-day.jpg'},
+  'Cathedral Church':        {day:'/tours/cathedral-day.jpeg',         night:'/tours/cathedral-night.jpeg'},
+  'China Town':              {day:'/tours/chinatown-day.webp',        night:'/tours/chinatown-night.jpeg'},
+  'Johnson Bridge':          {day:'/tours/johnson-bridge-day.webp',   night:'/tours/johnson-bridge-night.webp'},
+  'Empress Hotel':           {day:'/tours/empress-day.jpg',           night:'/tours/empress-night.jpg'},
+  'Parliament Building':     {day:'/tours/parliament-day.jpg',        night:'/tours/parliament-night.jpg'},
+  'Confederation Garden':    {day:'/tours/confederation-garden-day.jpg', night:'/tours/confederation-garden-day.jpg'},
+  "Fisherman's Wharf":       {day:'/tours/fisherman-wharf-day.jpeg',   night:'/tours/fisherman-wharf-night.jpeg'},
+  'Craigdarroch Castle':     {day:'/tours/castle-day.jpeg',            night:'/tours/castle-night.jpeg'},
+  'Government House':        {day:'/tours/government-house-day.jpg',  night:'/tours/government-house-day.jpg'},
+  'Inner Harbour':           {day:'/tours/inner-harbour-day.webp',    night:'/tours/inner-harbour-night.jpeg'},
+  'Bastion Square':          {day:'/tours/bastion-square-day.jpg',    night:'/tours/bastion-square-night.jpg'},
+  'Mt. Tolmie':              {day:'/tours/mt-tolmie-day.jpeg',         night:'/tours/mt-tolmie-night.jpeg'},
+  'Gorge Waterway':          {day:'/tours/gorge-waterway-day.jpeg',    night:'/tours/gorge-waterway-day.jpeg'},
+  'Japanese Garden':         {day:'/tours/japanese-garden-day.jpg',   night:'/tours/japanese-garden-day.jpg'},
+  'Butchart Gardens':        {day:'/tours/buut2.jpeg',          night:'/tours/butchart-night.webp'},
+}
+
+/* ── TOUR PACKAGES ── */
+const tour1 = ['Dallas Waterfront','Mile 0','Terry Fox Statue','Beacon Hill Park',"Totem Pole — World's Tallest",'Cathedral Church','China Town','Johnson Bridge','Empress Hotel','Parliament Building','Confederation Garden',"Fisherman's Wharf"]
+const tour2Extra = ['Craigdarroch Castle','Government House','Inner Harbour','Bastion Square']
+const tour3Extra = ['Mt. Tolmie','Gorge Waterway','Japanese Garden']
+const tour4 = ['Butchart Gardens','Dallas Waterfront','Mile 0','Terry Fox Statue','China Town','Johnson Bridge','Empress Hotel','Parliament Building',"Fisherman's Wharf"]
+const allNames = [...new Set([...tour1,...tour2Extra,...tour3Extra,'Butchart Gardens'])]
+
+type Pkg = { id:string; label:string; hours:string; tag:string; stops:string[]; desc:string; img:string; highlight:string }
+
+const packages: Pkg[] = [
+  {id:'1hr',label:'1',hours:'1 hour',tag:'1 hour Express Tour',stops:tour1,
+   desc:'See the best of Victoria in 60 minutes. 12 iconic stops from Dallas Waterfront to Fisherman\'s Wharf.',
+   img:'/tours/parliament-day.jpg',
+   highlight:'12 stops · Perfect for cruise visitors'},
+  {id:'2hr',label:'2',hours:'2 hours',tag:'Victoria City Highlights',stops:[...tour1,...tour2Extra],
+   desc:'Everything in the Express Tour plus Craigdarroch Castle, Government House, Inner Harbour & Bastion Square.',
+   img:'/tours/castle-day.jpeg',
+   highlight:'16 stops · Our most popular tour'},
+  {id:'3hr',label:'3',hours:'3 hours',tag:'Grand City Tour',stops:[...tour1,...tour2Extra,...tour3Extra],
+   desc:'The full city experience — all 2-hour stops plus Mt. Tolmie viewpoint, Gorge Waterway & Japanese Garden.',
+   img:'/tours/mt-tolmie-day.jpeg',
+   highlight:'19 stops · The complete experience'},
+  {id:'4hr',label:'4',hours:'4 hours',tag:'Victoria Garden Tour',stops:tour4,
+   desc:'Includes the world-famous Butchart Gardens plus a selection of city highlights. A must for garden lovers.',
+   img:'/tours/butchart-day.jpg',
+   highlight:'9 stops · Includes Butchart Gardens'},
+  {id:'full',label:'FULL',hours:'Full day',tag:'Full Day Tour',stops:allNames,
+   desc:'Every stop. Every garden. Every viewpoint. The ultimate Victoria experience with no rush.',
+   img:'/tours/inner-harbour-day.webp',
+   highlight:'All stops · No rush · Ultimate experience'},
 ]
 
 export default function ToursPage() {
   const [mode, setMode] = useState<'day'|'night'>('day')
-  const [sel, setSel] = useState(0)
-  const cur = stops[sel]
+  const [activePkg, setActivePkg] = useState<Pkg|null>(null)
+  const stopsRef = useRef<HTMLDivElement>(null)
+
+  const selectPkg = (p: Pkg) => {
+    setActivePkg(p)
+    setTimeout(() => stopsRef.current?.scrollIntoView({ behavior:'smooth', block:'start' }), 100)
+  }
 
   return (
     <>
     <style>{`
-      .stops-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:3px; }
-      .tours-layout { display:grid; grid-template-columns:1fr 340px; gap:20px; align-items:start; }
-      .detail-sticky { position:sticky; top:112px; }
-
-      @media(max-width:1024px){
-        .stops-grid { grid-template-columns:repeat(3,1fr); }
-      }
-      @media(max-width:860px){
-        /* On tablet/mobile: panel goes ABOVE the grid */
-        .tours-layout { grid-template-columns:1fr; }
-        .detail-sticky { position:static; order:-1; }
-        /* 2 col stops on tablet */
-        .stops-grid { grid-template-columns:repeat(3,1fr); }
-      }
+      .pkg-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+      .pkg-card { position:relative; overflow:hidden; border:2px solid #1a1a1a; border-radius:6px; cursor:pointer; transition:all 0.3s; background:#0d0d0d; }
+      .pkg-card:hover { border-color:rgba(245,166,35,0.35); transform:translateY(-3px); }
+      .pkg-card.active { border-color:var(--gold); }
+      .pkg-card-img { position:relative; height:clamp(160px,18vw,220px); overflow:hidden; }
+      .pkg-card-body { padding:clamp(14px,2.5vw,22px); }
+      .pkg-card-hours { position:absolute; top:12px; left:12px; background:rgba(0,0,0,0.8); backdrop-filter:blur(8px); border:1px solid rgba(245,166,35,0.4); border-radius:4px; padding:6px 14px; z-index:2; }
+      .pkg-card-hours span { font-size:clamp(1.2rem,2.5vw,1.6rem); font-weight:800; color:var(--gold); line-height:1; }
+      .pkg-card-hours small { display:block; font-size:8px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:rgba(245,166,35,0.7); margin-top:2px; }
+      .stops-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:4px; }
+      .pkg-mini-nav { display:flex; gap:6px; flex-wrap:wrap; justify-content:center; }
+      .pkg-mini { padding:8px 16px; background:#111; border:2px solid #222; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#555; transition:all 0.2s; }
+      .pkg-mini:hover { border-color:rgba(245,166,35,0.4); }
+      .pkg-mini.active { border-color:var(--gold); color:var(--gold); background:rgba(245,166,35,0.08); }
+      @media(max-width:900px){ .pkg-cards { grid-template-columns:repeat(2,1fr); } }
       @media(max-width:600px){
+        .pkg-cards { grid-template-columns:1fr; max-width:400px; margin:0 auto; }
         .stops-grid { grid-template-columns:repeat(2,1fr); }
-      }
-      @media(max-width:360px){
-        .stops-grid { grid-template-columns:1fr; }
       }
     `}</style>
 
-    {/* Hero */}
-    <section style={{height:'clamp(240px,38vw,420px)',position:'relative',display:'flex',alignItems:'flex-end',paddingBottom:36,overflow:'hidden'}}>
+    {/* ── HERO ── */}
+    <section style={{height:'clamp(220px,36vw,400px)',position:'relative',display:'flex',alignItems:'flex-end',paddingBottom:36,overflow:'hidden'}}>
       <div style={{position:'absolute',inset:0}}>
-        <Image src={mode==='day' ? "https://images.unsplash.com/photo-1775740738694-1d590125a704?q=80" : "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1400&q=85"} alt="Victoria" fill style={{objectFit:'cover',transition:'opacity 0.6s'}} unoptimized priority />
+        <Image src="/tours/inner-harbour-day.webp" alt="Victoria" fill style={{objectFit:'cover'}} unoptimized priority />
         <div style={{position:'absolute',inset:0,background:'linear-gradient(0deg,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.22) 60%,rgba(0,0,0,0.5) 100%)'}} />
       </div>
       <div className="wrap page-hero" style={{position:'relative',zIndex:1,width:'100%'}}>
         <div className="gold-bar" />
-        <p style={{fontSize:10,fontWeight:700,letterSpacing:'0.14em',textTransform:'uppercase',color:'var(--gold)',marginBottom:6}}>8 iconic stops</p>
+        <p style={{fontSize:10,fontWeight:700,letterSpacing:'0.14em',textTransform:'uppercase',color:'var(--gold)',marginBottom:6}}>Explore Victoria your way</p>
         <h1 className="font-display" style={{fontSize:'clamp(2.2rem,7vw,5.5rem)',lineHeight:0.9}}>VICTORIA<br /><span style={{color:'var(--gold)'}}>CITY TOURS</span></h1>
-        <p style={{color:'rgba(255,255,255,0.4)',fontSize:'clamp(12px,1.8vw,14px)',maxWidth:460,lineHeight:1.7,marginTop:8}}>Tap any stop to preview. Toggle day or night to see how Victoria transforms after dark.</p>
+        <p style={{color:'rgba(255,255,255,0.4)',fontSize:'clamp(12px,1.8vw,14px)',maxWidth:480,lineHeight:1.7,marginTop:8}}>Pick a tour below to see all the stops. Every tour is fully customizable.</p>
       </div>
     </section>
 
-    {/* Sticky toggle bar */}
-    <div style={{background:'rgba(8,8,8,0.97)',backdropFilter:'blur(12px)',borderBottom:'1px solid #1a1a1a',padding:'8px 0',position:'sticky',top:60,zIndex:50}}>
-      <div className="wrap" style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:10,flexWrap:'wrap'}}>
-        <div style={{display:'flex',gap:3,background:'#111',border:'1px solid #222',borderRadius:4,padding:3}}>
-          {(['day','night'] as const).map(m=>(
-            <button key={m} onClick={()=>setMode(m)} style={{padding:'7px 20px',borderRadius:2,fontSize:11,fontWeight:700,letterSpacing:'0.08em',textTransform:'uppercase',border:'none',cursor:'pointer',transition:'all 0.2s',background:mode===m ? 'var(--gold)' : 'transparent',color:mode===m ? '#000' : '#555'}}>
-              {m==='day' ? '☀ Day' : '☾ Night'}
-            </button>
+    {/* ── PACKAGE CARDS ── */}
+    <section style={{background:'#0a0a0a',padding:'clamp(40px,6vw,64px) 0'}}>
+      <div className="wrap">
+        <div style={{textAlign:'center',marginBottom:32}}>
+          <div className="gold-bar" style={{margin:'0 auto 10px'}} />
+          <p style={{fontSize:10,fontWeight:700,letterSpacing:'0.14em',textTransform:'uppercase',color:'var(--gold)',marginBottom:6}}>Choose your tour</p>
+          <h2 className="font-display" style={{fontSize:'clamp(1.6rem,4vw,3rem)',lineHeight:0.95,marginBottom:8}}>HOW LONG WOULD YOU LIKE?</h2>
+          <p style={{fontSize:'clamp(12px,1.5vw,14px)',color:'rgba(255,255,255,0.3)',maxWidth:500,margin:'0 auto'}}>Click a tour to see all the stops with day and night photos.</p>
+        </div>
+
+        <div className="pkg-cards">
+          {packages.map(p => (
+            <div key={p.id} className={`pkg-card${activePkg?.id===p.id?' active':''}`} onClick={()=>selectPkg(p)}>
+              <div className="pkg-card-img">
+                <Image src={p.img} alt={p.tag} fill style={{objectFit:'cover',transition:'transform 0.5s'}} unoptimized
+                  onMouseEnter={e=>e.currentTarget.style.transform='scale(1.06)'}
+                  onMouseLeave={e=>e.currentTarget.style.transform='scale(1)'}
+                />
+                <div style={{position:'absolute',inset:0,background:'linear-gradient(0deg,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.05) 50%)'}} />
+                <div className="pkg-card-hours">
+                  <span>{p.label}</span>
+                  <small>{p.id==='full' ? 'day' : p.label==='1' ? 'hour' : 'hours'}</small>
+                </div>
+              </div>
+              <div className="pkg-card-body">
+                <h3 style={{fontSize:'clamp(14px,1.8vw,17px)',fontWeight:700,color:'#e8e8e8',marginBottom:6,lineHeight:1.2}}>{p.tag}</h3>
+                <p style={{fontSize:'clamp(11px,1.3vw,12px)',color:'rgba(255,255,255,0.35)',lineHeight:1.65,marginBottom:10}}>{p.desc}</p>
+                <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:6}}>
+                  <span style={{fontSize:10,color:'rgba(245,166,35,0.7)',fontWeight:600}}>{p.highlight}</span>
+                  <span style={{fontSize:10,fontWeight:700,letterSpacing:'0.06em',textTransform:'uppercase',color:'var(--gold)',display:'flex',alignItems:'center',gap:4}}>
+                    View Stops
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                  </span>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
-        <span style={{fontSize:11,color:'#444'}}>1–20 passengers</span>
-        <a href="https://wa.me/12509868284?text=Hi Jay, I'd like to book a Victoria city tour!" className="btn-primary" style={{fontSize:11,padding:'8px 18px'}}>Book Tour</a>
-      </div>
-    </div>
 
-    {/* Main content */}
-    <section style={{background:'#0a0a0a',padding:'20px 0 clamp(40px,6vw,60px)'}}>
-      <div className="wrap">
-        <div className="tours-layout">
+        <div style={{marginTop:20,textAlign:'center'}}>
+          <p style={{fontSize:'clamp(11px,1.3vw,12px)',color:'rgba(255,255,255,0.2)',lineHeight:1.7}}>
+            <strong style={{color:'rgba(245,166,35,0.5)'}}>ALL TOURS are customizable</strong> — tell Jay what you want to see, and he will make it happen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* ── TOUR STOPS (shows after selecting a package) ── */}
+    {activePkg && (
+      <section ref={stopsRef} style={{background:'#080808',borderTop:'2px solid rgba(245,166,35,0.15)',padding:'clamp(32px,5vw,52px) 0 clamp(48px,7vw,72px)'}}>
+        <div className="wrap">
+
+          {/* Sticky sub-bar: day/night + quick switch */}
+          <div style={{position:'sticky',top:60,zIndex:40,background:'rgba(8,8,8,0.97)',backdropFilter:'blur(10px)',padding:'14px 0 16px',marginBottom:20,borderBottom:'1px solid #1a1a1a'}}>
+            <div style={{display:'flex',flexDirection:'column',gap:12,alignItems:'center'}}>
+              {/* Day / Night toggle */}
+              <div style={{display:'flex',gap:3,background:'#111',border:'1px solid #222',borderRadius:4,padding:3}}>
+                {(['day','night'] as const).map(m=>(
+                  <button key={m} onClick={()=>setMode(m)} style={{padding:'7px 22px',borderRadius:2,fontSize:11,fontWeight:700,letterSpacing:'0.08em',textTransform:'uppercase',border:'none',cursor:'pointer',transition:'all 0.2s',background:mode===m ? 'var(--gold)' : 'transparent',color:mode===m ? '#000' : '#555'}}>
+                    {m==='day' ? '☀ Day' : '☾ Night'}
+                  </button>
+                ))}
+              </div>
+              {/* Quick switch between packages */}
+              <div className="pkg-mini-nav">
+                {packages.map(p=>(
+                  <div key={p.id} className={`pkg-mini${activePkg.id===p.id?' active':''}`} onClick={()=>setActivePkg(p)}>
+                    {p.hours}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Package title */}
+          <div style={{textAlign:'center',marginBottom:20}}>
+            <h2 className="font-display" style={{fontSize:'clamp(1.4rem,4vw,2.6rem)',lineHeight:1,marginBottom:6,color:'#e8e8e8'}}>
+              {activePkg.tag}
+            </h2>
+            <p style={{fontSize:'clamp(12px,1.5vw,14px)',color:'rgba(255,255,255,0.35)',maxWidth:580,margin:'0 auto 4px',lineHeight:1.7}}>{activePkg.desc}</p>
+            <p style={{fontSize:'clamp(11px,1.3vw,12px)',color:'rgba(255,255,255,0.22)'}}>{activePkg.stops.filter(n=>allStops[n]).length} stops with photos</p>
+          </div>
 
           {/* Stops grid */}
           <div className="stops-grid">
-            {stops.map((s,i)=>(
-              <div key={s.name} onClick={()=>setSel(i)} style={{cursor:'pointer',position:'relative',overflow:'hidden',height:'clamp(120px,14vw,175px)',outline:sel===i ? '2px solid var(--gold)' : '1px solid #1e1e1e',outlineOffset:sel===i ? 2 : 0,transition:'all 0.25s'}}>
-                <Image src={mode==='day' ? s.dayImg : s.nightImg} alt={s.name} fill style={{objectFit:'cover',transition:'transform 0.4s',transform:sel===i ? 'scale(1.04)' : 'scale(1)'}} unoptimized />
-                <div style={{position:'absolute',inset:0,background:'linear-gradient(0deg,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.05) 60%)'}} />
-                {sel===i && (
-                  <div style={{position:'absolute',top:7,right:7,width:20,height:20,borderRadius:'50%',background:'var(--gold)',display:'flex',alignItems:'center',justifyContent:'center'}}>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
+            {activePkg.stops.map(name => {
+              const imgs = allStops[name]
+              if (!imgs) return null
+              const src = mode === 'day' ? imgs.day : imgs.night
+              return (
+                <div key={name} style={{position:'relative',overflow:'hidden',height:'clamp(140px,18vw,200px)',background:'#111'}}>
+                  <Image src={src} alt={name} fill style={{objectFit:'cover',transition:'transform 0.4s'}} unoptimized
+                    onMouseEnter={e=>e.currentTarget.style.transform='scale(1.06)'}
+                    onMouseLeave={e=>e.currentTarget.style.transform='scale(1)'}
+                  />
+                  <div style={{position:'absolute',inset:0,background:'linear-gradient(0deg,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.05) 55%)'}} />
+                  <div style={{position:'absolute',top:6,right:6}}>
+                    <span style={{fontSize:8,fontWeight:700,letterSpacing:'0.06em',textTransform:'uppercase',background:mode==='day'?'rgba(255,255,255,0.15)':'rgba(245,166,35,0.25)',color:mode==='day'?'#fff':'var(--gold)',padding:'2px 7px',borderRadius:2,backdropFilter:'blur(4px)'}}>{mode==='day'?'☀':'☾'}</span>
                   </div>
-                )}
-                <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'8px 10px'}}>
-                  <div style={{fontSize:7,fontWeight:700,letterSpacing:'0.08em',textTransform:'uppercase',background:'rgba(245,166,35,0.2)',color:'var(--gold)',padding:'1px 6px',borderRadius:2,display:'inline-block',marginBottom:3}}>{s.type}</div>
-                  <div style={{fontSize:'clamp(10px,1.4vw,12px)',fontWeight:700,color:'#fff',lineHeight:1.2}}>{s.name}</div>
-                  <div style={{fontSize:9,color:'rgba(255,255,255,0.3)',marginTop:1}}>{s.area.split(' · ')[0]}</div>
+                  <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'10px 12px'}}>
+                    <div style={{fontSize:'clamp(11px,1.4vw,13px)',fontWeight:700,color:'#fff',lineHeight:1.3}}>{name}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
 
-          {/* Detail panel */}
-          <div className="detail-sticky">
-            <div style={{background:'#0d0d0d',border:'1px solid #1e1e1e',overflow:'hidden'}}>
-              <div style={{position:'relative',height:'clamp(180px,22vw,220px)'}}>
-                <Image src={mode==='day' ? cur.dayImg : cur.nightImg} alt={cur.name} fill style={{objectFit:'cover'}} unoptimized />
-                <div style={{position:'absolute',inset:0,background:'linear-gradient(0deg,rgba(0,0,0,0.72) 0%,transparent 50%)'}} />
-                <div style={{position:'absolute',top:10,left:10}}>
-                  <span style={{fontSize:9,fontWeight:700,letterSpacing:'0.08em',textTransform:'uppercase',background:'var(--gold)',color:'#000',padding:'3px 10px',borderRadius:2}}>{mode==='day' ? '☀ Day' : '☾ Night'}</span>
-                </div>
-                <div style={{position:'absolute',bottom:12,left:14,right:14}}>
-                  <div className="font-display" style={{fontSize:'clamp(1.3rem,3vw,1.6rem)',color:'#fff',lineHeight:1}}>{cur.name}</div>
-                  <div style={{fontSize:10,color:'rgba(255,255,255,0.45)',marginTop:3}}>{cur.area}</div>
-                </div>
-              </div>
-              <div style={{padding:'clamp(14px,2.5vw,20px)'}}>
-                <div style={{display:'flex',gap:7,marginBottom:12,flexWrap:'wrap'}}>
-                  <span style={{fontSize:9,fontWeight:700,color:'var(--gold)',background:'rgba(245,166,35,0.1)',border:'1px solid rgba(245,166,35,0.2)',padding:'3px 10px',borderRadius:2,letterSpacing:'0.06em',textTransform:'uppercase'}}>{cur.type}</span>
-                  <span style={{fontSize:9,color:'#555',padding:'3px 10px',border:'1px solid #222',borderRadius:2}}>⏱ {cur.dur}</span>
-                </div>
-                <p style={{fontSize:'clamp(12px,1.5vw,13px)',color:'rgba(255,255,255,0.48)',lineHeight:1.8,marginBottom:12}}>
-                  {mode==='day' ? cur.dayDesc : cur.nightDesc}
-                </p>
-                <div style={{fontSize:11,color:'var(--gold)',background:'rgba(245,166,35,0.05)',border:'1px solid rgba(245,166,35,0.12)',padding:'8px 12px',marginBottom:14,lineHeight:1.5}}>⭐ {cur.highlight}</div>
-                <a href={`https://wa.me/12509868284?text=Hi Jay, I'd love to include ${cur.name} in my Victoria tour!`} className="btn-primary" style={{display:'block',textAlign:'center',width:'100%',padding:11,fontSize:12}}>
-                  Book including {cur.name.split(' ')[0]}
-                </a>
-              </div>
+          {/* Book button */}
+          <div style={{marginTop:24,padding:'18px 20px',background:'rgba(245,166,35,0.04)',border:'1px solid rgba(245,166,35,0.15)',borderRadius:4,textAlign:'center'}}>
+            <div style={{display:'flex',gap:10,justifyContent:'center',flexWrap:'wrap'}}>
+              <a href={`https://wa.me/12509868284?text=Hi Jay, I'd like to book the ${activePkg.tag}. Please share pricing.`} className="btn-primary" style={{fontSize:13,padding:'12px 28px'}}>
+                Book for {activePkg.hours}
+              </a>
+              <a href={`sms:+12509868284?body=Hi Jay, I'd like to book the ${activePkg.tag}.`} className="btn-secondary" style={{fontSize:12,padding:'10px 20px'}}>
+                💬 Text
+              </a>
+              <a href={`mailto:1cab.victoria@gmail.com?subject=${activePkg.tag} Enquiry&body=Hi Jay, I'd like to book the ${activePkg.tag}. Please share pricing.`} className="btn-secondary" style={{fontSize:12,padding:'10px 20px'}}>
+                ✉ Email
+              </a>
             </div>
-            <div style={{display:'flex',gap:4,flexWrap:'wrap',marginTop:8}}>
-              {stops.map((_,i)=>(
-                <button key={i} onClick={()=>setSel(i)} style={{width:24,height:3,border:'none',cursor:'pointer',transition:'background 0.2s',background:sel===i ? 'var(--gold)' : '#2a2a2a'}} />
-              ))}
-            </div>
-            <p style={{fontSize:11,color:'#444',lineHeight:1.7,marginTop:8,padding:'10px 12px',background:'rgba(255,255,255,0.02)',border:'1px solid #1a1a1a'}}>
-              All 8 stops included. Ask Jay to customise the order and pace.
-            </p>
+          </div>
+
+          {/* Back to packages */}
+          <div style={{textAlign:'center',marginTop:16}}>
+            <button onClick={()=>{setActivePkg(null);window.scrollTo({top:0,behavior:'smooth'})}} style={{background:'none',border:'1px solid #2a2a2a',borderRadius:4,padding:'8px 20px',color:'#555',fontSize:11,fontWeight:700,letterSpacing:'0.06em',textTransform:'uppercase',cursor:'pointer',transition:'all 0.2s'}}
+              onMouseEnter={e=>{e.currentTarget.style.borderColor='rgba(245,166,35,0.3)';e.currentTarget.style.color='var(--gold)'}}
+              onMouseLeave={e=>{e.currentTarget.style.borderColor='#2a2a2a';e.currentTarget.style.color='#555'}}
+            >
+              ← Back to all tours
+            </button>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    )}
 
-    {/* CTA */}
-    <section style={{background:'#080808',padding:'clamp(40px,6vw,60px) 24px',borderTop:'1px solid #1a1a1a',textAlign:'center'}}>
+    {/* ── CTA ── */}
+    <section style={{background:'#0a0a0a',padding:'clamp(40px,6vw,60px) 24px',borderTop:'1px solid #1a1a1a',textAlign:'center'}}>
       <h2 className="font-display" style={{fontSize:'clamp(1.8rem,5vw,3.5rem)',marginBottom:10}}>READY TO EXPLORE?</h2>
-      <p style={{color:'rgba(255,255,255,0.3)',marginBottom:24,fontSize:'clamp(12px,1.8vw,13px)'}}>1 to 20 passengers. Contact Jay for pricing and custom itineraries.</p>
+      <p style={{color:'rgba(255,255,255,0.3)',marginBottom:24,fontSize:'clamp(12px,1.8vw,13px)',maxWidth:440,margin:'0 auto 24px'}}>1 to 20 passengers. Contact Jay for pricing and custom routes.</p>
       <div style={{display:'flex',gap:10,justifyContent:'center',flexWrap:'wrap'}}>
         <a href="https://wa.me/12509868284?text=Hi Jay, I'd like to book a Victoria city tour!" className="btn-primary">Book via WhatsApp</a>
-        <a href="tel:+12509868284" className="btn-secondary">📞 Call Jay</a>
+        <a href="sms:+12509868284" className="btn-secondary">💬 Text</a>
+        <a href="mailto:1cab.victoria@gmail.com" className="btn-secondary">✉ Email</a>
+        <a href="tel:+12509868284" className="btn-secondary">📞 Call</a>
       </div>
     </section>
     </>

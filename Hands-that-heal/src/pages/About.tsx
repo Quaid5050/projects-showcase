@@ -7,7 +7,6 @@ import { GradientBlobs } from "@/components/GradientBlobs";
 import { ArrowRight } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Testimonials } from "@/components/sections/Testimonials";
 import laser from "@/assets/about-1.jpeg";
 import cryo from "@/assets/about-2.jpeg";
 import contour from "@/assets/about-3.jpeg";
@@ -285,8 +284,6 @@ const About = () => (
       </div>
     </section>
 
-    {/* Testimonials — Google Reviews */}
-    <Testimonials />
   </>
 );;
 

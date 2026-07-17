@@ -14,16 +14,16 @@ export const catalogServices: CatalogService[] = [
   {
     title: 'Doctorate of Natural Medicine',
     summary:
-      'The assessment and treatment of emotional, mental and physical disorders using non-invasive modalities to promote and restore health and wellness. Acupressure, hydrotherapy, herbalism and botanical medicine, clinical nutrition, health coaching, and energy work are some of the modalities used.',
+      'The assessment and treatment of emotional, mental and physical disorders using non-invasive modalities to promote and restore health and .. Acupressure, hydrotherapy, herbalism and botanical medicine, clinical nutrition, health coaching, and energy work are some of the modalities used.',
     icon: Leaf,
     detailPath: '/natural-medicine',
   },
   {
     title: 'Professional Herbalist',
     summary:
-      'A healthcare professional who uses plants and plant substances to support health, prevent illness, and help manage medical conditions—combining traditional knowledge with modern understanding of human biology, nutrition, and wellness for individualized care.',
+      'A healthcare professional who uses plants and plant substances to support health, prevent illness, and help manage medical conditions—combining traditional knowledge with modern understanding of human biology, nutrition, and . for individualized care.',
     icon: Flower2,
-    detailPath: '/herbal-wellness',
+    detailPath: '/herbal-.',
   },
   {
     title: 'Manual Osteopathic Therapist',
@@ -75,14 +75,14 @@ export const homeServiceOverview: {
 }[] = [
   {
     title: 'Doctorate of Natural Medicine',
-    blurb: 'Non-invasive modalities across body, mind, and lifestyle for wellness and balance.',
+    blurb: 'Non-invasive modalities across body, mind, and lifestyle for . and balance.',
     to: '/natural-medicine',
     icon: Leaf,
   },
   {
     title: 'Professional Herbalist',
     blurb: 'Plant-informed assessment, formulations, education, and quality-conscious sourcing.',
-    to: '/herbal-wellness',
+    to: '/herbal-.',
     icon: Flower2,
   },
   {

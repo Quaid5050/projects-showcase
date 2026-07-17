@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/* ===== CUSTOM UTILITY CLASSES (replacing Tailwind custom colors) ===== */
+
+/* Backgrounds */
+.bg-primary { background-color: #1B2A4A !important; }
+.bg-primary-light { background-color: #243760 !important; }
+.bg-gold { background-color: #C5A047 !important; }
+.bg-gold-lighter { background-color: #F5F0E3 !important; }
+.bg-warm { background-color: #FAFAF7 !important; }
+
+/* Text colors */
+.text-primary { color: #1B2A4A !important; }
+.text-gold { color: #C5A047 !important; }
+.text-gold-dark { color: #A88A3A !important; }
+.text-gold-light { color: #E8D48B !important; }
+
+/* Border colors */
+.border-primary { border-color: #1B2A4A !important; }
+.border-gold { border-color: #C5A047 !important; }
+.border-gold-lighter { border-color: #F5F0E3 !important; }
+
+/* Hover variants */
+.hover\:text-gold:hover { color: #C5A047 !important; }
+.hover\:bg-gold:hover { background-color: #C5A047 !important; }
+.hover\:border-gold:hover { border-color: #C5A047 !important; }
+.group:hover .group-hover\:bg-gold { background-color: #C5A047 !important; }
+.group:hover .group-hover\:text-white { color: #ffffff !important; }
+.group:hover .group-hover\:opacity-100 { opacity: 1 !important; }
+.group:hover .group-hover\:scale-x-100 { transform: scaleX(1) !important; }
+.group:hover .group-hover\:gap-3 { gap: 0.75rem !important; }
+
+/* Fonts */
+.font-display { font-family: 'Playfair Display', serif; }
+.font-body { font-family: 'Inter', sans-serif; }
+
+/* Gold gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #C5A047 0%, #E8D48B 50%, #C5A047 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section padding */
+.section-padding { padding: 80px 0; }
+@media (min-width: 768px) { .section-padding { padding: 120px 0; } }
+
+/* Container */
+.container-custom { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+@media (min-width: 768px) { .container-custom { padding: 0 40px; } }
+
+/* Card hover */
+.card-luxury {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #E5E7EB;
+}
+.card-luxury:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(27,42,74,0.1);
+  border-color: #C5A047;
+}
+
+/* Buttons */
+.btn-primary {
+  background: #1B2A4A;
+  color: white;
+  padding: 14px 36px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.btn-primary:hover { background: #243760; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(27,42,74,0.3); }
+
+.btn-gold {
+  background: linear-gradient(135deg, #C5A047, #D4B05E);
+  color: #1B2A4A;
+  padding: 14px 36px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.btn-gold:hover { background: linear-gradient(135deg, #D4B05E, #C5A047); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(197,160,71,0.4); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #C5A047; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #a88a3a; }
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: #1a1a2e; background: #ffffff; line-height: 1.7; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; line-height: 1.2; }

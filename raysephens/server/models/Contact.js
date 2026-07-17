@@ -1,0 +1,13 @@
+import mongoose from 'mongoose';
+
+const contactSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String },
+  service: { type: String },
+  message: { type: String, required: true },
+  isRead: { type: Boolean, default: false },
+  status: { type: String, enum: ['new', 'in-progress', 'resolved'], default: 'new' },
+}, { timestamps: true });
+
+export default mongoose.model('Contact', contactSchema);

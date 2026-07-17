@@ -50,8 +50,8 @@ export const Footer = () => (
           <h4 className="font-display text-lg text-background mb-4">Visit</h4>
           <ul className="space-y-3 text-sm text-background/60">
             <li className="flex gap-2"><MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary-glow" /> 70 King St E, Stoney Creek, ON L8G 1K2, Canada</li>
-            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 shrink-0 text-primary-glow" /> +1 905 662 0005</li>
-            <li className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 shrink-0 text-primary-glow" /> handthatheal@hotmail.ca</li>
+            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 shrink-0 text-primary-glow" /> <a href="tel:+19056620005" className="hover:text-background transition-colors">+1 905 662 0005</a></li>
+            <li className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 shrink-0 text-primary-glow" /> <a href="mailto:handthatheal@hotmail.ca" className="hover:text-background transition-colors">handthatheal@hotmail.ca</a></li>
           </ul>
         </div>
 

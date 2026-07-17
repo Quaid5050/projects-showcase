@@ -22,8 +22,6 @@ import teethBefore   from "@/assets/results/teeth-before.jpg";
 import teethAfter    from "@/assets/results/teeth-after.jpg";
 import laserBefore   from "@/assets/results/laser-before.jpg";
 import laserAfter    from "@/assets/results/laser-after.jpg";
-import contourBefore from "@/assets/results/contour-before.jpg";
-import contourAfter  from "@/assets/results/contour-after.jpg";
 
 type Tab = { id: string; label: string; before: string; after: string; desc: string };
 
@@ -41,13 +39,6 @@ const tabs: Tab[] = [
     before: laserBefore,
     after: laserAfter,
     desc: "Long-lasting smooth skin after Primelase laser hair removal.",
-  },
-  {
-    id: "contouring",
-    label: "Body Contouring",
-    before: contourBefore,
-    after: contourAfter,
-    desc: "Visibly sculpted and toned results after body contouring treatment — targeted fat reduction with no downtime.",
   },
 ];
 

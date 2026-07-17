@@ -5,13 +5,15 @@ import Link from 'next/link'
 const Tick = () => <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5" style={{flexShrink:0,marginTop:4}}><polyline points="20 6 9 17 4 12"/></svg>
 
 const svcs = [
-  {title:'Airport & Ferry Transfer',tagline:'Never miss a flight. Never wait for a ride.',img:'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=80',points:['Victoria International Airport (YYJ)','BC Ferries — Swartz Bay & Tsawwassen','Real-time flight tracking','Meet & greet with name board','All hours — early morning to late night'],note:'Text 2–3 hrs ahead with location, date & time.',href:null},
-  {title:'Victoria City Tours',tagline:'Day or night — Victoria has stories to tell.',img:'https://images.unsplash.com/photo-1775740738694-1d590125a704?q=80',points:["Butchart Gardens · Inner Harbour · Craigdarroch Castle","BC Legislature · Fisherman's Wharf · Beacon Hill Park",'Customisable stops at your own pace','Day tours and magical night illumination tours','1 to 20 passengers'],note:'See the Tours page to preview every stop with day & night images.',href:'/tours'},
-  {title:'Outstation Trips',tagline:'Victoria is just the beginning.',img:'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=900&q=80',points:['Long-distance rides across British Columbia','Comfortable seating for extended journeys','Flexible departure times','Ideal for families or corporate travel','Multiple vehicle sizes available'],note:'Contact Jay for custom route pricing.',href:null},
-  {title:'Designated Driver',tagline:'Your car, our driver. Enjoy responsibly.',img:'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=900&q=80',points:['Jay drives your own vehicle home','Ideal for dinners, weddings, nights out','Licensed and insured driver','Available across Greater Victoria','Book ahead or call on the night'],note:'Popular on weekends — book early.',href:null},
-  {title:'U-Haul Drivers',tagline:'Moving day, professionally handled.',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80',points:['Licensed for local and long-distance moves','Available across Victoria and BC','Experienced with large vehicle handling','Flexible scheduling','You focus on the move, we drive'],note:'Perfect for those who prefer not to drive a large truck.',href:null},
-  {title:'Stretch Limousine',tagline:'Arrive like royalty. Leave an impression.',img:'https://images.unsplash.com/photo-1519999482648-25049ddd37b1?w=900&q=80',points:['Weddings, proms, anniversaries, celebrations','Corporate and VIP transfers','Premium interior · privacy screen · drinks console','Up to 10 passengers in luxury','Advance booking recommended'],note:'Book early for peak dates like prom season and summer weddings.',href:null},
-  {title:'Wheelchair Accessible',tagline:'Everyone deserves a comfortable ride.',img:'https://images.unsplash.com/photo-1633466154054-399bf16156a2?q=80',points:['Motorised ramp van, fully equipped','Secured tie-downs for all wheelchair types','Trained and experienced driver','Available for all service types','Same personal service, no extra charge'],note:'Mention accessibility needs at booking so Jay can prepare.',href:null},
+  {id:'airport-transfer',title:'Airport & Ferry Transfer',tagline:'Send your flight details for Victoria Airport (YYJ).',img:'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=80',points:['Victoria International Airport (YYJ)','BC Ferries — Swartz Bay & Tsawwassen','Real-time flight tracking','Meet & greet with name board','All hours — early morning to late night'],note:'Text 2–3 hrs ahead with location, date, time, number of passengers and bags.',href:null},
+  {id:'city-tours',title:'Victoria City Tours',tagline:'Specialist in personalized Victoria tours — day or night.',img:'/tours/inner-harbour-day.webp',points:['1 hour Express tour','Victoria City Highlights 2 hours','Grand City Tour 3 hours','Victoria Garden Tour 4 hours','Full day Tour','1 to 20 passengers'],note:'See the Tours page to preview every stop with day & night images.',href:'/tours'},
+  {id:'outstation-trips',title:'Outstation Trips',tagline:'Victoria is just the beginning.',img:'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=900&q=80',points:['Vancouver','Whistler','Nanaimo','Tofino','Port Hardy','Flexible departure times · Multiple vehicle sizes'],note:'Contact Jay for custom route pricing.',href:null},
+  {id:'cowichan-valley',title:'Cowichan Valley Wine / Cider / Distillery & Craft Spirits Tour',tagline:'4–6 hours. Discover the best of Cowichan Valley.',img:'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=900&q=80',points:['Wine, cider, distillery and craft spirits tastings','Scenic drive through Cowichan Valley','Visit award-winning estates and hidden gems','Flexible 4–6 hour itinerary','1 to 20 passengers'],note:'Let Jay plan the perfect tasting route for your group.',href:null},
+  {id:'malahat-skywalk',title:'Malahat Skywalk & Castle Tour',tagline:'4–5 hours. Walk above the treetops and visit a castle.',img:'/services/malahat-tour.jpg',points:['Breathtaking spiral tower with panoramic views','Walk through ancient Douglas Fir canopy','Castle visit included in the tour','Scenic drive along the Malahat','Can be combined with wine tour or city tour'],note:'Popular experience — book ahead for the best times.',href:null},
+  {id:'designated-driver',title:'Designated Driver',tagline:'Your car, our driver. Enjoy responsibly.',img:'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=900&q=80',points:['Jay drives your own vehicle home','Ideal for dinners, weddings, nights out','Licensed and insured driver','Available across Greater Victoria','Book ahead or call on the night'],note:'Popular on weekends — book early.',href:null},
+  {id:'uhaul-drivers',title:'U-Haul Drivers',tagline:'Moving day, professionally handled.',img:'/services/uhaul-driver.jpg',points:['Licensed for local and long-distance moves','Available across Victoria and BC','Experienced with large vehicle handling','Flexible scheduling','You focus on the move, we drive'],note:'Perfect for those who prefer not to drive a large truck.',href:null},
+  {id:'stretch-limousine',title:'Stretch Limousine',tagline:'Arrive like royalty. Leave an impression.',img:'/vehicles/limo-8pax.webp',points:['Weddings, proms, anniversaries, celebrations','Corporate and VIP transfers','Premium interior · privacy screen · drinks console','Up to 10 passengers in luxury','Advance booking recommended'],note:'Book early for peak dates like prom season and summer weddings.',href:null},
+  {id:'wheelchair-accessible',title:'Wheelchair Accessible',tagline:'Everyone deserves a comfortable ride.',img:'/services/wheelchair-van.jpg',points:['Rear ramp access — fully equipped van','Secured tie-downs for all wheelchair types','Trained and experienced driver','Available for all service types'],note:'Mention accessibility needs at booking so Jay can prepare.',href:null},
 ]
 
 export default function ServicesPage() {
@@ -26,7 +28,6 @@ export default function ServicesPage() {
       @media(max-width:860px){
         .svc-row { grid-template-columns:1fr; }
         .svc-img { height:220px; min-height:unset; }
-        /* always image on top on mobile — no alternating order */
         .svc-img  { order:0 !important; }
         .svc-body { order:1 !important; }
       }
@@ -54,7 +55,7 @@ export default function ServicesPage() {
     <section style={{background:'#0a0a0a',padding:'clamp(32px,5vw,56px) 0'}}>
       <div className="wrap">
         {svcs.map((s,i)=>(
-          <div key={s.title} className="svc-row">
+          <div key={s.title} id={s.id} className="svc-row" style={{scrollMarginTop:80}}>
             <div className="svc-img" style={{order: i%2===0 ? 0 : 1}}>
               <Image src={s.img} alt={s.title} fill style={{objectFit:'cover',filter:'brightness(0.75)',transition:'all 0.5s'}} unoptimized
                 onMouseEnter={e=>{e.currentTarget.style.filter='brightness(0.9)';e.currentTarget.style.transform='scale(1.04)'}}
@@ -78,6 +79,8 @@ export default function ServicesPage() {
               <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>
                 {s.href && <Link href={s.href} className="btn-primary" style={{fontSize:11,padding:'8px 16px'}}>Preview stops</Link>}
                 <a href={`https://wa.me/12509868284?text=Hi Jay, I'm interested in ${s.title}.`} className="btn-secondary" style={{fontSize:11,padding:'8px 16px'}}>Enquire via WhatsApp</a>
+                <a href={`sms:+12509868284?body=Hi Jay, I'm interested in ${s.title}.`} className="btn-secondary" style={{fontSize:11,padding:'8px 16px'}}>Text</a>
+                <a href={`mailto:1cab.victoria@gmail.com?subject=${s.title} Enquiry`} className="btn-secondary" style={{fontSize:11,padding:'8px 16px'}}>Email</a>
               </div>
             </div>
           </div>
@@ -90,9 +93,10 @@ export default function ServicesPage() {
       <h2 className="font-display" style={{fontSize:'clamp(1.8rem,5vw,3.5rem)',marginBottom:10}}>READY TO BOOK?</h2>
       <p style={{color:'rgba(255,255,255,0.3)',marginBottom:24,fontSize:'clamp(12px,1.8vw,13px)'}}>Contact Jay directly. Quick response, personal service, no hidden fees.</p>
       <div style={{display:'flex',gap:10,justifyContent:'center',flexWrap:'wrap'}}>
-        <a href="https://wa.me/12509868284" className="btn-primary">WhatsApp Jay</a>
+        <a href="sms:+12509868284" className="btn-primary">💬 Text Jay</a>
+        <a href="mailto:1cab.victoria@gmail.com" className="btn-secondary">✉ Email</a>
+        <a href="https://wa.me/12509868284" className="btn-secondary">WhatsApp</a>
         <a href="tel:+12509868284" className="btn-secondary">📞 Call</a>
-        <a href="mailto:1cab.victoria@gmail.com" className="btn-secondary">Email</a>
       </div>
     </section>
     </>

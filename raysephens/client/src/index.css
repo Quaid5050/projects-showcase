@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brown-50: #fdf6ee;
+  --color-brown-100: #f5e6d0;
+  --color-brown-200: #e8c99a;
+  --color-brown-300: #d9a870;
+  --color-brown-400: #c8843f;
+  --color-brown-500: #8B4513;
+  --color-brown-600: #6B3410;
+  --color-brown-700: #5C3D14;
+  --color-brown-800: #3d2409;
+  --color-brown-900: #1e1204;
+
+  --color-forest-50: #f0f7f0;
+  --color-forest-100: #d4ead4;
+  --color-forest-200: #a8d4a8;
+  --color-forest-300: #70b870;
+  --color-forest-400: #3d9b3d;
+  --color-forest-500: #2D6A2D;
+  --color-forest-600: #245224;
+  --color-forest-700: #1a3d1a;
+  --color-forest-800: #112811;
+  --color-forest-900: #091409;
+
+  --color-gold-400: #d4a843;
+  --color-gold-500: #b8922a;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #1a1a1a;
+    background: #ffffff;
+  }
+}

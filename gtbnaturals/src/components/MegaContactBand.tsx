@@ -1,4 +1,4 @@
-import { Clock, Facebook, Mail, MapPin, Phone } from 'lucide-react'
+import { Facebook, Mail, Phone } from 'lucide-react'
 import { type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { siteContact } from '../data/siteContact'
@@ -39,8 +39,8 @@ export function MegaContactBand() {
   return (
     <div className="relative">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
-        <div className="grid gap-4 lg:grid-cols-3 lg:gap-5">
-          <InfoCard title="Contact us">
+<div className="grid gap-4 lg:grid-cols-2 lg:gap-5 max-w-5xl mx-auto">
+            <InfoCard title="Contact us">
             <ul className="space-y-3">
               <li className="flex gap-3">
                 <IconTile>
@@ -87,30 +87,11 @@ export function MegaContactBand() {
             </ul>
           </InfoCard>
 
-          <InfoCard title="Clinic & hours">
-            <div className="flex gap-3">
-              <IconTile>
-                <MapPin className="h-4 w-4" aria-hidden />
-              </IconTile>
-              <p className="text-cream/95">{c.address}</p>
-            </div>
-            <div className="mt-5 flex items-center gap-2 border-t border-stone-200 pt-4">
-              <Clock className="h-4 w-4 text-orange" aria-hidden />
-              <p className="text-[10px] font-bold uppercase tracking-wider text-muted">Hours</p>
-            </div>
-            <ul className="mt-3 space-y-2">
-              {c.hours.map((row) => (
-                <li key={row.label} className="flex items-center justify-between gap-3 text-xs sm:text-sm">
-                  <span className="text-muted">{row.label}</span>
-                  <span className="text-right font-medium text-cream">{row.value}</span>
-                </li>
-              ))}
-            </ul>
-          </InfoCard>
+        
 
           <InfoCard title="Appointments">
             <p className="text-xs leading-relaxed text-muted">
-              Wellness visits and bodywork sessions are scheduled by appointment. Share your goals when you reach out —
+              . visits and bodywork sessions are scheduled by appointment. Share your goals when you reach out —
               we will suggest supportive next steps.
             </p>
             <ul className="mt-4 space-y-2 border-t border-stone-200 pt-4">
@@ -125,7 +106,7 @@ export function MegaContactBand() {
               to="/booking"
               className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-orange/88 to-orange/68 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-md transition hover:from-orange/95 hover:to-orange/75 hover:shadow-lg hover:shadow-orange/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange"
             >
-              Book consultation
+              Contact us
             </Link>
           </InfoCard>
         </div>
@@ -159,7 +140,7 @@ export function MegaContactBand() {
               to="/"
               className="inline-block rounded opacity-95 ring-offset-2 ring-offset-base-950 hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange"
             >
-              <img src="/logo1.png" alt="GTB Holistic Wellness" className="mx-auto h-8 w-auto sm:h-9" width={100} height={36} />
+              <img src="/logo1.png" alt="GTB Holistic ." className="mx-auto h-8 w-auto sm:h-9" width={100} height={36} />
             </Link>
           </div>
           <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-cream md:text-right">{c.tagline}</p>

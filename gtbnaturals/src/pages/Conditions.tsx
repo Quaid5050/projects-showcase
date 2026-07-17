@@ -41,8 +41,8 @@ export default function Conditions() {
       <div className="relative z-1">
       <PageHero
         eyebrow="Conditions"
-        title="Wellness themes we may support"
-        subtitle="Browse by category or search keywords. Language reflects holistic support—not claims to diagnose, cure, or replace medical care."
+        title="Conditions We May Support Through Natural Medicine"
+        subtitle=""
         breadcrumb={[
           { label: 'Home', to: '/' },
           { label: 'Conditions' },
@@ -117,7 +117,7 @@ export default function Conditions() {
           </div>
 
           <AnimatedReveal className="mt-14 rounded-2xl border border-coral/25 bg-coral/5 p-6 text-sm leading-relaxed text-muted">
-            <strong className="text-coral">Disclaimer:</strong> Lists describe wellness themes that clients sometimes
+            <strong className="text-coral">Disclaimer:</strong> Lists describe . themes that clients sometimes
             explore with holistic support—they are not exhaustive diagnoses or treatment promises. Individual results
             vary. Use emergency services for chest pain, severe breathing difficulty, sudden neurological changes, or
             severe pain.

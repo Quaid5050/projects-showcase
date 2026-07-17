@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 import { AnimatedSection } from "@/components/ui/AnimatedSection"
 import { Button } from "@/components/ui/Button"
-import { Mail, Phone, MapPin, CheckCircle } from "lucide-react"
+import { Mail, Phone, CheckCircle } from "lucide-react"
 import Image from "next/image"
 
 export default function ContactPage() {
@@ -14,28 +14,22 @@ export default function ContactPage() {
     restaurantName: "",
     website: "",
     locations: "1",
-    message: ""
+    message: "",
   })
-  
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
-    if (errors[e.target.name]) {
-      setErrors({ ...errors, [e.target.name]: "" })
-    }
+    if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: "" })
   }
 
   const validate = () => {
     const newErrors: Record<string, string> = {}
     if (!formData.name.trim()) newErrors.name = "Name is required"
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required"
-    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = "Email is invalid"
-    }
+    if (!formData.email.trim()) newErrors.email = "Email is required"
+    else if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = "Email is invalid"
     if (!formData.restaurantName.trim()) newErrors.restaurantName = "Restaurant name is required"
     if (!formData.message.trim()) newErrors.message = "Message is required"
     setErrors(newErrors)
@@ -46,69 +40,89 @@ export default function ContactPage() {
     e.preventDefault()
     if (validate()) {
       setIsSubmitting(true)
-      await new Promise(resolve => setTimeout(resolve, 1500))
+      await new Promise((resolve) => setTimeout(resolve, 1500))
       setIsSubmitting(false)
       setIsSuccess(true)
       setFormData({ name: "", email: "", phone: "", restaurantName: "", website: "", locations: "1", message: "" })
     }
   }
 
+  const inputBase = "w-full px-4 py-3 rounded-xl border bg-white/3 text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all duration-200 text-sm"
+  const inputNormal = `${inputBase} border-white/8 focus:border-emerald-500/30`
+  const inputError = `${inputBase} border-red-500/50 focus:border-red-500/50`
+
   return (
     <>
-      <section className="pt-32 pb-20 bg-slate-50 relative overflow-hidden">
+      {/* Hero */}
+      <section className="pt-32 pb-20 bg-[#020509] relative overflow-hidden cinema-grid">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-emerald-500/6 blur-[150px]" />
+          <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-amber-500/4 blur-[130px]" />
+        </div>
+        <div className="divider-glow absolute bottom-0 left-0 right-0" />
+
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-          <AnimatedSection className="max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
-              Book a Demo & Contact Us
+          <AnimatedSection animation="dramatic" className="max-w-3xl mx-auto">
+            <span className="inline-block text-xs font-bold tracking-[0.3em] uppercase text-emerald-500/70 mb-4">
+              Let's Talk
+            </span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-[-0.03em] leading-[0.95]">
+              Book a Demo &
+              <br />
+              <span className="gradient-text">Contact Us</span>
             </h1>
-            <p className="text-xl text-slate-600">
-              Ready to see Merchant Orders in action? Fill out the form below and our team will be in touch shortly.
+            <p className="text-xl text-slate-400">
+              Ready to see Merchant Orders in action? Fill out the form and our team will be in touch shortly.
             </p>
           </AnimatedSection>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-white relative">
-        <div className="container mx-auto px-4 md:px-6">
+      {/* Form Section */}
+      <section className="py-16 md:py-24 bg-[#040810] relative">
+        <div className="divider-glow absolute top-0 left-0 right-0" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/3 blur-[160px] pointer-events-none rounded-full" />
+
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="grid lg:grid-cols-3 gap-10 lg:gap-8 max-w-6xl mx-auto">
 
             {/* Contact Info */}
             <div className="lg:col-span-1 space-y-8">
-              <AnimatedSection>
-                {/* Skyscraper image */}
-                <div className="relative w-full aspect-[3/4] rounded-3xl overflow-hidden shadow-lg border border-slate-100 mb-8">
+              <AnimatedSection animation="slide-right">
+                <div className="relative w-full aspect-[3/4] rounded-3xl overflow-hidden border border-white/6 shadow-[0_40px_80px_rgba(0,0,0,0.5)] mb-8">
                   <Image
                     src="/images/contact-skyscraper.jpg"
-                    alt="Merchant Orders business contact image"
+                    alt="Merchant Orders"
                     fill
-                    className="object-cover"
+                    className="object-cover opacity-70"
                     sizes="(max-width: 768px) 100vw, 33vw"
                     priority
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#020509] via-transparent to-transparent" />
                 </div>
 
-                <h2 className="text-2xl font-bold text-slate-900 mb-6">Get in Touch</h2>
+                <h2 className="text-2xl font-black text-white mb-6">Get in Touch</h2>
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
-                      <Mail size={20} />
+                    <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+                      <Mail size={18} />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-900">Email</h3>
-                      <a href="mailto:support@merchantorders.io" className="text-emerald-600 hover:text-emerald-700 transition-colors">
+                      <h3 className="font-bold text-white text-sm">Email</h3>
+                      <a href="mailto:support@merchantorders.io" className="text-emerald-400 hover:text-emerald-300 transition-colors text-sm">
                         support@merchantorders.io
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
-                      <Phone size={20} />
+                    <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+                      <Phone size={18} />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-900">Phone</h3>
-                      <a href="tel:8002690818" className="text-emerald-600 hover:text-emerald-700 transition-colors">
+                      <h3 className="font-bold text-white text-sm">Phone</h3>
+                      <a href="tel:8002690818" className="text-emerald-400 hover:text-emerald-300 transition-colors text-sm">
                         800.269.0818
                       </a>
                     </div>
@@ -120,15 +134,15 @@ export default function ContactPage() {
             {/* Form */}
             <div className="lg:col-span-2">
               <AnimatedSection delay={0.2} animation="fade-up">
-                <div className="bg-white rounded-3xl p-8 md:p-10 border border-slate-200 shadow-xl shadow-slate-200/50">
+                <div className="rounded-3xl border border-white/6 bg-white/2 backdrop-blur-sm p-8 md:p-10 shadow-[0_0_60px_rgba(0,0,0,0.5)]">
                   {isSuccess ? (
                     <div className="text-center py-16">
-                      <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <CheckCircle size={40} className="text-emerald-600" />
+                      <div className="w-20 h-20 bg-emerald-500/10 border border-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(0,255,136,0.2)]">
+                        <CheckCircle size={36} className="text-emerald-400" />
                       </div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-4">Request Sent Successfully!</h3>
-                      <p className="text-slate-600 mb-8 max-w-md mx-auto">
-                        Thank you for your interest in Merchant Orders. A member of our team will contact you shortly to schedule your personalized demo.
+                      <h3 className="text-2xl font-black text-white mb-4">Request Sent!</h3>
+                      <p className="text-slate-400 mb-8 max-w-md mx-auto">
+                        Thank you for your interest. A member of our team will contact you shortly to schedule your personalized demo.
                       </p>
                       <Button onClick={() => setIsSuccess(false)} variant="outline">
                         Send Another Message
@@ -138,42 +152,38 @@ export default function ContactPage() {
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
-                          <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">Full Name *</label>
+                          <label htmlFor="name" className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Full Name *</label>
                           <input type="text" id="name" name="name" value={formData.name} onChange={handleChange}
-                            className={`w-full px-4 py-3 rounded-xl border ${errors.name ? 'border-red-500' : 'border-slate-200'} focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors`}
-                            placeholder="John Doe" />
-                          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                            className={errors.name ? inputError : inputNormal} placeholder="John Doe" />
+                          {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
                         </div>
                         <div>
-                          <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">Work Email *</label>
+                          <label htmlFor="email" className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Work Email *</label>
                           <input type="email" id="email" name="email" value={formData.email} onChange={handleChange}
-                            className={`w-full px-4 py-3 rounded-xl border ${errors.email ? 'border-red-500' : 'border-slate-200'} focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors`}
-                            placeholder="john@restaurant.com" />
-                          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                            className={errors.email ? inputError : inputNormal} placeholder="john@restaurant.com" />
+                          {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
                         </div>
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
-                          <label htmlFor="restaurantName" className="block text-sm font-medium text-slate-700 mb-2">Restaurant Name *</label>
+                          <label htmlFor="restaurantName" className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Restaurant Name *</label>
                           <input type="text" id="restaurantName" name="restaurantName" value={formData.restaurantName} onChange={handleChange}
-                            className={`w-full px-4 py-3 rounded-xl border ${errors.restaurantName ? 'border-red-500' : 'border-slate-200'} focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors`}
-                            placeholder="Burger Joint" />
-                          {errors.restaurantName && <p className="text-red-500 text-sm mt-1">{errors.restaurantName}</p>}
+                            className={errors.restaurantName ? inputError : inputNormal} placeholder="Burger Joint" />
+                          {errors.restaurantName && <p className="text-red-400 text-xs mt-1">{errors.restaurantName}</p>}
                         </div>
                         <div>
-                          <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">Phone Number</label>
+                          <label htmlFor="phone" className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Phone Number</label>
                           <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
-                            placeholder="(555) 123-4567" />
+                            className={inputNormal} placeholder="(555) 123-4567" />
                         </div>
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
-                          <label htmlFor="locations" className="block text-sm font-medium text-slate-700 mb-2">Number of Locations</label>
+                          <label htmlFor="locations" className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Number of Locations</label>
                           <select id="locations" name="locations" value={formData.locations} onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors bg-white">
+                            className={`${inputNormal} bg-[#0a0f1a]`}>
                             <option value="1">1</option>
                             <option value="2-5">2 - 5</option>
                             <option value="6-10">6 - 10</option>
@@ -181,23 +191,22 @@ export default function ContactPage() {
                           </select>
                         </div>
                         <div>
-                          <label htmlFor="website" className="block text-sm font-medium text-slate-700 mb-2">Website</label>
+                          <label htmlFor="website" className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Website</label>
                           <input type="url" id="website" name="website" value={formData.website} onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
-                            placeholder="https://" />
+                            className={inputNormal} placeholder="https://" />
                         </div>
                       </div>
 
                       <div>
-                        <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">How can we help? *</label>
+                        <label htmlFor="message" className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">How Can We Help? *</label>
                         <textarea id="message" name="message" rows={4} value={formData.message} onChange={handleChange}
-                          className={`w-full px-4 py-3 rounded-xl border ${errors.message ? 'border-red-500' : 'border-slate-200'} focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors`}
+                          className={`${errors.message ? inputError : inputNormal} resize-none`}
                           placeholder="Tell us about your current setup and what you're looking for..." />
-                        {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+                        {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
                       </div>
 
-                      <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                        {isSubmitting ? "Sending..." : "Request Demo"}
+                      <Button type="submit" size="lg" className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-black border-0 shadow-[0_0_30px_rgba(0,255,136,0.3)] hover:shadow-[0_0_50px_rgba(0,255,136,0.5)] transition-all duration-300" disabled={isSubmitting}>
+                        {isSubmitting ? "Sending..." : "Request Demo →"}
                       </Button>
                     </form>
                   )}

@@ -19,9 +19,16 @@ export default function BrandsPage(){
   return(
     <main style={{background:"#080808",paddingTop:"100px"}}>
       {/* Hero */}
-      <section style={{padding:"80px 60px",borderBottom:"1px solid rgba(255,255,255,0.05)",position:"relative",overflow:"hidden"}}>
-        <div style={{position:"absolute",inset:0,backgroundImage:"linear-gradient(rgba(232,0,29,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(232,0,29,0.025) 1px,transparent 1px)",backgroundSize:"64px 64px"}}/>
-        <div style={{maxWidth:"1400px",margin:"0 auto",position:"relative"}}>
+     {/* Hero */}
+<section style={{borderBottom:"1px solid rgba(255,255,255,0.05)",position:"relative",overflow:"hidden",minHeight:"420px",display:"flex",alignItems:"center"}}>
+  {/* eslint-disable-next-line @next/next/no-img-element */}
+  <img src={`${UNSPLASH}/photo-1558618666-fcd25c85cd64?w=1400&q=80`} alt="Premium Brands"
+    style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",filter:"brightness(0.18) saturate(1.2)"}}
+    onError={e=>{(e.target as HTMLImageElement).style.display="none"}}
+  />
+  <div style={{position:"absolute",inset:0,background:"linear-gradient(to right,rgba(8,8,8,0.95) 40%,rgba(8,8,8,0.4) 100%)"}}/>
+  <div style={{position:"absolute",top:0,left:0,right:0,height:"2px",background:"linear-gradient(90deg,transparent,#e8001d 30%,#e8001d 70%,transparent)"}}/>
+  <div style={{maxWidth:"1400px",margin:"0 auto",position:"relative",padding:"80px 60px",width:"100%"}}>
           <span style={{display:"inline-flex",alignItems:"center",gap:"10px",fontFamily:"'Orbitron',sans-serif",fontSize:"13px",letterSpacing:"6px",color:"#e8001d",textTransform:"uppercase",marginBottom:"20px"}}>
             <span style={{width:"28px",height:"1px",background:"#e8001d",display:"block"}}/>Our Partners
           </span>

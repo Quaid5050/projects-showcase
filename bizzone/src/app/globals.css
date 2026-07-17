@@ -16,6 +16,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
+  font-size: 112.5%; /* zooms all rem-based text & spacing across the whole site */
 }
 
 body {

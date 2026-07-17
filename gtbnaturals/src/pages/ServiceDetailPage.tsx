@@ -41,7 +41,6 @@ export default function ServiceDetailPage() {
         ]}
       >
         <div className="flex flex-wrap gap-4">
-          <Button to="/booking">Book consultation</Button>
           <Button to="/services" variant="secondary">
             All services
           </Button>
@@ -73,7 +72,7 @@ export default function ServiceDetailPage() {
                 align="left"
                 eyebrow="Practice scope"
                 title="What this work can include"
-                subtitle="Listed in the same sequence as our service description—supportive wellness scope, not a guarantee of every technique in every visit."
+                subtitle="Listed in the same sequence as our service description—supportive . scope, not a guarantee of every technique in every visit."
               />
               <ol className="mt-6 grid list-none grid-cols-1 gap-2.5 sm:mt-8 sm:grid-cols-2 sm:gap-3">
                 {data.roleInPractice.map((line, idx) => (

@@ -1,0 +1,875 @@
+[
+  {
+    "url": "https://wayback-api.archive.org/services/context/notices?url=https%3A%2F%2Fwww.skipthedishes.com%2Fchan-garden&timestamp=20250624094410",
+    "body": {
+      "status": "success",
+      "notices": []
+    }
+  },
+  {
+    "url": "http://web.archive.org/__wb/sparkline?output=json&url=https%3A%2F%2Fwww.skipthedishes.com%2Fchan-garden&collection=web&nav=20250624094410",
+    "body": {
+      "years": {
+        "2023": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "2024": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "2025": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "first_ts": "20230529120308",
+      "last_ts": "20250624094410",
+      "status": {
+        "2023": "444424444444",
+        "2024": "444224444444",
+        "2025": "424442444444"
+      },
+      "nav": {
+        "next": null,
+        "prev": "20250213223443",
+        "monthPrev": "20250213223443",
+        "monthNext": null,
+        "yearPrev": "20240519042329",
+        "yearNext": null
+      }
+    }
+  },
+  {
+    "url": "http://web.archive.org/web/20250617211729/https://analytics.api.justeattakeaway.com/web/723162543983-us-production.json",
+    "body": {
+      "namespace": "analytics_pipeline",
+      "trackerSrc": "//web.archive.org/web/20250617211729/https://analytics.api.justeattakeaway.com/js/4.1.0/sp.lite.js",
+      "trackerName": "skipcustomer_web",
+      "collectorEndpoint": "http://web.archive.org/web/20250617211729/https://gateway-2.us-west-2.production.jet-external.com/",
+      "settings": {
+        "platform": "web",
+        "appId": "723162543983",
+        "encodeBase64": true,
+        "postPath": "realtime-events/723162543983/tp",
+        "connectionTimeout": 5000,
+        "dontRetryStatusCodes": [
+          400,
+          401,
+          403,
+          404,
+          405,
+          408,
+          409,
+          410,
+          422,
+          429,
+          500,
+          501,
+          503,
+          504
+        ],
+        "bufferSize": 1,
+        "anonymousTracking": false,
+        "stateStorageStrategy": "cookieAndLocalStorage",
+        "sessionCookieTimeout": 7200,
+        "discoverRootDomain": true,
+        "cookieName": "jet-sp-customer-",
+        "cookieSameSite": "Lax",
+        "cookieSecure": true,
+        "maxLocalStorageQueueSize": 100,
+        "keepalive": true,
+        "contexts": {
+          "webPage": false,
+          "session": false,
+          "performanceTiming": false,
+          "gaCookies": false,
+          "geolocation": false,
+          "clientHints": false
+        }
+      },
+      "disable": {
+        "trackSelfDescribingEvent": false,
+        "trackCoreEvent": false,
+        "trackStructEvent": false,
+        "trackPageView": false,
+        "newTracker": false
+      }
+    }
+  },
+  {
+    "url": "http://web.archive.org/web/20251126111022/https://collector-pxg2jgnyto.px-cloud.net/api/v2/collector",
+    "body": {
+      "do": null,
+      "ob": "VVVUVFRUGFxUBVcFUABWSQcFBlxJVVUCVEkFV1xVSQBWAlNVAQFRBgVWAhoaGhpVVFVUVFQYBxEaGhoaVVVUVFVVGFdUVFNTUVJcU1BdVl1cUVFQVlZXGhoaGlRVVVVUVVRVGFVTUlBVUVFQVlZdUlQaGhoaVFRUVVRVGABQDgFUUwgPUxIVF1NXAAtVBhVUGhoaGlRVVVVUVVRUGFNVV1MaGhoaVFVVVVRUVFQYXFQFVwVSAVRJBwUGXElVVQJUSQVXXFVJAFYCU1UBAVEGBVYCGAIFCBcBGhoaGlVUVVRUVRhcV1QABwJXAl0AAVdTBVBVBgZdVgFRVgdcU1VXUgcFBl0BUwZTVVZUXAUBVwACBQZSBgBTXFdcXFUGAgJWUFRcGhoaGlVUVFRVVBhcVAVXXQJUAEkHBQZcSVVVAlRJBVdcVUlVXAdSVQdWUVddAAAYV1VRV1JUVFQYAgUIFwEaGhoaVVVUVVRVGAcHGFJUGDFWIhA+MioUACMxXTAjIlArE1lZGhoaGlVVVFVUVRgNABQ7BxhSVBhVSBc="
+    }
+  },
+  {
+    "url": "http://web.archive.org/web/20250617211731/https://features.api.justeattakeaway.com/config/v1/skip-customer-web/production-BAfzmZarBDYR0bTVPkyt",
+    "body": {
+      "features": [
+        {
+          "key": "skip-customer-web::age_gate_modal",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": false
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::auth_rewrite",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::auto_geolocation_enabled",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::BOGO-V1",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::braze_sdk_initialization",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::carousel_view_all",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": false
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::chat_warning",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": false
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::cookie-consent",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::courier_hold_container",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::customer_courier_chat",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::customer_courier_chat_post_order",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": false
+            }
+          ],
+          "evaluationLogic": {
+            "type": "IdHash",
+            "detail": {
+              "bucketBy": "AnonUserId",
+              "prefix": "ex_courier_chat_post_order_20241209",
+              "rules": [
+                {
+                  "restrictions": {
+                    "eq": "CA",
+                    "property": "Country"
+                  },
+                  "audienceFraction": 1,
+                  "variants": [
+                    {
+                      "weight": 1,
+                      "value": true,
+                      "experimentKey": "CCINT-114-ex_courier_chat_post_order",
+                      "experimentVariant": "control"
+                    },
+                    {
+                      "weight": 0,
+                      "value": false,
+                      "experimentKey": "CCINT-114-ex_courier_chat_post_order",
+                      "experimentVariant": "variant"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "key": "skip-customer-web::customer_courier_chat_pre_collect_enabled",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::customer_courier_chat_v2_enabled",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {},
+              "value": false
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::default_sort",
+          "valueType": "string",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": "control"
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::delivery_options_enabled",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": false
+            }
+          ],
+          "evaluationLogic": {
+            "type": "IdHash",
+            "detail": {
+              "bucketBy": "AnonUserId",
+              "prefix": "ex_delivery_options_20250529",
+              "rules": [
+                {
+                  "restrictions": {
+                    "eq": "CA",
+                    "property": "Country"
+                  },
+                  "audienceFraction": 1,
+                  "variants": [
+                    {
+                      "weight": 1,
+                      "value": false,
+                      "experimentKey": "CCINT-302-ex_delivery_options",
+                      "experimentVariant": "control"
+                    },
+                    {
+                      "weight": 1,
+                      "value": true,
+                      "experimentKey": "CCINT-302-ex_delivery_options",
+                      "experimentVariant": "variant"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "key": "skip-customer-web::f1_car_enabled",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::favorite_restaurant",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::giftcard_widget_enabled",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": false
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::item_search",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::membership_signup",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {},
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::membership_signup_partners",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {},
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::multi_collect_orders",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::nested_menu_v1_disabled",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": false
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::poc_async_checkout",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": false
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::popular_dishes",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::raf_rewrite",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {},
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::restaurant_funded_offers",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::rewards",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::rewards_tiers",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {},
+              "value": false
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::rokt_placements_enabled",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::rokt_placements_end_status",
+          "valueType": "string",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": "DELCO_COLLECTED"
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::rokt_placements_start_status",
+          "valueType": "string",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": "DELCO_ASSIGNING_COURIER"
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::self_serve_get_help",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": false
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::skip_pass_step2",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::skipplus_subscription_free_trial_length_month",
+          "valueType": "int",
+          "defaultValueRules": [
+            {
+              "restrictions": {},
+              "value": 3
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::skipplus_subscription_phase_2",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {},
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::smart_banner",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::snowplow_rollout",
+          "valueType": "string",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": "control"
+            }
+          ],
+          "evaluationLogic": {
+            "type": "IdHash",
+            "detail": {
+              "bucketBy": "AnonUserId",
+              "prefix": "ex_snowplow_rollout_20240404",
+              "rules": [
+                {
+                  "restrictions": {
+                    "eq": "CA",
+                    "property": "Country"
+                  },
+                  "audienceFraction": 1,
+                  "variants": [
+                    {
+                      "weight": 0,
+                      "value": "control",
+                      "experimentKey": "CUSTWP-1097-ex_snowplow_rollout",
+                      "experimentVariant": "control"
+                    },
+                    {
+                      "weight": 100,
+                      "value": "variant",
+                      "experimentKey": "CUSTWP-1097-ex_snowplow_rollout",
+                      "experimentVariant": "variant"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "key": "skip-customer-web::theme",
+          "valueType": "string",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": "default"
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::tip_suggestions_bc",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {},
+              "value": false
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::track_menu_view_step3",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {},
+              "value": false
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::two_factor_auth",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::variable_service_fee",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::web-shop-and-pay-item-substitution",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::web-shop-and-pay-milestone1",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::web-shop-and-pay-milestone2",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "key": "skip-customer-web::web-shop-and-pay-milestone3",
+          "valueType": "bool",
+          "defaultValueRules": [
+            {
+              "restrictions": {
+                "eq": "CA",
+                "property": "Country"
+              },
+              "value": true
+            }
+          ]
+        }
+      ],
+      "createdAt": "2025-06-16T16:44:03.107Z"
+    }
+  },
+  {
+    "url": "http://web.archive.org/web/20250617211732/https://api.skipthedishes.com/customer/v1/required-consents",
+    "body": {
+      "storeCookies": false
+    }
+  },
+  {
+    "url": "http://web.archive.org/web/20250617211907/https://seginus.iad-03.braze.com/api/v3/data/",
+    "body": {
+      "triggers": [],
+      "config": {
+        "time": 1747666807,
+        "attributes_blacklist": [
+          "$where",
+          "Test ",
+          "voucher_code",
+          "voucher_code_01_2019",
+          "voucher_code_03jan19",
+          "voucher_code_271218"
+        ],
+        "events_blacklist": [
+          "TeST "
+        ],
+        "purchases_blacklist": [],
+        "messaging_session_timeout": 21600,
+        "vapid_public_key": "BDOAngp82oACqO8AulOl92uxCDucpx5QQ4mRckqhX0fQhMtgXHBgTw1ctDFRwHb9JP2m4soT7YT90dMu_bOcRoY=",
+        "content_cards": {
+          "enabled": true
+        },
+        "global_request_rate_limit": {
+          "enabled": true,
+          "capacity": 30,
+          "refill_rate": 30,
+          "endpoint_overrides": {
+            "content_cards/sync": {
+              "capacity": 5,
+              "refill_rate": 10
+            },
+            "push/redeliver": {
+              "capacity": 1,
+              "refill_rate": 180
+            }
+          }
+        },
+        "request_backoff": {
+          "min_sleep_duration_ms": 10000,
+          "max_sleep_duration_ms": 300000,
+          "scale_factor": 3
+        }
+      }
+    }
+  },
+  {
+    "url": "http://web.archive.org/web/20251126111340/https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+    "body": {}
+  }
+]

@@ -52,47 +52,47 @@ const ALL_FEATS = [
 const pidx = k => PKG_ORDER.indexOf(k);
 
 const s = {
-  page:    { width:"100%", fontFamily:"inherit", fontSize:14, color:"#e9e6f2" },
-  wrap:    { maxWidth:780, margin:"0 auto" },
-  card:    { background:"linear-gradient(160deg, rgba(20,12,35,0.7), rgba(8,5,16,0.55))", border:"1px solid rgba(255,255,255,0.09)", borderRadius:18, padding:"1.75rem 1.75rem 1.5rem", backdropFilter:"blur(16px)", WebkitBackdropFilter:"blur(16px)" },
-  hdr:     { background:"linear-gradient(160deg, rgba(20,12,35,0.7), rgba(8,5,16,0.55))", border:"1px solid rgba(255,255,255,0.09)", borderRadius:18, padding:"1.25rem 1.5rem", display:"flex", alignItems:"flex-start", gap:16, marginBottom:"1.75rem", backdropFilter:"blur(16px)", WebkitBackdropFilter:"blur(16px)" },
-  chk:     { width:48, height:48, borderRadius:"50%", background:"rgba(198,245,41,0.12)", border:"1.5px solid rgba(198,245,41,0.45)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:22, color:"#c6f529", flexShrink:0 },
-  title:   { fontSize:26, fontWeight:800, textAlign:"center", marginBottom:6, color:"#ffffff" },
-  sub:     { fontSize:13.5, textAlign:"center", color:"#9b96b0", marginBottom:"1.75rem" },
-  label:   { fontSize:12.5, fontWeight:600, color:"#e9e6f2", display:"block", marginBottom:5 },
-  input:   { fontFamily:"inherit", fontSize:14, color:"#ffffff", background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.12)", borderRadius:10, padding:"9px 12px", width:"100%", outline:"none", boxSizing:"border-box" },
-  textarea:{ fontFamily:"inherit", fontSize:14, color:"#ffffff", background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.12)", borderRadius:10, padding:"9px 12px", width:"100%", outline:"none", boxSizing:"border-box", resize:"vertical", minHeight:80, lineHeight:1.55 },
-  select:  { fontFamily:"inherit", fontSize:14, color:"#ffffff", background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.12)", borderRadius:10, padding:"9px 12px", width:"100%", outline:"none", boxSizing:"border-box", appearance:"none" },
-  hint:    { fontSize:11.5, color:"#8a85a0", marginTop:3 },
-  divl:    { fontSize:11, fontWeight:700, letterSpacing:.6, textTransform:"uppercase", color:"#8a85a0", margin:"1.5rem 0 .9rem", display:"flex", alignItems:"center", gap:8 },
+  page:    { width:"100%", fontFamily:"inherit", fontSize:16, color:"#e9e6f2" },
+  wrap:    { maxWidth:860, margin:"0 auto" },
+  card:    { background:"linear-gradient(160deg, rgba(20,12,35,0.7), rgba(8,5,16,0.55))", border:"1px solid rgba(255,255,255,0.09)", borderRadius:20, padding:"2.25rem 2.25rem 2rem", backdropFilter:"blur(16px)", WebkitBackdropFilter:"blur(16px)" },
+  hdr:     { background:"linear-gradient(160deg, rgba(20,12,35,0.7), rgba(8,5,16,0.55))", border:"1px solid rgba(255,255,255,0.09)", borderRadius:20, padding:"1.5rem 1.75rem", display:"flex", alignItems:"flex-start", gap:18, marginBottom:"2rem", backdropFilter:"blur(16px)", WebkitBackdropFilter:"blur(16px)" },
+  chk:     { width:58, height:58, borderRadius:"50%", background:"rgba(198,245,41,0.12)", border:"1.5px solid rgba(198,245,41,0.45)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:28, color:"#c6f529", flexShrink:0 },
+  title:   { fontSize:34, fontWeight:800, textAlign:"center", marginBottom:8, color:"#ffffff" },
+  sub:     { fontSize:17, textAlign:"center", color:"#9b96b0", marginBottom:"2rem" },
+  label:   { fontSize:15, fontWeight:600, color:"#e9e6f2", display:"block", marginBottom:7 },
+  input:   { fontFamily:"inherit", fontSize:16, color:"#ffffff", background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.12)", borderRadius:12, padding:"13px 16px", width:"100%", outline:"none", boxSizing:"border-box" },
+  textarea:{ fontFamily:"inherit", fontSize:16, color:"#ffffff", background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.12)", borderRadius:12, padding:"13px 16px", width:"100%", outline:"none", boxSizing:"border-box", resize:"vertical", minHeight:100, lineHeight:1.55 },
+  select:  { fontFamily:"inherit", fontSize:16, color:"#ffffff", background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.12)", borderRadius:12, padding:"13px 16px", width:"100%", outline:"none", boxSizing:"border-box", appearance:"none" },
+  hint:    { fontSize:13, color:"#8a85a0", marginTop:5 },
+  divl:    { fontSize:13, fontWeight:700, letterSpacing:.6, textTransform:"uppercase", color:"#8a85a0", margin:"1.75rem 0 1rem", display:"flex", alignItems:"center", gap:10 },
   divline: { flex:1, height:1, background:"rgba(255,255,255,0.12)" },
-  g2:      { display:"grid", gridTemplateColumns:"1fr 1fr", gap:14 },
-  gap:     { marginTop:14 },
-  gapl:    { marginTop:22 },
-  foot:    { display:"flex", alignItems:"center", justifyContent:"space-between", marginTop:"1.75rem", paddingTop:"1.25rem", borderTop:"1px solid rgba(255,255,255,0.08)", gap:12 },
-  footSec: { fontSize:11.5, color:"#8a85a0" },
-  btnBack: { padding:"9px 18px", border:"1px solid rgba(255,255,255,0.14)", borderRadius:999, background:"transparent", fontSize:13.5, fontWeight:600, color:"#cfc9e0", cursor:"pointer" },
-  btnNext: { padding:"10px 22px", border:"none", borderRadius:999, background:"linear-gradient(100deg,#c6f529,#a435ff)", fontSize:13.5, fontWeight:700, color:"#050308", cursor:"pointer", display:"flex", alignItems:"center", gap:7 },
-  btnSubmit:{ padding:"10px 22px", border:"none", borderRadius:999, background:"linear-gradient(100deg,#c6f529,#a435ff)", fontSize:13.5, fontWeight:700, color:"#050308", cursor:"pointer", display:"flex", alignItems:"center", gap:7 },
-  pkgGrid: { display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:12, marginBottom:"1.5rem" },
-  ubox:    { border:"1px solid rgba(245,158,11,0.35)", borderRadius:10, padding:".85rem 1rem", background:"rgba(245,158,11,0.1)", fontSize:12.5, color:"#fcd9a5", lineHeight:1.6, marginTop:10 },
-  alertG:  { border:"1px solid rgba(198,245,41,0.35)", borderRadius:10, padding:".85rem 1rem", background:"rgba(198,245,41,0.1)", fontSize:12.5, color:"#d9ff4d", lineHeight:1.6, marginTop:12 },
-  alertY:  { border:"1px solid rgba(245,158,11,0.3)", borderRadius:10, padding:".85rem 1rem", background:"rgba(245,158,11,0.1)", fontSize:12.5, color:"#fcd9a5", lineHeight:1.6, marginBottom:12 },
-  banner:  { display:"flex", alignItems:"center", gap:8, padding:".65rem 1rem", background:"rgba(164,53,255,0.1)", border:"1px solid rgba(164,53,255,0.28)", borderRadius:10, marginBottom:"1.25rem", fontSize:12.5, color:"#9b96b0" },
-  sshdr:   { display:"flex", alignItems:"center", gap:14, marginBottom:"1.5rem", paddingBottom:".9rem", borderBottom:"1px solid rgba(255,255,255,0.08)" },
-  sico:    { width:42, height:42, flexShrink:0, background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.1)", borderRadius:10, display:"flex", alignItems:"center", justifyContent:"center", fontSize:20 },
-  rbox:    { background:"rgba(255,255,255,0.03)", border:"1px solid rgba(255,255,255,0.08)", borderRadius:10, padding:".9rem 1.1rem", marginBottom:10 },
+  g2:      { display:"grid", gridTemplateColumns:"1fr 1fr", gap:18 },
+  gap:     { marginTop:18 },
+  gapl:    { marginTop:26 },
+  foot:    { display:"flex", alignItems:"center", justifyContent:"space-between", marginTop:"2rem", paddingTop:"1.5rem", borderTop:"1px solid rgba(255,255,255,0.08)", gap:14 },
+  footSec: { fontSize:13, color:"#8a85a0" },
+  btnBack: { padding:"13px 26px", border:"1px solid rgba(255,255,255,0.18)", borderRadius:999, background:"rgba(255,255,255,0.05)", fontSize:15.5, fontWeight:700, color:"#e9e6f2", cursor:"pointer" },
+  btnNext: { padding:"14px 30px", border:"none", borderRadius:999, background:"#c6f529", fontSize:16.5, fontWeight:800, color:"#050308", cursor:"pointer", display:"flex", alignItems:"center", gap:8, boxShadow:"0 8px 24px -8px rgba(198,245,41,0.6)" },
+  btnSubmit:{ padding:"15px 34px", border:"none", borderRadius:999, background:"#8000f0", fontSize:17, fontWeight:800, color:"#ffffff", cursor:"pointer", display:"flex", alignItems:"center", gap:8, boxShadow:"0 8px 24px -8px rgba(128,0,240,0.8)" },
+  pkgGrid: { display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:14, marginBottom:"1.75rem" },
+  ubox:    { border:"1px solid rgba(245,158,11,0.35)", borderRadius:12, padding:"1rem 1.15rem", background:"rgba(245,158,11,0.1)", fontSize:14, color:"#fcd9a5", lineHeight:1.6, marginTop:12 },
+  alertG:  { border:"1px solid rgba(198,245,41,0.35)", borderRadius:12, padding:"1rem 1.15rem", background:"rgba(198,245,41,0.1)", fontSize:14, color:"#d9ff4d", lineHeight:1.6, marginTop:14 },
+  alertY:  { border:"1px solid rgba(245,158,11,0.3)", borderRadius:12, padding:"1rem 1.15rem", background:"rgba(245,158,11,0.1)", fontSize:14, color:"#fcd9a5", lineHeight:1.6, marginBottom:14 },
+  banner:  { display:"flex", alignItems:"center", gap:10, padding:".85rem 1.15rem", background:"rgba(164,53,255,0.1)", border:"1px solid rgba(164,53,255,0.28)", borderRadius:12, marginBottom:"1.5rem", fontSize:14, color:"#9b96b0" },
+  sshdr:   { display:"flex", alignItems:"center", gap:16, marginBottom:"1.75rem", paddingBottom:"1rem", borderBottom:"1px solid rgba(255,255,255,0.08)" },
+  sico:    { width:52, height:52, flexShrink:0, background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.1)", borderRadius:12, display:"flex", alignItems:"center", justifyContent:"center", fontSize:25 },
+  rbox:    { background:"rgba(255,255,255,0.03)", border:"1px solid rgba(255,255,255,0.08)", borderRadius:12, padding:"1.1rem 1.3rem", marginBottom:12 },
 };
 
 function Rb({ label, selected, onClick, multi, upgrade, upgradePkg }) {
   return (
-    <div onClick={onClick} style={{ display:"flex", alignItems:"center", gap:7, padding:"8px 14px", border:`1px solid ${selected?"#a435ff":"rgba(255,255,255,0.12)"}`, borderRadius:10, cursor:"pointer", fontSize:13, fontWeight:600, color:selected?"#a435ff":"#a9a3bf", background:selected?"rgba(198,245,41,0.14)":"rgba(255,255,255,0.03)", userSelect:"none", opacity:upgrade&&!selected?.65:1 }}>
-      <span style={{ width:13, height:13, borderRadius:multi?3:"50%", border:`1.5px solid currentColor`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, fontSize:8, fontWeight:900 }}>
+    <div onClick={onClick} style={{ display:"flex", alignItems:"center", gap:7, padding:"8px 14px", border:`1px solid ${selected?"#a435ff":"rgba(255,255,255,0.12)"}`, borderRadius:10, cursor:"pointer", fontSize:16.6, fontWeight:600, color:selected?"#a435ff":"#a9a3bf", background:selected?"rgba(198,245,41,0.14)":"rgba(255,255,255,0.03)", userSelect:"none", opacity:upgrade&&!selected?.65:1 }}>
+      <span style={{ width:13, height:13, borderRadius:multi?3:"50%", border:`1.5px solid currentColor`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, fontSize:10.2, fontWeight:900 }}>
         {selected ? (multi ? "✓" : "") : ""}
         {selected && !multi ? <span style={{width:6,height:6,borderRadius:"50%",background:"#a435ff",display:"block"}}></span> : null}
       </span>
       {label}
-      {upgrade && <span style={{ fontSize:10.5, fontWeight:700, padding:"2px 7px", borderRadius:999, background:"rgba(245,158,11,0.12)", color:"#fcd9a5", border:"1px solid rgba(245,158,11,0.35)", marginLeft:4 }}>⚡ {upgradePkg}</span>}
+      {upgrade && <span style={{ fontSize:13.4, fontWeight:700, padding:"2px 7px", borderRadius:999, background:"rgba(245,158,11,0.12)", color:"#fcd9a5", border:"1px solid rgba(245,158,11,0.35)", marginLeft:4 }}>⚡ {upgradePkg}</span>}
     </div>
   );
 }
@@ -100,7 +100,7 @@ function Rb({ label, selected, onClick, multi, upgrade, upgradePkg }) {
 function Field({ label, required, optional, hint, children }) {
   return (
     <div style={{ display:"flex", flexDirection:"column", gap:0 }}>
-      <label style={s.label}>{label}{required&&<span style={{color:"#dc2626",marginLeft:2}}>*</span>}{optional&&<span style={{fontWeight:400,color:"#8a85a0",fontSize:11,marginLeft:4}}>(optional)</span>}</label>
+      <label style={s.label}>{label}{required&&<span style={{color:"#dc2626",marginLeft:2}}>*</span>}{optional&&<span style={{fontWeight:400,color:"#8a85a0",fontSize:14.1,marginLeft:4}}>(optional)</span>}</label>
       {children}
       {hint && <div style={s.hint}>{hint}</div>}
     </div>
@@ -114,10 +114,10 @@ function Divider({ children }) {
 function PkgCard({ price, name, includes, selected, onClick }) {
   return (
     <div onClick={onClick} style={{ border:`2px solid ${selected?"#a435ff":"rgba(255,255,255,0.12)"}`, borderRadius:14, padding:"1rem .9rem", cursor:"pointer", background:selected?"rgba(164,53,255,0.12)":"rgba(255,255,255,0.03)", position:"relative", userSelect:"none" }}>
-      {selected && <span style={{ position:"absolute", top:8, right:10, width:20, height:20, borderRadius:"50%", background:"#a435ff", color:"#fff", fontSize:11, fontWeight:700, display:"flex", alignItems:"center", justifyContent:"center" }}>✓</span>}
-      <div style={{ fontSize:22, fontWeight:800, color:"#a435ff", marginBottom:3 }}>{price}</div>
-      <div style={{ fontSize:12.5, fontWeight:700, color:"#ffffff", marginBottom:8 }}>{name}</div>
-      <ul style={{ listStyle:"none", fontSize:12, color:"#a9a3bf", lineHeight:1.7 }}>
+      {selected && <span style={{ position:"absolute", top:8, right:10, width:20, height:20, borderRadius:"50%", background:"#a435ff", color:"#fff", fontSize:14.1, fontWeight:700, display:"flex", alignItems:"center", justifyContent:"center" }}>✓</span>}
+      <div style={{ fontSize:28.2, fontWeight:800, color:"#a435ff", marginBottom:3 }}>{price}</div>
+      <div style={{ fontSize:16, fontWeight:700, color:"#ffffff", marginBottom:8 }}>{name}</div>
+      <ul style={{ listStyle:"none", fontSize:15.4, color:"#a9a3bf", lineHeight:1.7 }}>
         {includes.map((item,i) => <li key={i}><span style={{color:"#9bc400",fontWeight:700}}>✓ </span>{item}</li>)}
       </ul>
     </div>
@@ -136,12 +136,12 @@ function ColorPicker({ colors, setColors }) {
             <div style={{ position:"absolute", inset:0, background:col.hex }}></div>
             <input type="color" value={col.hex} onChange={e => update(i,"hex",e.target.value)} style={{ position:"absolute", inset:-4, width:"calc(100% + 8px)", height:"calc(100% + 8px)", opacity:0, cursor:"pointer", border:"none" }} />
           </div>
-          <input type="text" value={col.hex} maxLength={7} onChange={e => { if(/^#[0-9a-fA-F]{0,6}$/.test(e.target.value)) update(i,"hex",e.target.value); }} style={{ ...s.input, width:90, fontFamily:"monospace", fontSize:13 }} />
+          <input type="text" value={col.hex} maxLength={7} onChange={e => { if(/^#[0-9a-fA-F]{0,6}$/.test(e.target.value)) update(i,"hex",e.target.value); }} style={{ ...s.input, width:90, fontFamily:"monospace", fontSize:16.6 }} />
           <input type="text" value={col.role} onChange={e => update(i,"role",e.target.value)} placeholder="Colour role (e.g. Primary, Accent)" style={{ ...s.input, flex:1 }} />
-          <button onClick={() => remove(i)} style={{ background:"none", border:"none", color:"#8a85a0", cursor:"pointer", fontSize:18, padding:4, borderRadius:6, lineHeight:1 }}>×</button>
+          <button onClick={() => remove(i)} style={{ background:"none", border:"none", color:"#8a85a0", cursor:"pointer", fontSize:23, padding:4, borderRadius:6, lineHeight:1 }}>×</button>
         </div>
       ))}
-      <button onClick={addColor} style={{ display:"inline-flex", alignItems:"center", gap:6, padding:"7px 14px", border:"1px dashed rgba(255,255,255,0.18)", borderRadius:10, background:"none", fontSize:13, fontWeight:600, color:"#a9a3bf", cursor:"pointer", marginTop:4 }}>+ Add another colour</button>
+      <button onClick={addColor} style={{ display:"inline-flex", alignItems:"center", gap:6, padding:"7px 14px", border:"1px dashed rgba(255,255,255,0.18)", borderRadius:10, background:"none", fontSize:16.6, fontWeight:600, color:"#a9a3bf", cursor:"pointer", marginTop:4 }}>+ Add another colour</button>
     </div>
   );
 }
@@ -154,8 +154,8 @@ function Stepper({ step }) {
         const n = i+1;
         const active = n === step, done = n < step;
         return [
-          <div key={n} style={{ display:"flex", alignItems:"center", gap:7, fontSize:12.5, color:active?"#a435ff":done?"#9bc400":"#8a85a0", fontWeight:active?700:400 }}>
-            <span style={{ width:26, height:26, borderRadius:"50%", border:`1.5px solid ${active?"#a435ff":done?"rgba(198,245,41,0.4)":"rgba(255,255,255,0.12)"}`, background:active?"#a435ff":done?"rgba(198,245,41,0.1)":"transparent", color:active?"#fff":done?"#9bc400":"#8a85a0", display:"flex", alignItems:"center", justifyContent:"center", fontSize:11, fontWeight:700 }}>
+          <div key={n} style={{ display:"flex", alignItems:"center", gap:7, fontSize:16, color:active?"#a435ff":done?"#9bc400":"#8a85a0", fontWeight:active?700:400 }}>
+            <span style={{ width:26, height:26, borderRadius:"50%", border:`1.5px solid ${active?"#a435ff":done?"rgba(198,245,41,0.4)":"rgba(255,255,255,0.12)"}`, background:active?"#a435ff":done?"rgba(198,245,41,0.1)":"transparent", color:active?"#fff":done?"#9bc400":"#8a85a0", display:"flex", alignItems:"center", justifyContent:"center", fontSize:14.1, fontWeight:700 }}>
               {done ? "✓" : n}
             </span>
             <span style={{ display:"none" }}>{label}</span>
@@ -172,7 +172,7 @@ function Banner({ pkg, onChangePkg }) {
   return (
     <div style={s.banner}>
       <span>📦 Package: <strong style={{color:"#a435ff"}}>{PKGS[pkg]?.label}</strong></span>
-      <span onClick={onChangePkg} style={{ marginLeft:"auto", color:"#a435ff", fontWeight:600, cursor:"pointer", fontSize:12, textDecoration:"underline" }}>Change</span>
+      <span onClick={onChangePkg} style={{ marginLeft:"auto", color:"#a435ff", fontWeight:600, cursor:"pointer", fontSize:15.4, textDecoration:"underline" }}>Change</span>
     </div>
   );
 }
@@ -250,10 +250,10 @@ export default function OnboardingForm() {
   if (submitted) return (
     <div style={s.page} className="bz-onb"><style>{ONB_CSS}</style><div style={s.wrap}>
       <div style={{...s.card, textAlign:"center", padding:"3rem 2rem"}}>
-        <div style={{width:72,height:72,borderRadius:"50%",background:"rgba(198,245,41,0.1)",border:"2px solid #bbf7d0",display:"flex",alignItems:"center",justifyContent:"center",fontSize:34,color:"#9bc400",margin:"0 auto 1.5rem"}}>✓</div>
-        <h2 style={{fontSize:24,fontWeight:700,marginBottom:10,color:"#ffffff"}}>Form Submitted Successfully!</h2>
-        <p style={{fontSize:14,color:"#a9a3bf",maxWidth:420,margin:"0 auto",lineHeight:1.7}}>A task has been created for our development team. We will be in touch within <strong>24–48 hours</strong> to confirm next steps.{upsellItems().length?" Our team will also reach out about the upgrade items you selected.":""}</p>
-        {taskUrl && <a href={taskUrl} target="_blank" rel="noreferrer" style={{display:"inline-block",marginTop:"1.25rem",padding:"9px 22px",background:"#a435ff",color:"#fff",borderRadius:10,fontWeight:700,fontSize:14,textDecoration:"none"}}>View Task in ClickUp →</a>}
+        <div style={{width:72,height:72,borderRadius:"50%",background:"rgba(198,245,41,0.1)",border:"2px solid #bbf7d0",display:"flex",alignItems:"center",justifyContent:"center",fontSize:43.5,color:"#9bc400",margin:"0 auto 1.5rem"}}>✓</div>
+        <h2 style={{fontSize:30.7,fontWeight:700,marginBottom:10,color:"#ffffff"}}>Form Submitted Successfully!</h2>
+        <p style={{fontSize:17.9,color:"#a9a3bf",maxWidth:420,margin:"0 auto",lineHeight:1.7}}>A task has been created for our development team. We will be in touch within <strong>24–48 hours</strong> to confirm next steps.{upsellItems().length?" Our team will also reach out about the upgrade items you selected.":""}</p>
+        {taskUrl && <a href={taskUrl} target="_blank" rel="noreferrer" style={{display:"inline-block",marginTop:"1.25rem",padding:"9px 22px",background:"#a435ff",color:"#fff",borderRadius:10,fontWeight:700,fontSize:17.9,textDecoration:"none"}}>View Task in ClickUp →</a>}
       </div>
     </div></div>
   );
@@ -264,8 +264,8 @@ export default function OnboardingForm() {
       <div style={s.hdr}>
         <div style={s.chk}>✓</div>
         <div>
-          <h2 style={{fontSize:16,fontWeight:700,marginBottom:5,color:"#ffffff"}}>Thank you for your purchase!</h2>
-          <p style={{fontSize:13,color:"#a9a3bf",lineHeight:1.65}}>Complete this onboarding form so our web development team can get started. We will reach out within <strong style={{color:"#a435ff"}}>24 to 48 hours</strong>.</p>
+          <h2 style={{fontSize:20.5,fontWeight:700,marginBottom:5,color:"#ffffff"}}>Thank you for your purchase!</h2>
+          <p style={{fontSize:16.6,color:"#a9a3bf",lineHeight:1.65}}>Complete this onboarding form so our web development team can get started. We will reach out within <strong style={{color:"#a435ff"}}>24 to 48 hours</strong>.</p>
         </div>
       </div>
       <h1 style={s.title}>Website Development Onboarding</h1>
@@ -273,7 +273,7 @@ export default function OnboardingForm() {
       <div style={s.card}>
         <div style={s.sshdr}>
           <div style={s.sico}>💳</div>
-          <div><h3 style={{fontSize:16,fontWeight:700,color:"#ffffff"}}>Select the package you purchased</h3><p style={{fontSize:12.5,color:"#a9a3bf"}}>This lets us flag anything outside your plan.</p></div>
+          <div><h3 style={{fontSize:20.5,fontWeight:700,color:"#ffffff"}}>Select the package you purchased</h3><p style={{fontSize:16,color:"#a9a3bf"}}>This lets us flag anything outside your plan.</p></div>
         </div>
         <div style={s.pkgGrid}>
           <PkgCard price="$79" name="Starter" selected={pkg==="starter"} onClick={()=>setPkg("starter")} includes={["Up to 5 pages","Contact form","Stock photos","Mobile responsive"]}/>
@@ -296,8 +296,8 @@ export default function OnboardingForm() {
       <div style={s.hdr}>
         <div style={s.chk}>✓</div>
         <div>
-          <h2 style={{fontSize:16,fontWeight:700,marginBottom:5,color:"#ffffff"}}>Thank you for your purchase!</h2>
-          <p style={{fontSize:13,color:"#a9a3bf",lineHeight:1.65}}>Complete this form so our team can get started. We will reach out within <strong style={{color:"#a435ff"}}>24 to 48 hours</strong>.</p>
+          <h2 style={{fontSize:20.5,fontWeight:700,marginBottom:5,color:"#ffffff"}}>Thank you for your purchase!</h2>
+          <p style={{fontSize:16.6,color:"#a9a3bf",lineHeight:1.65}}>Complete this form so our team can get started. We will reach out within <strong style={{color:"#a435ff"}}>24 to 48 hours</strong>.</p>
         </div>
       </div>
       <Stepper step={step}/>
@@ -309,7 +309,7 @@ export default function OnboardingForm() {
       {/* ── STEP 1 ── */}
       {step===1&&<>
         <Banner pkg={pkg} onChangePkg={()=>setStep(0)}/>
-        <div style={s.sshdr}><div style={s.sico}>📋</div><div><h3 style={{fontSize:15,fontWeight:700,color:"#ffffff"}}>Contact &amp; Project Info</h3><p style={{fontSize:12.5,color:"#a9a3bf"}}>Tell us who you are and what you need built.</p></div></div>
+        <div style={s.sshdr}><div style={s.sico}>📋</div><div><h3 style={{fontSize:19.2,fontWeight:700,color:"#ffffff"}}>Contact &amp; Project Info</h3><p style={{fontSize:16,color:"#a9a3bf"}}>Tell us who you are and what you need built.</p></div></div>
         <div style={s.g2}>
           <Field label="Business name" required><input style={s.input} value={f.bizName} onChange={e=>upd("bizName",e.target.value)} placeholder="e.g. Maple Leaf Bakery"/></Field>
           <Field label="Your full name" required><input style={s.input} value={f.fullName} onChange={e=>upd("fullName",e.target.value)} placeholder="First and last name"/></Field>
@@ -353,7 +353,7 @@ export default function OnboardingForm() {
       {/* ── STEP 2 ── */}
       {step===2&&<>
         <Banner pkg={pkg} onChangePkg={()=>setStep(0)}/>
-        <div style={s.sshdr}><div style={s.sico}>🎨</div><div><h3 style={{fontSize:15,fontWeight:700,color:"#ffffff"}}>Brand &amp; Design</h3><p style={{fontSize:12.5,color:"#a9a3bf"}}>Your visual identity and design preferences.</p></div></div>
+        <div style={s.sshdr}><div style={s.sico}>🎨</div><div><h3 style={{fontSize:19.2,fontWeight:700,color:"#ffffff"}}>Brand &amp; Design</h3><p style={{fontSize:16,color:"#a9a3bf"}}>Your visual identity and design preferences.</p></div></div>
         <Field label="Do you have a logo?" required>
           <div style={{display:"flex",gap:8,flexWrap:"wrap",marginTop:4}}>
             {[["Yes — I will upload it","Yes — I'll upload it"],["No — I need one designed","No — need one"],["Have one but needs updating","Needs updating"]].map(([val,lbl])=>
@@ -403,7 +403,7 @@ export default function OnboardingForm() {
       {/* ── STEP 3 ── */}
       {step===3&&<>
         <Banner pkg={pkg} onChangePkg={()=>setStep(0)}/>
-        <div style={s.sshdr}><div style={s.sico}>📝</div><div><h3 style={{fontSize:15,fontWeight:700,color:"#ffffff"}}>Website Content</h3><p style={{fontSize:12.5,color:"#a9a3bf"}}>Tell us what goes on each page. The more detail, the better.</p></div></div>
+        <div style={s.sshdr}><div style={s.sico}>📝</div><div><h3 style={{fontSize:19.2,fontWeight:700,color:"#ffffff"}}>Website Content</h3><p style={{fontSize:16,color:"#a9a3bf"}}>Tell us what goes on each page. The more detail, the better.</p></div></div>
         <div style={s.alertY}>💡 <strong>Tip:</strong> Write as if explaining your business to someone who has never heard of it. This content goes directly into your website.</div>
         <Field label="Which pages do you need?" required hint={`Your package includes up to ${PKGS[pkg]?.maxPages} pages. Items outside your plan are flagged.`}>
           <div style={{display:"flex",flexWrap:"wrap",gap:8,marginTop:8}}>
@@ -457,7 +457,7 @@ export default function OnboardingForm() {
       {/* ── STEP 4 ── */}
       {step===4&&<>
         <Banner pkg={pkg} onChangePkg={()=>setStep(0)}/>
-        <div style={s.sshdr}><div style={s.sico}>🔧</div><div><h3 style={{fontSize:15,fontWeight:700,color:"#ffffff"}}>Technical &amp; Access</h3><p style={{fontSize:12.5,color:"#a9a3bf"}}>Domain, hosting, features, integrations, and files.</p></div></div>
+        <div style={s.sshdr}><div style={s.sico}>🔧</div><div><h3 style={{fontSize:19.2,fontWeight:700,color:"#ffffff"}}>Technical &amp; Access</h3><p style={{fontSize:16,color:"#a9a3bf"}}>Domain, hosting, features, integrations, and files.</p></div></div>
         <div style={s.g2}>
           <Field label="Do you own a domain name?" required>
             <div style={{display:"flex",gap:7,flexWrap:"wrap",marginTop:4}}>
@@ -484,7 +484,7 @@ export default function OnboardingForm() {
             })}
           </div>
         </Field>
-        {ups.length>0&&<div style={{...s.ubox,marginTop:10}}><strong>⚡ Items outside your plan:</strong><ul style={{marginTop:6,paddingLeft:16,fontSize:12}}>{ups.map((u,i)=><li key={i}>{u}</li>)}</ul><div style={{marginTop:8,fontSize:12}}>Our team will reach out to discuss upgrade options before starting. <strong>You can still submit.</strong></div></div>}
+        {ups.length>0&&<div style={{...s.ubox,marginTop:10}}><strong>⚡ Items outside your plan:</strong><ul style={{marginTop:6,paddingLeft:16,fontSize:15.4}}>{ups.map((u,i)=><li key={i}>{u}</li>)}</ul><div style={{marginTop:8,fontSize:15.4}}>Our team will reach out to discuss upgrade options before starting. <strong>You can still submit.</strong></div></div>}
         <div style={s.gap}><Field label="Where should contact form submissions go?" required hint="Every form submission will be emailed here."><input style={s.input} type="email" value={f.formEmail} onChange={e=>upd("formEmail",e.target.value)} placeholder="e.g. leads@yourbusiness.com"/></Field></div>
         <div style={s.gap}><Field label="Third-party tools to connect" optional><input style={s.input} value={f.tools} onChange={e=>upd("tools",e.target.value)} placeholder="e.g. GoHighLevel, Calendly, Stripe, Mailchimp, Tidio..."/></Field></div>
         <Divider>Files</Divider>
@@ -495,8 +495,8 @@ export default function OnboardingForm() {
 
       {/* ── STEP 5 ── */}
       {step===5&&<>
-        <div style={s.sshdr}><div style={s.sico}>✅</div><div><h3 style={{fontSize:15,fontWeight:700,color:"#ffffff"}}>Review &amp; Submit</h3><p style={{fontSize:12.5,color:"#a9a3bf"}}>Almost done — review everything then hit submit.</p></div></div>
-        {ups.length>0&&<div style={{...s.ubox,marginBottom:12}}><strong>⚡ Heads up — items outside your package:</strong><ul style={{marginTop:6,paddingLeft:16,fontSize:12}}>{ups.map((u,i)=><li key={i}>{u}</li>)}</ul><div style={{marginTop:8,fontSize:12}}>Our team will contact you before starting to discuss options. <strong>You can still submit.</strong></div></div>}
+        <div style={s.sshdr}><div style={s.sico}>✅</div><div><h3 style={{fontSize:19.2,fontWeight:700,color:"#ffffff"}}>Review &amp; Submit</h3><p style={{fontSize:16,color:"#a9a3bf"}}>Almost done — review everything then hit submit.</p></div></div>
+        {ups.length>0&&<div style={{...s.ubox,marginBottom:12}}><strong>⚡ Heads up — items outside your package:</strong><ul style={{marginTop:6,paddingLeft:16,fontSize:15.4}}>{ups.map((u,i)=><li key={i}>{u}</li>)}</ul><div style={{marginTop:8,fontSize:15.4}}>Our team will contact you before starting to discuss options. <strong>You can still submit.</strong></div></div>}
         {[
           {icon:"💳",title:"Package",  body:`${PKGS[pkg]?.label} — up to ${PKGS[pkg]?.maxPages} pages.`, step:0},
           {icon:"📋",title:"Contact & Project Info", body:"Business name, contact details, priority, launch date, website goal, target audience, and USP.", step:1},
@@ -506,10 +506,10 @@ export default function OnboardingForm() {
         ].map(r=>(
           <div key={r.title} style={s.rbox}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:5}}>
-              <div style={{fontSize:13,fontWeight:600,color:"#ffffff"}}>{r.icon} {r.title}</div>
-              <button onClick={()=>go(r.step)} style={{background:"none",border:"none",fontSize:12,color:"#a435ff",cursor:"pointer",fontWeight:600,padding:"2px 8px",borderRadius:6}}>Edit</button>
+              <div style={{fontSize:16.6,fontWeight:600,color:"#ffffff"}}>{r.icon} {r.title}</div>
+              <button onClick={()=>go(r.step)} style={{background:"none",border:"none",fontSize:15.4,color:"#a435ff",cursor:"pointer",fontWeight:600,padding:"2px 8px",borderRadius:6}}>Edit</button>
             </div>
-            <p style={{fontSize:12.5,color:"#a9a3bf",lineHeight:1.6}}>{r.body}</p>
+            <p style={{fontSize:16,color:"#a9a3bf",lineHeight:1.6}}>{r.body}</p>
           </div>
         ))}
         <div style={s.alertG}>🔒 Your information is secure and will only be used for your project. Our team will be in touch within <strong>24–48 hours</strong>.</div>

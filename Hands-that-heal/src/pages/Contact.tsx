@@ -11,6 +11,10 @@ const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Fire Google Ads conversion
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag('event', 'conversion', { send_to: 'AW-18207080252/REQmCKL7-sgcELz-5-lD' });
+    }
     toast({ title: "Message sent", description: "We'll reply within one business day." });
     setForm({ name: "", email: "", message: "" });
   };
@@ -34,7 +38,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <section className="pb-16">
+      <section className="pt-10 sm:pt-14 pb-16">
         <div className="container-luxe grid lg:grid-cols-5 gap-8">
           <form onSubmit={submit} className="lg:col-span-3 bg-card rounded-3xl shadow-soft p-6 sm:p-8 md:p-12">
             <h2 className="font-display text-3xl mb-8">Fill the form below</h2>
@@ -63,11 +67,11 @@ const Contact = () => {
               <ul className="space-y-5 text-sm">
                 <li className="flex gap-3">
                   <Phone className="h-5 w-5 text-primary-glow shrink-0 mt-0.5" />
-                  <span>+1 905 662 0005</span>
+                  <a href="tel:+19056620005" className="hover:text-white transition-colors">+1 905 662 0005</a>
                 </li>
                 <li className="flex gap-3">
                   <Mail className="h-5 w-5 text-primary-glow shrink-0 mt-0.5" />
-                  <span>handthatheal@hotmail.ca</span>
+                  <a href="mailto:handthatheal@hotmail.ca" className="hover:text-white transition-colors">handthatheal@hotmail.ca</a>
                 </li>
                 <li className="flex gap-3">
                   <MapPin className="h-5 w-5 text-primary-glow shrink-0 mt-0.5" />

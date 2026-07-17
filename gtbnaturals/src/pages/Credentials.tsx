@@ -24,9 +24,8 @@ export default function Credentials() {
           { label: 'Home', to: '/' },
           { label: 'Credentials' },
         ]}
-      >
-        <Button to="/booking">Book consultation</Button>
-      </PageHero>
+      />
+
 
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -86,7 +85,7 @@ export default function Credentials() {
           <AnimatedReveal className="surface-card surface-card-interactive p-8 sm:p-10">
             <SectionHeading
               title="Professional trust"
-              subtitle="Ethical practice, informed consent, and clear scope are non-negotiable. Expect documentation, respectful communication, and referrals when concerns fall outside holistic wellness support."
+              subtitle="Ethical practice, informed consent, and clear scope are non-negotiable. Expect documentation, respectful communication, and referrals when concerns fall outside holistic . support."
             />
             <div className="mt-8 flex flex-wrap gap-4">
               <Button to="/terms" variant="secondary">

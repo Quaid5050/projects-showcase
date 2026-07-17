@@ -14,6 +14,9 @@ import BookingPage from './pages/public/BookingPage';
 import BookingConfirmationPage from './pages/public/BookingConfirmationPage';
 import ContactPage from './pages/public/ContactPage';
 import AboutPage from './pages/public/AboutPage';
+import PrivacyPolicyPage from './pages/public/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/public/TermsOfServicePage';
+import CancellationPolicyPage from './pages/public/CancellationPolicyPage';
 
 // Admin Pages
 import AdminLoginPage from './pages/admin/AdminLoginPage';
@@ -66,6 +69,9 @@ function App() {
             <Route path="/booking-confirmed/:id" element={<BookingConfirmationPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+<Route path="/terms-of-service" element={<TermsOfServicePage />} />
+<Route path="/cancellation-policy" element={<CancellationPolicyPage />} />
           </Route>
 
           {/* Admin Routes */}
@@ -84,6 +90,7 @@ function App() {
             <Route path="bookings/:id" element={<AdminBookingDetail />} />
             <Route path="inquiries" element={<AdminInquiries />} />
             <Route path="settings" element={<AdminSettings />} />
+            
           </Route>
 
           {/* Catch all */}

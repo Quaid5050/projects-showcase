@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { GradientBlobs } from "@/components/GradientBlobs";
-import { Testimonials } from "@/components/sections/Testimonials";
 
 interface FAQItem {
   q: string;
@@ -193,8 +192,6 @@ const FAQs = () => (
       </div>
     </section>
 
-    {/* Google Reviews widget */}
-    <Testimonials />
   </>
 );
 

@@ -1,0 +1,210 @@
+/* ===========================
+   CTA SECTION — Card style
+   =========================== */
+.cta-section {
+  padding: var(--space-3xl) 0;
+  background: transparent;
+}
+
+/* The card itself */
+.cta-section__card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+  background: linear-gradient(130deg, #2D1155 0%, #3D1570 40%, #5E2B97 100%);
+  border-radius: 20px;
+  padding: 52px 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(36, 16, 51, 0.45);
+}
+
+/* subtle radial glow inside card */
+.cta-section__card::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(142, 91, 211, 0.35) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-section__card::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 30%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(94, 43, 151, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ---- LEFT ---- */
+.cta-section__left {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Optional price tag */
+.cta-section__price-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 100px;
+  padding: 5px 18px;
+  margin-bottom: var(--space-lg);
+}
+
+.cta-section__price-from {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.cta-section__price-sep {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.cta-section__price-amount {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+/* Title */
+.cta-section__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 600;
+  color: var(--color-white);
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
+/* Subtitle */
+.cta-section__subtitle {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 480px;
+}
+
+/* ---- RIGHT: buttons ---- */
+.cta-section__right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  min-width: 220px;
+}
+
+/* Primary button — filled, pill shape */
+.cta-section__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: rgba(180, 138, 230, 0.35);
+  border: 1.5px solid rgba(180, 138, 230, 0.5);
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-white) !important;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  white-space: nowrap;
+}
+
+.cta-section__btn-primary:hover {
+  background: rgba(180, 138, 230, 0.55);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(94, 43, 151, 0.4);
+  color: var(--color-white) !important;
+}
+
+.cta-section__btn-arrow {
+  transition: transform 0.2s ease;
+}
+
+.cta-section__btn-primary:hover .cta-section__btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Secondary button — outline, pill shape */
+.cta-section__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 32px;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-white) !important;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  white-space: nowrap;
+}
+
+.cta-section__btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.65);
+  transform: translateY(-2px);
+  color: var(--color-white) !important;
+}
+
+.cta-section__phone-icon {
+  font-size: 0.9rem;
+}
+
+/* ---- WHITE VARIANT (service detail pages) ---- */
+.cta-section--white {
+  background: var(--color-off-white);
+}
+
+.cta-section--white .cta-section__card {
+  background: linear-gradient(130deg, #2D1155 0%, #3D1570 40%, #5E2B97 100%);
+  /* same dark card, just section bg is light */
+}
+
+/* ---- RESPONSIVE ---- */
+/* All breakpoints handled globally in responsive.css */
+/* Keep only the mid-tablet tweak here */
+@media (max-width: 900px) {
+  .cta-section__card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 44px 40px;
+    gap: var(--space-xl);
+  }
+  .cta-section__right {
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: unset;
+    width: 100%;
+  }
+  .cta-section__btn-primary,
+  .cta-section__btn-secondary {
+    flex: 1;
+    min-width: 160px;
+    justify-content: center;
+  }
+}

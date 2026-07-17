@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #d4af37;
+  --gold-light: #f0d060;
+  --gold-dark: #a0850a;
+  --black: #0a0a0a;
+  --dark: #111111;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--black);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Gold gradient text utility */
+.gold-text {
+  background: linear-gradient(135deg, #d4af37 0%, #f0d060 40%, #d4af37 70%, #a0850a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold border glow */
+.gold-border {
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.gold-border-bright {
+  border: 1px solid rgba(212, 175, 55, 0.8);
+}
+
+/* Luxury card */
+.luxury-card {
+  background: linear-gradient(135deg, rgba(26,26,26,0.95) 0%, rgba(17,17,17,0.98) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  transition: all 0.4s ease;
+}
+
+.luxury-card:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+}
+
+/* Section divider */
+.gold-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  margin: 0 auto;
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 3px;
+}
+
+/* Form inputs */
+.luxury-input {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,175,55,0.3);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.luxury-input:focus {
+  border-color: rgba(212,175,55,0.8);
+  background: rgba(255,255,255,0.07);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+}
+
+.luxury-input::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+
+/* Gold button */
+.btn-gold {
+  background: linear-gradient(135deg, #d4af37, #f0d060, #d4af37);
+  background-size: 200% 100%;
+  color: #0a0a0a;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+}
+
+.btn-gold:hover {
+  background-position: right center;
+  box-shadow: 0 8px 30px rgba(212,175,55,0.4);
+  transform: translateY(-2px);
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  min-width: 320px;
+  background: #1a1a1a;
+  border: 1px solid rgba(212,175,55,0.5);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  transform: translateX(110%);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.toast.show {
+  transform: translateX(0);
+}
+
+.toast-success {
+  border-color: rgba(34, 197, 94, 0.5);
+}
+
+.toast-error {
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+/* Nav active link */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #d4af37;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Hero background overlay */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.2) 0%,
+    rgba(0,0,0,0.5) 50%,
+    rgba(10,10,10,0.95) 100%
+  );
+}
+
+/* Pricing card highlight */
+.pricing-featured {
+  background: linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(26,26,26,0.98) 100%);
+  border: 1px solid rgba(212,175,55,0.6);
+  box-shadow: 0 0 40px rgba(212,175,55,0.15);
+}
+
+/* Camera icon line art */
+.logo-glow {
+  filter: drop-shadow(0 0 8px rgba(212,175,55,0.6));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

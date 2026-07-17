@@ -18,35 +18,33 @@ export default function About() {
       <PageHero
         eyebrow="About"
         title="Dr. Jagatjit Ahluwalia"
-        subtitle="Holistic practitioner offering natural medicine insight, manual osteopathy, herbal wellness, hypnotherapy, and massage therapy—with warmth, structure, and respect for your pace."
+        subtitle="At GTB Naturals we Restore Health, Balance, and Vitality where Natural Healing meets Modern, and it empowers your body to rejuvenate its healing potential so that you can enjoy your life fully."
         breadcrumb={[
           { label: 'Home', to: '/' },
           { label: 'About' },
         ]}
-      >
-        <Button to="/booking">Book consultation</Button>
-      </PageHero>
+      />
+
 
       <section className="py-16 sm:py-24">
         <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:gap-16 lg:px-8">
           <AnimatedReveal className="relative overflow-hidden rounded-[2rem] border border-stone-200 bg-gradient-to-b from-base-800 to-base-950 p-4 shadow-card">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgb(255_210_2_/_0.12),transparent_50%)]" aria-hidden />
-            <img src="/logo1.png" alt="GTB wellness mark" className="relative w-full rounded-3xl object-contain p-8" width={560} height={560} />
+            <img src="/logo1.png" alt="GTB . mark" className="relative w-full rounded-3xl object-contain p-8" width={560} height={560} />
           </AnimatedReveal>
           <div>
             <SectionHeading
               align="left"
               eyebrow="Introduction"
-              title="A whole-person lens, translated into calm, practical care"
-              subtitle="Dr. Jagatjit Ahluwalia offers holistic wellness support through natural medicine, manual osteopathy, herbal wellness, hypnotherapy, and therapeutic bodywork. The approach is centered on understanding the whole person — lifestyle, symptoms, stress patterns, physical structure, and wellness goals — before creating individualized support plans."
+              title="A whole-body approach to health that treats more than symptoms."
+              subtitle="Natural, personalized care for deeper healing and vitality."
             />
             <div className="mt-8 space-y-4 text-base leading-relaxed text-muted">
               <p>
-                Sessions weave evidence-aware natural health education with tactile therapies that soothe the nervous
-                system. You are invited to ask questions, pause when needed, and co-create pacing that fits your life.
+                At GTB Naturals we provide integrative, root-cause-oriented care grounded in natural and manual therapies. Here the clinical approach combines natural medicine, manual osteopathy, herbal therapeutics, hypnotherapy, and body-based treatment modalities to support systemic balance and functional well-being. Each case is approached individually with emphasis on assessment, education, and structured care planning.
               </p>
               <p>
-                This is complementary wellness care: supportive, transparent, and aligned with professional boundaries.
+                This is complementary . care: supportive, transparent, and aligned with professional boundaries.
                 Where medical evaluation or emergency services are appropriate, referral language is clear and
                 compassionate.
               </p>

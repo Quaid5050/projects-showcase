@@ -1,14 +1,30 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { services } from "@/data/services";
 import { GradientBlobs } from "@/components/GradientBlobs";
+
+// Short one-line descriptions for each service card
+const shortDesc: Record<string, string> = {
+  "localized-cryotherapy":
+    "Supports skin rejuvenation, reduces puffiness, and helps relieve pain and inflammation for better recovery and wellness.",
+  "laser-hair-removal":
+    "Pain-free & non-invasive laser hair removal. No discomfort, no downtime. Quick sessions with long-lasting smooth skin.",
+  "organic-teeth-whitening":
+    "Gentle organic whitening. No downtime, no harsh chemicals. Quick, visible glow results.",
+  "body-contouring":
+    "Non-invasive body contouring. No surgery, no downtime. Quick sessions, visible results.",
+  "brazilian-laser":
+    "Clean, hygienic, and comfortable laser service with full care and privacy.",
+};
 
 export const ServicesPreview = () => (
   <section className="relative py-8 sm:py-12 overflow-hidden w-full">
     <GradientBlobs />
     <div className="container-luxe relative min-w-0">
-      <div className="max-w-2xl mb-8 sm:mb-12 min-w-0">
+
+      {/* Header */}
+      <div className="max-w-2xl mb-8 sm:mb-10 min-w-0">
         <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Services</p>
         <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
           Step Into Luxury at Our{" "}
@@ -19,44 +35,48 @@ export const ServicesPreview = () => (
         </p>
       </div>
 
-      <div className="grid min-w-0 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+      {/* Single-row cards — horizontally scrollable on mobile */}
+      <div className="flex gap-5 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:overflow-visible sm:grid sm:grid-cols-5">
         {services.map((s, i) => (
           <motion.div
             key={s.slug}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: i * 0.08 }}
-            className="h-full min-w-0"
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: i * 0.08 }}
+            className="flex-shrink-0 w-[220px] sm:w-auto"
           >
             <Link
               to={`/services/${s.slug}`}
-              className="group flex min-w-0 flex-col h-full bg-card rounded-3xl overflow-hidden shadow-soft hover:shadow-elegant transition-all duration-500 hover:-translate-y-1"
+              className="group flex flex-col bg-card rounded-3xl overflow-hidden shadow-soft hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 h-full"
             >
-              <div className="aspect-[4/3] overflow-hidden relative shrink-0">
+              {/* Image */}
+              <div className="overflow-hidden aspect-[3/4]">
                 <img
                   src={s.image}
                   alt={s.title}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              <div className="p-7 flex flex-col flex-1">
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors">
-                    {s.title}
-                  </h3>
-                  <span className="h-10 w-10 rounded-full bg-secondary grid place-items-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                    <ArrowUpRight className="h-4 w-4" />
-                  </span>
-                </div>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.tagline}</p>
+
+              {/* Body */}
+              <div className="p-5 flex flex-col flex-1">
+                <h3 className="font-display text-lg text-foreground group-hover:text-primary transition-colors leading-snug mb-2">
+                  {s.title}
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed flex-1">
+                  {shortDesc[s.slug] ?? s.tagline}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
+                  Learn More <ArrowRight className="h-3.5 w-3.5" />
+                </span>
               </div>
             </Link>
           </motion.div>
         ))}
       </div>
+
     </div>
   </section>
 );

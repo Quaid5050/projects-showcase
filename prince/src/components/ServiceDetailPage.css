@@ -1,0 +1,218 @@
+/* ===========================
+   SERVICE DETAIL PAGE
+   =========================== */
+
+/* Price Strip */
+.service-detail-price-strip {
+  background: var(--gradient-soft);
+  padding: var(--space-xl) 0;
+}
+
+.service-detail-price-strip__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.service-detail-price-strip__label {
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.service-detail-price-strip__amount {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.service-detail-price-strip__note {
+  flex: 1;
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.7);
+  min-width: 160px;
+}
+
+/* Included List */
+.service-detail__included-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.service-detail__included-item {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: flex-start;
+}
+
+.service-detail__included-check {
+  width: 28px;
+  height: 28px;
+  background: var(--gradient-soft);
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--color-white);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+  box-shadow: var(--shadow-purple);
+}
+
+.service-detail__included-item strong {
+  display: block;
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin-bottom: 4px;
+}
+
+.service-detail__included-item p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* Hero image */
+.service-detail__hero-img-wrap {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  box-shadow: var(--shadow-xl);
+}
+
+.service-detail__hero-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-detail__hero-img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-xl);
+  background: linear-gradient(180deg, transparent 0%, rgba(36, 16, 51, 0.9) 100%);
+  text-align: center;
+}
+
+/* Signs */
+.service-detail__signs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.service-detail__sign {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  background: var(--gradient-card);
+  border: 1px solid rgba(94, 43, 151, 0.1);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-slow);
+}
+
+.service-detail__sign:hover {
+  border-color: rgba(94, 43, 151, 0.25);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+.service-detail__sign-num {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: rgba(94, 43, 151, 0.2);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.service-detail__sign-text {
+  font-size: var(--text-base);
+  color: var(--color-text-dark);
+  font-weight: 500;
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* Process */
+.service-detail-process {
+  background: var(--gradient-cinematic) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-detail-process::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/images/house-washing-hero.jpg') center/cover;
+  opacity: 0.06;
+}
+
+.service-detail__process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.service-detail__process-step {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: flex-start;
+  padding: var(--space-xl);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+}
+
+.service-detail__process-num {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: rgba(180, 138, 230, 0.35);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 60px;
+}
+
+.service-detail__process-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: var(--space-sm);
+}
+
+.service-detail__process-desc {
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .service-detail-price-strip__inner { flex-direction: column; text-align: center; align-items: center; }
+  .service-detail__process-step { flex-direction: column; gap: var(--space-md); }
+}
+
+@media (max-width: 480px) {
+  .service-detail-price-strip .btn { width: 100%; justify-content: center; }
+}

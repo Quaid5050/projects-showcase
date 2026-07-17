@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export const metadata = { title: "Gallery – FAIRSAFE First Aid & Safety Solutions" };
+export const metadata = { title: "Gallery – FAIRSAFE First aid & Safety Solutionss" };
 
 const images = [
   { src: "/images/gallery1.jpg", label: "Event Coverage", span: "row" },
@@ -11,11 +11,22 @@ const images = [
   { src: "/images/IMG_0118.jpg", label: "Youth Events" },
   { src: "/images/IMG_0145.jpg", label: "Community Events" },
   { src: "/images/gallery7.jpg", label: "Medical Support" },
+  { src: "/new/IMG_1581.jpg", label: "" },
   { src: "/images/gallery8.jpg", label: "Lower Mainland" },
   { src: "/images/IMG_0121.jpg", label: "Event First Aid" },
   { src: "/images/service-worksite.jpg", label: "Construction Safety" },
   { src: "/images/service-staffing.jpg", label: "Safety Staffing" },
   { src: "/images/IMG_7393.jpg", label: "Team Ready" },
+  { src: "/gallery/IMG_1267.jpg", label: "", span: "col" },
+  
+  { src: "/gallery/IMG_1278.jpg", label: "" },
+  { src: "/gallery/IMG_1299.jpg", label: "" },
+  { src: "/gallery/IMG_1265.jpg", label: "", span: "col" },
+  { src: "/gallery/IMG_1334.jpg", label: "" },
+  { src: "/new/IMG_1579.jpg", label: "" },
+  
+ 
+  
 ];
 
 export default function GalleryPage() {

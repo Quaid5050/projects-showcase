@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #ffffff;
+    color: #111111;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- BUTTONS ---- */
+  .btn-red {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #DC2626;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border: 2px solid #DC2626;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    text-decoration: none;
+  }
+  .btn-red:hover {
+    background: #b91c1c;
+    border-color: #b91c1c;
+  }
+
+  .btn-outline-red {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: #DC2626;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border: 2px solid #DC2626;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    text-decoration: none;
+  }
+  .btn-outline-red:hover {
+    background: #DC2626;
+    color: #fff;
+  }
+
+  .btn-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: #DC2626;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    text-decoration: none;
+  }
+  .btn-white:hover {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+  }
+
+  /* ---- SECTION LABEL ---- */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #DC2626;
+    flex-shrink: 0;
+  }
+  .section-label span {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #DC2626;
+  }
+
+  /* ---- CARD HOVER ---- */
+  .card-lift {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.12);
+  }
+
+  /* ---- OVERLAY MODAL ---- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(6px);
+  }
+
+  /* ---- IMAGE HOVER ZOOM ---- */
+  .img-zoom {
+    overflow: hidden;
+  }
+  .img-zoom img {
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .img-zoom:hover img {
+    transform: scale(1.07);
+  }
+
+  /* ---- NAV LINK UNDERLINE ---- */
+  .nav-link {
+    position: relative;
+    color: #374151;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #DC2626;
+    transition: width 0.25s ease;
+  }
+  .nav-link:hover {
+    color: #DC2626;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* ---- FORM INPUTS ---- */
+  .field {
+    width: 100%;
+    border: 1.5px solid #e5e7eb;
+    background: #fff;
+    padding: 12px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #111;
+    outline: none;
+    transition: border-color 0.2s;
+    border-radius: 0;
+  }
+  .field:focus {
+    border-color: #DC2626;
+  }
+  .field::placeholder {
+    color: #9ca3af;
+  }
+
+  .field-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 8px;
+  }
+
+  /* ---- FAQ ---- */
+  .faq-item {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes pulse-red {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .anim-fade-up {
+    animation: fadeUp 0.65s ease both;
+  }
+  .anim-fade-up-d1 { animation-delay: 0.1s; }
+  .anim-fade-up-d2 { animation-delay: 0.2s; }
+  .anim-fade-up-d3 { animation-delay: 0.35s; }
+  .anim-fade-up-d4 { animation-delay: 0.5s; }
+
+  /* ---- RED TICKER / MARQUEE ---- */
+  .ticker-wrap {
+    overflow: hidden;
+    background: #DC2626;
+    padding: 14px 0;
+    white-space: nowrap;
+  }
+  .ticker-track {
+    display: inline-flex;
+    animation: ticker 24s linear infinite;
+  }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .ticker-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    color: #fff;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .ticker-dot {
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+}
+
+/* ---- NAV RESPONSIVE (plain CSS, outside @layer so Tailwind v4 won't strip it) ---- */
+.nav-desktop {
+  display: none;
+}
+.nav-cta {
+  display: none !important;
+}
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-mobile-menu {
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav-cta {
+    display: inline-flex !important;
+  }
+  .nav-toggle,
+  .nav-mobile-menu {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1120px) {
+  .nav-desktop {
+    gap: 40px;
+  }
+}

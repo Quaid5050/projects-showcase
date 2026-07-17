@@ -24,7 +24,7 @@ export const credentialTimeline: {
     year: 'Doctoral',
     icon: GraduationCap,
     title: 'Natural medicine & holistic health',
-    detail: 'Advanced training in non-invasive modalities, wellness assessment, and integrative support.',
+    detail: 'Advanced training in non-invasive modalities, . assessment, and integrative support.',
   },
   {
     year: 'Clinical',

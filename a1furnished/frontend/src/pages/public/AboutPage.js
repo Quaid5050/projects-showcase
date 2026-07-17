@@ -1,20 +1,39 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Shield, Clock, Star, MapPin, CheckCircle } from 'lucide-react';
+import { Shield, Clock, Star, MapPin } from 'lucide-react';
 
 const AboutPage = () => {
   const navigate = useNavigate();
 
   return (
     <div>
+      <style>{`
+        @media (max-width: 768px) {
+          .about-story-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .about-story-img { height: 240px !important; }
+          .about-hero { padding: 50px 0 !important; }
+          .about-hero h1 { font-size: 28px !important; }
+          .about-hero p { font-size: 15px !important; }
+          .about-cta-btns { flex-direction: column !important; align-items: center !important; }
+          .about-cta-btns button { width: 100% !important; max-width: 280px !important; }
+          .about-values-grid { grid-template-columns: 1fr 1fr !important; }
+          .about-serve-grid { grid-template-columns: 1fr 1fr !important; }
+          .about-story-section { padding: 50px 0 !important; }
+        }
+        @media (max-width: 480px) {
+          .about-values-grid { grid-template-columns: 1fr !important; }
+          .about-serve-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+
       {/* Hero */}
-      <div style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))', padding: '80px 0', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+      <div className="about-hero" style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))', padding: '80px 0', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 30% 50%, rgba(200,16,46,0.1) 0%, transparent 60%)' }} />
         <div className="container" style={{ position: 'relative' }}>
           <div style={{ display: 'inline-block', padding: '6px 18px', background: 'rgba(200,16,46,0.2)', borderRadius: '999px', color: 'rgba(255,255,255,0.9)', fontFamily: 'Montserrat', fontWeight: 600, fontSize: '13px', letterSpacing: '1px', marginBottom: '20px' }}>
             🍁 ABOUT US
           </div>
-          <h1 style={{ color: 'white', fontFamily: 'Montserrat', fontSize: 'clamp(28px, 5vw, 50px)', marginBottom: '16px' }}>
+          <h1 style={{ color: 'white', fontFamily: 'Montserrat', fontSize: 'clamp(26px, 5vw, 50px)', marginBottom: '16px' }}>
             A1 Furnished Homes Canada
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '18px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.7 }}>
@@ -24,11 +43,11 @@ const AboutPage = () => {
       </div>
 
       {/* Our Story */}
-      <section className="section">
+      <section className="section about-story-section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
+          <div className="about-story-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
             <div>
-              <h2 style={{ fontFamily: 'Montserrat', fontSize: 'clamp(24px, 3vw, 36px)', marginBottom: '20px' }}>Our Story</h2>
+              <h2 style={{ fontFamily: 'Montserrat', fontSize: 'clamp(22px, 3vw, 36px)', marginBottom: '20px' }}>Our Story</h2>
               <p style={{ color: 'var(--gray-dark)', lineHeight: 1.8, fontSize: '16px', marginBottom: '16px' }}>
                 A1 Furnished Homes Canada was founded with a simple mission: to make short-term furnished housing easy, comfortable, and accessible for everyone coming to or relocating within Canada.
               </p>
@@ -46,6 +65,7 @@ const AboutPage = () => {
               <img
                 src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600"
                 alt="Furnished Home"
+                className="about-story-img"
                 style={{ borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)', width: '100%', height: '380px', objectFit: 'cover' }}
               />
             </div>
@@ -60,7 +80,7 @@ const AboutPage = () => {
             <h2>What We Stand For</h2>
             <div className="section-title-line"></div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
+          <div className="about-values-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px' }}>
             {[
               { icon: <Shield size={32} />, title: 'Quality & Safety', desc: 'Every property is thoroughly inspected, professionally cleaned, and verified for your safety.' },
               { icon: <Star size={32} />, title: 'Premium Experience', desc: 'We select only the best properties with high-quality furniture and all essential amenities.' },
@@ -85,7 +105,7 @@ const AboutPage = () => {
             <div className="section-title-line"></div>
             <p>Our furnished homes are perfect for a wide range of guests</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
+          <div className="about-serve-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '20px' }}>
             {[
               { emoji: '💼', title: 'Business Travelers', desc: 'Corporate relocations and extended work assignments' },
               { emoji: '🏥', title: 'Healthcare Workers', desc: 'Medical professionals on temporary placements' },
@@ -110,13 +130,13 @@ const AboutPage = () => {
       {/* CTA */}
       <section style={{ background: 'var(--navy)', padding: '70px 0', textAlign: 'center' }}>
         <div className="container">
-          <h2 style={{ color: 'white', fontFamily: 'Montserrat', fontSize: 'clamp(24px, 4vw, 38px)', marginBottom: '16px' }}>
+          <h2 style={{ color: 'white', fontFamily: 'Montserrat', fontSize: 'clamp(22px, 4vw, 38px)', marginBottom: '16px' }}>
             Ready to Find Your Home?
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '16px', marginBottom: '32px' }}>
             Browse our available properties and book your perfect furnished home today
           </p>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="about-cta-btns" style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button className="btn btn-primary btn-lg" onClick={() => navigate('/properties')}>View Properties</button>
             <button className="btn btn-outline-white btn-lg" onClick={() => navigate('/contact')}>Contact Us</button>
           </div>

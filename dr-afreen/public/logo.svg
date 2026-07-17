@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Moon background circle -->
+  <circle cx="100" cy="100" r="95" fill="#FFE8F0" stroke="#F7A8C4" stroke-width="3"/>
+  <!-- Gold glow ring -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#F6C85F" stroke-width="1.5" opacity="0.4"/>
+  <!-- Moon crescent -->
+  <path d="M100 30 C65 30 40 62 40 100 C40 138 65 170 100 170 C118 170 130 163 140 152 C120 155 95 145 80 125 C65 105 65 78 80 60 C90 47 100 42 100 30Z" fill="#7A1F3D" opacity="0.15"/>
+  <!-- Mother figure -->
+  <ellipse cx="92" cy="78" rx="12" ry="12" fill="#7A1F3D"/>
+  <!-- Mother body -->
+  <path d="M72 140 C72 110 112 110 112 140 L108 140 C108 114 76 114 76 140Z" fill="#7A1F3D"/>
+  <!-- Child figure -->
+  <ellipse cx="118" cy="95" rx="8" ry="8" fill="#F7A8C4"/>
+  <!-- Child body -->
+  <path d="M106 135 C106 115 130 115 130 135 L127 135 C127 118 109 118 109 135Z" fill="#F7A8C4"/>
+  <!-- Arm connecting mother and child -->
+  <path d="M107 105 Q115 100 120 98" stroke="#7A1F3D" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <!-- Gold star accents -->
+  <circle cx="60" cy="60" r="3" fill="#F6C85F" opacity="0.7"/>
+  <circle cx="145" cy="55" r="2" fill="#F6C85F" opacity="0.6"/>
+  <circle cx="155" cy="140" r="2.5" fill="#F6C85F" opacity="0.5"/>
+  <circle cx="50" cy="145" r="2" fill="#F6C85F" opacity="0.6"/>
+  <!-- Moon text -->
+  <text x="100" y="168" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#7A1F3D" font-style="italic" opacity="0.8">Moon</text>
+</svg>

@@ -1,0 +1,1073 @@
+/* ============================================
+   TIRE REPAIRING SERVICE DETAIL PAGE - PREMIUM BLACK/WHITE
+   ============================================ */
+
+.service-detail-page {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ============================================
+   MODERN HERO SECTION - IMAGE LEFT, CONTENT RIGHT
+   ============================================ */
+
+.service-hero-modern {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.4) contrast(1.2);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(0, 0, 0, 0.6) 50%, 
+    rgba(0, 0, 0, 0.9) 100%);
+}
+
+.hero-content-modern {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1400px;
+  width: 100%;
+  padding: 60px 40px;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.service-detail-page.loaded .hero-content-modern {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-side-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s ease;
+}
+
+.hero-side-image:hover {
+  transform: scale(1.02);
+}
+
+.hero-breadcrumb {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-breadcrumb a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hero-breadcrumb a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 40px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.hero-cta {
+  display: inline-block;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  padding: 16px 40px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #fff;
+}
+
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.35);
+  background: #000;
+  color: #fff;
+}
+
+/* ============================================
+   TIRE REPAIRING SERVICE PAGE - UNIQUE CLASSES
+   ============================================ */
+
+/* Hero Section */
+.tr-service-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.tr-hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.tr-hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tr-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+  z-index: 2;
+}
+
+.tr-hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #ffffff;
+}
+
+.tr-hero-content h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  margin: 0 0 1rem;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.tr-hero-content p {
+  font-size: 1.3rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Container */
+.tr-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Service Description Section */
+.tr-service-description-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  position: relative;
+}
+
+.tr-service-description-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.tr-service-description-image {
+  position: relative;
+}
+
+.tr-description-main-image {
+  width: 100%;
+  height: 300px !important;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.tr-service-description-content {
+  padding: 20px 0;
+}
+
+.tr-service-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 20px;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+
+.tr-service-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+.tr-service-short-description {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 30px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.tr-service-detailed-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* Three Column Content Section */
+.tr-service-three-column-section {
+  padding: 80px 0;
+  background: #000000;
+  position: relative;
+}
+
+.tr-three-column-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px;
+}
+
+.tr-service-content {
+  text-align: left;
+  padding: 20px 0;
+}
+
+.tr-service-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.tr-service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tr-list-item {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.tr-list-item::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Luxury Appointment Section */
+.tr-luxury-appointment-section {
+  background: #ffffff;
+  color: #000000;
+  padding: 80px min(6vw, 70px);
+  position: relative;
+  overflow: hidden;
+}
+
+.tr-luxury-appointment-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tr-luxury-appointment-content {
+  position: relative;
+  z-index: 2;
+}
+
+.tr-luxury-title {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  color: #000000;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: trLuxuryTitleFadeIn 1s ease forwards;
+}
+
+.tr-luxury-subtitle {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 400;
+  color: #333333;
+  margin: 0 0 40px;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: trLuxurySubtitleFadeIn 1s ease 0.2s forwards;
+}
+
+.tr-luxury-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: trLuxuryButtonsFadeIn 1s ease 0.4s forwards;
+}
+
+.tr-luxury-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.tr-primary-luxury-btn {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.tr-secondary-luxury-btn {
+  background: transparent;
+  color: #000000;
+  border-color: #000000;
+}
+
+.tr-luxury-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tr-primary-luxury-btn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.tr-secondary-luxury-btn:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.tr-luxury-btn-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tr-luxury-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.tr-luxury-btn:hover svg {
+  transform: translateX(4px);
+}
+
+.tr-luxury-btn-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50px;
+}
+
+.tr-luxury-btn:hover .tr-luxury-btn-glow {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes trLuxuryTitleFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes trLuxurySubtitleFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes trLuxuryButtonsFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .tr-service-description-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .tr-service-description-content {
+    padding: 0;
+  }
+  
+  .tr-service-title {
+    font-size: 2rem;
+  }
+  
+  .tr-three-column-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .tr-service-content {
+    padding: 15px 0;
+  }
+  
+  .tr-luxury-appointment-section {
+    padding: 60px 20px;
+  }
+  
+  .tr-luxury-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tr-luxury-btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .tr-service-description-section {
+    padding: 60px 0;
+  }
+  
+  .tr-service-three-column-section {
+    padding: 60px 0;
+  }
+  
+  .tr-luxury-appointment-section {
+    padding: 50px 15px;
+  }
+  
+  .tr-service-title {
+    font-size: 1.8rem;
+  }
+  
+  .tr-column-title {
+    font-size: 1.3rem;
+  }
+  
+  .tr-luxury-btn {
+    padding: 16px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   MODERN BOOKING SECTION
+   ============================================ */
+
+.service-booking-modern {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.book-service-btn-modern {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  padding: 18px 48px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 10px 30px rgba(255, 255, 255, 0.2),
+    0 4px 15px rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #fff;
+}
+
+.book-service-btn-modern:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 15px 40px rgba(255, 255, 255, 0.3),
+    0 6px 20px rgba(255, 255, 255, 0.4);
+  background: #000;
+  color: #fff;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .hero-content-modern {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-right {
+    order: -1;
+    margin-bottom: 30px;
+  }
+
+  .hero-side-image {
+    max-width: 400px;
+  }
+
+  .three-column-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-hero-modern {
+    min-height: 80vh;
+  }
+
+  .hero-content-modern {
+    padding: 40px 20px;
+  }
+
+  .service-content-modern {
+    padding: 60px 15px 80px;
+  }
+
+  .service-description-modern h2 {
+    font-size: 2.2rem;
+  }
+
+  .main-description {
+    font-size: 1.1rem;
+  }
+
+  .three-column-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .column {
+    padding: 30px;
+  }
+
+  .column h3 {
+    font-size: 1.3rem;
+  }
+
+  .hero-side-image {
+    max-width: 300px;
+  }
+
+  .book-service-btn-modern {
+    padding: 16px 36px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+  }
+
+  .column {
+    padding: 25px;
+  }
+
+  .column h3 {
+    font-size: 1.2rem;
+  }
+
+  .book-service-btn-modern {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.service-detail-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* ============================================
+   SERVICE IMAGE SECTION
+   ============================================ */
+
+.service-image-section {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 10px 30px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-main-image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.service-main-image:hover {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   SERVICE INFO SECTION
+   ============================================ */
+
+.service-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.service-detail-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 20px;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+
+.service-detail-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 30px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 20px;
+}
+
+/* ============================================
+   FEATURES SECTION
+   ============================================ */
+
+.service-features {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 40px;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.service-features h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 24px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.service-features h3::before {
+  content: '✓';
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: #000;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 28px;
+  font-size: 1.1rem;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-list li {
+  position: relative;
+  padding-left: 36px;
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  transition: transform 0.3s ease;
+}
+
+.features-list li:hover {
+  transform: translateX(8px);
+  color: #fff;
+}
+
+.features-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* ============================================
+   BENEFITS SECTION
+   ============================================ */
+
+.service-benefits {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 40px;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.service-benefits h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 24px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.service-benefits h3::before {
+  content: '✓';
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: #000;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 28px;
+  font-size: 1.1rem;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
+.benefits-list li {
+  position: relative;
+  padding-left: 36px;
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  transition: transform 0.3s ease;
+}
+
+.benefits-list li:hover {
+  transform: translateX(8px);
+  color: #fff;
+}
+
+.benefits-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* ============================================
+   IDEAL SECTION
+   ============================================ */
+
+.ideal-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
+  margin-top: 24px;
+}
+
+.ideal-section h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 16px;
+  color: #fff;
+}
+
+.ideal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ideal-list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ideal-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #888;
+  font-weight: bold;
+}
+
+/* ============================================
+   BOOKING SECTION
+   ============================================ */
+
+.service-booking {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.book-service-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  padding: 18px 48px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 10px 30px rgba(255, 255, 255, 0.2),
+    0 4px 15px rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #fff;
+}
+
+.book-service-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 15px 40px rgba(255, 255, 255, 0.3),
+    0 6px 20px rgba(255, 255, 255, 0.4);
+  background: #000;
+  color: #fff;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .service-detail-layout {
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+  }
+
+  .service-main-image {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-hero {
+    min-height: 60vh;
+    padding: 80px 15px 40px;
+  }
+
+  .service-content {
+    padding: 60px 15px 80px;
+  }
+
+  .service-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .service-main-image {
+    height: 350px;
+  }
+
+  .service-description h2 {
+    font-size: 2.2rem;
+  }
+
+  .tagline {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .service-features,
+  .service-benefits {
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .service-features h3,
+  .service-benefits h3 {
+    font-size: 1.3rem;
+  }
+
+  .features-list li,
+  .benefits-list li {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    padding-left: 30px;
+  }
+
+  .book-service-btn {
+    padding: 16px 36px;
+    font-size: 1.1rem;
+  }
+}

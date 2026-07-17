@@ -128,12 +128,12 @@ const industryUseCases = [
 ]
 
 export const metadata: Metadata = {
-  title: "Restaurant Types We Serve | Merchant Orders",
+  title: "Restaurant Types We Serve | Merchant Orders™",
   description: "Merchant Orders supports pizzerias, cafes, bakeries, coffee shops, food trucks, ghost kitchens, fast casual restaurants, and multi-location restaurant brands.",
   alternates: { canonical: "https://www.merchantorders.io/industries" },
   openGraph: {
     url: "https://www.merchantorders.io/industries",
-    title: "Restaurant Types We Serve | Merchant Orders",
+    title: "Restaurant Types We Serve | Merchant Orders™",
     description: "Merchant Orders supports pizzerias, cafes, bakeries, coffee shops, food trucks, ghost kitchens, fast casual restaurants, and multi-location restaurant brands.",
   },
 }
@@ -141,24 +141,30 @@ export const metadata: Metadata = {
 export default function IndustriesPage() {
   return (
     <>
-      <section className="pt-32 pb-20 bg-slate-950 text-white relative overflow-hidden">
+      <section className="pt-32 pb-20 bg-[#020509] text-white relative overflow-hidden cinema-grid">
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <img 
-            src="/images/hero-industries.webp" 
-            alt="Various restaurant types" 
-            className="w-full h-full object-cover opacity-30"
+          <img
+            src="/images/hero-industries.webp"
+            alt="Various restaurant types"
+            className="w-full h-full object-cover opacity-15 mix-blend-luminosity"
           />
-          <div className="absolute top-[20%] left-[20%] w-[60%] h-[60%] rounded-full bg-emerald-600/10 blur-[150px]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent" />
+          <div className="absolute top-[20%] left-[20%] w-[60%] h-[60%] rounded-full bg-emerald-600/8 blur-[150px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020509] to-transparent" />
         </div>
-        
+        <div className="divider-glow absolute bottom-0 left-0 right-0" />
+
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-          <AnimatedSection className="max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-              Built for Every Business Model
+          <AnimatedSection animation="dramatic" className="max-w-3xl mx-auto">
+            <span className="inline-block text-xs font-bold tracking-[0.3em] uppercase text-amber-500/70 mb-4">
+              Industries
+            </span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-[-0.03em] leading-[0.95]">
+              Built for Every
+              <br />
+              <span className="text-amber-400 glow-gold">Business Model</span>
             </h1>
-            <p className="text-xl text-slate-300 mb-10">
-              We understand that a coffee shop's needs are different from a pizzeria's. That's why our platform adapts to how you do business.
+            <p className="text-xl text-slate-400 mb-10">
+              A coffee shop's needs differ from a pizzeria's. Our platform adapts to how you do business.
             </p>
           </AnimatedSection>
         </div>
@@ -166,34 +172,37 @@ export default function IndustriesPage() {
 
       <IndustriesGrid />
 
-      <section className="py-24 bg-white border-t border-slate-100">
-        <div className="container mx-auto px-4 md:px-6">
-          <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-              Industry Use Cases
+      <section className="py-24 bg-[#040810] border-t border-white/5 relative">
+        <div className="absolute bottom-0 right-0 w-[400px] h-[300px] rounded-full bg-amber-500/3 blur-[120px] pointer-events-none" />
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <AnimatedSection animation="dramatic" className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block text-xs font-bold tracking-[0.3em] uppercase text-amber-500/70 mb-4">
+              Deep Dives
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight leading-tight">
+              Industry <span className="text-amber-400 glow-gold">Use Cases</span>
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-slate-400">
               See how different types of restaurants leverage Merchant Orders.
             </p>
           </AnimatedSection>
 
-          <div className="space-y-16 max-w-5xl mx-auto">
+          <div className="space-y-8 max-w-5xl mx-auto">
             {industryUseCases.map((industry, index) => (
               <AnimatedSection key={index} animation="fade-up" className="scroll-mt-32" id={industry.id}>
-                <div className="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-100">
+                <div className="rounded-2xl border border-white/6 bg-white/2 p-8 md:p-10 hover:border-amber-500/15 hover:bg-white/3 transition-all duration-300 group">
                   <div className="flex flex-col sm:flex-row gap-6 md:gap-8 items-start">
-                    <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
-                      <industry.icon size={32} />
+                    <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 group-hover:bg-amber-500/20 transition-all duration-300">
+                      <industry.icon size={28} />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-4">{industry.title}</h3>
-                      <p className="text-slate-600 text-lg mb-6">{industry.description}</p>
-                      
+                      <h3 className="text-2xl font-black text-white mb-3">{industry.title}</h3>
+                      <p className="text-slate-400 text-base mb-6">{industry.description}</p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                         {industry.features.map((feature, i) => (
                           <div key={i} className="flex items-start gap-3">
-                            <CheckCircle2 size={20} className="text-emerald-500 shrink-0 mt-0.5" />
-                            <span className="text-slate-700 font-medium">{feature}</span>
+                            <CheckCircle2 size={16} className="text-amber-500 shrink-0 mt-0.5" />
+                            <span className="text-slate-300 font-medium text-sm">{feature}</span>
                           </div>
                         ))}
                       </div>

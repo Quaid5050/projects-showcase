@@ -7,13 +7,11 @@ import { ConditionCard } from '../components/ConditionCard'
 import { ContactForm } from '../components/ContactForm'
 import { CTASection } from '../components/CTASection'
 import { TestimonialCard } from '../components/TestimonialCard'
-import { FAQAccordion } from '../components/FAQAccordion'
 import { HeroEmblem } from '../components/HeroEmblem'
 import { ServiceCard } from '../components/ServiceCard'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { Button } from '../components/ui/Button'
 import { homeConditionHighlights } from '../data/conditions'
-import { faqItems, faqPreviewIds } from '../data/faqs'
 import { homeServiceOverview } from '../data/servicesCatalog'
 import { testimonials } from '../data/testimonials'
 
@@ -26,7 +24,7 @@ const trust = [
 ] as const
 
 const process = [
-  { title: 'Consultation', text: 'Clarify goals, comfort, and what “wellness” means for you right now.' },
+  { title: 'Consultation', text: 'Clarify goals, comfort, and what “.” means for you right now.' },
   { title: 'Holistic assessment', text: 'Explore patterns across stress, sleep, structure, and lifestyle themes.' },
   { title: 'Personalized plan', text: 'Co-create non-invasive modalities and education you can sustain.' },
   { title: 'Ongoing support', text: 'Revisit progress, refine tools, and celebrate steady improvements.' },
@@ -36,14 +34,14 @@ const signatures = [
   {
     title: 'Doctorate of Natural Medicine',
     text:
-      'Non-invasive support for emotional, mental, and physical wellness themes—including acupressure, hydrotherapy, botanical medicine, nutrition, coaching, and energy work as appropriate.',
+      'Non-invasive support for emotional, mental, and physical . themes—including acupressure, hydrotherapy, botanical medicine, nutrition, coaching, and energy work as appropriate.',
     to: '/natural-medicine',
   },
   {
     title: 'Professional Herbalist',
     text:
       'Plant-based assessment, formulations, client education, progress monitoring, and quality- and sustainability-minded herb sourcing.',
-    to: '/herbal-wellness',
+    to: '/herbal-.',
   },
   {
     title: 'Manual Osteopathic Therapist',
@@ -71,11 +69,10 @@ const why = [
   'Non-invasive modalities',
   'Integrative support',
   'Client education',
-  'Wellness-focused plans',
+  '.-focused plans',
 ] as const
 
 export default function Home() {
-  const previewFaqs = faqItems.filter((f) => (faqPreviewIds as readonly string[]).includes(f.id))
   const announcementText = 'WE DO THE DIRECT BILLING TO THE INSURANCE COMPANIES'
 
   return (
@@ -115,7 +112,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-xs"
             >
               <Leaf className="h-3.5 w-3.5" aria-hidden />
-              Holistic · mental, physical &amp; spiritual wellbeing
+              Healing the Whole Person as a unit — Mentally, Physically and Spiritually with Compassionate care.
             </motion.div>
 
             <motion.h1
@@ -164,7 +161,6 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.22 }}
               className="mt-10 flex flex-wrap gap-4"
             >
-              <Button to="/booking">Book Consultation</Button>
               <Button to="/services" variant="secondary">
                 Explore Services
               </Button>
@@ -245,7 +241,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="Services"
             title="Whole-person modalities, thoughtfully combined"
-            subtitle="Explore pathways that may support regulation, mobility, stress patterns, and restorative rest—always within a wellness scope."
+            subtitle="Explore pathways that may support regulation, mobility, stress patterns, and restorative rest—always within a . scope."
           />
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {homeServiceOverview.map((s, i) => (
@@ -273,7 +269,7 @@ export default function Home() {
             <SectionHeading
               align="left"
               eyebrow="Integrated approach"
-              title="Whole-person wellness — not a single-lens fix"
+              title="Whole-person . — not a single-lens fix"
               subtitle="Care considers emotional tone, physical structure, lifestyle rhythms, herbal education, and nervous system regulation together. Plans stay flexible as your life shifts."
             />
             <AnimatedReveal className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-transparent p-8 shadow-glass backdrop-blur-xl">
@@ -328,7 +324,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="Focus areas"
             title="Featured condition themes"
-            subtitle="Explore categories we may support with holistic care—language stays wellness-oriented, not diagnostic."
+            subtitle="Explore categories we may support with holistic care—language stays .-oriented, not diagnostic."
           />
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {homeConditionHighlights.map((c, i) => (
@@ -394,7 +390,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="Signature modalities"
             title="Depth where it matters — clarity where it helps"
-            subtitle="Each pathway has its own detail page with expectations, scope, and gentle honesty about what wellness support can and cannot promise."
+            subtitle="Each pathway has its own detail page with expectations, scope, and gentle honesty about what . support can and cannot promise."
           />
           <div className="space-y-6">
             {signatures.map((s, i) => (
@@ -420,18 +416,7 @@ export default function Home() {
                     Learn more <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
                 </div>
-                <div className="relative min-h-[132px] overflow-hidden rounded-xl border-0 bg-gradient-to-br from-white via-peach/16 to-orange/8 p-4 shadow-[inset_0_1px_0_rgb(255_255_255_/_0.55),0_3px_18px_-8px_rgb(15_23_42_/_0.06)] sm:p-5">
-                  <div
-                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_0%,rgb(255_165_3_/_0.12),transparent_52%),radial-gradient(circle_at_10%_100%,rgb(255_189_1_/_0.1),transparent_48%)]"
-                    aria-hidden
-                  />
-                  <p className="relative text-sm leading-relaxed text-muted">
-                    Complementary wellness care may help you feel more resourced
-                    alongside conventional support. We stay transparent about
-                    scope, timelines, and when referral or emergency care is the
-                    right next step.
-                  </p>
-                </div>
+               
               </motion.div>
             ))}
           </div>
@@ -468,7 +453,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="Voices"
             title="Placeholder reflections from the care journey"
-            subtitle="Replace with verified client stories when available. Tone reflects wellness support—not guaranteed clinical outcomes."
+            subtitle="Replace with verified client stories when available. Tone reflects . support—not guaranteed clinical outcomes."
           />
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {testimonials.map((t, i) => (
@@ -486,21 +471,7 @@ export default function Home() {
 
       <CTASection />
 
-      {/* FAQ preview */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="FAQ" title="Questions clients ask first" />
-          <div className="mt-10">
-            <FAQAccordion items={previewFaqs} />
-          </div>
-          <div className="mt-8 text-center">
-            <Button to="/faq" variant="secondary">
-              View all FAQs
-            </Button>
-          </div>
-        </div>
-      </section>
-
+    
       {/* Contact preview */}
       <section className="border-t border-white/10 bg-base-850/50 py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

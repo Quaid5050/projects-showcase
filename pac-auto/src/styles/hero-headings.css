@@ -1,0 +1,166 @@
+/* Generic Hero Heading Styles - Consistent Across All Pages */
+
+h1.hero-heading-generic,
+.booking-hero h1.hero-heading-generic,
+.contact-hero h1.hero-heading-generic,
+.faq-hero h1.hero-heading-generic,
+.booking-hero__inner h1.hero-heading-generic,
+.contact-hero__content h1.hero-heading-generic,
+.faq-hero__content h1.hero-heading-generic,
+.main h1.hero-heading-generic,
+section h1.hero-heading-generic {
+  margin: 0 0 20px !important;
+  font-size: clamp(1.8rem, 5vw, 3.2rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+  color: #ffffff !important;
+  text-align: center !important;
+}
+
+.hero-heading-generic .title-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: titleSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.hero-heading-generic .title-line:first-child {
+  animation-delay: 0.2s;
+}
+
+.hero-heading-generic .title-line:last-child {
+  animation-delay: 0.4s;
+}
+
+@keyframes titleSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Generic Hero Subtitle */
+p.hero-subtitle-generic,
+.booking-hero p.hero-subtitle-generic,
+.contact-hero p.hero-subtitle-generic,
+.faq-hero p.hero-subtitle-generic,
+.booking-hero__inner p.hero-subtitle-generic,
+.contact-hero__content p.hero-subtitle-generic,
+.faq-hero__content p.hero-subtitle-generic,
+.main p.hero-subtitle-generic,
+section p.hero-subtitle-generic {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  margin: 0 !important;
+  text-align: center !important;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: subtitleFadeIn 0.8s ease forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes subtitleFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1.hero-heading-generic {
+    font-size: clamp(1.6rem, 6vw, 2.4rem) !important;
+  }
+  
+  p.hero-subtitle-generic {
+    font-size: clamp(1rem, 2.8vw, 1.2rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  h1.hero-heading-generic {
+    font-size: clamp(1.4rem, 5vw, 2rem) !important;
+  }
+  
+  p.hero-subtitle-generic {
+    font-size: clamp(0.95rem, 3vw, 1.1rem) !important;
+  }
+}
+
+/* Specific Hero Title Classes - Increased Desktop Font Sizes */
+.about-hero__title,
+.services-hero__title,
+.hero-title-customization,
+.faq-hero__title,
+.booking-hero__title,
+.contact-hero__title {
+  margin: 0 0 20px !important;
+  font-size: clamp(2.2rem, 5.5vw, 4rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+  color: #ffffff !important;
+  text-align: center !important;
+}
+
+.hero-title-premium-main {
+  margin: 0 0 20px !important;
+  font-size: clamp(2.2rem, 5.5vw, 4rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+  color: #ffffff !important;
+  text-align: left !important;
+}
+
+.hero-subtitle-premium-services {
+  margin: 0 0 20px !important;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-align: left !important;
+  line-height: 1.4 !important;
+}
+
+/* Responsive adjustments for specific hero titles */
+@media (max-width: 768px) {
+  .about-hero__title,
+  .services-hero__title,
+  .hero-title-customization,
+  .faq-hero__title,
+  .booking-hero__title,
+  .contact-hero__title,
+  .hero-title-premium-main {
+    font-size: clamp(1.8rem, 6vw, 2.8rem) !important;
+  }
+  
+  .hero-subtitle-premium-services {
+    font-size: clamp(1rem, 2.8vw, 1.2rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero__title,
+  .services-hero__title,
+  .hero-title-customization,
+  .faq-hero__title,
+  .booking-hero__title,
+  .contact-hero__title,
+  .hero-title-premium-main {
+    font-size: clamp(1.6rem, 5vw, 2.2rem) !important;
+  }
+  
+  .hero-subtitle-premium-services {
+    font-size: clamp(0.95rem, 3vw, 1.1rem) !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hero-heading-generic .title-line,
+  .hero-subtitle-generic {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

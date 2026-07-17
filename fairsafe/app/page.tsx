@@ -11,8 +11,110 @@ import {
 export default function Home() {
   return (
     <>
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-section {
+            min-height: 100svh !important;
+            padding-top: 74px !important;
+            align-items: flex-start !important;
+          }
+
+          .hero-bg-img {
+            object-position: 66% center !important;
+          }
+
+          .hero-overlay {
+            background:
+              linear-gradient(
+                180deg,
+                rgba(248, 250, 255, 0.94) 0%,
+                rgba(248, 250, 255, 0.88) 34%,
+                rgba(248, 250, 255, 0.72) 62%,
+                rgba(248, 250, 255, 0.84) 100%
+              ),
+              rgba(8, 97, 250, 0.08) !important;
+            backdrop-filter: blur(1px);
+          }
+
+          .hero-content {
+            padding: 46px 22px 40px !important;
+          }
+
+          .hero-badge {
+            max-width: 100% !important;
+            padding: 8px 14px !important;
+            margin-bottom: 24px !important;
+            background: rgba(255,255,255,0.72) !important;
+            border: 1px solid rgba(124,58,237,0.35) !important;
+            backdrop-filter: blur(8px);
+          }
+
+          .hero-badge span:last-child {
+            font-size: 0.62rem !important;
+            letter-spacing: 0.09em !important;
+            line-height: 1.25 !important;
+          }
+
+          .hero-title {
+            font-size: clamp(3.1rem, 16vw, 4.7rem) !important;
+            line-height: 0.92 !important;
+            margin-bottom: 22px !important;
+            max-width: 100% !important;
+          }
+
+          .hero-text {
+            font-size: 0.98rem !important;
+            line-height: 1.65 !important;
+            max-width: 100% !important;
+            margin-bottom: 28px !important;
+            color: rgba(15, 15, 20, 0.82) !important;
+            background: rgba(255,255,255,0.52);
+            padding: 14px 16px;
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+          }
+
+          .hero-btn {
+            width: 100% !important;
+            justify-content: center !important;
+            background: #7C3AED !important;
+            color: white !important;
+            border: 2px solid #7C3AED !important;
+            padding: 14px 24px !important;
+            border-radius: 10px !important;
+            box-shadow: 0 10px 28px rgba(124,58,237,0.28);
+          }
+
+          .hero-stats {
+            margin-top: 32px !important;
+            gap: 14px !important;
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          }
+
+          .hero-stats > div {
+            background: rgba(255,255,255,0.68);
+            border: 1px solid rgba(124,58,237,0.14);
+            border-radius: 12px;
+            padding: 14px;
+            backdrop-filter: blur(8px);
+          }
+        }
+
+        @media (max-width: 420px) {
+          .hero-content {
+            padding-left: 18px !important;
+            padding-right: 18px !important;
+          }
+
+          .hero-title {
+            font-size: clamp(2.8rem, 15vw, 4rem) !important;
+          }
+        }
+      `}</style>
+
       {/* ── HERO ── */}
-      <section style={{
+      <section className="hero-section" style={{
         minHeight: "100vh",
         position: "relative",
         overflow: "hidden",
@@ -23,7 +125,8 @@ export default function Home() {
         {/* Background image */}
         <div style={{ position: "absolute", inset: 0 }}>
           <Image
-            src="/images/herobg.png"
+            className="hero-bg-img"
+            src="/new/herobg.png"
             alt="FAIRSAFE in action"
             fill
             priority
@@ -37,7 +140,7 @@ export default function Home() {
         </div>
 
         {/* Content */}
-        <div style={{
+        <div className="hero-content" style={{
           maxWidth: 1280,
           margin: "0 auto",
           padding: "80px 5%",
@@ -45,7 +148,7 @@ export default function Home() {
           zIndex: 2,
           width: "100%",
         }}>
-          <div style={{
+          <div className="hero-badge" style={{
             display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 32,
             background: "rgba(124,58,237,0.2)", border: "1px solid rgba(124,58,237,0.4)",
             borderRadius: 999, padding: "7px 18px",
@@ -62,7 +165,7 @@ export default function Home() {
             </span>
           </div>
 
-          <h1 style={{
+          <h1 className="hero-title" style={{
             fontFamily: "'Bebas Neue', sans-serif",
             fontSize: "clamp(3.8rem,8vw,7rem)",
             lineHeight: 0.95,
@@ -75,7 +178,7 @@ export default function Home() {
             <span style={{ color: "black" }}>YOU CAN TRUST</span>
           </h1>
 
-          <p style={{
+          <p className="hero-text" style={{
             fontSize: "1.1rem", color: "rgba(19, 14, 14, 0.75)",
             maxWidth: 500, marginBottom: 44, lineHeight: 1.75, fontWeight: 300
           }}>
@@ -83,7 +186,7 @@ export default function Home() {
             and industrial worksites. Fair prices. Professional response. Zero compromise on safety.
           </p>
 
-          <Link href="/services" className="btn-outline" style={{
+          <Link href="/services" className="btn-outline hero-btn" style={{
             borderColor: "rgba(3, 0, 0, 0.4)", color: "#7C3AED",
             padding: "13px 32px", borderRadius: 5, fontWeight: 700,
             textDecoration: "none", fontSize: "1rem", display: "inline-flex", alignItems: "center"
@@ -232,9 +335,7 @@ export default function Home() {
             {/* Document Buttons */}
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 14 }}>
               <a
-                
-                 
-                 href="/docs/clearance-letter.PNG"
+                href="/docs/clearance-letter.PNG"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -266,7 +367,7 @@ export default function Home() {
               </a>
             </div>
 
-         {/* Contact note */}
+            {/* Contact note */}
             <p style={{ fontSize: "0.78rem", color: "rgba(26,10,46,0.45)", marginTop: 4 }}>
               To view full documents, please{" "}
               <Link href="/contact" style={{ color: "#7C3AED", fontWeight: 600, textDecoration: "none" }}>
@@ -413,18 +514,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PHOTO GRID (RESPONSIVE MOSAIC) ── */}
+      {/* ── PHOTO GRID ── */}
       <section style={{ background: "#F8F5FF", padding: "100px 5%" }}>
         <style>{`
-          @media (max-width: 900px) {
-            .gallery-grid { grid-template-columns: 1fr 1fr !important; grid-template-rows: 240px 240px 240px !important; }
-            .gallery-large { grid-column: 1 / 3 !important; grid-row: auto !important; }
-          }
           @media (max-width: 640px) {
-            .gallery-grid { grid-template-columns: 1fr !important; grid-template-rows: none !important; }
-            .gallery-large { grid-column: auto !important; }
-            .gallery-item { height: 240px !important; }
-            .gallery-heading { flex-direction: column !important; align-items: flex-start !important; }
+            .gallery-grid {
+              display: flex !important;
+              flex-direction: column !important;
+              gap: 12px !important;
+            }
+
+            .gallery-item,
+            .gallery-large {
+              width: 100% !important;
+              height: 260px !important;
+              min-height: 260px !important;
+            }
+
+            .hoodie-item {
+              height: 500px !important;
+              min-height: 500px !important;
+            }
+
+            .gallery-heading {
+              flex-direction: column !important;
+              align-items: flex-start !important;
+            }
           }
         `}</style>
 
@@ -441,20 +556,97 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="gallery-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gridTemplateRows: "280px 280px", gap: 12 }}>
-            <div className="gallery-item gallery-large" style={{ gridRow: "1 / 3", borderRadius: 10, overflow: "hidden", position: "relative" }}>
-              <Image src="/images/work1.jpeg" alt="FAIRSAFE" fill sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" style={{ objectFit: "cover" }} />
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(26,10,46,0.5),transparent 60%)" }} />
+          <div
+            className="gallery-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1.1fr 1.1fr 1fr",
+              gridTemplateRows: "280px 280px",
+              gap: 12,
+            }}
+          >
+            <div
+              className="gallery-item gallery-large"
+              style={{
+                gridColumn: "1",
+                gridRow: "1 / 3",
+                borderRadius: 10,
+                overflow: "hidden",
+                position: "relative",
+              }}
+            >
+              <Image
+                src="/images/work1.jpeg"
+                alt="FAIRSAFE"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+                style={{ objectFit: "cover" }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(to top,rgba(26,10,46,0.5),transparent 60%)",
+                }}
+              />
             </div>
-            <div className="gallery-item" style={{ borderRadius: 10, overflow: "hidden", position: "relative" }}>
-              <Image src="/images/gallery3.jpg" alt="FAIRSAFE" fill sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" style={{ objectFit: "cover" }} />
+
+            <div
+              className="gallery-item hoodie-item"
+              style={{
+                gridColumn: "2",
+                gridRow: "1 / 3",
+                borderRadius: 10,
+                overflow: "hidden",
+                position: "relative",
+              }}
+            >
+              <Image
+                src="/gallery/IMG_1265.jpg"
+                alt="FAIRSAFE"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+                style={{ objectFit: "cover" }}
+              />
             </div>
-            <div className="gallery-item" style={{ borderRadius: 10, overflow: "hidden", position: "relative" }}>
-              <Image src="/images/service-staffing.jpg" alt="FAIRSAFE" fill sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" style={{ objectFit: "cover" }} />
+
+            <div
+              className="gallery-item"
+              style={{
+                gridColumn: "3",
+                gridRow: "1",
+                borderRadius: 10,
+                overflow: "hidden",
+                position: "relative",
+              }}
+            >
+              <Image
+                src="/images/service-staffing.jpg"
+                alt="FAIRSAFE"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+                style={{ objectFit: "cover" }}
+              />
             </div>
-            
-            <div className="gallery-item" style={{ borderRadius: 10, overflow: "hidden", position: "relative" }}>
-              <Image src="/images/gallery7.jpg" alt="FAIRSAFE" fill sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" style={{ objectFit: "cover" }} />
+
+            <div
+              className="gallery-item"
+              style={{
+                gridColumn: "3",
+                gridRow: "2",
+                borderRadius: 10,
+                overflow: "hidden",
+                position: "relative",
+              }}
+            >
+              <Image
+                src="/images/gallery7.jpg"
+                alt="FAIRSAFE"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+                style={{ objectFit: "cover" }}
+              />
             </div>
           </div>
         </div>
@@ -474,7 +666,7 @@ export default function Home() {
             <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(124,58,237,0.35)", borderRadius: 16, padding: 44, position: "relative", overflow: "hidden" }}>
               <div style={{ position: "absolute", top: 20, right: -30, background: "#7C3AED", color: "#FFFFFF", padding: "6px 48px", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", transform: "rotate(35deg)" }}>FREE BONUS</div>
               <HeartPulse size={36} color="#A78BFA" style={{ marginBottom: 20 }} />
-              <h3 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.8rem", letterSpacing: "0.04em", marginBottom: 14, color: "#FFFFFF" }}>FREE AED WITH CONTRACT</h3>
+              <h3 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.8rem", letterSpacing: "0.04em", marginBottom: 14, color: "#FFFFFF" }}>FREE AED RENTAL INCLUDED</h3>
               <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.75, fontSize: "0.95rem" }}>
                 Book a coverage contract and receive a <span style={{ color: "#A78BFA", fontWeight: 700 }}>complimentary Automated External Defibrillator (AED)</span> — a $1,500+ value included at no cost.
               </p>
@@ -535,7 +727,7 @@ export default function Home() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))" }}>
           <div style={{ position: "relative", minHeight: 440 }}>
             <Image
-              src="/img/IMG_7393.png"
+              src="/img/IMG_7393.jpg"
               alt="Community event support"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -631,8 +823,10 @@ export default function Home() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24 }}>
             {[
-              { quote: "FAIRSAFE had their attendant on-site before we even opened gates. Professional, prepared, and genuinely affordable. Exactly what we needed for our community event.", 
-  name: "Community Event Organizer", role: "North Vancouver", initials: "CE" },
+              {
+                quote: "FAIRSAFE had their attendant on-site before we even opened gates. Professional, prepared, and genuinely affordable. Exactly what we needed for our community event.",
+                name: "Community Event Organizer", role: "North Vancouver", initials: "CE"
+              },
               { quote: "We needed last-minute first aid coverage for our construction site — FAIRSAFE came through same day. Certified, on time, and cheaper than any other quote we got.", name: "Site Supervisor", role: "Construction Project, Burnaby", initials: "SS" },
               { quote: "Booked them for a 3-day festival. The multi-day discount was a great deal and the team was outstanding throughout. Will use FAIRSAFE for all future events.", name: "Event Coordinator", role: "Lower Mainland Festival", initials: "EC" },
             ].map((t, i) => (

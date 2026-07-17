@@ -1,0 +1,419 @@
+/* ============================================
+   SAFETY CERTIFICATION SERVICE PAGE - UNIQUE CLASSES
+   ============================================ */
+
+.sc-service-page {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Hero Section */
+.sc-service-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sc-hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.sc-hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sc-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+  z-index: 2;
+}
+
+.sc-hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #ffffff;
+}
+
+.sc-hero-content h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  margin: 0 0 1rem;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.sc-hero-content p {
+  font-size: 1.3rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Container */
+.sc-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Service Description Section */
+.sc-service-description-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  position: relative;
+}
+
+.sc-service-description-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.sc-service-description-image {
+  position: relative;
+}
+
+.sc-description-main-image {
+  width: 100%;
+  height: 300px !important;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.sc-service-description-content {
+  padding: 20px 0;
+}
+
+.sc-service-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 20px;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+
+.sc-service-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+.sc-service-short-description {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 30px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.sc-service-detailed-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* Three Column Content Section */
+.sc-service-three-column-section {
+  padding: 80px 0;
+  background: #000000;
+  position: relative;
+}
+
+.sc-three-column-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px;
+}
+
+.sc-service-content {
+  text-align: left;
+  padding: 20px 0;
+}
+
+.sc-service-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.sc-service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sc-list-item {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.sc-list-item::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Luxury Appointment Section */
+.sc-luxury-appointment-section {
+  background: #ffffff;
+  color: #000000;
+  padding: 80px min(6vw, 70px);
+  position: relative;
+  overflow: hidden;
+}
+
+.sc-luxury-appointment-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sc-luxury-appointment-content {
+  position: relative;
+  z-index: 2;
+}
+
+.sc-luxury-title {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  color: #000000;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: scLuxuryTitleFadeIn 1s ease forwards;
+}
+
+.sc-luxury-subtitle {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 400;
+  color: #333333;
+  margin: 0 0 40px;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: scLuxurySubtitleFadeIn 1s ease 0.2s forwards;
+}
+
+.sc-luxury-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: scLuxuryButtonsFadeIn 1s ease 0.4s forwards;
+}
+
+.sc-luxury-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.sc-primary-luxury-btn {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.sc-secondary-luxury-btn {
+  background: transparent;
+  color: #000000;
+  border-color: #000000;
+}
+
+.sc-luxury-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.sc-primary-luxury-btn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.sc-secondary-luxury-btn:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.sc-luxury-btn-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sc-luxury-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.sc-luxury-btn:hover svg {
+  transform: translateX(4px);
+}
+
+.sc-luxury-btn-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50px;
+}
+
+.sc-luxury-btn:hover .sc-luxury-btn-glow {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes scLuxuryTitleFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scLuxurySubtitleFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scLuxuryButtonsFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .sc-service-description-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .sc-service-description-content {
+    padding: 0;
+  }
+  
+  .sc-service-title {
+    font-size: 2rem;
+  }
+  
+  .sc-three-column-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .sc-service-content {
+    padding: 15px 0;
+  }
+  
+  .sc-luxury-appointment-section {
+    padding: 60px 20px;
+  }
+  
+  .sc-luxury-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sc-luxury-btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .sc-service-description-section {
+    padding: 60px 0;
+  }
+  
+  .sc-service-three-column-section {
+    padding: 60px 0;
+  }
+  
+  .sc-luxury-appointment-section {
+    padding: 50px 15px;
+  }
+  
+  .sc-service-title {
+    font-size: 1.8rem;
+  }
+  
+  .sc-service-title {
+    font-size: 1.3rem;
+  }
+  
+  .sc-luxury-btn {
+    padding: 16px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+

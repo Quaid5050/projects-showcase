@@ -83,7 +83,7 @@ export default function Navbar() {
             >
               📍
               <span className="topbar-address">
-                Tower Isle, St. Mary, Jamaica | Near Ocho Rios
+                119 Riviera Blvd, Tower Isle, St. Mary, Jamaica
               </span>
             </span>
 
@@ -92,7 +92,7 @@ export default function Navbar() {
 
           <div style={{ display: 'flex', gap: 12 }}>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/share/1bVpCwLWkP/"
               target="_blank"
               rel="noreferrer"
               style={{ color: '#fff' }}
@@ -234,20 +234,29 @@ export default function Navbar() {
                 </div>
               ))}
 
-              <a
-                href="https://www.airbnb.com/rooms/51519181"
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  marginLeft: 10,
-                  background: '#C9933A',
-                  color: '#fff',
-                  padding: '10px 18px',
-                  textDecoration: 'none',
-                }}
-              >
-                📅 BOOK NOW
-              </a>
+              <div style={{ position:'relative', marginLeft:10 }}
+                onMouseEnter={() => setDrop('book')}
+                onMouseLeave={() => setDrop(null)}>
+                <button style={{ background:'#C9933A', color:'#fff', padding:'10px 18px', border:'none', cursor:'pointer', fontFamily:"'Poppins',sans-serif", fontSize:12, fontWeight:600 }}>
+                  📅 BOOK NOW
+                </button>
+                {drop === 'book' && (
+                  <div style={{ position:'absolute', top:'100%', right:0, background:'#fff', minWidth:320, boxShadow:'0 10px 30px rgba(0,0,0,.12)', borderRadius:4, overflow:'hidden', zIndex:999 }}>
+                    {[
+                      {label:'2 Bedroom Coastal Escape',url:'https://www.airbnb.com/rooms/1217449871263544293'},
+                      {label:'1 Bedroom Coastal Retreat',url:'https://www.airbnb.com/rooms/1496774073337494827'},
+                      {label:'1 Bedroom Hideaway',url:'https://www.airbnb.com/rooms/1694447305874309310'},
+                      {label:'1 Bed / 1 Bath Tropical Escape',url:'https://www.airbnb.com/rooms/51519181'},
+                    ].map(l=>(
+                      <a key={l.label} href={l.url} target="_blank" rel="noreferrer" style={{ display:'block', padding:'12px 16px', color:'#1A2540', textDecoration:'none', fontSize:12, fontWeight:600, borderBottom:'1px solid #F0EBE0', transition:'background 0.2s' }}
+                        onMouseEnter={e=>e.target.style.background='#FDF8F0'}
+                        onMouseLeave={e=>e.target.style.background='#fff'}>
+                        {l.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             </nav>
 
             {/* HAMBURGER */}

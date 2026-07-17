@@ -10,6 +10,5 @@ export const mainNav = [
   { path: '/services', label: 'Services', hasDropdown: true },
   { path: '/conditions', label: 'Conditions' },
   { path: '/credentials', label: 'Credentials' },
-  { path: '/faq', label: 'FAQ' },
   { path: '/booking', label: 'Contact' },
 ] as const

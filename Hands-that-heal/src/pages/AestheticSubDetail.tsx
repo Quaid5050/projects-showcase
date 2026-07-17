@@ -333,51 +333,21 @@ const AestheticSubDetail = () => {
               </div>
             </div>
 
-            {/* Gallery mosaic */}
+            {/* Gallery — single image */}
             {aestheticGalleryMap[service.slug] && (
-              <div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 sm:grid-rows-2 gap-3">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.97 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="sm:col-span-2 sm:row-span-2 rounded-3xl overflow-hidden shadow-elegant"
-                  >
-                    <img
-                      src={aestheticGalleryMap[service.slug][0]}
-                      alt={`${service.title} treatment`}
-                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
-                    />
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.97 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                    className="rounded-3xl overflow-hidden shadow-soft aspect-square"
-                  >
-                    <img
-                      src={aestheticGalleryMap[service.slug][1]}
-                      alt={`${service.title} treatment`}
-                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
-                    />
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.97 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="rounded-3xl overflow-hidden shadow-soft aspect-square"
-                  >
-                    <img
-                      src={aestheticGalleryMap[service.slug][2]}
-                      alt={`${service.title} treatment`}
-                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
-                    />
-                  </motion.div>
-                </div>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.97 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="rounded-3xl overflow-hidden shadow-elegant aspect-[16/9]"
+              >
+                <img
+                  src={aestheticGalleryMap[service.slug][0]}
+                  alt={`${service.title} treatment`}
+                  className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
+                />
+              </motion.div>
             )}
 
             {/* Who it's for */}

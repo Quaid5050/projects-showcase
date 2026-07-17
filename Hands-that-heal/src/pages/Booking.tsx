@@ -22,6 +22,13 @@ const Booking = () => {
     };
   }, []);
 
+  // Fire Google Ads conversion when booking page is visited
+  useEffect(() => {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag('event', 'conversion', { send_to: 'AW-18207080252/REQmCKL7-sgcELz-5-lD' });
+    }
+  }, []);
+
   return (
     <>
       <title>Book an Appointment — Hands That Heal</title>

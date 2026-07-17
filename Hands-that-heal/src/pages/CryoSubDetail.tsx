@@ -446,13 +446,13 @@ const CryoSubDetail = () => {
             {/* Gallery mosaic */}
             {galleryMap[service.slug] && (
               <div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 sm:grid-rows-2 gap-3">
+                <div className="grid grid-cols-3 grid-rows-2 gap-3 h-[400px] sm:h-[480px]">
                   <motion.div
                     initial={{ opacity: 0, scale: 0.97 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="sm:col-span-2 sm:row-span-2 rounded-3xl overflow-hidden shadow-elegant"
+                    className="col-span-2 row-span-2 rounded-3xl overflow-hidden shadow-elegant"
                   >
                     <img
                       src={galleryMap[service.slug][0]}
@@ -465,7 +465,7 @@ const CryoSubDetail = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="rounded-3xl overflow-hidden shadow-soft aspect-square"
+                    className="rounded-3xl overflow-hidden shadow-soft"
                   >
                     <img
                       src={galleryMap[service.slug][1]}
@@ -478,7 +478,7 @@ const CryoSubDetail = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="rounded-3xl overflow-hidden shadow-soft aspect-square"
+                    className="rounded-3xl overflow-hidden shadow-soft"
                   >
                     <img
                       src={galleryMap[service.slug][2]}

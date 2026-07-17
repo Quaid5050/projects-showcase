@@ -66,7 +66,7 @@ export function Header() {
           to="/"
           className="flex shrink-0 items-center gap-2 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
-          <img src="/logo1.png" alt="GTB Holistic Wellness — Home" className="h-10 w-auto sm:h-11" width={120} height={48} />
+          <img src="/logo1.png" alt="GTB Holistic . — Home" className="h-10 w-auto sm:h-11" width={120} height={48} />
         </Link>
 
         <nav className="hidden flex-1 flex-wrap items-center justify-center gap-x-0.5 lg:flex" aria-label="Primary">
@@ -160,7 +160,7 @@ export function Header() {
             to="/booking"
             className="hidden rounded-full bg-gradient-to-r from-orange/88 to-orange/68 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-md transition hover:from-orange/95 hover:to-orange/75 hover:shadow-lg hover:shadow-orange/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange sm:inline-flex"
           >
-            Book
+            Contact
           </Link>
 
           <button
@@ -270,7 +270,7 @@ export function Header() {
                 className="mt-5 flex w-full items-center justify-center rounded-full bg-gradient-to-r from-orange/88 to-orange/68 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-md transition hover:from-orange/95 hover:to-orange/75 hover:shadow-lg hover:shadow-orange/25"
                 onClick={() => setMobileOpen(false)}
               >
-                Book consultation
+                Contact
               </Link>
             </div>
           </motion.div>

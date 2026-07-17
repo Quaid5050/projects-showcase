@@ -14,14 +14,14 @@ export default function TermsDisclaimer() {
       <PageHero
         eyebrow="Legal"
         title="Terms & Disclaimer"
-        subtitle="Please read this carefully. It explains the limits of wellness information and services offered through this website."
+        subtitle="Please read this carefully. It explains the limits of . information and services offered through this website."
         breadcrumb={[
           { label: 'Home', to: '/' },
           { label: 'Terms & Disclaimer' },
         ]}
       >
         <Button to="/booking" variant="secondary">
-          Contact studio
+          Contact clinic
         </Button>
       </PageHero>
       </div>
@@ -36,12 +36,12 @@ export default function TermsDisclaimer() {
 
           {[
             {
-              h: 'Educational & wellness information only',
-              p: 'Website content is provided for general wellness education. It is not medical advice, diagnosis, or treatment. Always consult a licensed physician or appropriate clinician for medical concerns.',
+              h: 'Educational & . information only',
+              p: 'Website content is provided for general . education. It is not medical advice, diagnosis, or treatment. Always consult a licensed physician or appropriate clinician for medical concerns.',
             },
             {
               h: 'Not a substitute for medical diagnosis or emergency care',
-              p: 'Holistic services described here are complementary wellness supports. They do not replace emergency services, prescriptions, or medically necessary evaluations.',
+              p: 'Holistic services described here are complementary . supports. They do not replace emergency services, prescriptions, or medically necessary evaluations.',
             },
             {
               h: 'No guaranteed outcomes',

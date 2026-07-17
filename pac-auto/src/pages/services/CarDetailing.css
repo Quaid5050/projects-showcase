@@ -1,0 +1,880 @@
+/* ============================================
+   CAR DETAILING SERVICE PAGE - UNIQUE CLASSES
+   ============================================ */
+
+.cd-service-page {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Hero Section */
+.cd-service-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cd-hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.cd-hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cd-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+  z-index: 2;
+}
+
+.cd-hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #ffffff;
+}
+
+.cd-hero-content h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  margin: 0 0 1rem;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.cd-hero-content p {
+  font-size: 1.3rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Container */
+.cd-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Service Description Section */
+.cd-service-description-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  position: relative;
+}
+
+.cd-service-description-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.cd-service-description-image {
+  position: relative;
+}
+
+.cd-description-main-image {
+  width: 100%;
+  height: 300px !important;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.cd-service-description-content {
+  padding: 20px 0;
+}
+
+.cd-service-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 20px;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+
+.cd-service-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+.cd-service-short-description {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 30px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.cd-service-detailed-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* Three Column Content Section */
+.cd-service-three-column-section {
+  padding: 80px 0;
+  background: #000000;
+  position: relative;
+}
+
+.cd-three-column-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px;
+}
+
+.cd-service-content {
+  text-align: left;
+  padding: 20px 0;
+}
+
+.cd-service-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.cd-service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cd-list-item {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.cd-list-item::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Luxury Appointment Section */
+.cd-luxury-appointment-section {
+  background: #ffffff;
+  color: #000000;
+  padding: 80px min(6vw, 70px);
+  position: relative;
+  overflow: hidden;
+}
+
+.cd-luxury-appointment-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cd-luxury-appointment-content {
+  position: relative;
+  z-index: 2;
+}
+
+.cd-luxury-title {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  color: #000000;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: cdLuxuryTitleFadeIn 1s ease forwards;
+}
+
+.cd-luxury-subtitle {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 400;
+  color: #333333;
+  margin: 0 0 40px;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cdLuxurySubtitleFadeIn 1s ease 0.2s forwards;
+}
+
+.cd-luxury-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cdLuxuryButtonsFadeIn 1s ease 0.4s forwards;
+}
+
+.cd-luxury-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.cd-primary-luxury-btn {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.cd-secondary-luxury-btn {
+  background: transparent;
+  color: #000000;
+  border-color: #000000;
+}
+
+.cd-luxury-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cd-primary-luxury-btn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.cd-secondary-luxury-btn:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.cd-luxury-btn-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cd-luxury-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.cd-luxury-btn:hover svg {
+  transform: translateX(4px);
+}
+
+.cd-luxury-btn-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50px;
+}
+
+.cd-luxury-btn:hover .cd-luxury-btn-glow {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes cdLuxuryTitleFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cdLuxurySubtitleFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cdLuxuryButtonsFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .cd-service-description-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .cd-service-description-content {
+    padding: 0;
+  }
+  
+  .cd-service-title {
+    font-size: 2rem;
+  }
+  
+  .cd-three-column-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .cd-service-content {
+    padding: 15px 0;
+  }
+  
+  .cd-luxury-appointment-section {
+    padding: 60px 20px;
+  }
+  
+  .cd-luxury-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cd-luxury-btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cd-service-description-section {
+    padding: 60px 0;
+  }
+  
+  .cd-service-three-column-section {
+    padding: 60px 0;
+  }
+  
+  .cd-luxury-appointment-section {
+    padding: 50px 15px;
+  }
+  
+  .cd-service-title {
+    font-size: 1.8rem;
+  }
+  
+  .cd-service-title {
+    font-size: 1.3rem;
+  }
+  
+  .cd-luxury-btn {
+    padding: 16px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.service-detail-page.loaded .hero-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-breadcrumb {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-breadcrumb a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hero-breadcrumb a:hover {
+  color: #fff;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 32px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.hero-cta {
+  display: inline-block;
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  color: #000;
+  text-decoration: none;
+  padding: 16px 40px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.35);
+}
+
+/* ============================================
+   SERVICE CONTENT SECTION
+   ============================================ */
+
+.service-content {
+  padding: 80px 20px 100px;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.service-detail-page.loaded .service-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.service-detail-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* ============================================
+   SERVICE IMAGE SECTION
+   ============================================ */
+
+.service-image-section {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 10px 30px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-main-image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.service-main-image:hover {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   SERVICE DESCRIPTION SECTION
+   ============================================ */
+
+.service-description-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  position: relative;
+}
+
+.service-description-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.service-description-image {
+  position: relative;
+}
+
+.description-main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.service-description-content {
+  padding: 20px 0;
+}
+
+.service-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 20px;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+
+.service-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+.service-short-description {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 30px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.service-detailed-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* ============================================
+   THREE COLUMN CONTENT SECTION
+   ============================================ */
+
+.service-three-column-section {
+  padding: 80px 0;
+  background: #000000;
+  position: relative;
+}
+
+.three-column-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.service-column {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.service-column:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+}
+
+.column-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+
+.column-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.column-list li {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.column-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* ============================================
+   BOOKING SECTION
+   ============================================ */
+
+.service-booking-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  text-align: center;
+}
+
+.booking-content {
+  display: flex;
+  justify-content: center;
+}
+
+.service-detail-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 20px;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+
+.service-detail-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 30px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 20px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .service-description-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .service-description-content {
+    padding: 0;
+  }
+  
+  .service-title {
+    font-size: 2rem;
+  }
+  
+  .three-column-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .service-column {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-description-section {
+    padding: 60px 0;
+  }
+  
+  .service-three-column-section {
+    padding: 60px 0;
+  }
+  
+  .service-booking-section {
+    padding: 40px 0;
+  }
+  
+  .service-title {
+    font-size: 1.8rem;
+  }
+  
+  .column-title {
+    font-size: 1.3rem;
+  }
+}
+
+.book-service-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  padding: 18px 48px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 10px 30px rgba(255, 255, 255, 0.2),
+    0 4px 15px rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #fff;
+}
+
+.book-service-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 15px 40px rgba(255, 255, 255, 0.3),
+    0 6px 20px rgba(255, 255, 255, 0.4);
+  background: #000;
+  color: #fff;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .service-detail-layout {
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+  }
+
+  .service-main-image {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-hero {
+    min-height: 60vh;
+    padding: 80px 15px 40px;
+  }
+
+  .service-content {
+    padding: 60px 15px 80px;
+  }
+
+  .service-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .service-main-image {
+    height: 350px;
+  }
+
+  .service-description h2 {
+    font-size: 2.2rem;
+  }
+
+  .tagline {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .service-features,
+  .service-benefits {
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .service-features h3,
+  .service-benefits h3 {
+    font-size: 1.3rem;
+  }
+
+  .features-list li,
+  .benefits-list li {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    padding-left: 30px;
+  }
+
+  .book-service-btn {
+    padding: 16px 36px;
+    font-size: 1.1rem;
+  }
+}

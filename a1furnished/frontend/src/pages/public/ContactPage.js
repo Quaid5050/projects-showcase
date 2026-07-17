@@ -28,16 +28,28 @@ const ContactPage = () => {
 
   return (
     <div>
+      <style>{`
+        @media (max-width: 768px) {
+          .contact-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .contact-form-inner { padding: 24px !important; }
+          .contact-field-row { grid-template-columns: 1fr !important; }
+          .contact-header { padding: 40px 0 !important; }
+          .contact-header h1 { font-size: 26px !important; }
+          .contact-header p { font-size: 15px !important; }
+          .contact-wrap { padding: 40px 16px !important; }
+        }
+      `}</style>
+
       {/* Header */}
-      <div style={{ background: 'var(--navy)', padding: '60px 0' }}>
+      <div className="contact-header" style={{ background: 'var(--navy)', padding: '60px 0' }}>
         <div className="container" style={{ textAlign: 'center' }}>
-          <h1 style={{ color: 'white', fontFamily: 'Montserrat', fontSize: 'clamp(28px, 4vw, 42px)', marginBottom: '12px' }}>Contact Us</h1>
+          <h1 style={{ color: 'white', fontFamily: 'Montserrat', fontSize: 'clamp(26px, 4vw, 42px)', marginBottom: '12px' }}>Contact Us</h1>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '17px' }}>We're here to help you find your perfect furnished home</p>
         </div>
       </div>
 
-      <div className="container" style={{ padding: '60px 24px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '50px', alignItems: 'start' }}>
+      <div className="container contact-wrap" style={{ padding: '60px 24px' }}>
+        <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '50px', alignItems: 'start' }}>
 
           {/* Contact Info */}
           <div>
@@ -48,22 +60,24 @@ const ContactPage = () => {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '40px' }}>
               {[
-                { icon: <Phone size={22} />, title: 'Phone', value: '+1 4165661102', link: 'tel:+16477234567' },
-                { icon: <Mail size={22} />, title: 'Email', value: 'nadeemrealty@gmail.com.', link: 'mailto:nadeemrealty@gmail.com.' },
-                { icon: <MapPin size={22} />, title: 'Service Area', value: 'Greater Toronto Area, Ontario, Canada', link: null },
-                { icon: <Clock size={22} />, title: 'Hours', value: 'Mon–Sun: 8:00 AM – 9:00 PM EST', link: null }
+                { icon: <Phone size={22} />, title: 'Phone', values: [{ label: 'Canada: +1 (416) 566-1102', link: 'tel:+14165661102' }, { label: 'USA, New York: +1 (347) 298-2876', link: 'tel:+13472982876' }] },
+                { icon: <Mail size={22} />, title: 'Email', values: [{ label: 'a1furnished@gmail.com', link: 'mailto:a1furnished@gmail.com' }] },
+                { icon: <MapPin size={22} />, title: 'Service Area', values: [{ label: 'Greater Toronto Area, Ontario, Canada', link: null }] },
+                { icon: <Clock size={22} />, title: 'Hours', values: [{ label: 'Mon–Sun: 8:00 AM – 9:00 PM EST', link: null }] }
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
                   <div style={{ width: '48px', height: '48px', background: 'var(--off-white)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--red)', flexShrink: 0 }}>
                     {item.icon}
                   </div>
                   <div>
-                    <div style={{ fontFamily: 'Montserrat', fontWeight: 700, fontSize: '14px', marginBottom: '2px', color: 'var(--navy)' }}>{item.title}</div>
-                    {item.link ? (
-                      <a href={item.link} style={{ color: 'var(--gray-dark)', fontSize: '15px' }}>{item.value}</a>
-                    ) : (
-                      <span style={{ color: 'var(--gray-dark)', fontSize: '15px' }}>{item.value}</span>
-                    )}
+                    <div style={{ fontFamily: 'Montserrat', fontWeight: 700, fontSize: '14px', marginBottom: '4px', color: 'var(--navy)' }}>{item.title}</div>
+                    {item.values.map((v, j) => (
+                      v.link ? (
+                        <a key={j} href={v.link} style={{ color: 'var(--gray-dark)', fontSize: '15px', display: 'block', lineHeight: 1.8 }}>{v.label}</a>
+                      ) : (
+                        <span key={j} style={{ color: 'var(--gray-dark)', fontSize: '15px', display: 'block', lineHeight: 1.8 }}>{v.label}</span>
+                      )
+                    ))}
                   </div>
                 </div>
               ))}
@@ -83,7 +97,7 @@ const ContactPage = () => {
           </div>
 
           {/* Contact Form */}
-          <div style={{ background: 'white', borderRadius: 'var(--radius-lg)', padding: '36px', boxShadow: 'var(--shadow-md)' }}>
+          <div className="contact-form-inner" style={{ background: 'white', borderRadius: 'var(--radius-lg)', padding: '36px', boxShadow: 'var(--shadow-md)' }}>
             {submitted ? (
               <div style={{ textAlign: 'center', padding: '40px 0' }}>
                 <div style={{ fontSize: '60px', marginBottom: '16px' }}>✉️</div>
@@ -95,7 +109,7 @@ const ContactPage = () => {
               <>
                 <h3 style={{ fontFamily: 'Montserrat', fontSize: '20px', marginBottom: '24px' }}>Send Us a Message</h3>
                 <form onSubmit={handleSubmit}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+                  <div className="contact-field-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
                     <div>
                       <label className="form-label">Full Name *</label>
                       <input className="form-control" value={form.name} onChange={e => setForm(p => ({ ...p, name: e.target.value }))} placeholder="Your name" />
@@ -109,7 +123,7 @@ const ContactPage = () => {
                     <label className="form-label">Email Address *</label>
                     <input type="email" className="form-control" value={form.email} onChange={e => setForm(p => ({ ...p, email: e.target.value }))} placeholder="your@email.com" />
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+                  <div className="contact-field-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
                     <div>
                       <label className="form-label">Move-in Date</label>
                       <input type="date" className="form-control" value={form.moveInDate} onChange={e => setForm(p => ({ ...p, moveInDate: e.target.value }))} />
@@ -118,6 +132,7 @@ const ContactPage = () => {
                       <label className="form-label">Stay Duration</label>
                       <select className="form-control" value={form.stayDuration} onChange={e => setForm(p => ({ ...p, stayDuration: e.target.value }))}>
                         <option value="">Select...</option>
+                        <option value="1 to 7 days">1 to 7 days</option>
                         <option value="1-2 weeks">1-2 weeks</option>
                         <option value="1 month">1 month</option>
                         <option value="2-3 months">2-3 months</option>
@@ -137,6 +152,7 @@ const ContactPage = () => {
               </>
             )}
           </div>
+
         </div>
       </div>
     </div>

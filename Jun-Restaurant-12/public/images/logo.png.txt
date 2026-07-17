@@ -1,0 +1,2 @@
+PLACE YOUR logo.png FILE HERE
+Delete this .txt file and place the Chan's Garden logo image as: logo.png

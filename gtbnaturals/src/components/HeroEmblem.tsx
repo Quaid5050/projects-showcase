@@ -2,7 +2,13 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { catalogServices } from '../data/servicesCatalog'
 
-const heroServices = catalogServices.slice(0, 5)
+const heroServices = [
+  catalogServices[0], // Doctorate of Natural Medicine — top
+  catalogServices[2], // Manual Osteopathic Therapist — left top
+  catalogServices[4], // Massage Therapist — bottom
+  catalogServices[1], // Professional Herbalist — top right
+  catalogServices[3], // Certified Hypnotherapist — below Professional Herbalist
+]
 
 /** Orbit layout for labels (same order as `heroServices`). */
 const tagLayoutClasses = [
@@ -91,7 +97,7 @@ export function HeroEmblem() {
             >
               <Link
                 to={s.detailPath ?? '/services'}
-                className={`pointer-events-auto block rounded-2xl border border-[hsl(36_20%_88%_/0.6)] bg-white px-2.5 py-1.5 text-[10px] font-semibold leading-snug text-cream shadow-ref-soft backdrop-blur-md transition-all duration-500 hover:shadow-ref-elegant hover:bg-white ${tagTextAlignClasses[i]} sm:px-3 sm:text-[11px]`}
+                className={`pointer-events-auto block rounded-2xl border border-[hsl(36_20%_88%_/0.6)] bg-white px-3 py-2 text-xs font-bold leading-snug text-cream shadow-ref-soft backdrop-blur-md transition-all duration-500 hover:shadow-ref-elegant hover:bg-white ${tagTextAlignClasses[i]} sm:px-4 sm:text-sm`}
               >
                 {s.title}
               </Link>

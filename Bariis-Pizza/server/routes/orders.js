@@ -2,11 +2,73 @@ const express = require('express');
 const router = express.Router();
 const Order = require('../models/Order');
 const { protect } = require('../middleware/auth');
+const nodemailer = require('nodemailer');
+
+// ─── Email Notification Helper ───────────────────────────────────────────────
+const sendOrderNotification = async (order) => {
+  try {
+    const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, NOTIFY_EMAIL } = process.env;
+
+    if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !NOTIFY_EMAIL) return;
+
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: parseInt(SMTP_PORT) || 587,
+      secure: parseInt(SMTP_PORT) === 465,
+      auth: { user: SMTP_USER, pass: SMTP_PASS },
+      tls: { rejectUnauthorized: false },
+    });
+
+    const itemsList = order.items
+      .map(i => `• ${i.name}${i.size ? ` (${i.size})` : ''} x${i.quantity} — $${(i.price * i.quantity).toFixed(2)}`)
+      .join('\n');
+
+    await transporter.sendMail({
+      from: `"Bariis Order System" <${SMTP_USER}>`,
+      to: NOTIFY_EMAIL,
+      subject: `New ${order.orderType} Order - ${order.customerName} ($${order.totalAmount.toFixed(2)})`,
+      text: `
+NEW ORDER — Bariis Halal & Pizza House
+==========================================
+
+Order ID  : ${order._id.toString().slice(-8).toUpperCase()}
+Type      : ${order.orderType.toUpperCase()}
+Time      : ${new Date(order.createdAt).toLocaleString('en-CA', { timeZone: 'America/Halifax' })}
+
+CUSTOMER
+--------
+Name      : ${order.customerName}
+Phone     : ${order.customerPhone}
+${order.customerEmail ? `Email     : ${order.customerEmail}` : ''}
+${order.deliveryAddress ? `Address   : ${order.deliveryAddress}` : ''}
+
+ORDER ITEMS
+-----------
+${itemsList}
+
+TOTAL     : $${order.totalAmount.toFixed(2)}
+Payment   : ${order.paymentMethod.toUpperCase()}
+
+${order.specialInstructions ? `SPECIAL INSTRUCTIONS\n--------------------\n${order.specialInstructions}` : ''}
+
+==========================================
+Login to admin dashboard to manage this order.
+`,
+    });
+
+    console.log(`✅ Order notification email sent to ${NOTIFY_EMAIL}`);
+  } catch (err) {
+    console.error('❌ Email notification error:', err.message);
+  }
+};
+
+// ─── Routes ──────────────────────────────────────────────────────────────────
 
 // Public: Place order
 router.post('/', async (req, res) => {
   try {
     const order = await Order.create(req.body);
+    sendOrderNotification(order);
     res.status(201).json(order);
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -32,11 +94,26 @@ router.get('/', protect, async (req, res) => {
     if (status) filter.status = status;
     if (date) {
       const start = new Date(date); start.setHours(0, 0, 0, 0);
-      const end = new Date(date); end.setHours(23, 59, 59, 999);
+      const end   = new Date(date); end.setHours(23, 59, 59, 999);
       filter.createdAt = { $gte: start, $lte: end };
     }
     const orders = await Order.find(filter).sort({ createdAt: -1 });
     res.json(orders);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Admin: Get new orders since timestamp (used for dashboard polling)
+router.get('/new-since', protect, async (req, res) => {
+  try {
+    const { since } = req.query;
+    if (!since) return res.json({ count: 0, orders: [] });
+    const newOrders = await Order.find({
+      createdAt: { $gt: new Date(since) },
+      status: 'pending'
+    }).sort({ createdAt: -1 });
+    res.json({ count: newOrders.length, orders: newOrders });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

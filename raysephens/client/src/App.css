@@ -1,0 +1,16 @@
+/* App-level overrides */
+* { box-sizing: border-box; }
+
+/* Font serif utility */
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Focus ring accessible */
+:focus-visible {
+  outline: 2px solid #8B4513;
+  outline-offset: 2px;
+}

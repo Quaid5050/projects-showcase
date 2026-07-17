@@ -1,0 +1,292 @@
+/* ===========================
+   HERO (HOME)
+   =========================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* clips orbs + drops */
+  max-width: 100%;
+  --parallax-y: 0px;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: -10% 0;
+  background: url('/images/hero-main.jpg') center/cover no-repeat;
+  transform: translateY(var(--parallax-y));
+  animation: heroPan 25s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-hero);
+}
+
+/* Orbs */
+.hero__orb {
+  position: absolute;
+  border-radius: var(--radius-circle);
+  pointer-events: none;
+  filter: blur(100px);
+}
+
+.hero__orb--1 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(94, 43, 151, 0.4) 0%, transparent 70%);
+  top: -200px;
+  right: -200px; /* push further in so it doesn't cause overflow before clip kicks in */
+  animation: float 12s ease-in-out infinite;
+}
+
+.hero__orb--2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(142, 91, 211, 0.3) 0%, transparent 70%);
+  bottom: 100px;
+  left: -200px;
+  animation: float 14s ease-in-out infinite reverse;
+}
+
+/* Water drops */
+.hero__drops {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero__drop {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.2;
+  animation: float ease-in-out infinite;
+}
+
+.hero__drop--1 { top: 20%; left: 10%; animation-duration: 5s; animation-delay: 0s; font-size: 2rem; }
+.hero__drop--2 { top: 30%; right: 15%; animation-duration: 7s; animation-delay: 1s; }
+.hero__drop--3 { bottom: 30%; left: 20%; animation-duration: 6s; animation-delay: 2s; font-size: 1rem; }
+.hero__drop--4 { top: 60%; right: 8%; animation-duration: 8s; animation-delay: 0.5s; font-size: 2.5rem; opacity: 0.12; }
+.hero__drop--5 { bottom: 20%; right: 25%; animation-duration: 5.5s; animation-delay: 1.5s; font-size: 1.2rem; }
+.hero__drop--6 { top: 15%; left: 35%; animation-duration: 9s; animation-delay: 3s; font-size: 1.8rem; opacity: 0.15; }
+
+/* Content */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+  padding-top: 140px; /* enough clearance below fixed header on all screens */
+}
+
+/* Eyebrow */
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(10px);
+  margin-bottom: var(--space-xl);
+  animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.hero__eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary-soft);
+  border-radius: var(--radius-circle);
+  animation: blink 2s ease-in-out infinite;
+  box-shadow: 0 0 8px var(--color-primary-soft);
+  flex-shrink: 0;
+}
+
+/* Title — slightly smaller, no emoji */
+.hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-xl);
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.hero__title-accent {
+  /* Gradient fill for the word "Smile" */
+  background: linear-gradient(135deg, #B48AE6 0%, #D4A8FF 50%, #8E5BD3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--color-primary-light); /* fallback if clip not supported */
+  position: relative;
+  display: inline; /* stay inline so space + "For You" flows naturally */
+}
+
+.hero__title-accent::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #8E5BD3, #B48AE6);
+  border-radius: var(--radius-pill);
+}
+
+/* Subtitle */
+.hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: var(--leading-relaxed);
+  max-width: 620px;
+  margin-bottom: var(--space-xl);
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+/* Price */
+.hero__price {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(94, 43, 151, 0.3);
+  border: 1px solid rgba(142, 91, 211, 0.4);
+  border-radius: var(--radius-pill);
+  padding: 8px 20px;
+  margin-bottom: var(--space-xl);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+.hero__price-from {
+  font-weight: 500;
+}
+
+.hero__price-divider {
+  opacity: 0.4;
+}
+
+.hero__price-amount {
+  font-weight: 700;
+  color: var(--color-primary-light);
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2xl);
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+/* Trust badges */
+.hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+}
+
+.hero__trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.hero__trust-check {
+  color: var(--color-primary-light);
+  font-weight: 700;
+}
+
+/* Scroll indicator */
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: 100px;
+  right: var(--section-pad-x);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: fadeIn 1s ease 1.5s both;
+}
+
+.hero__scroll-mouse {
+  width: 26px;
+  height: 42px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.hero__scroll-wheel {
+  width: 3px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* Wave */
+.hero__wave {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  pointer-events: none;
+}
+
+.hero__wave svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero { overflow: hidden; }
+  .hero__title { font-size: clamp(2rem, 8vw, 3.2rem); }
+  .hero__content { padding-top: 90px; }
+  .hero__scroll-indicator { display: none; }
+  .hero__wave { height: 50px; }
+  .hero__orb { filter: blur(60px); }
+  .hero__orb--1 { width: 300px; height: 300px; }
+  .hero__orb--2 { width: 260px; height: 260px; }
+  .hero__subtitle { font-size: var(--text-base); }
+  .hero__trust { gap: var(--space-sm); }
+}
+
+@media (max-width: 480px) {
+  .hero__eyebrow { font-size: 0.65rem; padding: 5px 12px; gap: 6px; }
+  .hero__price { flex-direction: column; gap: 4px; text-align: center; }
+  .hero__drops { display: none; }
+  .hero__orb { display: none; }
+  .hero__title { font-size: clamp(1.9rem, 9vw, 2.6rem); }
+  .hero__content { padding-top: 80px; }
+}

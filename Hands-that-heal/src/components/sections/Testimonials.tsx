@@ -1,6 +1,28 @@
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 export const Testimonials = () => {
+  const widgetRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = widgetRef.current;
+    if (!container) return;
+
+    // Remove any previous script to allow re-injection
+    const existing = document.getElementById("trustindex-loader");
+    if (existing) existing.remove();
+
+    const script = document.createElement("script");
+    script.id = "trustindex-loader";
+    script.src = "https://cdn.trustindex.io/loader.js?e516d5873149425c5b1604e049d";
+    script.async = true;
+    script.defer = true;
+
+    // Insert script immediately after the widget div so Trustindex
+    // finds the correct target element
+    container.insertAdjacentElement("afterend", script);
+  }, []);
+
   return (
     <section className="py-8 sm:py-12">
       <div className="container-luxe">
@@ -22,7 +44,7 @@ export const Testimonials = () => {
           </p>
         </motion.div>
 
-        {/* Elfsight Google Reviews widget */}
+        {/* Trustindex widget target — script is injected right after this div */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,8 +52,9 @@ export const Testimonials = () => {
           transition={{ duration: 0.6, delay: 0.15 }}
         >
           <div
-            className="elfsight-app-ac9937e4-0bea-456b-94b7-921c5a9e081d"
-            data-elfsight-app-lazy
+            ref={widgetRef}
+            className="trustindex-widget"
+            data-widget-id="e516d5873149425c5b1604e049d"
           />
         </motion.div>
       </div>
